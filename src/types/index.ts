@@ -35,6 +35,23 @@ export interface CarePackage {
   sla: string;
 }
 
+export interface CommercialProduct {
+  id: string;
+  name: string;
+  tagline: string;
+  explanation: string;
+  whoItIsFor: string;
+  mainBenefits: string[];
+  whatsIncluded: string[];
+  startingPrice?: string;
+  pricingNote?: string;
+  badge?: string;
+  ctaText: string;
+  targetSection: string;
+  whatsAppMessage: string;
+  crossSells: { id: string; name: string; reason: string }[];
+}
+
 export interface Course {
   id: string;
   title: string;

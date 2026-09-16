@@ -5,8 +5,8 @@ import {
   Wrench, 
   Mail, 
   Server, 
+  BarChart3, 
   GraduationCap, 
-  TrendingUp, 
   ArrowRight,
   MessageSquare
 } from 'lucide-react';
@@ -26,192 +26,150 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
   const needs = [
     {
       id: 'website',
-      title: 'I Need a Website',
-      description: 'Professional, mobile-friendly websites that attract clients, showcase services and build instant business credibility.',
-      badge: 'Most Requested',
-      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      title: 'I need a website',
+      description: 'Get a clean, professional website that builds trust and helps customers find and contact your business.',
       icon: Globe,
-      iconColor: 'text-blue-600 bg-blue-50',
+      badge: 'Popular',
+      color: 'blue',
       targetSection: 'business-website',
-      startingPrice: 'From MK 380,000',
-      actionLabel: 'View Website Packages',
-      whatsAppMsg: 'Hello TechNix, I am looking for a business website for my company.',
+      serviceName: 'Business Website',
+      whatsAppMsg: 'Hello TechNix, I am interested in a business website.',
     },
     {
       id: 'software',
-      title: 'I Need Software',
-      description: 'Custom management systems, databases, and client portals that replace tedious manual paperwork and spreadsheets.',
-      badge: 'High Impact',
-      badgeColor: 'bg-purple-100 text-purple-800 border-purple-200',
+      title: 'I need business software',
+      description: 'Custom management systems, databases, and client portals that eliminate manual paper workflows and spreadsheets.',
       icon: Code2,
-      iconColor: 'text-purple-600 bg-purple-50',
+      badge: 'High Impact',
+      color: 'purple',
       targetSection: 'software-solutions',
-      startingPrice: 'Custom Quote',
-      actionLabel: 'Explore Software Solutions',
-      whatsAppMsg: 'Hello TechNix, I need custom software to automate our business processes.',
+      serviceName: 'Custom Business Software',
+      whatsAppMsg: 'Hello TechNix, I would like to discuss a software project.',
     },
     {
       id: 'it-support',
-      title: 'I Need IT Support',
-      description: 'Rapid technical troubleshooting, network setup, Wi-Fi repairs, printer fixes, virus removal, and PC maintenance.',
-      badge: 'Urgent Help',
-      badgeColor: 'bg-red-100 text-red-800 border-red-200',
+      title: 'I need IT support',
+      description: 'Rapid technical help for crashing computers, down networks, failing printers, and proactive office IT care.',
       icon: Wrench,
-      iconColor: 'text-red-600 bg-red-50',
+      badge: 'Urgent & Care',
+      color: 'red',
       targetSection: 'it-rescue',
-      startingPrice: 'Same-Day Service',
-      actionLabel: 'Get Technical Help',
-      isEmergency: true,
-      whatsAppMsg: 'Hello TechNix, we have an urgent IT problem in our office that needs technical support.',
+      serviceName: 'IT Support & Rescue',
+      whatsAppMsg: 'Hello TechNix, I need IT support.',
     },
     {
       id: 'email',
-      title: 'I Need Business Email',
-      description: 'Stop using @gmail.com. Upgrade to credible, secure company inboxes (name@yourcompany.com) on your own registered domain.',
-      badge: 'Credibility',
-      badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+      title: 'I need professional email',
+      description: 'Stop using @gmail.com. Upgrade to secure company inboxes (name@yourcompany.com) on your own registered domain.',
       icon: Mail,
-      iconColor: 'text-emerald-600 bg-emerald-50',
+      badge: 'Trust',
+      color: 'emerald',
       targetSection: 'business-email',
-      startingPrice: 'From MK 45,000/yr',
-      actionLabel: 'Get Professional Email',
-      whatsAppMsg: 'Hello TechNix, I want to set up professional business email accounts for our staff.',
+      serviceName: 'Professional Business Email',
+      whatsAppMsg: 'Hello TechNix, I want to set up professional business email accounts.',
     },
     {
       id: 'hosting',
-      title: 'I Need Hosting & Domains',
-      description: 'Fast, secure web hosting, local .mw & .com domain registration, SSL certificates, and 99.9% uptime for business apps.',
-      badge: 'Cloud Infrastructure',
-      badgeColor: 'bg-cyan-100 text-cyan-800 border-cyan-200',
+      title: 'I need hosting',
+      description: 'Fast, secure cloud hosting, SSL certificates, automated backups, and local .mw / international domain registration.',
       icon: Server,
-      iconColor: 'text-cyan-600 bg-cyan-50',
-      targetSection: 'hosting-domains',
-      startingPrice: 'From MK 65,000/yr',
-      actionLabel: 'Explore Hosting Plans',
-      whatsAppMsg: 'Hello TechNix, I need reliable hosting and domain registration for my website.',
+      badge: 'Infrastructure',
+      color: 'cyan',
+      targetSection: 'solutions',
+      serviceName: 'Web Hosting & Domain',
+      whatsAppMsg: 'Hello TechNix, I need reliable web hosting and domain registration.',
+    },
+    {
+      id: 'data-solution',
+      title: 'I need a digital/data solution',
+      description: 'Automated data pipelines, mobile field survey collection, and interactive executive Power BI dashboards.',
+      icon: BarChart3,
+      badge: 'Analytics',
+      color: 'indigo',
+      targetSection: 'case-studies',
+      serviceName: 'Data Systems & Dashboards',
+      whatsAppMsg: 'Hello TechNix, our organisation needs a digital data and dashboard solution.',
     },
     {
       id: 'training',
-      title: 'I Need Practical Training',
-      description: 'Practical, workplace-ready courses in Advanced Excel, Power BI dashboards, AI for business, and cybersecurity for your team.',
-      badge: 'TechNix Academy',
-      badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
+      title: 'I need technology training',
+      description: 'Practical, job-ready skills in Advanced Excel, Power BI, AI business automation, and IT network administration.',
       icon: GraduationCap,
-      iconColor: 'text-amber-600 bg-amber-50',
+      badge: 'TechNix Academy',
+      color: 'amber',
       targetSection: 'academy',
-      startingPrice: 'From MK 95,000',
-      actionLabel: 'View Upcoming Courses',
-      whatsAppMsg: 'Hello TechNix, I would like to inquire about TechNix Academy training courses.',
-    },
-    {
-      id: 'transformation',
-      title: 'I Want to Transform My Org',
-      description: 'Strategic IT roadmap, M&E data dashboards, office digitization, cloud migration, and workflow automation for growing institutions.',
-      badge: 'Consultancy',
-      badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-      icon: TrendingUp,
-      iconColor: 'text-indigo-600 bg-indigo-50',
-      targetSection: 'digital-transformation',
-      startingPrice: 'Consultation',
-      actionLabel: 'Request Assessment',
-      whatsAppMsg: 'Hello TechNix, our organisation is seeking digital transformation and ICT strategy guidance.',
+      serviceName: 'TechNix Academy Training',
+      whatsAppMsg: 'Hello TechNix, I want to inquire about practical technology training courses.',
     },
   ];
 
-  const handleWhatsApp = (msg: string) => {
+  const handleWhatsApp = (e: React.MouseEvent, msg: string) => {
+    e.stopPropagation();
     const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const handleCardClick = (item: typeof needs[0]) => {
-    if (item.isEmergency) {
-      onOpenITRescue();
-      return;
-    }
-    const element = document.getElementById(item.targetSection);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      onSelectNeed(item.targetSection, item.title);
-    }
-  };
-
   return (
-    <section id="what-do-you-need" className="py-20 bg-slate-50 border-b border-slate-200/80">
+    <section id="service-discovery" className="py-20 bg-slate-50 border-b border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-bold tracking-widest text-blue-700 uppercase bg-blue-100/70 border border-blue-200 px-3.5 py-1.5 rounded-full">
-            Immediate Action
+          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+            Quick Identification
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            What Do You Need Help With?
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+            How Can We Help You?
           </h2>
           <p className="text-base sm:text-lg text-slate-600">
-            Select your immediate requirement below. We turn technology capabilities into clear, purchasable solutions.
+            Select what your organisation needs right now. We will direct you straight to the practical solution without technical jargon.
           </p>
         </div>
 
-        {/* Action Grid */}
+        {/* 7 Large Visually Attractive Choice Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {needs.map((item) => {
+          {needs.map((item, idx) => {
             const Icon = item.icon;
+            const isWide = idx === 6; // Center the 7th item nicely on desktop
             return (
               <div
                 key={item.id}
-                id={`need-card-${item.id}`}
-                className={`relative flex flex-col justify-between bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 hover:border-blue-400 hover:shadow-xl transition-all duration-200 group ${
-                  item.isEmergency ? 'border-red-200 hover:border-red-400 bg-gradient-to-b from-white to-red-50/20' : ''
+                onClick={() => onSelectNeed(item.targetSection, item.serviceName)}
+                className={`group relative bg-white rounded-2xl p-7 border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-blue-300 transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                  isWide ? 'md:col-span-2 lg:col-span-1' : ''
                 }`}
               >
                 <div>
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${item.iconColor} group-hover:scale-110 transition-transform`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 group-hover:bg-blue-600 text-blue-700 group-hover:text-white transition-colors flex items-center justify-center">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${item.badgeColor}`}>
+                    <span className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full uppercase tracking-wider">
                       {item.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
-                    {item.title}
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors mb-2">
+                    &ldquo;{item.title}&rdquo;
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-500 font-medium">Starting Point:</span>
-                    <span className="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">
-                      {item.startingPrice}
-                    </span>
-                  </div>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="inline-flex items-center text-sm font-semibold text-blue-700 group-hover:translate-x-1 transition-transform">
+                    <span>Explore solution</span>
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </span>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => handleCardClick(item)}
-                      className={`flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                        item.isEmergency
-                          ? 'bg-red-600 hover:bg-red-700 text-white'
-                          : 'bg-slate-900 hover:bg-blue-700 text-white'
-                      }`}
-                    >
-                      <span>{item.actionLabel}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <button
-                      onClick={() => handleWhatsApp(item.whatsAppMsg)}
-                      title="Direct WhatsApp"
-                      className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 transition-colors cursor-pointer"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
-                      <span>WhatsApp</span>
-                    </button>
-                  </div>
+                  <button
+                    onClick={(e) => handleWhatsApp(e, item.whatsAppMsg)}
+                    className="p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 transition-colors cursor-pointer"
+                    title={`Inquire about "${item.title}" on WhatsApp`}
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             );

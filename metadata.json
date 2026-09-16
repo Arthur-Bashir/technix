@@ -2,5 +2,7 @@
   "name": "TechNix Africa",
   "description": "Technology partner for growing African businesses and organisations. Software development, business websites, professional email, IT support, hosting, and practical tech training.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

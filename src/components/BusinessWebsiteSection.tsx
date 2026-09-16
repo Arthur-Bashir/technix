@@ -69,10 +69,10 @@ export const BusinessWebsiteSection: React.FC<BusinessWebsiteSectionProps> = ({ 
                       <span className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${isPopular ? 'text-emerald-400' : 'text-slate-900'}`}>
                         {pkg.price}
                       </span>
-                      <span className={`text-xs ${isPopular ? 'text-slate-400' : 'text-slate-500'}`}>
-                        once-off investment
-                      </span>
                     </div>
+                    <p className={`text-xs mt-1 italic ${isPopular ? 'text-slate-400' : 'text-slate-500'}`}>
+                      *Starting price. Final quotation reflects your exact page count, content volume & bespoke integrations.
+                    </p>
                     <div className={`mt-3 text-xs p-2.5 rounded-lg ${isPopular ? 'bg-slate-800/80 text-blue-200' : 'bg-white border border-slate-200 text-slate-700'}`}>
                       <span className="font-bold">Recommended for: </span>
                       {pkg.recommendedFor}
@@ -120,7 +120,7 @@ export const BusinessWebsiteSection: React.FC<BusinessWebsiteSectionProps> = ({ 
                     }`}
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
-                    <span>Order via WhatsApp</span>
+                    <span>Inquire via WhatsApp</span>
                   </button>
                 </div>
               </div>
@@ -128,21 +128,27 @@ export const BusinessWebsiteSection: React.FC<BusinessWebsiteSectionProps> = ({ 
           })}
         </div>
 
-        {/* Upsell / Assurance strip */}
-        <div className="mt-14 p-6 bg-blue-50/70 border border-blue-200/80 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-3 text-sm text-slate-800">
-            <Shield className="w-6 h-6 text-blue-700 shrink-0" />
-            <span>
-              <strong>Every website package includes:</strong> Free .com or .mw domain, reliable high-speed SSD hosting, SSL security padlock, and WhatsApp chat setup.
-            </span>
+        {/* Pricing Transparency & Cross-Sell Module */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="p-6 bg-slate-50 border border-slate-200/80 rounded-2xl flex items-start space-x-4">
+            <Shield className="w-6 h-6 text-blue-700 shrink-0 mt-1" />
+            <div className="text-sm text-slate-700 space-y-1">
+              <h4 className="font-bold text-slate-900">Clear, Upfront Pricing Policy</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                All packages are listed with transparent starting prices in Malawi Kwacha. We provide an itemized written quote before any work starts so you always know your exact investment.
+              </p>
+            </div>
           </div>
-          <button
-            onClick={() => onOpenQuote('Custom Web Project')}
-            className="shrink-0 text-xs font-bold text-blue-700 hover:text-blue-900 hover:underline flex items-center space-x-1 cursor-pointer"
-          >
-            <span>Need an e-commerce or custom web system? Request Custom Quote</span>
-            <ArrowRight className="w-3 h-3" />
-          </button>
+
+          <div className="p-6 bg-blue-50/60 border border-blue-200/80 rounded-2xl flex items-start space-x-4">
+            <Smartphone className="w-6 h-6 text-blue-700 shrink-0 mt-1" />
+            <div className="text-sm text-slate-700 space-y-1">
+              <h4 className="font-bold text-slate-900">You May Also Need:</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Custom Domain Email (<span className="text-blue-700 font-semibold">info@yourcompany.com</span>), Google Business Profile Verification, or ongoing monthly <span className="text-blue-700 font-semibold">TechNix Care</span> support.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

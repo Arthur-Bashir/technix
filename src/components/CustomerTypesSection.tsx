@@ -6,170 +6,227 @@ import {
   Users, 
   Briefcase, 
   Landmark, 
-  Check, 
-  AlertCircle, 
+  CheckCircle2, 
   ArrowRight,
   MessageSquare
 } from 'lucide-react';
-import { CUSTOMER_TYPES, COMPANY_INFO } from '../data/technixData';
+import { COMPANY_INFO } from '../data/technixData';
 
 interface CustomerTypesSectionProps {
   onOpenQuote: (service?: string) => void;
 }
 
 export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOpenQuote }) => {
-  const [selectedTypeId, setSelectedTypeId] = useState<string>(CUSTOMER_TYPES[0].id);
+  const industries = [
+    {
+      id: 'smes',
+      title: 'SMEs',
+      badge: 'Commercial',
+      icon: Building2,
+      tagline: 'Retailers, wholesalers, service companies & emerging ventures',
+      howTechNixHelps: 'We help you present a credible professional face with custom websites, domain email, digital point-of-sale setups, and affordable monthly IT care so your daily trading never stops.',
+      keyDeliverables: [
+        'Business Starter & Pro websites with WhatsApp inquiries',
+        'Custom corporate domain email (e.g. info@yourcompany.com)',
+        'Inventory, invoicing, and sales recording software',
+        'On-call IT rescue and PC maintenance',
+      ],
+      ctaText: 'Explore SME Solutions',
+    },
+    {
+      id: 'schools',
+      title: 'Schools & Training Institutions',
+      badge: 'Education',
+      icon: School,
+      tagline: 'Primary, secondary, vocational colleges & academies',
+      howTechNixHelps: 'We digitize school operations to eliminate fee reconciliations headaches, automate student report cards, broadcast urgent alerts to parents, and keep computer labs virus-free.',
+      keyDeliverables: [
+        'Student management and report card generators',
+        'SMS and WhatsApp broadcast portals for parents',
+        'Official admissions website and prospectus downloads',
+        'Computer lab network maintenance & staff digital training',
+      ],
+      ctaText: 'Explore Education Solutions',
+    },
+    {
+      id: 'ngos',
+      title: 'NGOs & Development Organisations',
+      badge: 'Development',
+      icon: HeartHandshake,
+      tagline: 'Local and international NGOs, trust funds & consortia',
+      howTechNixHelps: 'We engineer offline-first field data collection tools, automated donor-compliant M&E dashboards, and encrypted cloud backups that protect field findings across remote districts.',
+      keyDeliverables: [
+        'Offline mobile survey & field reporting applications',
+        'Executive Power BI dashboards for board and donor reporting',
+        'Encrypted off-site cloud data protection and disaster recovery',
+        'ICT4D technical consulting and team workshops',
+      ],
+      ctaText: 'Explore NGO Solutions',
+    },
+    {
+      id: 'churches',
+      title: 'Churches & Associations',
+      badge: 'Community',
+      icon: Users,
+      tagline: 'Faith institutions, cooperatives, alumni bodies & unions',
+      howTechNixHelps: 'We help member organizations maintain accurate member registers, coordinate bulk announcements, track pledges and contributions, and broadcast notices securely.',
+      keyDeliverables: [
+        'Member directory and contribution management portal',
+        'Bulk SMS and WhatsApp group notice broadcasting',
+        'Official informational website with event calendars',
+        'Audio/visual and live streaming technology setup',
+      ],
+      ctaText: 'Explore Association Solutions',
+    },
+    {
+      id: 'professionals',
+      title: 'Professionals',
+      badge: 'Practices',
+      icon: Briefcase,
+      tagline: 'Lawyers, clinics, accountants, architects & consultants',
+      howTechNixHelps: 'We build high-trust corporate profile websites, configure secure confidential client file backups, and streamline digital consultation bookings so you win higher-value clients.',
+      keyDeliverables: [
+        'Executive credential and case-study showcase website',
+        'Confidential encrypted cloud backup for client files',
+        'Domain email and calendar synchronization across devices',
+        'Client intake and consultation scheduling workflows',
+      ],
+      ctaText: 'Explore Professional Solutions',
+    },
+    {
+      id: 'larger-orgs',
+      title: 'Larger Organisations',
+      badge: 'Enterprise',
+      icon: Landmark,
+      tagline: 'Multi-branch enterprises, distributors & statutory bodies',
+      howTechNixHelps: 'We provide dedicated SLA-backed IT infrastructure management, inter-branch VPN networks, cybersecurity auditing, and integration with legacy databases to guarantee business continuity.',
+      keyDeliverables: [
+        'TechNix Care Professional with dedicated Senior Systems Engineer',
+        'Inter-office secure VPN and enterprise firewall management',
+        'Cybersecurity risk assessment and disaster recovery planning',
+        'Custom enterprise software and database integration',
+      ],
+      ctaText: 'Explore Enterprise Solutions',
+    },
+  ];
 
-  const activeCustomer = CUSTOMER_TYPES.find((c) => c.id === selectedTypeId) || CUSTOMER_TYPES[0];
+  const [activeTab, setActiveTab] = useState<string>(industries[0].id);
+  const activeIndustry = industries.find((i) => i.id === activeTab) || industries[0];
 
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Building2': return Building2;
-      case 'School': return School;
-      case 'HeartHandshake': return HeartHandshake;
-      case 'Users': return Users;
-      case 'Briefcase': return Briefcase;
-      case 'Landmark': return Landmark;
-      default: return Building2;
-    }
-  };
-
-  const handleWhatsApp = () => {
+  const handleWhatsApp = (industryTitle: string) => {
     const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(
-      `Hello TechNix, I am reaching out on behalf of a ${activeCustomer.title} to discuss your tailored technology solutions.`
+      `Hello TechNix, I am inquiring on behalf of ${industryTitle} regarding your tailored technology solutions.`
     )}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="industries" className="py-24 bg-white relative">
+    <section id="industries" className="py-24 bg-white border-b border-slate-200/90 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1 text-xs font-bold text-blue-700">
-            <Users className="w-3.5 h-3.5" />
-            <span>Tailored Solutions by Sector</span>
-          </div>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+            Sector Focus
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Built for Your Specific Operational Reality
+            Technology for Organisations Like Yours
           </h2>
-          <p className="text-lg text-slate-600">
-            Every organisation has different pressures. Explore how TechNix configures technology specifically for your sector.
+          <p className="text-base sm:text-lg text-slate-600">
+            We adapt technology to your specific operational environment — because a rural school, an emergency NGO, and a city trading business face very different technical realities.
           </p>
         </div>
 
-        {/* Sector Tabs Bar */}
+        {/* Industry Selection Buttons */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
-          {CUSTOMER_TYPES.map((cust) => {
-            const Icon = getIcon(cust.iconName);
-            const isSelected = cust.id === selectedTypeId;
+          {industries.map((ind) => {
+            const Icon = ind.icon;
+            const isSelected = ind.id === activeTab;
             return (
               <button
-                key={cust.id}
-                onClick={() => setSelectedTypeId(cust.id)}
-                className={`flex flex-col items-center justify-center p-4 rounded-2xl border text-center transition-all cursor-pointer ${
+                key={ind.id}
+                onClick={() => setActiveTab(ind.id)}
+                className={`p-4 rounded-2xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center space-y-2 ${
                   isSelected
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-lg shadow-slate-950/20 scale-[1.03]'
-                    : 'bg-slate-50 text-slate-700 border-slate-200/90 hover:bg-slate-100 hover:border-slate-300'
+                    ? 'bg-slate-900 text-white border-slate-900 shadow-md scale-102'
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
                 }`}
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-2 ${
-                  isSelected ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 shadow-xs'
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                  isSelected ? 'bg-blue-600 text-white' : 'bg-white text-blue-700 border border-slate-200'
                 }`}>
                   <Icon className="w-5 h-5" />
                 </div>
-                <span className="text-xs font-bold leading-tight line-clamp-2">
-                  {cust.title}
-                </span>
+                <span className="text-xs font-bold">{ind.title}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Active Sector Detailed Blueprint */}
-        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 lg:p-12 shadow-xs transition-all duration-300">
+        {/* Active Industry Detailed Card */}
+        <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-8 sm:p-10 shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left: Sector Challenges vs Solutions */}
-            <div className="lg:col-span-7 space-y-6">
-              <div>
-                <div className="inline-block text-xs font-bold text-blue-700 uppercase tracking-wider mb-2">
-                  Selected Industry Focus
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                  Technology Solutions for {activeCustomer.title}
-                </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-                  {activeCustomer.subtitle}
-                </p>
+            <div className="lg:col-span-7 space-y-5">
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/70 px-2.5 py-1 rounded-md">
+                  {activeIndustry.badge} Sector
+                </span>
+                <span className="text-xs text-slate-500 font-medium">
+                  {activeIndustry.tagline}
+                </span>
               </div>
 
-              {/* The Common Pain Points */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2 text-xs font-bold text-red-700 uppercase tracking-wider">
-                  <AlertCircle className="w-4 h-4 text-red-600" />
-                  <span>Common Challenges We Solve in This Sector:</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {activeCustomer.painPoints.map((pain, pIdx) => (
-                    <div key={pIdx} className="p-3 bg-red-50/70 border border-red-200/70 rounded-xl text-xs text-red-900 flex items-start space-x-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0" />
-                      <span>{pain}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                How TechNix Helps {activeIndustry.title}
+              </h3>
 
-              {/* The Recommended Solutions */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2 text-xs font-bold text-emerald-800 uppercase tracking-wider">
-                  <Check className="w-4 h-4 text-emerald-600" />
-                  <span>Recommended TechNix Solutions:</span>
-                </div>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                {activeIndustry.howTechNixHelps}
+              </p>
+
+              <div className="pt-2">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                  Tailored Deliverables
+                </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {activeCustomer.recommendedSolutions.map((sol, sIdx) => (
-                    <div key={sIdx} className="p-3 bg-emerald-50/70 border border-emerald-200/70 rounded-xl text-xs text-emerald-950 font-medium flex items-start space-x-2">
-                      <Check className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
-                      <span>{sol}</span>
+                  {activeIndustry.keyDeliverables.map((item, idx) => (
+                    <div key={idx} className="flex items-start space-x-2 bg-white p-3 rounded-xl border border-slate-200/80">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <span className="text-xs text-slate-800 font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Right: Direct Action Card for Sector */}
-            <div className="lg:col-span-5 bg-white p-7 sm:p-8 rounded-2xl border border-slate-200 shadow-md space-y-6">
-              <div className="space-y-2">
-                <span className="text-[11px] font-bold text-blue-700 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md">
-                  Ready to Modernise?
+            <div className="lg:col-span-5 bg-white p-7 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between space-y-6">
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                  Ready to move forward?
                 </span>
-                <h4 className="text-xl font-bold text-slate-900">
-                  Get a Proposal for Your {activeCustomer.title}
+                <h4 className="text-lg font-bold text-slate-900 mb-2">
+                  Get a tailored proposal for your {activeIndustry.title.toLowerCase()}
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  We schedule a brief, practical 20-minute discussion to understand your staff workflow, existing equipment, and budget.
+                  Speak directly with an engineer who understands your sector requirements and budget expectations.
                 </p>
               </div>
 
-              <div className="space-y-3 pt-2">
+              <div className="space-y-2.5">
                 <button
-                  onClick={() => onOpenQuote(`${activeCustomer.title} Solution Package`)}
-                  className="w-full py-3.5 px-4 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                  onClick={() => onOpenQuote(`${activeIndustry.title} Technology Solution`)}
+                  className="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-xs"
                 >
-                  <span>{activeCustomer.cta}</span>
+                  <span>Request {activeIndustry.title} Proposal</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
-                  onClick={handleWhatsApp}
-                  className="w-full py-3 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 font-semibold text-xs rounded-xl flex items-center justify-center space-x-2 transition-colors cursor-pointer"
+                  onClick={() => handleWhatsApp(activeIndustry.title)}
+                  className="w-full py-3.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-semibold text-xs sm:text-sm rounded-xl border border-emerald-200 transition-colors flex items-center justify-center space-x-2 cursor-pointer"
                 >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Discuss via WhatsApp</span>
+                  <MessageSquare className="w-4 h-4 text-emerald-600" />
+                  <span>Discuss on WhatsApp</span>
                 </button>
-              </div>
-
-              <div className="text-[11px] text-slate-500 text-center border-t border-slate-100 pt-3">
-                No technical background needed. We speak plain business English.
               </div>
             </div>
           </div>
