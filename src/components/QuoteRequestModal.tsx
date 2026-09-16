@@ -17,16 +17,19 @@ export const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({
   const [organisation, setOrganisation] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [service, setService] = useState(preselectedService || '');
+  const [service, setService] = useState('');
   const [notes, setNotes] = useState('');
   const [preferredContact, setPreferredContact] = useState('WhatsApp');
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    if (preselectedService) {
-      setService(preselectedService);
+    if (isOpen) {
+      // Start each new enquiry cleanly so an earlier service or submission
+      // state cannot leak into the next customer journey.
+      setService(preselectedService || '');
+      setSubmitted(false);
     }
-  }, [preselectedService]);
+  }, [isOpen, preselectedService]);
 
   if (!isOpen) return null;
 
