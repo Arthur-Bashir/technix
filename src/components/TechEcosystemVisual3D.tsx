@@ -1,301 +1,278 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { ShieldCheck, Cloud, Server, Cpu, Database, Laptop, Smartphone } from 'lucide-react';
+import { ArrowUpRight, Cloud, Database, Globe2, ShieldCheck, Smartphone, Workflow } from 'lucide-react';
+
+interface NodeDefinition {
+  label: string;
+  short: string;
+  position: THREE.Vector3;
+  color: number;
+}
+
+const nodeDefinitions: NodeDefinition[] = [
+  { label: 'Blantyre', short: 'Business', position: new THREE.Vector3(-4.2, 1.0, 2.0), color: 0x38bdf8 },
+  { label: 'Lilongwe', short: 'Operations', position: new THREE.Vector3(4.0, 1.4, 1.6), color: 0x34d399 },
+  { label: 'Web & Portals', short: 'Digital', position: new THREE.Vector3(3.8, 0.1, -3.0), color: 0x60a5fa },
+  { label: 'Data & Backup', short: 'Protected', position: new THREE.Vector3(-3.7, 0.0, -3.2), color: 0xa78bfa },
+  { label: 'Field & Mobile', short: 'Connected', position: new THREE.Vector3(0.0, 1.0, 4.4), color: 0xf59e0b },
+];
+
+const disposeObject = (object: THREE.Object3D) => {
+  object.traverse((child) => {
+    if (child instanceof THREE.Mesh || child instanceof THREE.Line || child instanceof THREE.Points) {
+      child.geometry.dispose();
+      const material = child.material;
+      if (Array.isArray(material)) material.forEach((m) => m.dispose());
+      else material.dispose();
+    }
+  });
+};
 
 export const TechEcosystemVisual3D: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeNodeInfo, setActiveNodeInfo] = useState<string>('Core Cloud Infrastructure');
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Check for reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // Scene setup
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scene = new THREE.Scene();
+    const width = container.clientWidth || 620;
+    const height = container.clientHeight || 520;
+    const camera = new THREE.PerspectiveCamera(34, width / height, 0.1, 100);
+    camera.position.set(10.5, 7.0, 15.5);
+    camera.lookAt(0, 1.0, 0);
 
-    // Camera setup
-    const width = container.clientWidth || 540;
-    const height = container.clientHeight || 460;
-    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    camera.position.set(16, 14, 18);
-    camera.lookAt(0, 1.5, 0);
-
-    // Renderer
     let renderer: THREE.WebGLRenderer;
     try {
-      renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
-        powerPreference: 'high-performance',
-      });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
     } catch {
-      // If WebGL fails, fallback will render
       return;
     }
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
     renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xdbeafe, 1.2);
-    scene.add(ambientLight);
+    scene.add(new THREE.HemisphereLight(0xbfe3ff, 0x020617, 1.45));
+    const keyLight = new THREE.DirectionalLight(0x7dd3fc, 2.2);
+    keyLight.position.set(7, 12, 8);
+    scene.add(keyLight);
+    const greenLight = new THREE.PointLight(0x34d399, 2.2, 16);
+    greenLight.position.set(-5, 3, 4);
+    scene.add(greenLight);
 
-    const dirLight = new THREE.DirectionalLight(0x60a5fa, 2.0);
-    dirLight.position.set(12, 20, 10);
-    scene.add(dirLight);
+    const world = new THREE.Group();
+    scene.add(world);
 
-    const bluePoint = new THREE.PointLight(0x38bdf8, 3.5, 25);
-    bluePoint.position.set(0, 4, 0);
-    scene.add(bluePoint);
+    const platform = new THREE.Mesh(
+      new THREE.CylinderGeometry(7.8, 8.2, 0.18, 64),
+      new THREE.MeshPhysicalMaterial({ color: 0x07111f, metalness: 0.85, roughness: 0.25, transparent: true, opacity: 0.86 })
+    );
+    platform.position.y = -1.05;
+    world.add(platform);
 
-    const emeraldPoint = new THREE.PointLight(0x34d399, 2.5, 20);
-    emeraldPoint.position.set(-6, 2, 4);
-    scene.add(emeraldPoint);
+    const platformRing = new THREE.Mesh(
+      new THREE.TorusGeometry(7.35, 0.025, 8, 128),
+      new THREE.MeshBasicMaterial({ color: 0x2563eb, transparent: true, opacity: 0.45 })
+    );
+    platformRing.rotation.x = Math.PI / 2;
+    platformRing.position.y = -0.92;
+    world.add(platformRing);
 
-    // Root Group for interactive rotation
-    const rootGroup = new THREE.Group();
-    scene.add(rootGroup);
+    const core = new THREE.Group();
+    core.position.y = 0.45;
+    world.add(core);
 
-    // 1. Base Grid Platform (Subtle connected grid)
-    const gridHelper = new THREE.GridHelper(18, 18, 0x2563eb, 0x1e293b);
-    gridHelper.position.y = -0.5;
-    rootGroup.add(gridHelper);
+    const coreBase = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.75, 2.05, 1.1, 32),
+      new THREE.MeshPhysicalMaterial({ color: 0x0b1a2c, metalness: 0.88, roughness: 0.18, transparent: true, opacity: 0.92 })
+    );
+    core.add(coreBase);
 
-    // 2. Translucent Base Foundation Disk
-    const baseDiskGeo = new THREE.CylinderGeometry(8.5, 8.5, 0.2, 32);
-    const baseDiskMat = new THREE.MeshPhysicalMaterial({
-      color: 0x0f172a,
-      transparent: true,
-      opacity: 0.7,
-      roughness: 0.2,
-      metalness: 0.8,
-    });
-    const baseDisk = new THREE.Mesh(baseDiskGeo, baseDiskMat);
-    baseDisk.position.y = -0.6;
-    rootGroup.add(baseDisk);
-
-    // 3. Central Core Cloud & Server Tower
-    const serverGroup = new THREE.Group();
-    serverGroup.position.set(0, 0.5, 0);
-
-    // Layered Server Blades
-    for (let i = 0; i < 3; i++) {
-      const bladeGeo = new THREE.BoxGeometry(2.4, 0.4, 2.4);
-      const bladeMat = new THREE.MeshStandardMaterial({
-        color: 0x1e293b,
-        metalness: 0.85,
-        roughness: 0.25,
-      });
-      const blade = new THREE.Mesh(bladeGeo, bladeMat);
-      blade.position.y = i * 0.65;
-      serverGroup.add(blade);
-
-      // Neon indicator bar on front edge
-      const barGeo = new THREE.BoxGeometry(1.8, 0.08, 0.06);
-      const barMat = new THREE.MeshBasicMaterial({
-        color: i === 1 ? 0x34d399 : 0x38bdf8,
-      });
-      const bar = new THREE.Mesh(barGeo, barMat);
-      bar.position.set(0, i * 0.65, 1.21);
-      serverGroup.add(bar);
+    for (let i = 0; i < 3; i += 1) {
+      const layer = new THREE.Mesh(
+        new THREE.BoxGeometry(2.55 - i * 0.12, 0.28, 2.55 - i * 0.12),
+        new THREE.MeshStandardMaterial({ color: 0x14263b, metalness: 0.85, roughness: 0.2 })
+      );
+      layer.position.y = -0.2 + i * 0.43;
+      core.add(layer);
+      const indicator = new THREE.Mesh(
+        new THREE.BoxGeometry(1.7, 0.035, 0.035),
+        new THREE.MeshBasicMaterial({ color: i === 1 ? 0x34d399 : 0x38bdf8 })
+      );
+      indicator.position.set(0, layer.position.y, 1.29 - i * 0.06);
+      core.add(indicator);
     }
 
-    // Glowing Central Core Sphere hovering above server tower
-    const coreSphereGeo = new THREE.SphereGeometry(0.7, 24, 24);
-    const coreSphereMat = new THREE.MeshStandardMaterial({
-      color: 0x38bdf8,
-      emissive: 0x0284c7,
-      emissiveIntensity: 0.8,
-      roughness: 0.1,
-      metalness: 0.2,
+    const energy = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.72, 2),
+      new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 1.1, metalness: 0.15, roughness: 0.08 })
+    );
+    energy.position.y = 2.1;
+    core.add(energy);
+
+    const energyWire = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.92, 2),
+      new THREE.MeshBasicMaterial({ color: 0x7dd3fc, wireframe: true, transparent: true, opacity: 0.55 })
+    );
+    energyWire.position.copy(energy.position);
+    core.add(energyWire);
+
+    const orbitRings: THREE.Mesh[] = [];
+    [1.2, 1.48].forEach((radius, index) => {
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(radius, 0.025, 8, 96),
+        new THREE.MeshBasicMaterial({ color: index === 0 ? 0x38bdf8 : 0x34d399, transparent: true, opacity: 0.72 })
+      );
+      ring.position.y = 2.1;
+      ring.rotation.x = index === 0 ? Math.PI / 2.7 : Math.PI / 2.1;
+      ring.rotation.z = index * 0.8;
+      core.add(ring);
+      orbitRings.push(ring);
     });
-    const coreSphere = new THREE.Mesh(coreSphereGeo, coreSphereMat);
-    coreSphere.position.set(0, 2.8, 0);
-    serverGroup.add(coreSphere);
 
-    // Orbital ring around core
-    const ringGeo = new THREE.TorusGeometry(1.3, 0.03, 16, 64);
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.8 });
-    const orbitRing = new THREE.Mesh(ringGeo, ringMat);
-    orbitRing.rotation.x = Math.PI / 3;
-    serverGroup.add(orbitRing);
+    const globe = new THREE.Mesh(
+      new THREE.SphereGeometry(3.05, 28, 20),
+      new THREE.MeshBasicMaterial({ color: 0x2563eb, wireframe: true, transparent: true, opacity: 0.12 })
+    );
+    globe.position.y = 0.75;
+    world.add(globe);
 
-    rootGroup.add(serverGroup);
+    const globeEquator = new THREE.Mesh(
+      new THREE.TorusGeometry(3.05, 0.018, 6, 128),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.28 })
+    );
+    globeEquator.rotation.x = Math.PI / 2;
+    globeEquator.position.y = 0.75;
+    world.add(globeEquator);
 
-    // 4. Regional Commercial Node Hubs
-    // Node definitions: [x, y, z, label, colorHex, iconType]
-    const nodesData = [
-      { x: -4.5, y: 0.5, z: 3.2, label: 'Blantyre Commercial Hub', color: 0x38bdf8, type: 'hub' },
-      { x: 4.8, y: 0.8, z: 2.5, label: 'Lilongwe Operations Node', color: 0x34d399, type: 'hub' },
-      { x: -3.8, y: 1.2, z: -4.0, label: 'Enterprise Database & Backup', color: 0x818cf8, type: 'db' },
-      { x: 4.2, y: 1.0, z: -3.5, label: 'Business Web & Portal System', color: 0x38bdf8, type: 'web' },
-      { x: 0.0, y: 0.6, z: 5.5, label: 'Mobile & Field PWA Sync', color: 0xf59e0b, type: 'mobile' },
-    ];
-
+    const packets: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; progress: number; speed: number }[] = [];
     const nodeMeshes: THREE.Mesh[] = [];
-    const connectionCurves: THREE.CatmullRomCurve3[] = [];
-    const dataPackets: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; progress: number; speed: number }[] = [];
 
-    nodesData.forEach((nodeInfo) => {
-      // Node pedestal
-      const pedestalGeo = new THREE.CylinderGeometry(0.8, 0.9, 0.25, 20);
-      const pedestalMat = new THREE.MeshStandardMaterial({
-        color: 0x1e293b,
-        metalness: 0.7,
-        roughness: 0.3,
-      });
-      const pedestal = new THREE.Mesh(pedestalGeo, pedestalMat);
-      pedestal.position.set(nodeInfo.x, nodeInfo.y - 0.2, nodeInfo.z);
-      rootGroup.add(pedestal);
+    nodeDefinitions.forEach((node, index) => {
+      const nodeGroup = new THREE.Group();
+      nodeGroup.position.copy(node.position);
+      world.add(nodeGroup);
 
-      // Node beacon core
-      const beaconGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.45, 16);
-      const beaconMat = new THREE.MeshStandardMaterial({
-        color: nodeInfo.color,
-        emissive: nodeInfo.color,
-        emissiveIntensity: 0.6,
-        metalness: 0.4,
-        roughness: 0.2,
-      });
-      const beacon = new THREE.Mesh(beaconGeo, beaconMat);
-      beacon.position.set(nodeInfo.x, nodeInfo.y + 0.15, nodeInfo.z);
-      rootGroup.add(beacon);
+      const base = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.72, 0.9, 0.18, 24),
+        new THREE.MeshStandardMaterial({ color: 0x102237, metalness: 0.75, roughness: 0.24 })
+      );
+      base.position.y = -0.35;
+      nodeGroup.add(base);
+
+      const beacon = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.38, 1),
+        new THREE.MeshStandardMaterial({ color: node.color, emissive: node.color, emissiveIntensity: 0.72, metalness: 0.35, roughness: 0.12 })
+      );
+      beacon.position.y = 0.05;
+      nodeGroup.add(beacon);
       nodeMeshes.push(beacon);
 
-      // Floating indicator ring
-      const haloGeo = new THREE.RingGeometry(0.55, 0.65, 24);
-      const haloMat = new THREE.MeshBasicMaterial({
-        color: nodeInfo.color,
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.7,
-      });
-      const halo = new THREE.Mesh(haloGeo, haloMat);
-      halo.rotation.x = Math.PI / 2;
-      halo.position.set(nodeInfo.x, nodeInfo.y + 0.4, nodeInfo.z);
-      rootGroup.add(halo);
-
-      // 5. Curved Connection Path from Central Hub to Node
-      const pStart = new THREE.Vector3(0, 1.2, 0);
-      const pMid = new THREE.Vector3(
-        nodeInfo.x * 0.5,
-        Math.max(nodeInfo.y, 1.2) + 1.2,
-        nodeInfo.z * 0.5
+      const halo = new THREE.Mesh(
+        new THREE.TorusGeometry(0.62, 0.018, 8, 48),
+        new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.62 })
       );
-      const pEnd = new THREE.Vector3(nodeInfo.x, nodeInfo.y + 0.3, nodeInfo.z);
+      halo.rotation.x = Math.PI / 2;
+      halo.position.y = -0.08;
+      nodeGroup.add(halo);
 
-      const curve = new THREE.CatmullRomCurve3([pStart, pMid, pEnd]);
-      connectionCurves.push(curve);
+      const start = new THREE.Vector3(0, 1.35, 0);
+      const end = new THREE.Vector3(node.position.x, node.position.y + 0.05, node.position.z);
+      const mid = new THREE.Vector3(node.position.x * 0.52, 2.45 + index * 0.08, node.position.z * 0.52);
+      const curve = new THREE.CatmullRomCurve3([start, mid, end]);
 
-      // Tube line
-      const tubeGeo = new THREE.TubeGeometry(curve, 32, 0.03, 8, false);
-      const tubeMat = new THREE.MeshBasicMaterial({
-        color: 0x3b82f6,
-        transparent: true,
-        opacity: 0.35,
-      });
-      const tube = new THREE.Mesh(tubeGeo, tubeMat);
-      rootGroup.add(tube);
+      const tube = new THREE.Mesh(
+        new THREE.TubeGeometry(curve, 40, 0.018, 6, false),
+        new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.32 })
+      );
+      world.add(tube);
 
-      // Moving glowing data packet
-      const packetGeo = new THREE.SphereGeometry(0.12, 12, 12);
-      const packetMat = new THREE.MeshBasicMaterial({
-        color: nodeInfo.color,
-      });
-      const packet = new THREE.Mesh(packetGeo, packetMat);
-      rootGroup.add(packet);
-
-      dataPackets.push({
-        mesh: packet,
-        curve,
-        progress: Math.random(),
-        speed: 0.003 + Math.random() * 0.003,
-      });
+      const packet = new THREE.Mesh(
+        new THREE.SphereGeometry(0.085, 10, 10),
+        new THREE.MeshBasicMaterial({ color: node.color })
+      );
+      world.add(packet);
+      packets.push({ mesh: packet, curve, progress: index / nodeDefinitions.length, speed: 0.0008 + index * 0.00012 });
     });
 
-    // 6. Subtle background constellation network points (African business ecosystem context)
-    const starGeo = new THREE.BufferGeometry();
-    const starCount = 45;
-    const starPos = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount; i++) {
-      starPos[i * 3] = (Math.random() - 0.5) * 22;
-      starPos[i * 3 + 1] = Math.random() * 6 - 0.5;
-      starPos[i * 3 + 2] = (Math.random() - 0.5) * 22;
+    const particleCount = 90;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i += 1) {
+      const radius = 7 + Math.random() * 6;
+      const angle = Math.random() * Math.PI * 2;
+      positions[i * 3] = Math.cos(angle) * radius;
+      positions[i * 3 + 1] = -0.2 + Math.random() * 7;
+      positions[i * 3 + 2] = Math.sin(angle) * radius;
     }
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-    const starMat = new THREE.PointsMaterial({
-      color: 0x94a3b8,
-      size: 0.09,
-      transparent: true,
-      opacity: 0.5,
-    });
-    const starPoints = new THREE.Points(starGeo, starMat);
-    rootGroup.add(starPoints);
+    const particleGeometry = new THREE.BufferGeometry();
+    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particles = new THREE.Points(particleGeometry, new THREE.PointsMaterial({ color: 0x60a5fa, size: 0.035, transparent: true, opacity: 0.4 }));
+    world.add(particles);
 
-    // Mouse movement interaction (subtle controlled tilt)
-    let targetRotY = 0;
-    let targetRotX = 0;
-    const handleMouseMove = (e: MouseEvent) => {
-      if (prefersReducedMotion) return;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const handlePointerMove = (event: PointerEvent) => {
+      if (reducedMotion) return;
       const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      targetRotY = x * 0.35;
-      targetRotX = y * 0.2;
+      targetY = ((event.clientX - rect.left) / rect.width - 0.5) * 0.32;
+      targetX = ((event.clientY - rect.top) / rect.height - 0.5) * 0.18;
+    };
+    const handlePointerLeave = () => {
+      targetX = 0;
+      targetY = 0;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('pointermove', handlePointerMove);
+    container.addEventListener('pointerleave', handlePointerLeave);
 
-    // Resize observer
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const newWidth = entry.contentRect.width;
-        const newHeight = entry.contentRect.height;
-        if (newWidth > 0 && newHeight > 0) {
-          camera.aspect = newWidth / newHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(newWidth, newHeight);
-        }
-      }
+    const resizeObserver = new ResizeObserver(([entry]) => {
+      if (!entry) return;
+      const nextWidth = entry.contentRect.width;
+      const nextHeight = entry.contentRect.height;
+      if (!nextWidth || !nextHeight) return;
+      camera.aspect = nextWidth / nextHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(nextWidth, nextHeight);
     });
     resizeObserver.observe(container);
 
-    // Animation loop
-    let animId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
+    let animationId = 0;
 
     const animate = () => {
-      animId = requestAnimationFrame(animate);
-
-      const delta = clock.getDelta();
+      animationId = requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
-      if (!prefersReducedMotion) {
-        // Gentle baseline rotation
-        rootGroup.rotation.y += (targetRotY - rootGroup.rotation.y) * 0.05 + 0.0015;
-        rootGroup.rotation.x += (targetRotX - rootGroup.rotation.x) * 0.05;
+      if (!reducedMotion) {
+        currentX += (targetX - currentX) * 0.035;
+        currentY += (targetY - currentY) * 0.035;
+        world.rotation.x = currentX;
+        world.rotation.y = currentY + Math.sin(elapsed * 0.18) * 0.035;
+        energy.rotation.x += 0.004;
+        energy.rotation.y += 0.006;
+        energyWire.rotation.x -= 0.002;
+        energyWire.rotation.y -= 0.004;
+        orbitRings[0].rotation.z += 0.008;
+        orbitRings[1].rotation.z -= 0.005;
+        globe.rotation.y += 0.0008;
+        particles.rotation.y -= 0.00035;
 
-        // Core sphere subtle breathing
-        coreSphere.position.y = 2.8 + Math.sin(elapsed * 2) * 0.12;
-        orbitRing.rotation.z += 0.015;
-        orbitRing.rotation.x = Math.PI / 3 + Math.sin(elapsed * 1.5) * 0.1;
-
-        // Animate data packets along curves
-        dataPackets.forEach((packet) => {
-          packet.progress += packet.speed;
-          if (packet.progress > 1) packet.progress = 0;
-          const pos = packet.curve.getPointAt(packet.progress);
-          packet.mesh.position.copy(pos);
+        nodeMeshes.forEach((mesh, index) => {
+          const pulse = 1 + Math.sin(elapsed * 2.2 + index) * 0.08;
+          mesh.scale.set(pulse, pulse, pulse);
         });
 
-        // Rotate node indicator rings
-        nodeMeshes.forEach((beacon, idx) => {
-          beacon.scale.y = 1 + Math.sin(elapsed * 3 + idx) * 0.08;
+        packets.forEach((packet) => {
+          packet.progress += packet.speed;
+          if (packet.progress > 1) packet.progress = 0;
+          packet.mesh.position.copy(packet.curve.getPointAt(packet.progress));
         });
       }
 
@@ -304,52 +281,48 @@ export const TechEcosystemVisual3D: React.FC = () => {
 
     animate();
 
-    // Cleanup
     return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
-      if (renderer.domElement && container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      container.removeEventListener('pointermove', handlePointerMove);
+      container.removeEventListener('pointerleave', handlePointerLeave);
+      disposeObject(scene);
       renderer.dispose();
+      if (renderer.domElement.parentElement === container) container.removeChild(renderer.domElement);
     };
   }, []);
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[460px] lg:h-[500px] flex items-center justify-center select-none">
-      {/* Three.js Container */}
-      <div
-        ref={containerRef}
-        className="w-full h-full cursor-grab active:cursor-grabbing"
-        title="Interactive 3D Technology Ecosystem (Hover to explore)"
-      />
+    <div className="relative w-full h-[430px] sm:h-[500px] lg:h-[540px] overflow-hidden select-none">
+      <div ref={containerRef} className="absolute inset-0 cursor-crosshair" aria-label="Interactive 3D TechNix technology ecosystem" />
 
-      {/* Capability Cards - Modern, restrained, supporting business message */}
-      <div className="absolute top-4 left-4 sm:top-6 sm:left-6 pointer-events-none">
-        <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-900/85 backdrop-blur-md border border-slate-700/80 shadow-lg text-slate-200">
-          <span className="w-2 h-2 rounded-full bg-blue-400" />
-          <span className="text-xs font-semibold tracking-wide">Build • Connect • Support</span>
+      <div className="absolute top-5 left-5 sm:top-7 sm:left-7 pointer-events-none">
+        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/65 px-3 py-1.5 backdrop-blur-xl shadow-xl">
+          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
+          <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-200">TechNix Digital Infrastructure</span>
         </div>
       </div>
 
-      {/* Capability Indicators overlaying bottom edges */}
-      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 flex flex-col gap-2 pointer-events-none">
-        <div className="flex items-center space-x-2 px-3 py-1 rounded-lg bg-slate-900/80 backdrop-blur-md border border-slate-800 text-[11px] text-slate-300">
-          <Server className="w-3.5 h-3.5 text-blue-400" />
-          <span>Digital Systems: <strong>Connected & Secure</strong></span>
-        </div>
-        <div className="flex items-center space-x-2 px-3 py-1 rounded-lg bg-slate-900/80 backdrop-blur-md border border-slate-800 text-[11px] text-slate-300">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Engineering Presence: <strong>Blantyre & Lilongwe</strong></span>
+      <div className="absolute right-5 top-5 sm:right-7 sm:top-7 pointer-events-none hidden sm:block">
+        <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-3 backdrop-blur-xl shadow-xl">
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+            <Globe2 className="h-3.5 w-3.5 text-sky-400" />
+            Africa Connected
+          </div>
+          <div className="mt-1 text-xs font-semibold text-white">Build • Connect • Protect</div>
         </div>
       </div>
 
-      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 pointer-events-none hidden sm:block">
-        <div className="px-3 py-1.5 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-800 text-right">
-          <span className="text-[10px] uppercase tracking-wider text-slate-400 block font-semibold">Capability Reach</span>
-          <span className="text-sm font-black text-blue-400">Malawi → Africa</span>
-        </div>
+      <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7 flex flex-wrap gap-2 pointer-events-none">
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Cloud className="h-3.5 w-3.5 text-sky-400" /> Cloud & Hosting</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Workflow className="h-3.5 w-3.5 text-emerald-400" /> Business Systems</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Database className="h-3.5 w-3.5 text-violet-400" /> Data & Backup</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Smartphone className="h-3.5 w-3.5 text-amber-400" /> Mobile & Field</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><ShieldCheck className="h-3.5 w-3.5 text-emerald-400" /> Secure by Design</div>
+      </div>
+
+      <div className="absolute bottom-20 right-5 sm:right-7 pointer-events-none hidden md:block">
+        <div className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-400"><ArrowUpRight className="h-3 w-3 text-sky-400" /> Move your cursor to explore</div>
       </div>
     </div>
   );
