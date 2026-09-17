@@ -1,47 +1,37 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { ArrowUpRight, Cloud, Database, Globe2, ShieldCheck, Smartphone, Workflow } from 'lucide-react';
+import { Cloud, Database, Globe2, ShieldCheck, Smartphone, Workflow } from 'lucide-react';
 
-interface NodeDefinition {
-  label: string;
-  short: string;
-  position: THREE.Vector3;
-  color: number;
-}
-
-const nodeDefinitions: NodeDefinition[] = [
-  { label: 'Blantyre', short: 'Business', position: new THREE.Vector3(-4.2, 1.0, 2.0), color: 0x38bdf8 },
-  { label: 'Lilongwe', short: 'Operations', position: new THREE.Vector3(4.0, 1.4, 1.6), color: 0x34d399 },
-  { label: 'Web & Portals', short: 'Digital', position: new THREE.Vector3(3.8, 0.1, -3.0), color: 0x60a5fa },
-  { label: 'Data & Backup', short: 'Protected', position: new THREE.Vector3(-3.7, 0.0, -3.2), color: 0xa78bfa },
-  { label: 'Field & Mobile', short: 'Connected', position: new THREE.Vector3(0.0, 1.0, 4.4), color: 0xf59e0b },
+const NODE_DATA = [
+  { label: 'BLANTYRE', sub: 'Business', x: -4.4, z: 2.3, color: 0x38bdf8 },
+  { label: 'LILONGWE', sub: 'Operations', x: 4.3, z: 1.8, color: 0x34d399 },
+  { label: 'WEB', sub: 'Digital presence', x: 4.0, z: -3.0, color: 0x60a5fa },
+  { label: 'DATA', sub: 'Protected systems', x: -3.9, z: -3.0, color: 0xa78bfa },
+  { label: 'MOBILE', sub: 'Field connectivity', x: 0, z: 4.7, color: 0xf59e0b },
 ];
 
-const disposeObject = (object: THREE.Object3D) => {
-  object.traverse((child) => {
-    if (child instanceof THREE.Mesh || child instanceof THREE.Line || child instanceof THREE.Points) {
-      child.geometry.dispose();
-      const material = child.material;
-      if (Array.isArray(material)) material.forEach((m) => m.dispose());
-      else material.dispose();
-    }
+const disposeScene = (scene: THREE.Scene) => {
+  scene.traverse((object) => {
+    if (!(object instanceof THREE.Mesh) && !(object instanceof THREE.Line) && !(object instanceof THREE.Points)) return;
+    object.geometry.dispose();
+    const material = object.material;
+    if (Array.isArray(material)) material.forEach((item) => item.dispose());
+    else material.dispose();
   });
 };
 
 export const TechEcosystemVisual3D: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const mount = mountRef.current;
+    if (!mount) return;
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scene = new THREE.Scene();
-    const width = container.clientWidth || 620;
-    const height = container.clientHeight || 520;
-    const camera = new THREE.PerspectiveCamera(34, width / height, 0.1, 100);
-    camera.position.set(10.5, 7.0, 15.5);
-    camera.lookAt(0, 1.0, 0);
+    const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+    camera.position.set(11, 8.5, 16.5);
+    camera.lookAt(0, 1.1, 0);
 
     let renderer: THREE.WebGLRenderer;
     try {
@@ -49,280 +39,273 @@ export const TechEcosystemVisual3D: React.FC = () => {
     } catch {
       return;
     }
-
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
-    renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    container.appendChild(renderer.domElement);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+    mount.appendChild(renderer.domElement);
 
-    scene.add(new THREE.HemisphereLight(0xbfe3ff, 0x020617, 1.45));
-    const keyLight = new THREE.DirectionalLight(0x7dd3fc, 2.2);
-    keyLight.position.set(7, 12, 8);
-    scene.add(keyLight);
-    const greenLight = new THREE.PointLight(0x34d399, 2.2, 16);
-    greenLight.position.set(-5, 3, 4);
-    scene.add(greenLight);
+    scene.add(new THREE.HemisphereLight(0xbfe7ff, 0x020617, 1.35));
+    const key = new THREE.DirectionalLight(0x7dd3fc, 2.8);
+    key.position.set(5, 12, 8);
+    scene.add(key);
+    const rim = new THREE.PointLight(0x34d399, 2.5, 18);
+    rim.position.set(-6, 3, 4);
+    scene.add(rim);
 
-    const world = new THREE.Group();
-    scene.add(world);
+    const stage = new THREE.Group();
+    scene.add(stage);
 
-    const platform = new THREE.Mesh(
-      new THREE.CylinderGeometry(7.8, 8.2, 0.18, 64),
-      new THREE.MeshPhysicalMaterial({ color: 0x07111f, metalness: 0.85, roughness: 0.25, transparent: true, opacity: 0.86 })
+    // Atmospheric floor.
+    const floor = new THREE.Mesh(
+      new THREE.CircleGeometry(8.3, 64),
+      new THREE.MeshBasicMaterial({ color: 0x071525, transparent: true, opacity: 0.82 })
     );
-    platform.position.y = -1.05;
-    world.add(platform);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -1.15;
+    stage.add(floor);
 
-    const platformRing = new THREE.Mesh(
-      new THREE.TorusGeometry(7.35, 0.025, 8, 128),
-      new THREE.MeshBasicMaterial({ color: 0x2563eb, transparent: true, opacity: 0.45 })
+    const floorGrid = new THREE.GridHelper(16, 32, 0x1d4ed8, 0x0f2742);
+    floorGrid.position.y = -1.1;
+    floorGrid.material.transparent = true;
+    floorGrid.material.opacity = 0.2;
+    stage.add(floorGrid);
+
+    const outerRing = new THREE.Mesh(
+      new THREE.TorusGeometry(7.55, 0.025, 8, 160),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.35 })
     );
-    platformRing.rotation.x = Math.PI / 2;
-    platformRing.position.y = -0.92;
-    world.add(platformRing);
+    outerRing.rotation.x = Math.PI / 2;
+    outerRing.position.y = -1.04;
+    stage.add(outerRing);
 
-    const core = new THREE.Group();
-    core.position.y = 0.45;
-    world.add(core);
-
-    const coreBase = new THREE.Mesh(
-      new THREE.CylinderGeometry(1.75, 2.05, 1.1, 32),
-      new THREE.MeshPhysicalMaterial({ color: 0x0b1a2c, metalness: 0.88, roughness: 0.18, transparent: true, opacity: 0.92 })
+    // Large translucent infrastructure sphere creates the visual silhouette.
+    const globe = new THREE.Group();
+    globe.position.y = 0.65;
+    stage.add(globe);
+    const globeShell = new THREE.Mesh(
+      new THREE.SphereGeometry(3.8, 36, 24),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.075 })
     );
-    core.add(coreBase);
-
-    for (let i = 0; i < 3; i += 1) {
-      const layer = new THREE.Mesh(
-        new THREE.BoxGeometry(2.55 - i * 0.12, 0.28, 2.55 - i * 0.12),
-        new THREE.MeshStandardMaterial({ color: 0x14263b, metalness: 0.85, roughness: 0.2 })
+    globe.add(globeShell);
+    for (let i = 0; i < 5; i += 1) {
+      const latitude = new THREE.Mesh(
+        new THREE.TorusGeometry(3.8 * Math.cos((-0.7 + i * 0.35)), 0.012, 6, 96),
+        new THREE.MeshBasicMaterial({ color: i % 2 ? 0x34d399 : 0x60a5fa, transparent: true, opacity: 0.12 })
       );
-      layer.position.y = -0.2 + i * 0.43;
-      core.add(layer);
-      const indicator = new THREE.Mesh(
-        new THREE.BoxGeometry(1.7, 0.035, 0.035),
-        new THREE.MeshBasicMaterial({ color: i === 1 ? 0x34d399 : 0x38bdf8 })
-      );
-      indicator.position.set(0, layer.position.y, 1.29 - i * 0.06);
-      core.add(indicator);
+      latitude.rotation.x = Math.PI / 2;
+      latitude.rotation.z = 0.22;
+      latitude.position.y = Math.sin(-0.7 + i * 0.35) * 3.8;
+      globe.add(latitude);
     }
 
-    const energy = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.72, 2),
-      new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 1.1, metalness: 0.15, roughness: 0.08 })
-    );
-    energy.position.y = 2.1;
-    core.add(energy);
+    // Central architectural core.
+    const core = new THREE.Group();
+    core.position.y = 0.35;
+    stage.add(core);
 
-    const energyWire = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.92, 2),
-      new THREE.MeshBasicMaterial({ color: 0x7dd3fc, wireframe: true, transparent: true, opacity: 0.55 })
+    const plinth = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.9, 2.25, 0.5, 48),
+      new THREE.MeshPhysicalMaterial({ color: 0x0c1b2d, metalness: 0.92, roughness: 0.2, transparent: true, opacity: 0.94 })
     );
-    energyWire.position.copy(energy.position);
-    core.add(energyWire);
+    plinth.position.y = -0.55;
+    core.add(plinth);
 
-    const orbitRings: THREE.Mesh[] = [];
-    [1.2, 1.48].forEach((radius, index) => {
-      const ring = new THREE.Mesh(
-        new THREE.TorusGeometry(radius, 0.025, 8, 96),
-        new THREE.MeshBasicMaterial({ color: index === 0 ? 0x38bdf8 : 0x34d399, transparent: true, opacity: 0.72 })
+    const tower = new THREE.Mesh(
+      new THREE.BoxGeometry(1.7, 2.2, 1.7),
+      new THREE.MeshPhysicalMaterial({ color: 0x10263b, metalness: 0.9, roughness: 0.16, transparent: true, opacity: 0.9 })
+    );
+    tower.position.y = 0.5;
+    core.add(tower);
+
+    for (let i = 0; i < 4; i += 1) {
+      const slit = new THREE.Mesh(
+        new THREE.BoxGeometry(1.25, 0.045, 0.025),
+        new THREE.MeshBasicMaterial({ color: i === 2 ? 0x34d399 : 0x38bdf8 })
       );
-      ring.position.y = 2.1;
-      ring.rotation.x = index === 0 ? Math.PI / 2.7 : Math.PI / 2.1;
-      ring.rotation.z = index * 0.8;
-      core.add(ring);
-      orbitRings.push(ring);
+      slit.position.set(0, -0.25 + i * 0.42, 0.87);
+      core.add(slit);
+    }
+
+    const coreOrb = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.66, 3),
+      new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 1.4, metalness: 0.15, roughness: 0.08 })
+    );
+    coreOrb.position.y = 2.0;
+    core.add(coreOrb);
+
+    const coreWire = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.9, 2),
+      new THREE.MeshBasicMaterial({ color: 0x7dd3fc, wireframe: true, transparent: true, opacity: 0.6 })
+    );
+    coreWire.position.copy(coreOrb.position);
+    core.add(coreWire);
+
+    const orbiters: THREE.Mesh[] = [];
+    [1.15, 1.42, 1.7].forEach((radius, i) => {
+      const orbit = new THREE.Mesh(
+        new THREE.TorusGeometry(radius, 0.018, 8, 96),
+        new THREE.MeshBasicMaterial({ color: i === 1 ? 0x34d399 : 0x38bdf8, transparent: true, opacity: 0.68 - i * 0.1 })
+      );
+      orbit.rotation.x = Math.PI / (2.25 + i * 0.35);
+      orbit.rotation.z = i * 0.65;
+      orbit.position.y = 2.0;
+      core.add(orbit);
+      orbiters.push(orbit);
     });
 
-    const globe = new THREE.Mesh(
-      new THREE.SphereGeometry(3.05, 28, 20),
-      new THREE.MeshBasicMaterial({ color: 0x2563eb, wireframe: true, transparent: true, opacity: 0.12 })
-    );
-    globe.position.y = 0.75;
-    world.add(globe);
-
-    const globeEquator = new THREE.Mesh(
-      new THREE.TorusGeometry(3.05, 0.018, 6, 128),
-      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.28 })
-    );
-    globeEquator.rotation.x = Math.PI / 2;
-    globeEquator.position.y = 0.75;
-    world.add(globeEquator);
-
-    const packets: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; progress: number; speed: number }[] = [];
-    const nodeMeshes: THREE.Mesh[] = [];
-
-    nodeDefinitions.forEach((node, index) => {
+    // Data lanes: multiple curves per node give the network visual density.
+    const packets: Array<{ mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; t: number; speed: number }> = [];
+    NODE_DATA.forEach((node, index) => {
       const nodeGroup = new THREE.Group();
-      nodeGroup.position.copy(node.position);
-      world.add(nodeGroup);
+      nodeGroup.position.set(node.x, 0, node.z);
+      stage.add(nodeGroup);
 
       const base = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.72, 0.9, 0.18, 24),
-        new THREE.MeshStandardMaterial({ color: 0x102237, metalness: 0.75, roughness: 0.24 })
+        new THREE.CylinderGeometry(0.65, 0.85, 0.18, 32),
+        new THREE.MeshStandardMaterial({ color: 0x102237, metalness: 0.8, roughness: 0.2 })
       );
-      base.position.y = -0.35;
+      base.position.y = -0.65;
       nodeGroup.add(base);
 
       const beacon = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.38, 1),
-        new THREE.MeshStandardMaterial({ color: node.color, emissive: node.color, emissiveIntensity: 0.72, metalness: 0.35, roughness: 0.12 })
+        new THREE.OctahedronGeometry(0.34, 1),
+        new THREE.MeshStandardMaterial({ color: node.color, emissive: node.color, emissiveIntensity: 0.9, metalness: 0.35, roughness: 0.1 })
       );
-      beacon.position.y = 0.05;
+      beacon.position.y = -0.12;
       nodeGroup.add(beacon);
-      nodeMeshes.push(beacon);
 
       const halo = new THREE.Mesh(
         new THREE.TorusGeometry(0.62, 0.018, 8, 48),
-        new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.62 })
+        new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.65 })
       );
       halo.rotation.x = Math.PI / 2;
-      halo.position.y = -0.08;
+      halo.position.y = -0.42;
       nodeGroup.add(halo);
 
+      const end = new THREE.Vector3(node.x, node.y ?? 0.1, node.z);
       const start = new THREE.Vector3(0, 1.35, 0);
-      const end = new THREE.Vector3(node.position.x, node.position.y + 0.05, node.position.z);
-      const mid = new THREE.Vector3(node.position.x * 0.52, 2.45 + index * 0.08, node.position.z * 0.52);
-      const curve = new THREE.CatmullRomCurve3([start, mid, end]);
+      for (let lane = 0; lane < 2; lane += 1) {
+        const bend = lane === 0 ? 0.25 : -0.25;
+        const curve = new THREE.CatmullRomCurve3([
+          start,
+          new THREE.Vector3(node.x * 0.32 + bend, 2.1 + index * 0.08, node.z * 0.32),
+          new THREE.Vector3(node.x * 0.72 - bend, 1.0, node.z * 0.72),
+          end,
+        ]);
+        const laneMesh = new THREE.Mesh(
+          new THREE.TubeGeometry(curve, 42, lane === 0 ? 0.014 : 0.009, 6, false),
+          new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: lane === 0 ? 0.3 : 0.14 })
+        );
+        stage.add(laneMesh);
 
-      const tube = new THREE.Mesh(
-        new THREE.TubeGeometry(curve, 40, 0.018, 6, false),
-        new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.32 })
-      );
-      world.add(tube);
-
-      const packet = new THREE.Mesh(
-        new THREE.SphereGeometry(0.085, 10, 10),
-        new THREE.MeshBasicMaterial({ color: node.color })
-      );
-      world.add(packet);
-      packets.push({ mesh: packet, curve, progress: index / nodeDefinitions.length, speed: 0.0008 + index * 0.00012 });
+        const packet = new THREE.Mesh(
+          new THREE.SphereGeometry(lane === 0 ? 0.075 : 0.05, 10, 10),
+          new THREE.MeshBasicMaterial({ color: node.color })
+        );
+        stage.add(packet);
+        packets.push({ mesh: packet, curve, t: (index * 0.18 + lane * 0.42) % 1, speed: 0.0009 + index * 0.00009 + lane * 0.00015 });
+      }
     });
 
-    const particleCount = 90;
-    const positions = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount; i += 1) {
-      const radius = 7 + Math.random() * 6;
-      const angle = Math.random() * Math.PI * 2;
-      positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = -0.2 + Math.random() * 7;
-      positions[i * 3 + 2] = Math.sin(angle) * radius;
+    // Constellation points are spatially distributed rather than a generic star field.
+    const pointCount = 120;
+    const pointPositions = new Float32Array(pointCount * 3);
+    for (let i = 0; i < pointCount; i += 1) {
+      const r = 5 + Math.random() * 8;
+      const a = Math.random() * Math.PI * 2;
+      pointPositions[i * 3] = Math.cos(a) * r;
+      pointPositions[i * 3 + 1] = -0.4 + Math.random() * 8;
+      pointPositions[i * 3 + 2] = Math.sin(a) * r;
     }
-    const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particles = new THREE.Points(particleGeometry, new THREE.PointsMaterial({ color: 0x60a5fa, size: 0.035, transparent: true, opacity: 0.4 }));
-    world.add(particles);
+    const pointGeometry = new THREE.BufferGeometry();
+    pointGeometry.setAttribute('position', new THREE.BufferAttribute(pointPositions, 3));
+    stage.add(new THREE.Points(pointGeometry, new THREE.PointsMaterial({ color: 0x93c5fd, size: 0.035, transparent: true, opacity: 0.5 })));
 
     let targetX = 0;
     let targetY = 0;
     let currentX = 0;
     let currentY = 0;
-
     const handlePointerMove = (event: PointerEvent) => {
       if (reducedMotion) return;
-      const rect = container.getBoundingClientRect();
-      targetY = ((event.clientX - rect.left) / rect.width - 0.5) * 0.32;
-      targetX = ((event.clientY - rect.top) / rect.height - 0.5) * 0.18;
+      const rect = mount.getBoundingClientRect();
+      targetY = ((event.clientX - rect.left) / rect.width - 0.5) * 0.42;
+      targetX = ((event.clientY - rect.top) / rect.height - 0.5) * 0.24;
     };
-    const handlePointerLeave = () => {
-      targetX = 0;
-      targetY = 0;
-    };
+    const resetPointer = () => { targetX = 0; targetY = 0; };
+    mount.addEventListener('pointermove', handlePointerMove);
+    mount.addEventListener('pointerleave', resetPointer);
 
-    container.addEventListener('pointermove', handlePointerMove);
-    container.addEventListener('pointerleave', handlePointerLeave);
-
-    const resizeObserver = new ResizeObserver(([entry]) => {
-      if (!entry) return;
-      const nextWidth = entry.contentRect.width;
-      const nextHeight = entry.contentRect.height;
-      if (!nextWidth || !nextHeight) return;
-      camera.aspect = nextWidth / nextHeight;
+    const resize = () => {
+      const width = Math.max(mount.clientWidth, 1);
+      const height = Math.max(mount.clientHeight, 1);
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(nextWidth, nextHeight);
-    });
-    resizeObserver.observe(container);
+      renderer.setSize(width, height, false);
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(mount);
+    resize();
 
     const clock = new THREE.Clock();
-    let animationId = 0;
-
+    let frame = 0;
     const animate = () => {
-      animationId = requestAnimationFrame(animate);
-      const elapsed = clock.getElapsedTime();
-
+      frame = requestAnimationFrame(animate);
+      const time = clock.getElapsedTime();
       if (!reducedMotion) {
         currentX += (targetX - currentX) * 0.035;
         currentY += (targetY - currentY) * 0.035;
-        world.rotation.x = currentX;
-        world.rotation.y = currentY + Math.sin(elapsed * 0.18) * 0.035;
-        energy.rotation.x += 0.004;
-        energy.rotation.y += 0.006;
-        energyWire.rotation.x -= 0.002;
-        energyWire.rotation.y -= 0.004;
-        orbitRings[0].rotation.z += 0.008;
-        orbitRings[1].rotation.z -= 0.005;
-        globe.rotation.y += 0.0008;
-        particles.rotation.y -= 0.00035;
-
-        nodeMeshes.forEach((mesh, index) => {
-          const pulse = 1 + Math.sin(elapsed * 2.2 + index) * 0.08;
-          mesh.scale.set(pulse, pulse, pulse);
-        });
-
+        stage.rotation.x = currentX;
+        stage.rotation.y = currentY + Math.sin(time * 0.14) * 0.025;
+        globe.rotation.y += 0.0006;
+        coreOrb.rotation.x += 0.004;
+        coreOrb.rotation.y += 0.006;
+        coreWire.rotation.x -= 0.002;
+        coreWire.rotation.y -= 0.004;
+        orbiters.forEach((ring, i) => { ring.rotation.z += i % 2 ? -0.006 : 0.008; });
         packets.forEach((packet) => {
-          packet.progress += packet.speed;
-          if (packet.progress > 1) packet.progress = 0;
-          packet.mesh.position.copy(packet.curve.getPointAt(packet.progress));
+          packet.t += packet.speed;
+          if (packet.t > 1) packet.t = 0;
+          packet.mesh.position.copy(packet.curve.getPointAt(packet.t));
         });
       }
-
       renderer.render(scene, camera);
     };
-
     animate();
 
     return () => {
-      cancelAnimationFrame(animationId);
-      resizeObserver.disconnect();
-      container.removeEventListener('pointermove', handlePointerMove);
-      container.removeEventListener('pointerleave', handlePointerLeave);
-      disposeObject(scene);
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      mount.removeEventListener('pointermove', handlePointerMove);
+      mount.removeEventListener('pointerleave', resetPointer);
+      disposeScene(scene);
       renderer.dispose();
-      if (renderer.domElement.parentElement === container) container.removeChild(renderer.domElement);
+      if (renderer.domElement.parentElement === mount) mount.removeChild(renderer.domElement);
     };
   }, []);
 
   return (
-    <div className="relative w-full h-[430px] sm:h-[500px] lg:h-[540px] overflow-hidden select-none">
-      <div ref={containerRef} className="absolute inset-0 cursor-crosshair" aria-label="Interactive 3D TechNix technology ecosystem" />
+    <div className="relative h-[430px] sm:h-[510px] lg:h-[560px] w-full overflow-hidden select-none">
+      <div ref={mountRef} className="absolute inset-0 cursor-crosshair" aria-label="Interactive TechNix digital infrastructure visualization" />
 
-      <div className="absolute top-5 left-5 sm:top-7 sm:left-7 pointer-events-none">
+      <div className="absolute left-5 top-5 sm:left-7 sm:top-7 pointer-events-none">
         <div className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/65 px-3 py-1.5 backdrop-blur-xl shadow-xl">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-200">TechNix Digital Infrastructure</span>
+          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.9)]" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-200">Digital infrastructure</span>
         </div>
       </div>
 
-      <div className="absolute right-5 top-5 sm:right-7 sm:top-7 pointer-events-none hidden sm:block">
-        <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-3 backdrop-blur-xl shadow-xl">
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-            <Globe2 className="h-3.5 w-3.5 text-sky-400" />
-            Africa Connected
-          </div>
-          <div className="mt-1 text-xs font-semibold text-white">Build • Connect • Protect</div>
+      <div className="absolute right-5 top-5 hidden sm:block pointer-events-none">
+        <div className="rounded-2xl border border-white/10 bg-slate-950/65 px-3.5 py-3 backdrop-blur-xl shadow-xl">
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400"><Globe2 className="h-3.5 w-3.5 text-sky-400" /> Africa connected</div>
+          <div className="mt-1 text-xs font-semibold text-white">Blantyre • Lilongwe • Beyond</div>
         </div>
       </div>
 
       <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7 flex flex-wrap gap-2 pointer-events-none">
-        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Cloud className="h-3.5 w-3.5 text-sky-400" /> Cloud & Hosting</div>
-        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Workflow className="h-3.5 w-3.5 text-emerald-400" /> Business Systems</div>
-        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Database className="h-3.5 w-3.5 text-violet-400" /> Data & Backup</div>
-        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Smartphone className="h-3.5 w-3.5 text-amber-400" /> Mobile & Field</div>
-        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/70 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><ShieldCheck className="h-3.5 w-3.5 text-emerald-400" /> Secure by Design</div>
-      </div>
-
-      <div className="absolute bottom-20 right-5 sm:right-7 pointer-events-none hidden md:block">
-        <div className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-400"><ArrowUpRight className="h-3 w-3 text-sky-400" /> Move your cursor to explore</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/72 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Cloud className="h-3.5 w-3.5 text-sky-400" /> Cloud & Hosting</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/72 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Workflow className="h-3.5 w-3.5 text-emerald-400" /> Business Systems</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/72 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Database className="h-3.5 w-3.5 text-violet-400" /> Data & Backup</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/72 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><Smartphone className="h-3.5 w-3.5 text-amber-400" /> Mobile & Field</div>
+        <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950/72 px-2.5 py-1.5 text-[10px] text-slate-300 backdrop-blur-xl"><ShieldCheck className="h-3.5 w-3.5 text-emerald-400" /> Secure by design</div>
       </div>
     </div>
   );
