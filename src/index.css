@@ -8,7 +8,6 @@
 }
 
 :root { --tnx-blue:#38bdf8; --tnx-cyan:#22d3ee; --tnx-green:#34d399; --tnx-ink:#020617; --tnx-panel:rgba(5,15,30,.72); }
-
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background:#020617; }
 ::-webkit-scrollbar-thumb { background:#1e3a5f; border-radius:999px; }
@@ -21,6 +20,14 @@
 .tnx-nebula-one { left:-18vw; top:12vh; background:#0369a1; }
 .tnx-nebula-two { right:-18vw; bottom:-18vh; background:#047857; }
 .tnx-scanline { position:absolute; inset:0; background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 5px); mix-blend-mode:screen; opacity:.35; }
+
+.tnx-site > header { position:sticky; top:0; z-index:50; background:rgba(2,6,23,.58) !important; border-bottom:1px solid rgba(148,163,184,.12) !important; box-shadow:0 10px 50px rgba(0,0,0,.18) !important; backdrop-filter:blur(22px) saturate(140%); }
+.tnx-site > header .text-slate-900 { color:#f1f5f9 !important; }
+.tnx-site > header .text-slate-700 { color:#cbd5e1 !important; }
+.tnx-site > header .text-slate-500 { color:#64748b !important; }
+.tnx-site > header .hover\:bg-slate-100:hover { background:rgba(148,163,184,.1) !important; }
+.tnx-site > header .bg-white { background:rgba(8,18,32,.96) !important; }
+.tnx-site > header .border-slate-200 { border-color:rgba(148,163,184,.12) !important; }
 
 .tnx-main { position:relative; z-index:1; }
 .tnx-hero-3d { min-height:calc(100vh - 76px); min-height:760px; position:relative; display:flex; align-items:center; overflow:hidden; perspective:1800px; }
@@ -60,10 +67,12 @@
 .tnx-panel-glow { position:absolute; width:280px; height:280px; border-radius:50%; right:-130px; top:-150px; background:#0ea5e9; opacity:.055; filter:blur(50px); pointer-events:none; }
 .tnx-final-panel { border-color:rgba(52,211,153,.16); background:linear-gradient(135deg,rgba(6,40,43,.76),rgba(2,12,25,.78)); }
 .tnx-contact-panel { border-color:rgba(56,189,248,.18); }
-
-/* Existing business sections become content surfaces inside the new spatial shell. */
 .tnx-3d-panel > section, .tnx-3d-panel > div { position:relative; z-index:1; }
 .tnx-3d-panel .rounded-3xl, .tnx-3d-panel .rounded-2xl { box-shadow:0 20px 60px rgba(0,0,0,.18); }
+
+.tnx-site > footer { position:relative; z-index:2; border-top:1px solid rgba(148,163,184,.12); background:rgba(2,6,23,.9) !important; color:#94a3b8; box-shadow:0 -30px 100px rgba(0,0,0,.22); }
+.tnx-site > footer .text-slate-900 { color:#f1f5f9 !important; }
+.tnx-site > footer .text-slate-600,.tnx-site > footer .text-slate-500 { color:#94a3b8 !important; }
 
 @media (max-width: 900px) {
   .tnx-hero-3d { min-height:720px; align-items:flex-end; }
@@ -76,7 +85,6 @@
   .tnx-depth-left,.tnx-depth-right { transform:none; }
   .tnx-3d-panel:hover,.tnx-section-grid .tnx-3d-panel:hover { transform:translateY(-3px); }
 }
-
 @media (max-width: 640px) {
   .tnx-hero-3d { min-height:720px; }
   .tnx-hero-copy { padding:100px 20px 115px; }
@@ -93,8 +101,4 @@
   .tnx-content-space { padding-left:8px; padding-right:8px; }
   .tnx-3d-panel { border-radius:22px; padding:4px; margin:18px auto; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior:auto; }
-  .tnx-3d-panel { transition:none; }
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .tnx-3d-panel { transition:none; } }
