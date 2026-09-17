@@ -1,11 +1,6 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
+import TechNix3DWorld from './components/TechNix3DWorld';
 import { QuickNeedSelector } from './components/QuickNeedSelector';
 import { SolutionsYouCanStartWith } from './components/SolutionsYouCanStartWith';
 import { ProductsPage } from './components/ProductsPage';
@@ -34,168 +29,86 @@ import { WhatsAppButton } from './components/WhatsAppButton';
 import { Course } from './types';
 
 export default function App() {
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [quoteService, setQuoteService] = useState<string | undefined>(undefined);
-  const [isHealthCheckModalOpen, setIsHealthCheckModalOpen] = useState(false);
-  const [isITRescueModalOpen, setIsITRescueModalOpen] = useState(false);
-  const [selectedCourseForReg, setSelectedCourseForReg] = useState<Course | null>(null);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quoteService, setQuoteService] = useState<string | undefined>();
+  const [healthOpen, setHealthOpen] = useState(false);
+  const [rescueOpen, setRescueOpen] = useState(false);
+  const [course, setCourse] = useState<Course | null>(null);
 
-  const handleOpenQuote = (service?: string) => {
-    setQuoteService(service);
-    setIsQuoteModalOpen(true);
-  };
+  const openQuote = (service?: string) => { setQuoteService(service); setQuoteOpen(true); };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const selectNeed = (id: string, service: string) => document.getElementById(id) ? scrollTo(id) : openQuote(service);
 
-  const handleOpenHealthCheck = () => {
-    setIsHealthCheckModalOpen(true);
-  };
-
-  const handleOpenITRescue = () => {
-    setIsITRescueModalOpen(true);
-  };
-
-  const handleRegisterCourse = (course: Course) => {
-    setSelectedCourseForReg(course);
-  };
-
-  const handleScrollToSection = (sectionId: string) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleSelectNeed = (targetSection: string, serviceTitle: string) => {
-    const el = document.getElementById(targetSection);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      handleOpenQuote(serviceTitle);
-    }
-  };
+  const panel = (children: React.ReactNode, className = '') => (
+    <section className={`tnx-3d-panel ${className}`}><div className="tnx-panel-glow" />{children}</section>
+  );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
-      {/* 1. Primary Navigation Bar */}
-      <Navbar
-        onOpenQuote={handleOpenQuote}
-        onOpenHealthCheck={handleOpenHealthCheck}
-        onOpenITRescue={handleOpenITRescue}
-      />
+    <div className="tnx-site">
+      <div className="tnx-space" aria-hidden="true">
+        <div className="tnx-nebula tnx-nebula-one" />
+        <div className="tnx-nebula tnx-nebula-two" />
+        <div className="tnx-scanline" />
+        <TechNix3DWorld />
+      </div>
 
-      {/* Main Content Sections */}
-      <main className="flex-1">
-        {/* 2. Hero Section: Primary Commercial Entry Point */}
-        <Hero
-          onOpenQuote={handleOpenQuote}
-          onOpenHealthCheck={handleOpenHealthCheck}
-        />
+      <Navbar onOpenQuote={openQuote} onOpenHealthCheck={() => setHealthOpen(true)} onOpenITRescue={() => setRescueOpen(true)} />
 
-        {/* 3. Quick Need Selector: Fast Customer Orientation ("How Can We Help You?") */}
-        <QuickNeedSelector
-          onSelectNeed={handleSelectNeed}
-          onOpenITRescue={handleOpenITRescue}
-          onOpenQuote={handleOpenQuote}
-        />
+      <main className="tnx-main">
+        <section className="tnx-hero-3d">
+          <div className="tnx-hero-copy">
+            <div className="tnx-eyebrow"><span /> TECHNIX AFRICA · DIGITAL INFRASTRUCTURE</div>
+            <h1>Technology That<br /><em>Moves Your Business</em><br />Forward.</h1>
+            <p>We design, build and support the digital systems that keep African businesses and organisations moving.</p>
+            <div className="tnx-hero-actions">
+              <button onClick={() => openQuote()} className="tnx-primary">Start a Project <span>↗</span></button>
+              <button onClick={() => scrollTo('solutions')} className="tnx-secondary">Explore the ecosystem <span>↓</span></button>
+            </div>
+            <div className="tnx-hero-proof"><b>01</b><span>Build</span><i /> <b>02</b><span>Support</span><i /> <b>03</b><span>Scale</span></div>
+          </div>
+          <div className="tnx-hero-orbit-label tnx-label-one"><span>●</span> CLOUD & HOSTING</div>
+          <div className="tnx-hero-orbit-label tnx-label-two"><span>●</span> BUSINESS SYSTEMS</div>
+          <div className="tnx-hero-orbit-label tnx-label-three"><span>●</span> DATA · MOBILE · WEB</div>
+          <div className="tnx-hero-bottom">SCROLL TO ENTER THE SYSTEM <span>⌄</span></div>
+        </section>
 
-        {/* 4. Solutions You Can Start With (Quick Entry Products) */}
-        <SolutionsYouCanStartWith
-          onOpenQuote={handleOpenQuote}
-          onOpenITRescue={handleOpenITRescue}
-          onOpenHealthCheck={handleOpenHealthCheck}
-          onSelectNeed={handleSelectNeed}
-        />
+        <div id="solutions" className="tnx-content-space">
+          {panel(<QuickNeedSelector onSelectNeed={selectNeed} onOpenITRescue={() => setRescueOpen(true)} onOpenQuote={openQuote} />, 'tnx-panel-wide')}
+          {panel(<SolutionsYouCanStartWith onOpenQuote={openQuote} onOpenITRescue={() => setRescueOpen(true)} onOpenHealthCheck={() => setHealthOpen(true)} onSelectNeed={selectNeed} />, 'tnx-panel-wide')}
+          {panel(<ProductsPage onOpenQuote={openQuote} onOpenITRescue={() => setRescueOpen(true)} onOpenHealthCheck={() => setHealthOpen(true)} onSelectSection={scrollTo} />, 'tnx-panel-wide')}
 
-        {/* 5. Central Products Page & Commercial Sales Funnel (Iteration 2 Hub) */}
-        <ProductsPage
-          onOpenQuote={handleOpenQuote}
-          onOpenITRescue={handleOpenITRescue}
-          onOpenHealthCheck={handleOpenHealthCheck}
-          onSelectSection={handleScrollToSection}
-        />
-
-        {/* 6. Product 1: Business Websites (Starter, Growth, Custom with "Starting From" pricing) */}
-        <BusinessWebsiteSection onOpenQuote={handleOpenQuote} />
-
-        {/* 7. Product 2: Business Email (Domain inboxes, team credibility, verified pricing) */}
-        <BusinessEmailSection onOpenQuote={handleOpenQuote} />
-
-        {/* 8. Product 3: Hosting & Domains (Concepts demystified, verified MK starting rates) */}
-        <HostingDomainsSection onOpenQuote={handleOpenQuote} />
-
-        {/* 9. Product 4: IT Rescue ("Something Is Not Working? Let's Fix It" - 10 emergency areas) */}
-        <ITRescueSection onOpenITRescue={handleOpenITRescue} />
-
-        {/* 10. Product 5: TechNix Care ("Your Technology Team Without the Full-Time Cost" - 3 Retainer tiers) */}
-        <TechNixCareSection onOpenQuote={handleOpenQuote} />
-
-        {/* 11. Product 6: Software Solutions (Custom business tools, clear categories, request quote) */}
-        <SoftwareSolutionsSection onOpenQuote={handleOpenQuote} />
-
-        {/* 12. Product 7: TechNix Academy (Practical hands-on real-world tech education) */}
-        <TechNixAcademySection onOpenQuote={handleOpenQuote} />
-
-        {/* 13. How We Work: 6-Step Customer Journey Process */}
-        <HowWeWorkSection onOpenQuote={handleOpenQuote} />
-
-        {/* 14. Trust & Credibility: Enterprise-grade Client Proof (Pact Malawi, Save the Children, Red Cross) */}
-        <TrustCredibilitySection />
-
-        {/* 14. What We've Built: Real Project Case Studies (Problem -> Solution -> Result) */}
-        <CaseStudiesSection onOpenQuote={handleOpenQuote} />
-
-        {/* 15. Customer Segments: Technology for Organisations Like Yours */}
-        <CustomerTypesSection onOpenQuote={handleOpenQuote} />
-
-        {/* 16. Product 8: Digital Business Health Check (Free diagnostic audit lead generation) */}
-        <DigitalHealthCheckSection onOpenInteractiveCheck={handleOpenHealthCheck} />
-
-        {/* 17. Final Conversion Section: Ready to Move Your Business Forward? */}
-        <FinalCTASection onOpenQuote={handleOpenQuote} />
-
-        {/* 18. Why TechNix: Commercial Principles & Local African Engineering Reliability */}
-        <WhyTechNix />
-
-        {/* 19. Physical Office Locations in Blantyre & Lilongwe */}
-        <AboutSection />
-
-        {/* 20. Direct Quotation & Contact Inquiry Form */}
-        <ContactSection initialService={quoteService} />
+          <div className="tnx-section-grid">
+            {panel(<BusinessWebsiteSection onOpenQuote={openQuote} />, 'tnx-depth-left')}
+            {panel(<BusinessEmailSection onOpenQuote={openQuote} />, 'tnx-depth-right')}
+          </div>
+          <div className="tnx-section-grid reverse">
+            {panel(<HostingDomainsSection onOpenQuote={openQuote} />, 'tnx-depth-right')}
+            {panel(<ITRescueSection onOpenITRescue={() => setRescueOpen(true)} />, 'tnx-depth-left')}
+          </div>
+          {panel(<TechNixCareSection onOpenQuote={openQuote} />, 'tnx-panel-wide')}
+          <div className="tnx-section-grid">
+            {panel(<SoftwareSolutionsSection onOpenQuote={openQuote} />, 'tnx-depth-left')}
+            {panel(<TechNixAcademySection onOpenQuote={openQuote} />, 'tnx-depth-right')}
+          </div>
+          {panel(<HowWeWorkSection onOpenQuote={openQuote} />, 'tnx-panel-wide')}
+          {panel(<TrustCredibilitySection />, 'tnx-panel-wide')}
+          {panel(<CaseStudiesSection onOpenQuote={openQuote} />, 'tnx-panel-wide')}
+          {panel(<CustomerTypesSection onOpenQuote={openQuote} />, 'tnx-panel-wide')}
+          {panel(<DigitalHealthCheckSection onOpenInteractiveCheck={() => setHealthOpen(true)} />, 'tnx-panel-wide')}
+          {panel(<FinalCTASection onOpenQuote={openQuote} />, 'tnx-panel-wide tnx-final-panel')}
+          <div className="tnx-section-grid">
+            {panel(<WhyTechNix />, 'tnx-depth-left')}
+            {panel(<AboutSection />, 'tnx-depth-right')}
+          </div>
+          {panel(<ContactSection initialService={quoteService} />, 'tnx-panel-wide tnx-contact-panel')}
+        </div>
       </main>
 
-      {/* Footer */}
-      <Footer
-        onOpenQuote={handleOpenQuote}
-        onOpenHealthCheck={handleOpenHealthCheck}
-        onOpenITRescue={handleOpenITRescue}
-      />
-
-      {/* Interactive Conversion Modals */}
-      <QuoteRequestModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-        preselectedService={quoteService}
-      />
-
-      <ITRescueModal
-        isOpen={isITRescueModalOpen}
-        onClose={() => setIsITRescueModalOpen(false)}
-      />
-
-      <DigitalHealthCheckModal
-        isOpen={isHealthCheckModalOpen}
-        onClose={() => setIsHealthCheckModalOpen(false)}
-        onOpenQuote={(srv) => {
-          setIsHealthCheckModalOpen(false);
-          handleOpenQuote(srv);
-        }}
-      />
-
-      <CourseRegistrationModal
-        course={selectedCourseForReg}
-        onClose={() => setSelectedCourseForReg(null)}
-      />
-
-      {/* Persistent, Contextual WhatsApp Quick-Launcher */}
+      <Footer onOpenQuote={openQuote} onOpenHealthCheck={() => setHealthOpen(true)} onOpenITRescue={() => setRescueOpen(true)} />
+      <QuoteRequestModal isOpen={quoteOpen} onClose={() => setQuoteOpen(false)} preselectedService={quoteService} />
+      <ITRescueModal isOpen={rescueOpen} onClose={() => setRescueOpen(false)} />
+      <DigitalHealthCheckModal isOpen={healthOpen} onClose={() => setHealthOpen(false)} onOpenQuote={(service) => { setHealthOpen(false); openQuote(service); }} />
+      <CourseRegistrationModal course={course} onClose={() => setCourse(null)} />
       <WhatsAppButton />
     </div>
   );
