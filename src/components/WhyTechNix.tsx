@@ -54,28 +54,27 @@ export const WhyTechNix: React.FC = () => {
           </p>
         </div>
 
-        {/* 6 Editorial Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 6 Editorial Pillars Grid - Subtle Top-Border Style */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <div
                 key={idx}
-                className="bg-[#090e1a] border border-slate-800/80 hover:border-slate-700 rounded-2xl p-7 flex flex-col justify-between transition-all duration-200"
+                className="pt-6 border-t border-slate-800/80 space-y-3"
               >
-                <div className="space-y-4">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 text-sky-400 flex items-center justify-center">
-                    <Icon className="w-5 h-5" />
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-sky-400 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4" />
                   </div>
-
-                  <h3 className="text-lg font-bold text-white">
+                  <h3 className="text-base font-bold text-white">
                     {pillar.title}
                   </h3>
-
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                    {pillar.desc}
-                  </p>
                 </div>
+
+                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  {pillar.desc}
+                </p>
               </div>
             );
           })}

@@ -49,7 +49,7 @@ export const AboutSection: React.FC = () => {
                 <div>
                   <h4 className="text-sm font-bold text-white">Physical Presence, Real Accountability</h4>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-0.5">
-                    With engineering hubs in both Blantyre and Lilongwe, we don&apos;t just communicate over remote tickets — our field engineers visit your office, audit your infrastructure, and sit with your staff until everything runs flawlessly.
+                    With engineering hubs in both Blantyre and Lilongwe, we don&apos;t just communicate over remote tickets — our technicians visit your office, review your setup, and support your staff in person.
                   </p>
                 </div>
               </div>

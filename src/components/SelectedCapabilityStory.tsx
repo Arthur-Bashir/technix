@@ -8,10 +8,15 @@ import {
   GraduationCap, 
   ArrowRight, 
   MessageSquare, 
+  Check,
   CheckCircle2,
-  Smartphone,
+  Lock,
+  Wifi,
+  Laptop,
+  Database,
   BarChart3,
-  Database
+  Smartphone,
+  Cpu
 } from 'lucide-react';
 import { COURSES, COMPANY_INFO } from '../data/technixData';
 
@@ -58,7 +63,8 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       heading: 'Websites That Present Your Business Professionally',
       whoItHelps: 'Growing Malawian enterprises, professional practices, and institutions needing an official online presence.',
       narrative: 'Prospective clients, donors, and procurement committees evaluate your credibility before making contact. We build fast, mobile-responsive websites that showcase your services clearly and route customer inquiries directly to phone and WhatsApp.',
-      pricing: 'Starting from MK 199,000',
+      pricing: 'From MK 199,000',
+      scope: 'Design, mobile testing, domain & launch',
       keyPoints: [
         'Mobile-responsive layout designed for local smartphones',
         'Direct WhatsApp contact and inquiry integration',
@@ -77,7 +83,8 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       heading: 'Professional Email Accounts on Your Own Domain',
       whoItHelps: 'Companies and organisations still using personal @gmail.com or @yahoo.com addresses for formal correspondence.',
       narrative: 'Conducting official business from personal webmail creates confusion and undermines institutional confidence during tenders. We configure authenticated domain email (name@yourcompany.mw) with synchronized access across staff laptops and phones.',
-      pricing: 'Starting from MK 7,500 / month',
+      pricing: 'From MK 7,500 / month',
+      scope: 'Team mailboxes, DNS records & device sync',
       keyPoints: [
         'Custom domain email addresses (@yourcompany.mw)',
         'Synchronized access on smartphones, tablets, and computers',
@@ -96,7 +103,8 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       heading: 'Dependable Web Hosting with Local Currency Billing',
       whoItHelps: 'Organisations seeking stable hosting without the friction of international credit card payments or foreign exchange fees.',
       narrative: 'Keep your website and web applications online with reliable cloud hosting, automated backups, and Malawian (.mw) or international domain management, billed transparently in Malawi Kwacha.',
-      pricing: 'Starting from MK 65,000 / year',
+      pricing: 'From MK 65,000 / year',
+      scope: 'SSD storage, SSL encryption & scheduled backups',
       keyPoints: [
         'High-speed SSD storage for responsive web loading',
         'Malawian (.mw) and international domain registration',
@@ -115,7 +123,8 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       heading: 'Rapid IT Support and Ongoing Office Maintenance',
       whoItHelps: 'Offices facing computer disruptions, Wi-Fi drops, or needing structured monthly technology care.',
       narrative: 'When computers fail or network issues interrupt daily operations, TechNix provides rapid technical support in Blantyre and Lilongwe. Through TechNix Care retainers, we provide ongoing preventative servicing and assistance without the expense of a full-time in-house salary.',
-      pricing: 'Retainers from MK 50,000 / month',
+      pricing: 'From MK 50,000 / month',
+      scope: 'Workstation health, networks & backup verification',
       keyPoints: [
         'Rapid technical response in Blantyre and Lilongwe',
         'Scheduled preventative maintenance visits for office workstations',
@@ -134,7 +143,8 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       heading: 'Software Engineered Around Your Actual Workflows',
       whoItHelps: 'Businesses, schools, and NGOs outgrowing manual paperwork and disconnected spreadsheets.',
       narrative: 'We build administrative web systems, multi-branch tracking tools, and mobile data applications tailored to how your organisation operates in Malawi, supporting offline field collection and local payment channels.',
-      pricing: 'Milestone project quotation',
+      pricing: 'Milestone Quotation',
+      scope: 'Requirements scoping, custom development & deployment',
       keyPoints: [
         'Offline-capable mobile and web data entry tools',
         'Inventory tracking, student records, or administrative portals',
@@ -153,9 +163,10 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       heading: 'Hands-On Digital Skills Training for Working Teams',
       whoItHelps: 'Administrative staff, finance teams, and professionals looking to improve workplace efficiency.',
       narrative: 'Our masterclasses focus on practical digital competencies that immediately improve everyday productivity: Advanced Microsoft Excel formulas and reports, Power BI data visualization, and workplace network administration.',
-      pricing: 'Courses from MK 95,000 / seat',
+      pricing: 'From MK 95,000 / seat',
+      scope: 'Instructor-led labs, reference templates & project review',
       keyPoints: [
-        '100% practical lab exercises with real-world scenarios',
+        'Hands-on lab exercises with real-world scenarios',
         'Small cohorts with direct instructor support',
         'Practical course templates and materials to take back to work',
         'Custom on-site training sessions available for corporate groups',
@@ -183,22 +194,22 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Curated Section Header */}
-        <div className="max-w-3xl mb-12 space-y-4">
-          <div className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+        <div className="max-w-3xl mb-12 space-y-3">
+          <div className="text-xs font-mono font-medium uppercase tracking-wider text-sky-400">
             Selected Capability Story
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
             Technology Systems Supporting Practical Operations
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
             Explore our core service disciplines — from public digital storefronts and authenticated communication to reliable cloud infrastructure and responsive on-call support.
           </p>
         </div>
 
-        {/* 6 Capability Navigation Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+        {/* Capability Selection: Clean Horizontal Editorial Switcher */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-12 border-b border-slate-800/80 no-scrollbar">
           {capabilities.map((cap) => {
             const isSelected = cap.id === activeStory;
             const Icon = cap.icon;
@@ -206,10 +217,10 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
               <button
                 key={cap.id}
                 onClick={() => setActiveStory(cap.id as any)}
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0 flex items-center space-x-2 border cursor-pointer ${
+                className={`py-2.5 px-4 text-xs sm:text-sm font-semibold transition-colors shrink-0 flex items-center space-x-2 cursor-pointer border-b-2 -mb-[1px] ${
                   isSelected
-                    ? 'bg-sky-600 text-white border-sky-400 shadow-lg shadow-sky-950/60'
-                    : 'bg-[#080d1b] text-slate-400 border-slate-800 hover:text-white hover:border-slate-700'
+                    ? 'border-sky-400 text-sky-400'
+                    : 'border-transparent text-slate-400 hover:text-slate-200'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -219,295 +230,306 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
           })}
         </div>
 
-        {/* Editorial Story Canvas */}
-        <div className="bg-[#070c18] border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        {/* Capability Theater: Left Story Narrative + Right Clean UI Demonstration */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* LEFT: Large Capability Title, Narrative, Primary CTA */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-2">
+              <span className="text-xs font-mono font-medium uppercase tracking-wider text-sky-400">
+                {currentCap.tagline}
+              </span>
+
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+                {currentCap.heading}
+              </h3>
+            </div>
+
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              {currentCap.narrative}
+            </p>
+
+            <div className="text-xs font-mono text-slate-400 pt-1">
+              <span className="text-slate-400 uppercase">Target: </span>
+              <span className="text-slate-300">{currentCap.whoItHelps}</span>
+            </div>
+
+            {/* One Primary CTA + Subtle WhatsApp Channel */}
+            <div className="pt-4 flex flex-wrap items-center gap-4">
+              <button
+                onClick={currentCap.action}
+                className="px-6 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30"
+              >
+                <span>{currentCap.ctaText}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => handleWhatsApp(currentCap.whatsAppMsg)}
+                className="px-4 py-3 bg-transparent hover:bg-slate-900 text-slate-300 hover:text-emerald-400 border border-slate-800 rounded-xl transition-colors flex items-center space-x-2 text-xs font-semibold cursor-pointer"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Quick Inquiry via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT: Large Visual Representation (Browser, Inbox, Infrastructure, Console, Dataflow, Labs) */}
+          <div className="lg:col-span-7 bg-[#040813] border border-slate-800/80 rounded-2xl p-6 sm:p-8 min-h-[380px] flex flex-col justify-center">
             
-            {/* Left Narrative Column (7 Cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="space-y-2">
-                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
-                  {currentCap.tagline}
-                </span>
-
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
-                  {currentCap.heading}
-                </h3>
-              </div>
-
-              <div className="text-xs font-mono text-slate-400">
-                <span className="text-slate-500 uppercase">Who this is for: </span>
-                <span>{currentCap.whoItHelps}</span>
-              </div>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                {currentCap.narrative}
-              </p>
-
-              {/* Pricing & Deliverables */}
-              <div className="p-4 bg-[#040710] border border-slate-800/80 rounded-2xl flex items-center justify-between">
-                <div>
-                  <span className="text-[11px] font-mono text-slate-400 uppercase font-semibold block">
-                    Starting Investment
-                  </span>
-                  <span className="text-base sm:text-lg font-bold font-mono text-emerald-400">
-                    {currentCap.pricing}
-                  </span>
+            {/* Website: Browser / Window Composition */}
+            {activeStory === 'website' && (
+              <div className="w-full space-y-4">
+                {/* Browser Titlebar */}
+                <div className="flex items-center space-x-2 border-b border-slate-800 pb-3">
+                  <div className="flex space-x-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
+                  </div>
+                  <div className="flex-1 max-w-sm mx-auto bg-slate-900 rounded px-3 py-1 text-[11px] font-mono text-slate-300 flex items-center space-x-2 border border-slate-800">
+                    <Lock className="w-3 h-3 text-emerald-400" />
+                    <span>https://yourcompany.mw</span>
+                  </div>
                 </div>
-                <span className="text-xs text-slate-400 font-mono">
-                  Malawi Kwacha Billing
-                </span>
-              </div>
 
-              {/* Deliverables List */}
-              <div className="space-y-2 pt-1">
-                <div className="text-xs font-mono uppercase text-slate-400 font-semibold tracking-wider">
-                  Key Scope Deliverables:
+                {/* Web Viewport Content */}
+                <div className="bg-[#080d1a] border border-slate-800/70 rounded-xl p-6 space-y-5">
+                  <div className="space-y-2">
+                    <span className="text-[11px] font-mono text-sky-400 uppercase tracking-wider">
+                      Commercial Web Platform
+                    </span>
+                    <h4 className="text-xl font-bold text-white">
+                      Your Business Name · Official Website
+                    </h4>
+                    <p className="text-xs text-slate-300 leading-relaxed max-w-md">
+                      Clean presentation of your products, customer service channels, and location details in Blantyre, Lilongwe, or across Malawi.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
+                    <span className="px-3 py-1.5 rounded-lg bg-sky-500/10 text-sky-300 border border-sky-500/20 font-mono">
+                      Mobile Responsive
+                    </span>
+                    <span className="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">
+                      WhatsApp Connected
+                    </span>
+                    <span className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 font-mono">
+                      Google Maps Verified
+                    </span>
+                  </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {currentCap.keyPoints.map((b, idx) => (
-                    <div key={idx} className="flex items-start space-x-2 text-xs text-slate-200">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                      <span>{b}</span>
+              </div>
+            )}
+
+            {/* Email: Communication / Inbox Composition */}
+            {activeStory === 'email' && (
+              <div className="w-full space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
+                  <span className="text-sky-400 font-medium">Domain Mailbox Suite</span>
+                  <span className="text-slate-400">@yourcompany.mw</span>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center justify-between text-xs">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center font-mono font-bold">
+                        info
+                      </div>
+                      <div>
+                        <div className="font-bold text-white">info@yourcompany.mw</div>
+                        <div className="text-slate-400 text-[11px]">Primary business enquiries &amp; client communication</div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-mono text-emerald-400">Authenticated</span>
+                  </div>
+
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center justify-between text-xs">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-mono font-bold">
+                        dir
+                      </div>
+                      <div>
+                        <div className="font-bold text-white">director@yourcompany.mw</div>
+                        <div className="text-slate-400 text-[11px]">Executive correspondence for formal contracts &amp; tenders</div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-mono text-emerald-400">Authenticated</span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-400 pt-1">
+                  Synchronized across Outlook, iPhone, and Android devices for all staff.
+                </p>
+              </div>
+            )}
+
+            {/* Hosting: Infrastructure / Domain Composition */}
+            {activeStory === 'hosting' && (
+              <div className="w-full space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
+                  <span className="text-sky-400 font-medium">Cloud Infrastructure &amp; DNS</span>
+                  <span className="text-slate-400">Billed in Malawi Kwacha</span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
+                    <Server className="w-5 h-5 text-sky-400" />
+                    <div className="font-bold text-white">Solid-State Cloud Storage</div>
+                    <div className="text-slate-400 text-[11px]">Fast server response for website visitors</div>
+                  </div>
+
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
+                    <Lock className="w-5 h-5 text-emerald-400" />
+                    <div className="font-bold text-white">SSL Security Certificates</div>
+                    <div className="text-slate-400 text-[11px]">Automated HTTPS encryption for domains</div>
+                  </div>
+
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
+                    <Database className="w-5 h-5 text-indigo-400" />
+                    <div className="font-bold text-white">Scheduled Cloud Backups</div>
+                    <div className="text-slate-400 text-[11px]">Routine file &amp; database preservation</div>
+                  </div>
+
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
+                    <Cpu className="w-5 h-5 text-amber-400" />
+                    <div className="font-bold text-white">Malawian (.mw) DNS</div>
+                    <div className="text-slate-400 text-[11px]">National registrar setup &amp; maintenance</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* IT Support: Office / Network Support Composition */}
+            {activeStory === 'support' && (
+              <div className="w-full space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
+                  <span className="text-sky-400 font-medium">Operational Technical Hub</span>
+                  <span className="text-slate-400">Blantyre &amp; Lilongwe</span>
+                </div>
+
+                <div className="space-y-3 text-xs">
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-start space-x-3">
+                    <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <div className="font-bold text-white">TechNix Care Monthly Retainer</div>
+                      <p className="text-slate-300 text-[11px]">
+                        Structured monthly maintenance visits, workstation antivirus updates, and remote helpdesk assistance.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-start space-x-3">
+                    <Wifi className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <div className="font-bold text-white">On-Call IT Rescue Triage</div>
+                      <p className="text-slate-300 text-[11px]">
+                        Rapid dispatch for office Wi-Fi outages, printer failures, slow machines, and network restoration.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-xs font-mono text-slate-400 pt-1 flex justify-between">
+                  <span>Support line: {COMPANY_INFO.phonePrimary}</span>
+                  <span>Physical presence in BT &amp; LL</span>
+                </div>
+              </div>
+            )}
+
+            {/* Software: Workflow / Data / System Composition */}
+            {activeStory === 'software' && (
+              <div className="w-full space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
+                  <span className="text-sky-400 font-medium">Purpose-Built Architecture</span>
+                  <span className="text-slate-400">Structured Data Pipelines</span>
+                </div>
+
+                <div className="space-y-2.5 text-xs">
+                  <div className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center space-x-3">
+                    <Smartphone className="w-4 h-4 text-sky-400 shrink-0" />
+                    <div className="flex-1">
+                      <span className="font-bold text-white block">1. Field &amp; Office Data Capture</span>
+                      <span className="text-slate-400 text-[11px]">Mobile forms and desktop input working with or without connectivity</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center space-x-3">
+                    <Database className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <div className="flex-1">
+                      <span className="font-bold text-white block">2. Centralized Database Engine</span>
+                      <span className="text-slate-400 text-[11px]">Validation logic, role permissions, and structured record storage</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center space-x-3">
+                    <BarChart3 className="w-4 h-4 text-indigo-400 shrink-0" />
+                    <div className="flex-1">
+                      <span className="font-bold text-white block">3. Management &amp; Donor Reporting</span>
+                      <span className="text-slate-400 text-[11px]">Visual dashboard summaries and clean exportable spreadsheets</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Academy: Learning / Data / Skills Composition */}
+            {activeStory === 'academy' && (
+              <div className="w-full space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
+                  <span className="text-sky-400 font-medium">Practical Digital Masterclasses</span>
+                  <span className="text-slate-400">Blantyre &amp; Lilongwe</span>
+                </div>
+
+                <div className="space-y-2.5">
+                  {COURSES.slice(0, 3).map((c) => (
+                    <div key={c.id} className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl text-xs flex items-center justify-between">
+                      <div>
+                        <span className="font-bold text-white block">{c.title}</span>
+                        <span className="text-slate-400 text-[11px]">{c.duration} · {c.level}</span>
+                      </div>
+                      <span className="font-mono text-xs font-bold text-sky-400 shrink-0">
+                        {c.fee}
+                      </span>
                     </div>
                   ))}
                 </div>
+
+                <p className="text-xs text-slate-400 pt-1">
+                  Hands-on computer exercises using real commercial datasets. Group corporate sessions available.
+                </p>
               </div>
-
-              {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={currentCap.action}
-                  className="px-6 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30"
-                >
-                  <span>{currentCap.ctaText}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => handleWhatsApp(currentCap.whatsAppMsg)}
-                  className="p-3 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 rounded-xl transition-colors flex items-center space-x-2 text-xs font-semibold cursor-pointer"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Discuss on WhatsApp</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Right Visual Demonstration Canvas (5 Cols) */}
-            <div className="lg:col-span-5 bg-[#040710] border border-slate-800/80 rounded-2xl p-6 sm:p-8 space-y-6 shadow-inner">
-              
-              {activeStory === 'website' && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span className="text-xs font-mono text-sky-400 font-semibold uppercase">
-                      Commercial Web Storefront
-                    </span>
-                    <span className="text-[11px] font-mono text-emerald-400">
-                      Mobile Ready
-                    </span>
-                  </div>
-
-                  <div className="bg-[#080d1b] border border-slate-800 rounded-xl p-4 space-y-3">
-                    <div className="h-28 rounded-lg bg-gradient-to-br from-sky-950/60 to-slate-900 border border-slate-800 flex flex-col justify-end p-4">
-                      <span className="text-xs text-sky-400 font-mono">www.yourcompany.mw</span>
-                      <h4 className="text-sm font-bold text-white">Your Professional Web Storefront</h4>
-                    </div>
-
-                    <div className="space-y-1.5 text-xs text-slate-300">
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                        <span>Tested on mobile devices across local networks</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                        <span>Direct inquiry buttons routing to WhatsApp and phone</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    Designed, reviewed, and deployed with full domain configuration and search indexation.
-                  </p>
-                </div>
-              )}
-
-              {activeStory === 'email' && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span className="text-xs font-mono text-sky-400 font-semibold uppercase">
-                      Email Credibility
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Domain Authentication
-                    </span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="p-4 rounded-xl border border-rose-900/30 bg-rose-950/20 space-y-1">
-                      <div className="text-xs font-mono text-rose-400 font-bold">
-                        Personal Webmail (yourbusiness@gmail.com)
-                      </div>
-                      <p className="text-xs text-slate-400">
-                        Often questioned during formal tender evaluations and institutional supplier reviews.
-                      </p>
-                    </div>
-
-                    <div className="p-4 rounded-xl border border-emerald-900/40 bg-emerald-950/20 space-y-1">
-                      <div className="text-xs font-mono text-emerald-400 font-bold">
-                        Domain Email (info@yourbusiness.mw)
-                      </div>
-                      <p className="text-xs text-slate-300">
-                        Presents an established, verifiable commercial identity for contracts, proposals, and client correspondence.
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    Includes setup on Outlook, Apple Mail, and Android devices for all staff members.
-                  </p>
-                </div>
-              )}
-
-              {activeStory === 'hosting' && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span className="text-xs font-mono text-sky-400 font-semibold uppercase">
-                      Hosting Infrastructure
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Local Kwacha Billing
-                    </span>
-                  </div>
-
-                  <div className="space-y-2.5">
-                    {[
-                      { layer: 'Fast SSD Storage', desc: 'Responsive page delivery for web visitors' },
-                      { layer: 'Scheduled Backups', desc: 'Routine off-site snapshots of site files and database' },
-                      { layer: 'SSL Certificate', desc: 'Encrypted HTTPS security included on your domain' },
-                      { layer: 'Local Invoicing', desc: 'Direct payment via bank transfer or mobile money' },
-                    ].map((st, idx) => (
-                      <div key={idx} className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl flex items-start space-x-3 text-xs">
-                        <Server className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
-                        <div>
-                          <span className="font-bold text-white block">{st.layer}</span>
-                          <span className="text-slate-400">{st.desc}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {activeStory === 'support' && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span className="text-xs font-mono text-rose-400 font-semibold uppercase">
-                      On-Call Technical Help
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Blantyre & Lilongwe
-                    </span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="p-4 bg-[#080d1b] border border-slate-800 rounded-xl space-y-1">
-                      <span className="text-xs font-mono font-bold text-rose-400 block">IT Rescue</span>
-                      <p className="text-xs text-slate-300">
-                        Urgent dispatch when office workstations, internet routers, or accounting files experience disruption.
-                      </p>
-                    </div>
-
-                    <div className="p-4 bg-[#080d1b] border border-slate-800 rounded-xl space-y-1">
-                      <span className="text-xs font-mono font-bold text-emerald-400 block">TechNix Care</span>
-                      <p className="text-xs text-slate-300">
-                        Monthly support retainers for regular computer maintenance, antivirus updates, and backup verification.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-3 bg-[#080d1b] rounded-xl border border-slate-800 text-xs text-slate-300 flex items-center justify-between">
-                    <span>Direct Call: {COMPANY_INFO.phonePrimary}</span>
-                    <span className="text-slate-400 font-mono text-[11px]">Blantyre & Lilongwe Hubs</span>
-                  </div>
-                </div>
-              )}
-
-              {activeStory === 'software' && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span className="text-xs font-mono text-indigo-400 font-semibold uppercase">
-                      Operational Data Flow
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Offline Capable
-                    </span>
-                  </div>
-
-                  <div className="space-y-2.5">
-                    <div className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
-                      <Smartphone className="w-4 h-4 text-sky-400 shrink-0" />
-                      <div>
-                        <span className="font-bold text-white block">1. Staff & Field Input</span>
-                        <span className="text-slate-400">Mobile data entry working with or without internet</span>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
-                      <Database className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <div>
-                        <span className="font-bold text-white block">2. Centralized Database</span>
-                        <span className="text-slate-400">Structured validation, role permissions & automated backups</span>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
-                      <BarChart3 className="w-4 h-4 text-indigo-400 shrink-0" />
-                      <div>
-                        <span className="font-bold text-white block">3. Management Reporting</span>
-                        <span className="text-slate-400">Visual summaries and exportable operational records</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeStory === 'academy' && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <span className="text-xs font-mono text-amber-400 font-semibold uppercase">
-                      Course Offerings
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Practical Computer Labs
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    {COURSES.slice(0, 3).map((c) => (
-                      <div key={c.id} className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center justify-between">
-                        <div>
-                          <span className="font-bold text-white block">{c.title}</span>
-                          <span className="text-slate-400 text-[11px]">{c.duration} · {c.level}</span>
-                        </div>
-                        <span className="font-mono text-xs font-bold text-amber-400 shrink-0">
-                          {c.fee}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    Custom on-site workshops available for corporate accounting teams, school faculties, and NGO project officers.
-                  </p>
-                </div>
-              )}
-
-            </div>
+            )}
 
           </div>
 
+        </div>
+
+        {/* BELOW: Small Supporting Facts / Scope / Starting Price (Containerless with Simple Dividers) */}
+        <div className="mt-14 pt-8 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
+          <div className="space-y-1">
+            <span className="text-slate-500 uppercase font-mono block">Starting Investment</span>
+            <span className="text-base font-bold font-mono text-emerald-400">{currentCap.pricing}</span>
+            <span className="text-slate-400 block">Transparent Kwacha billing</span>
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-slate-500 uppercase font-mono block">Engagement Scope</span>
+            <span className="text-slate-200 font-medium block">{currentCap.scope}</span>
+            <span className="text-slate-400 block">Defined in written quotation</span>
+          </div>
+
+          <div className="space-y-1 sm:col-span-2">
+            <span className="text-slate-500 uppercase font-mono block mb-1">Key Deliverables</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              {currentCap.keyPoints.map((pt, i) => (
+                <div key={i} className="flex items-center space-x-1.5 text-slate-300">
+                  <Check className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span className="truncate">{pt}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
       </div>

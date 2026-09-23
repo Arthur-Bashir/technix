@@ -5,20 +5,21 @@ import {
   ShieldCheck, 
   Clock, 
   Coins, 
-  CheckCircle2,
   Search,
   FileText,
   Cpu,
+  CheckCircle,
+  Rocket,
   LifeBuoy
 } from 'lucide-react';
-import { COMPANY_INFO } from '../data/technixData';
+import { COMPANY_INFO, HOW_WE_WORK_STEPS } from '../data/technixData';
 
 interface HowWeWorkSectionProps {
   onOpenQuote: (service?: string) => void;
 }
 
 export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote }) => {
-  const [activeStep, setActiveStep] = useState<number>(0);
+  const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
 
   const handleWhatsApp = () => {
     const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(
@@ -27,179 +28,146 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const stages = [
-    {
-      step: '01',
-      verb: 'Understand',
-      title: 'Operational Assessment',
-      icon: Search,
-      summary: 'We begin with a focused conversation to understand your workflow bottlenecks, existing hardware/software environment, and operational goals.',
-      deliverable: 'Clarity on requirements, scope boundaries, and technical constraints.',
-    },
-    {
-      step: '02',
-      verb: 'Propose',
-      title: 'Milestone Scope & Fixed Quote',
-      icon: FileText,
-      summary: 'You receive an itemized technical proposal with clearly defined deliverables, realistic timelines, and fixed Malawi Kwacha pricing.',
-      deliverable: 'Transparent agreement with no hidden costs or surprise fees.',
-    },
-    {
-      step: '03',
-      verb: 'Deliver',
-      title: 'Direct Engineering & Setup',
-      icon: Cpu,
-      summary: 'Our engineers build, configure, and thoroughly test the solution on your actual office computers, network, and mobile devices before go-live.',
-      deliverable: 'Working deployment verified against your operational needs.',
-    },
-    {
-      step: '04',
-      verb: 'Support',
-      title: 'Ongoing Operational Care',
-      icon: LifeBuoy,
-      summary: 'Following handover, we provide staff orientation, scheduled preventative maintenance, backup routines, and reliable on-call technical help.',
-      deliverable: 'Direct engineering contact for queries, upgrades, or emergency support.',
-    },
-  ];
+  const stepIcons = [Search, FileText, Cpu, CheckCircle, Rocket, LifeBuoy];
+
+  const steps = HOW_WE_WORK_STEPS.map((s, idx) => ({
+    ...s,
+    icon: stepIcons[idx] || Search,
+  }));
+
+  const currentStep = steps[activeStepIndex] || steps[0];
 
   return (
-    <section id="how-we-work" className="py-24 bg-[#060b16] text-white relative border-b border-slate-800/80">
+    <section id="how-we-work" className="py-24 bg-[#050811] text-white relative border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 space-y-4">
-          <div className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
-            Engagement Process
+          <div className="text-xs font-mono font-medium uppercase tracking-wider text-sky-400">
+            Engineering Workflow
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
-            A Structured Engineering Engagement
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
+            How TechNix Works
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
-            Every project follows a disciplined four-stage trajectory — from initial operational assessment through fixed-scope delivery and ongoing technical support.
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
+            A structured, 6-stage engineering trajectory designed to eliminate surprises, deliver working systems on schedule, and provide dependable operational support.
           </p>
         </div>
 
-        {/* CONNECTED CONDUIT TIMELINE (Desktop 4-Stage Horizontal Flow) */}
-        <div className="hidden lg:block mb-16 relative">
+        {/* 6-Stage Engineering Progression: Sequence with Connecting Indicators */}
+        <div className="mb-14">
           
-          {/* Connecting Infrastructure Conduit Line */}
-          <div className="absolute top-7 left-12 right-12 h-[2px] bg-slate-800 -z-0" />
-          <div 
-            className="absolute top-7 left-12 h-[2px] bg-gradient-to-r from-sky-500 via-sky-400 to-emerald-400 transition-all duration-500 -z-0"
-            style={{ width: `${(activeStep / (stages.length - 1)) * 100}%` }}
-          />
+          {/* Horizontal Sequential Stepper (Desktop & Tablet) */}
+          <div className="relative pb-6">
+            {/* Base Line */}
+            <div className="hidden md:block absolute top-6 left-6 right-6 h-[1px] bg-slate-800" />
+            
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4 relative z-10">
+              {steps.map((st, idx) => {
+                const isSelected = activeStepIndex === idx;
+                const isCompleted = idx < activeStepIndex;
+                const Icon = st.icon;
 
-          <div className="grid grid-cols-4 gap-8 relative z-10">
-            {stages.map((st, idx) => {
-              const isSelected = activeStep === idx;
-              const isPassed = idx <= activeStep;
-              const Icon = st.icon;
-              return (
-                <button
-                  key={st.step}
-                  onClick={() => setActiveStep(idx)}
-                  className="text-left group cursor-pointer transition-all duration-200 focus:outline-none"
-                >
-                  <div className="flex flex-col items-start">
-                    {/* Node Dot */}
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-mono font-bold text-sm mb-5 transition-all duration-300 border ${
-                      isSelected
-                        ? 'bg-sky-500 text-white border-sky-400 shadow-lg shadow-sky-500/30 scale-105'
-                        : isPassed
-                        ? 'bg-slate-900 text-sky-400 border-sky-600/50'
-                        : 'bg-[#050811] text-slate-400 border-slate-800 group-hover:border-slate-700'
-                    }`}>
-                      <Icon className="w-5 h-5" />
+                return (
+                  <button
+                    key={st.step}
+                    onClick={() => setActiveStepIndex(idx)}
+                    className="text-left group cursor-pointer p-3 rounded-xl transition-colors"
+                  >
+                    <div className="flex items-center space-x-3 md:flex-col md:items-start md:space-x-0">
+                      {/* Node Indicator */}
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center font-mono font-bold text-xs mb-3 transition-colors border ${
+                        isSelected
+                          ? 'bg-sky-500 text-white border-sky-400'
+                          : isCompleted
+                          ? 'bg-slate-900 text-sky-400 border-sky-500/40'
+                          : 'bg-[#080d1a] text-slate-400 border-slate-800 group-hover:border-slate-700'
+                      }`}>
+                        <Icon className="w-4 h-4" />
+                      </div>
+
+                      <div>
+                        <div className="text-xs font-mono font-medium text-sky-400">
+                          {st.step}
+                        </div>
+                        <div className={`text-sm font-bold transition-colors ${
+                          isSelected ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'
+                        }`}>
+                          {st.title}
+                        </div>
+                      </div>
                     </div>
-
-                    <div className="text-xs font-mono font-semibold uppercase text-sky-400 tracking-wider mb-1">
-                      {st.step} · {st.verb}
-                    </div>
-
-                    <h4 className="text-base font-bold text-white mb-2 group-hover:text-sky-300 transition-colors">
-                      {st.title}
-                    </h4>
-
-                    <p className="text-xs text-slate-300 leading-relaxed font-normal mb-3">
-                      {st.summary}
-                    </p>
-
-                    <div className="text-[11px] font-mono text-emerald-400/90 flex items-center space-x-1.5 pt-2 border-t border-slate-800/80 w-full">
-                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                      <span>{st.deliverable}</span>
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* MOBILE & TABLET CONNECTED VERTICAL PATH */}
-        <div className="lg:hidden space-y-6 mb-16 relative">
-          <div className="absolute top-4 bottom-4 left-6 w-[2px] bg-slate-800" />
-
-          {stages.map((st) => {
-            const Icon = st.icon;
-            return (
-              <div key={st.step} className="relative flex items-start space-x-5 pl-2">
-                <div className="w-9 h-9 rounded-xl bg-slate-900 border border-sky-500/40 text-sky-400 flex items-center justify-center font-mono font-bold text-xs shrink-0 relative z-10">
-                  <Icon className="w-4 h-4" />
-                </div>
-
-                <div className="bg-[#090e1a] border border-slate-800/80 rounded-2xl p-5 flex-1 space-y-1.5">
-                  <div className="text-xs font-mono font-semibold uppercase text-sky-400">
-                    {st.step} · {st.verb}
-                  </div>
-                  <h4 className="text-base font-bold text-white">
-                    {st.title}
-                  </h4>
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                    {st.summary}
-                  </p>
-                  <div className="text-[11px] font-mono text-emerald-400 pt-2 border-t border-slate-800 flex items-center space-x-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                    <span>{st.deliverable}</span>
-                  </div>
-                </div>
+          {/* Active Stage Detailed Breakdown (Editorial, Non-boxed) */}
+          <div className="bg-[#070d1a] border border-slate-800/80 rounded-2xl p-8 sm:p-10 space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+              <div className="flex items-center space-x-3">
+                <span className="text-sm font-mono font-bold text-sky-400">
+                  STAGE {currentStep.step} OF 06
+                </span>
+                <span className="text-slate-600">/</span>
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                  {currentStep.desc}
+                </span>
               </div>
-            );
-          })}
+
+              <span className="text-xs font-mono text-emerald-400">
+                Engineering Discipline
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-8 space-y-3">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  {currentStep.title}
+                </h3>
+                <p className="text-base text-slate-300 leading-relaxed font-normal">
+                  {currentStep.detail}
+                </p>
+              </div>
+
+              <div className="md:col-span-4 border-l border-slate-800/80 pl-6 space-y-2 text-xs font-mono text-slate-400">
+                <div className="text-slate-500 uppercase tracking-wider font-semibold">Stage Objective</div>
+                <div className="text-slate-300 font-normal leading-relaxed">{currentStep.desc}</div>
+                <div className="pt-2 text-sky-400">Fixed deliverables &amp; agreed checkpoints</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        {/* Institutional Assurances Bar */}
-        <div className="bg-[#050811] border border-slate-850 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Institutional Assurances Bar: Containerless / Subtle Line */}
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full md:w-auto">
             
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-sky-400 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
+              <ShieldCheck className="w-4 h-4 text-sky-400 shrink-0" />
               <div>
-                <span className="text-xs font-bold text-white block">Transparent Terms</span>
-                <span className="text-[11px] text-slate-400">Defined scope with no unapproved costs</span>
+                <span className="font-bold text-white block">Transparent Terms</span>
+                <span className="text-slate-400">Defined scope with no unapproved costs</span>
               </div>
             </div>
 
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-emerald-400 flex items-center justify-center shrink-0">
-                <Clock className="w-4 h-4" />
-              </div>
+              <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
               <div>
-                <span className="text-xs font-bold text-white block">Agreed Milestones</span>
-                <span className="text-[11px] text-slate-400">Scheduled delivery phases</span>
+                <span className="font-bold text-white block">Agreed Milestones</span>
+                <span className="text-slate-400">Scheduled delivery phases</span>
               </div>
             </div>
 
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-amber-400 flex items-center justify-center shrink-0">
-                <Coins className="w-4 h-4" />
-              </div>
+              <Coins className="w-4 h-4 text-amber-400 shrink-0" />
               <div>
-                <span className="text-xs font-bold text-white block">Local Kwacha Billing</span>
-                <span className="text-[11px] text-slate-400">No foreign exchange surprises</span>
+                <span className="font-bold text-white block">Local Kwacha Invoicing</span>
+                <span className="text-slate-400">Predictable local business billing</span>
               </div>
             </div>
 
@@ -208,7 +176,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
           <div className="flex items-center space-x-3 shrink-0 w-full md:w-auto justify-end">
             <button
               onClick={() => onOpenQuote('Standard Engagement')}
-              className="px-5 py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30"
+              className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl transition-all flex items-center space-x-1.5 cursor-pointer border border-sky-400/30"
             >
               <span>Start an Engagement</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -216,7 +184,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
 
             <button
               onClick={handleWhatsApp}
-              className="p-3 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 rounded-xl transition-colors flex items-center space-x-1.5 text-xs font-semibold cursor-pointer"
+              className="p-2.5 bg-transparent hover:bg-slate-900 text-slate-300 hover:text-emerald-400 border border-slate-800 rounded-xl transition-colors flex items-center space-x-1.5 text-xs font-medium cursor-pointer"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>WhatsApp</span>

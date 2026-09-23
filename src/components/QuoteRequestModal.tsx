@@ -215,8 +215,8 @@ Notes: ${notes || 'No additional notes.'}`;
               </div>
 
               <div className="text-center text-[11px] text-slate-400 flex items-center justify-center space-x-1 font-mono">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Encrypted direct routing to TechNix engineering helpdesk.</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
+                <span>Direct routing to TechNix Africa team.</span>
               </div>
             </form>
           )}

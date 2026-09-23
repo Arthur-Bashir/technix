@@ -37,22 +37,22 @@ export const DigitalHealthCheckSection: React.FC<DigitalHealthCheckSectionProps>
               </h2>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-2xl">
-                Most organisations lose commercial credibility, donor funding, or daily productivity to subtle vulnerabilities: free personal emails, unbacked databases, or missing mobile web presence. Our 3-minute health check identifies your highest-risk bottlenecks.
+                Most organisations lose commercial credibility, donor funding, or daily productivity to subtle vulnerabilities: free personal emails, unbacked databases, or missing mobile web presence. Our digital health check identifies your key operational priorities.
               </p>
 
               {/* 3 Quiet Checkpoints */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs text-slate-300">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Website & Online Visibility</span>
+                  <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>Website &amp; Online Visibility</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Email Security & Domain Trust</span>
+                  <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>Email Security &amp; Domain Setup</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Backup & Network Reliability</span>
+                  <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>Backup &amp; Network Reliability</span>
                 </div>
               </div>
             </div>
@@ -61,18 +61,18 @@ export const DigitalHealthCheckSection: React.FC<DigitalHealthCheckSectionProps>
               <button
                 onClick={onOpenInteractiveCheck}
                 id="run-health-check-btn"
-                className="w-full py-4 px-6 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-sky-600/20 transition-all cursor-pointer flex items-center justify-center space-x-2 border border-sky-400/30"
+                className="w-full py-4 px-6 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center space-x-2 border border-sky-400/30"
               >
-                <span>Run a Digital Health Check</span>
+                <span>Run Digital Health Check</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
                 onClick={handleWhatsApp}
-                className="w-full py-3.5 px-6 bg-[#050811] hover:bg-[#0c1424] text-emerald-400 border border-slate-800 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center space-x-2 cursor-pointer"
+                className="w-full py-3.5 px-6 bg-[#050811] hover:bg-[#0c1424] text-slate-300 hover:text-emerald-400 border border-slate-800 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Request 15-Min Walkthrough</span>
+                <span>Discuss Assessment on WhatsApp</span>
               </button>
             </div>
 

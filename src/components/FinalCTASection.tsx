@@ -73,19 +73,19 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
           </a>
         </div>
 
-        {/* Three Quiet Commercial Confidence Pillars */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 max-w-3xl mx-auto text-xs font-mono text-slate-300">
-          <div className="p-4 rounded-2xl bg-[#090e1a] border border-slate-800/80 flex items-center justify-center space-x-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        {/* Three Quiet Commercial Confidence Pillars - Clean Containerless Dividers */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-8 max-w-3xl mx-auto text-xs font-mono text-slate-400 border-t border-slate-800/80">
+          <div className="flex items-center space-x-2">
+            <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
             <span>Transparent Kwacha Pricing</span>
           </div>
-          <div className="p-4 rounded-2xl bg-[#090e1a] border border-slate-800/80 flex items-center justify-center space-x-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Blantyre & Lilongwe Hubs</span>
+          <div className="flex items-center space-x-2">
+            <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+            <span>Blantyre &amp; Lilongwe Hubs</span>
           </div>
-          <div className="p-4 rounded-2xl bg-[#090e1a] border border-slate-800/80 flex items-center justify-center space-x-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Direct Senior Engineers</span>
+          <div className="flex items-center space-x-2">
+            <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+            <span>Direct Technical Engineers</span>
           </div>
         </div>
 
