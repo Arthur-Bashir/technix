@@ -1,5 +1,16 @@
 import React from 'react';
-import { Mail, Check, X, Shield, Smartphone, ArrowRight, MessageSquare, Lock, Users, Server, HelpCircle, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { 
+  Mail, 
+  Check, 
+  X, 
+  ShieldCheck, 
+  Smartphone, 
+  ArrowRight, 
+  MessageSquare, 
+  Lock, 
+  ShieldAlert,
+  Laptop
+} from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
 interface BusinessEmailSectionProps {
@@ -14,148 +25,149 @@ export const BusinessEmailSection: React.FC<BusinessEmailSectionProps> = ({ onOp
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const emailExamples = [
-    { prefix: 'info', domain: 'yourcompany.mw', desc: 'General client inquiries & corporate correspondence' },
-    { prefix: 'director', domain: 'yourcompany.mw', desc: 'Executive communications, board papers & banking' },
-    { prefix: 'finance', domain: 'yourcompany.mw', desc: 'Invoicing, procurement contracts & supplier billing' },
-    { prefix: 'support', domain: 'yourcompany.mw', desc: 'Customer helpdesk, operational logistics & field triage' },
-  ];
-
-  const setupSteps = [
-    { title: 'Domain Verification', desc: 'We register or link your official company web domain (.mw or .com).', icon: Server },
-    { title: 'Cryptographic Authentication', desc: 'SPF, DKIM & DMARC records to stop spam folders and spoofing.', icon: Lock },
-    { title: 'Mailbox Provisioning', desc: 'Provisioning dedicated secure inboxes for your directors, departments, and staff.', icon: Mail },
-    { title: 'Mobile & Outlook Sync', desc: 'Hands-on configuration on iPhone, Android, Outlook, and webmail portals.', icon: Smartphone },
-    { title: 'Local Malawi Helpdesk', desc: 'Direct Blantyre & Lilongwe telephone and WhatsApp support for resets & expansion.', icon: HelpCircle },
+  const mailboxes = [
+    { prefix: 'director', domain: 'yourcompany.mw', role: 'Executive tenders & banking communications' },
+    { prefix: 'finance', domain: 'yourcompany.mw', role: 'Invoices, payroll & audited supplier contracts' },
+    { prefix: 'orders', domain: 'yourcompany.mw', role: 'Customer orders, quotes & client correspondence' },
+    { prefix: 'support', domain: 'yourcompany.mw', role: 'Helpdesk, logistics & customer inquiries' },
   ];
 
   return (
-    <section id="business-email" className="py-24 bg-[#030712] text-white relative border-b border-slate-800/80">
-      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-emerald-600/5 blur-[150px] pointer-events-none rounded-full" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="business-email" className="py-24 bg-[#080f20] text-white relative border-b border-slate-800/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-14 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-emerald-400 shadow-md">
-            <Mail className="w-3.5 h-3.5" />
-            <span className="font-semibold uppercase tracking-wider">Module 02 // Enterprise Identity & Email Defense</span>
+        <div className="max-w-3xl mb-16 space-y-4">
+          <div className="text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400">
+            Corporate Identity & Email
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-            Use Your Own Business Email Address & <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-sky-400 bg-clip-text text-transparent">
-              Command Institutional Commercial Trust
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
+            Stop Submitting High-Value Tenders from a Personal @gmail.com Address
           </h2>
 
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-            When you send a quote, proposal, or tender from a free @gmail.com address, corporate buyers and donors question your legitimacy. Branded domain inboxes establish authority before they even open your message.
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
+            Corporate procurement committees, banks, and international donors review your email domain before opening your bid. Branded inboxes establish trust before negotiations begin.
           </p>
         </div>
 
-        {/* Comparison & Examples Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
+        {/* Identity & Visual Comparison Canvas */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch mb-14">
           
-          {/* Left: Examples Box */}
-          <div className="lg:col-span-6 space-y-4">
-            <div className="glass-panel rounded-3xl p-6 sm:p-7 space-y-4">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
-                Branded Mailbox Infrastructure
-              </span>
-              
-              <div className="space-y-2.5">
-                {emailExamples.map((item, idx) => (
-                  <div key={idx} className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center justify-between">
+          {/* Left: The Corporate Reality (Col 1-7) */}
+          <div className="lg:col-span-7 bg-[#050811] border border-slate-800 rounded-3xl p-8 sm:p-10 space-y-8 flex flex-col justify-between shadow-2xl">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+                <span className="text-xs font-mono font-semibold uppercase text-emerald-400 tracking-wider">
+                  Verified Enterprise Inboxes
+                </span>
+                <span className="text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-800/50 px-2.5 py-0.5 rounded-full">
+                  Starting from MK 7,500 / month
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                {mailboxes.map((mb, idx) => (
+                  <div key={idx} className="p-4 rounded-xl bg-[#090e1a] border border-slate-800 flex items-center justify-between">
                     <div>
                       <div className="font-mono text-sm sm:text-base font-bold text-white flex items-center space-x-1">
-                        <span className="text-emerald-400">{item.prefix}</span>
+                        <span className="text-emerald-400">{mb.prefix}</span>
                         <span className="text-slate-400">@</span>
-                        <span className="text-sky-300">{item.domain}</span>
+                        <span className="text-sky-300">{mb.domain}</span>
                       </div>
-                      <div className="text-[11px] text-slate-400 mt-0.5">{item.desc}</div>
+                      <div className="text-xs text-slate-400 mt-1">{mb.role}</div>
                     </div>
                     <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/40">
-                      SECURED
+                      AUTHENTICATED
                     </span>
                   </div>
                 ))}
               </div>
-
-              {/* Free vs Branded Comparison */}
-              <div className="mt-6 pt-6 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-2xl bg-red-950/20 border border-red-900/40">
-                  <div className="flex items-center space-x-2 text-red-400 text-xs font-bold mb-2">
-                    <ShieldAlert className="w-4 h-4 shrink-0" />
-                    <span>Free Gmail / Yahoo Inboxes</span>
-                  </div>
-                  <ul className="space-y-1.5 text-xs text-slate-300">
-                    <li className="flex items-center space-x-1.5"><X className="w-3.5 h-3.5 text-red-400 shrink-0" /><span>Rejected by corporate procurement tenders</span></li>
-                    <li className="flex items-center space-x-1.5"><X className="w-3.5 h-3.5 text-red-400 shrink-0" /><span>Departing staff take customer history</span></li>
-                    <li className="flex items-center space-x-1.5"><X className="w-3.5 h-3.5 text-red-400 shrink-0" /><span>Zero centralized ownership or security</span></li>
-                  </ul>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-900/40">
-                  <div className="flex items-center space-x-2 text-emerald-400 text-xs font-bold mb-2">
-                    <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>TechNix Branded Inboxes</span>
-                  </div>
-                  <ul className="space-y-1.5 text-xs text-slate-200">
-                    <li className="flex items-center space-x-1.5"><Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" /><span>Immediate credibility with banks & donors</span></li>
-                    <li className="flex items-center space-x-1.5"><Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" /><span>You own and retain all client correspondence</span></li>
-                    <li className="flex items-center space-x-1.5"><Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" /><span>Protected by SPF, DKIM & spam defense</span></li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div>
 
-          {/* Right: Setup Flow & Quote Trigger */}
-          <div className="lg:col-span-6 space-y-4">
-            <div className="glass-panel-elevated rounded-3xl p-6 sm:p-8 space-y-6">
-              <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                  DEPLOYMENT LIFECYCLE
-                </span>
-                <h3 className="text-xl font-bold text-white">How We Deploy Your Company Inboxes</h3>
+            <div className="pt-6 border-t border-slate-800/80 space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono text-slate-300">
+                <div className="flex items-center space-x-2 bg-[#090e1a] p-3 rounded-xl border border-slate-800">
+                  <Lock className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>SPF & DKIM Protection</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-[#090e1a] p-3 rounded-xl border border-slate-800">
+                  <Smartphone className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Syncs to Phone & PC</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-[#090e1a] p-3 rounded-xl border border-slate-800">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Passes Audits</span>
+                </div>
               </div>
 
-              <div className="space-y-4">
-                {setupSteps.map((step, idx) => {
-                  const Icon = step.icon;
-                  return (
-                    <div key={idx} className="flex items-start space-x-3.5">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-950/80 border border-emerald-800/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-white">{step.title}</h4>
-                        <p className="text-xs text-slate-300 mt-0.5">{step.desc}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
-                  onClick={() => onOpenQuote('Business Domain Email')}
-                  className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/20 transition-all cursor-pointer flex items-center justify-center space-x-2 border border-emerald-400/40"
+                  onClick={() => onOpenQuote('Professional Business Email')}
+                  className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-emerald-950/40 flex items-center space-x-2 cursor-pointer border border-emerald-400/30"
                 >
-                  <span>Request Business Email Quote</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>Configure Business Email</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={handleWhatsApp}
-                  className="py-3 px-4 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 font-semibold text-xs rounded-xl flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+                  className="px-5 py-3 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center space-x-2 cursor-pointer"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  <span>Ask on WhatsApp</span>
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Chat on WhatsApp</span>
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* Right: The Vulnerability Risk (Col 8-12) */}
+          <div className="lg:col-span-5 bg-[#090e1a] border border-slate-800 rounded-3xl p-8 sm:p-10 space-y-6 flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2 text-rose-400 text-xs font-mono font-bold uppercase tracking-wider">
+                <ShieldAlert className="w-4 h-4" />
+                <span>The Cost of Free Personal Inboxes</span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white">
+                Why businesses lose money using generic @gmail.com accounts
+              </h3>
+
+              <div className="space-y-4 pt-2">
+                <div className="bg-[#050811] border border-rose-950/40 rounded-2xl p-4 space-y-1">
+                  <div className="text-xs font-bold text-rose-300 flex items-center gap-2">
+                    <X className="w-3.5 h-3.5 text-rose-400" />
+                    <span>Failed Corporate Procurement Audits</span>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Formal tender boards disqualify vendor proposals that use unverifiable free consumer email addresses.
+                  </p>
+                </div>
+
+                <div className="bg-[#050811] border border-rose-950/40 rounded-2xl p-4 space-y-1">
+                  <div className="text-xs font-bold text-rose-300 flex items-center gap-2">
+                    <X className="w-3.5 h-3.5 text-rose-400" />
+                    <span>Departing Staff Take Client Records</span>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    When an employee leaves, their personal email account leaves with them, taking your customer conversations and quotations.
+                  </p>
+                </div>
+
+                <div className="bg-[#050811] border border-rose-950/40 rounded-2xl p-4 space-y-1">
+                  <div className="text-xs font-bold text-rose-300 flex items-center gap-2">
+                    <X className="w-3.5 h-3.5 text-rose-400" />
+                    <span>Invoices Trigger Spam Filters</span>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Free accounts lack cryptographic domain signatures, causing financial invoices and quotes to land directly in customer spam folders.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-slate-800/80 text-xs text-slate-400">
+              TechNix configures domain ownership, mailbox provisioning, and phone synchronization within 24 to 48 hours.
             </div>
           </div>
 

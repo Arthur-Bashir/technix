@@ -1,20 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   GraduationCap, 
   ArrowRight, 
   MessageSquare, 
   CheckCircle2, 
-  Users, 
   Laptop, 
-  Sparkles, 
-  Code, 
-  FileSpreadsheet, 
-  Wrench, 
-  Calendar,
+  Users, 
   Award,
-  Shield,
+  FileSpreadsheet,
   BarChart,
-  Globe
+  Code,
+  Shield,
+  Sparkles,
+  Briefcase
 } from 'lucide-react';
 import { COURSES, COMPANY_INFO } from '../data/technixData';
 
@@ -23,6 +21,8 @@ interface TechNixAcademySectionProps {
 }
 
 export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ onOpenQuote }) => {
+  const [selectedCourseId, setSelectedCourseId] = useState<string>(COURSES[0].id);
+
   const handleWhatsApp = (courseTitle?: string) => {
     const msg = courseTitle
       ? `Hello TechNix Academy, I would like to inquire about enrolling in: ${courseTitle}.`
@@ -30,6 +30,8 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
     const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
+
+  const selectedCourse = COURSES.find(c => c.id === selectedCourseId) || COURSES[0];
 
   const getCourseIcon = (id: string) => {
     switch (id) {
@@ -43,172 +45,176 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
   };
 
   return (
-    <section id="technix-academy" className="py-24 bg-[#040814] text-white border-b border-slate-800/80 relative">
-      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-amber-600/5 blur-[160px] pointer-events-none rounded-full" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="technix-academy" className="py-24 bg-[#0a0f1d] text-white relative border-b border-slate-800/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-amber-400 shadow-md">
-            <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
-            <span className="font-semibold uppercase tracking-wider">Human Capital Infrastructure</span>
+        <div className="max-w-3xl mb-16 space-y-4">
+          <div className="text-xs font-mono font-semibold uppercase tracking-wider text-amber-400">
+            Workforce Training
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-            TechNix Academy: Practical <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-amber-400 via-yellow-200 to-emerald-400 bg-clip-text text-transparent">
-              Technology Workforce Training
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
+            Practical Technology Skills Taught by Engineers Building Real Systems
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
-            Technology is only as effective as the people operating it. TechNix Academy delivers rigorous, hands-on masterclasses designed to build immediate operational capability for working professionals and organisations.
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
+            Most technology training is either abstract theory or disconnected from African workplace realities. TechNix Academy delivers hands-on masterclasses using real commercial datasets.
           </p>
         </div>
 
-        {/* 3 Academy Pillars */}
+        {/* 3 Workforce Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="glass-panel rounded-2xl p-6 border border-slate-800/90 flex items-start space-x-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-800/40 text-amber-400 flex items-center justify-center shrink-0 shadow-inner">
-              <Laptop className="w-6 h-6" />
+          <div className="bg-[#0e172a] border border-slate-800/80 rounded-2xl p-6 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-800/40 text-amber-400 flex items-center justify-center">
+              <Laptop className="w-5 h-5" />
             </div>
-            <div>
-              <h3 className="text-base font-bold text-white mb-1">100% Practical Labs</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Zero theoretical fluff. Every session involves building actual spreadsheets, data models, or code on your computer.
-              </p>
-            </div>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-6 border border-slate-800/90 flex items-start space-x-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-800/40 text-amber-400 flex items-center justify-center shrink-0 shadow-inner">
-              <Users className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-white mb-1">Small Cohorts & Mentorship</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Maximum 12 participants per cohort ensures every attendee receives personalized guidance from our senior engineering leads.
-              </p>
-            </div>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-6 border border-slate-800/90 flex items-start space-x-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-800/40 text-amber-400 flex items-center justify-center shrink-0 shadow-inner">
-              <Award className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-white mb-1">Institutional Upskilling</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Custom on-site training packages for corporate departments, finance teams, NGOs, and government agencies.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Masterclasses Grid */}
-        <div className="mb-14">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                Active Curriculum
-              </span>
-              <h3 className="text-2xl font-bold text-white">Upcoming Practical Cohorts</h3>
-            </div>
-            <button
-              onClick={() => handleWhatsApp()}
-              className="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center space-x-1 cursor-pointer"
-            >
-              <span>Download Full Syllabus</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {COURSES.map((course) => {
-              const Icon = getCourseIcon(course.id);
-              return (
-                <div
-                  key={course.id}
-                  className="glass-panel rounded-2xl p-6 border border-slate-800/90 hover:border-amber-500/40 transition-all flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-800/40 text-amber-400 flex items-center justify-center group-hover:scale-105 group-hover:bg-amber-600 group-hover:text-white transition-all shadow-inner">
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <span className="text-xs font-mono font-black text-amber-400 bg-amber-950/60 border border-amber-800/40 px-2.5 py-1 rounded-md">
-                        {course.fee}
-                      </span>
-                    </div>
-
-                    <h4 className="text-lg font-bold text-white mb-1 group-hover:text-amber-300 transition-colors">
-                      {course.title}
-                    </h4>
-                    <span className="text-xs font-semibold text-sky-400 block mb-3 font-mono">
-                      Duration: {course.duration}
-                    </span>
-                    <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                      {course.summary}
-                    </p>
-
-                    <div className="space-y-2 mb-6">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
-                        Core Competencies:
-                      </span>
-                      {course.outcomes.map((t, tIdx) => (
-                        <div key={tIdx} className="flex items-start space-x-2 text-xs text-slate-200">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 mt-0.5 shrink-0" />
-                          <span>{t}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-2 pt-4 border-t border-slate-800/80">
-                    <button
-                      onClick={() => onOpenQuote(`${course.title} Enrollment`)}
-                      className="w-full py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs rounded-xl flex items-center justify-center space-x-1.5 transition-all cursor-pointer shadow-md shadow-amber-600/20 border border-amber-400/30"
-                    >
-                      <span>Enroll in {course.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <button
-                      onClick={() => handleWhatsApp(course.title)}
-                      className="w-full py-2 bg-slate-900/90 hover:bg-slate-800 text-emerald-400 border border-slate-700/80 text-xs font-semibold rounded-xl flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
-                      <span>WhatsApp Course Coordinator</span>
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Corporate Training Custom Banner */}
-        <div className="glass-panel-elevated rounded-3xl p-8 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-left">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 block">
-              ENTERPRISE & IN-HOUSE WORKSHOPS
-            </span>
-            <h3 className="text-xl sm:text-2xl font-black text-white">
-              Need Customized Group Training for Your Organisation?
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              We deliver tailored on-site masterclasses in Advanced Excel, Power BI, and IT Security directly at your offices in Blantyre, Lilongwe, or Zomba.
+            <h4 className="text-base font-bold text-white">
+              100% Practical Labs
+            </h4>
+            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+              Zero slideshow filler. Every session is conducted on laptops with real business spreadsheets, databases, and code.
             </p>
           </div>
 
-          <button
-            onClick={() => onOpenQuote('Corporate In-House Academy Training')}
-            className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-amber-400 border border-amber-500/40 rounded-xl font-bold text-xs shrink-0 cursor-pointer shadow-lg transition-all"
-          >
-            Request Corporate Proposal
-          </button>
+          <div className="bg-[#0e172a] border border-slate-800/80 rounded-2xl p-6 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-800/40 text-amber-400 flex items-center justify-center">
+              <Users className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-white">
+              Small Mentorship Cohorts
+            </h4>
+            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+              Limited to 12 participants per intake to ensure one-on-one attention and hands-on debugging with lead instructors.
+            </p>
+          </div>
+
+          <div className="bg-[#0e172a] border border-slate-800/80 rounded-2xl p-6 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-800/40 text-amber-400 flex items-center justify-center">
+              <Briefcase className="w-5 h-5" />
+            </div>
+            <h4 className="text-base font-bold text-white">
+              Corporate On-Site Workshops
+            </h4>
+            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+              Tailored on-site training programs for entire finance departments, administrative teams, and project officers.
+            </p>
+          </div>
+        </div>
+
+        {/* Master-Detail Course Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Course List (Col 1-5) */}
+          <div className="lg:col-span-5 space-y-3">
+            <div className="text-xs font-mono font-semibold uppercase text-slate-400 tracking-wider mb-2">
+              Available Masterclasses
+            </div>
+
+            {COURSES.map((course) => {
+              const isSelected = course.id === selectedCourseId;
+              const Icon = getCourseIcon(course.id);
+              return (
+                <button
+                  key={course.id}
+                  onClick={() => setSelectedCourseId(course.id)}
+                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                    isSelected
+                      ? 'bg-[#141f38] border-amber-500/60 shadow-lg'
+                      : 'bg-[#0e172a]/80 hover:bg-[#121c32] border-slate-800/80 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center space-x-3.5 pr-2">
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border ${
+                      isSelected ? 'bg-amber-500 text-white border-amber-400' : 'bg-slate-900 text-amber-400 border-slate-800'
+                    }`}>
+                      <Icon className="w-4 h-4" />
+                    </div>
+
+                    <div>
+                      <div className="text-[11px] font-mono text-slate-400">
+                        {course.duration} · {course.level}
+                      </div>
+                      <h4 className="text-sm font-bold text-white leading-snug">
+                        {course.title}
+                      </h4>
+                    </div>
+                  </div>
+
+                  <span className="text-xs font-mono font-bold text-amber-400 shrink-0">
+                    {course.fee}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Selected Course Dossier (Col 6-12) */}
+          <div className="lg:col-span-7 bg-[#0e172a] border border-slate-800 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+                <span className="text-xs font-mono font-semibold uppercase text-amber-400 tracking-wider">
+                  {selectedCourse.level} · {selectedCourse.duration}
+                </span>
+
+                <span className="text-sm font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-3 py-1 rounded-xl">
+                  {selectedCourse.fee}
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-black text-white leading-tight">
+                {selectedCourse.title}
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                {selectedCourse.summary}
+              </p>
+
+              <div className="pt-2">
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-3">
+                  Core Skills Learned & Practical Deliverables
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {selectedCourse.outcomes.map((topic, idx) => (
+                    <div key={idx} className="flex items-start space-x-2 text-xs text-slate-200">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 mt-0.5 shrink-0" />
+                      <span>{topic}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-[#080d19] border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-1">
+                <span className="font-semibold text-white">Includes: </span>
+                Verified Certificate of Practical Completion, exercise files, reusable workplace templates, and 30 days instructor follow-up support.
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
+              <span className="text-xs font-mono text-slate-400">
+                Corporate group rates available for 5+ staff
+              </span>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => onOpenQuote(`Enroll in ${selectedCourse.title}`)}
+                  className="px-5 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center space-x-1.5 cursor-pointer border border-amber-400/30"
+                >
+                  <span>Enroll in Masterclass</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+
+                <button
+                  onClick={() => handleWhatsApp(selectedCourse.title)}
+                  className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 transition-colors flex items-center cursor-pointer"
+                  title="Inquire on WhatsApp"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
