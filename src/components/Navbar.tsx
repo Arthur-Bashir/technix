@@ -40,8 +40,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   // Customer-facing navigation structure
   const navLinks = [
     { name: 'Solutions', href: '#solutions' },
-    { name: 'Products', href: '#products-catalog' },
-    { name: 'Industries', href: '#industries' },
+    { name: 'Capabilities', href: '#capabilities' },
+    { name: 'Proof & Trust', href: '#case-studies' },
     { name: 'How We Work', href: '#how-we-work' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },

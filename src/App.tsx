@@ -4,18 +4,11 @@ import { Spatial3DHero } from './components/Spatial3DHero';
 import { MotionSection } from './components/MotionSection';
 import { QuickNeedSelector } from './components/QuickNeedSelector';
 import { SolutionsYouCanStartWith } from './components/SolutionsYouCanStartWith';
-import { ProductsPage } from './components/ProductsPage';
-import { BusinessWebsiteSection } from './components/BusinessWebsiteSection';
-import { BusinessEmailSection } from './components/BusinessEmailSection';
-import { HostingDomainsSection } from './components/HostingDomainsSection';
-import { ITRescueSection } from './components/ITRescueSection';
-import { TechNixCareSection } from './components/TechNixCareSection';
-import { SoftwareSolutionsSection } from './components/SoftwareSolutionsSection';
-import { TechNixAcademySection } from './components/TechNixAcademySection';
-import { HowWeWorkSection } from './components/HowWeWorkSection';
+import { SelectedCapabilityStory } from './components/SelectedCapabilityStory';
 import { TrustCredibilitySection } from './components/TrustCredibilitySection';
 import { CaseStudiesSection } from './components/CaseStudiesSection';
 import { CustomerTypesSection } from './components/CustomerTypesSection';
+import { HowWeWorkSection } from './components/HowWeWorkSection';
 import { DigitalHealthCheckSection } from './components/DigitalHealthCheckSection';
 import { FinalCTASection } from './components/FinalCTASection';
 import { WhyTechNix } from './components/WhyTechNix';
@@ -78,9 +71,9 @@ export default function App() {
         onOpenITRescue={handleOpenITRescue}
       />
 
-      {/* Main Content Sections */}
+      {/* Main Curated Narrative Flow */}
       <main className="flex-1">
-        {/* 2. Spatial 3D Hero: Genuine WebGL African Digital Infrastructure Ecosystem */}
+        {/* 1. HERO: Spatial 3D Hero - Living African Digital Infrastructure Ecosystem */}
         <Spatial3DHero
           onOpenQuote={handleOpenQuote}
           onOpenHealthCheck={handleOpenHealthCheck}
@@ -88,7 +81,7 @@ export default function App() {
           onSelectSection={handleScrollToSection}
         />
 
-        {/* 3. Quick Need Selector: Fast Customer Orientation */}
+        {/* 2. CUSTOMER NEED / ORIENTATION: Human First-Person Pathways */}
         <MotionSection>
           <QuickNeedSelector
             onSelectNeed={handleSelectNeed}
@@ -97,7 +90,7 @@ export default function App() {
           />
         </MotionSection>
 
-        {/* 4. Solutions You Can Start With */}
+        {/* 3. CORE SOLUTIONS SHOWCASE: Commercial Showroom with Dominant Featured Solution */}
         <MotionSection>
           <SolutionsYouCanStartWith
             onOpenQuote={handleOpenQuote}
@@ -107,92 +100,53 @@ export default function App() {
           />
         </MotionSection>
 
-        {/* 5. Central Products Page & Commercial Catalog */}
+        {/* 4. SELECTED CAPABILITY / PRODUCT STORY: Curated Split-Screen Theater */}
         <MotionSection>
-          <ProductsPage
+          <SelectedCapabilityStory
             onOpenQuote={handleOpenQuote}
             onOpenITRescue={handleOpenITRescue}
             onOpenHealthCheck={handleOpenHealthCheck}
-            onSelectSection={handleScrollToSection}
           />
         </MotionSection>
 
-        {/* 6. Product 1: Business Websites */}
-        <MotionSection>
-          <BusinessWebsiteSection onOpenQuote={handleOpenQuote} />
-        </MotionSection>
-
-        {/* 7. Product 2: Business Email */}
-        <MotionSection>
-          <BusinessEmailSection onOpenQuote={handleOpenQuote} />
-        </MotionSection>
-
-        {/* 8. Product 3: Hosting & Domains */}
-        <MotionSection>
-          <HostingDomainsSection onOpenQuote={handleOpenQuote} />
-        </MotionSection>
-
-        {/* 9. Product 4: IT Rescue */}
-        <MotionSection>
-          <ITRescueSection onOpenITRescue={handleOpenITRescue} />
-        </MotionSection>
-
-        {/* 10. Product 5: TechNix Care */}
-        <MotionSection>
-          <TechNixCareSection onOpenQuote={handleOpenQuote} />
-        </MotionSection>
-
-        {/* 11. Product 6: Software Solutions */}
-        <MotionSection>
-          <SoftwareSolutionsSection onOpenQuote={handleOpenQuote} />
-        </MotionSection>
-
-        {/* 12. Product 7: TechNix Academy */}
-        <MotionSection>
-          <TechNixAcademySection onOpenQuote={handleOpenQuote} />
-        </MotionSection>
-
-        {/* 13. How We Work: 6-Step Customer Journey Process */}
-        <MotionSection>
-          <HowWeWorkSection onOpenQuote={handleOpenQuote} />
-        </MotionSection>
-
-        {/* 14. Trust & Credibility: Enterprise-grade Client Proof */}
+        {/* 5. PROOF / TRUST: Brought Forward Early (PACT Malawi, Save the Children, Red Cross) */}
         <MotionSection>
           <TrustCredibilitySection />
         </MotionSection>
 
-        {/* 15. Case Studies: Real Project Results */}
         <MotionSection>
           <CaseStudiesSection onOpenQuote={handleOpenQuote} />
         </MotionSection>
 
-        {/* 16. Customer Types */}
+        {/* 6. SECTOR SPECIFIC RELEVANCE: Tailored Operational Modules */}
         <MotionSection>
           <CustomerTypesSection onOpenQuote={handleOpenQuote} />
         </MotionSection>
 
-        {/* 17. Digital Business Health Check */}
+        {/* 7. HOW TECHNIX WORKS: 5-Stage Visual Journey (Discover -> Plan -> Build -> Deploy -> Support) */}
+        <MotionSection>
+          <HowWeWorkSection onOpenQuote={handleOpenQuote} />
+        </MotionSection>
+
+        {/* 8. STRATEGIC DIAGNOSTIC INVITATION: Digital Business Health Check */}
         <MotionSection>
           <DigitalHealthCheckSection onOpenInteractiveCheck={handleOpenHealthCheck} />
         </MotionSection>
 
-        {/* 18. Final Conversion Section */}
+        {/* 9. FINAL CONVERSION: Culmination of Site Experience Connected to Hero */}
         <MotionSection>
           <FinalCTASection onOpenQuote={handleOpenQuote} />
         </MotionSection>
 
-        {/* 19. Why TechNix: Commercial Principles */}
+        {/* 10. SUPPORTING INFORMATION: Principles, Physical Hubs, Contact Form */}
         <MotionSection>
           <WhyTechNix />
         </MotionSection>
 
-        {/* 20. Office Locations in Blantyre & Lilongwe */}
         <MotionSection>
           <AboutSection />
         </MotionSection>
 
-        {/* 21. Direct Quotation & Contact Inquiry Form */}
         <MotionSection>
           <ContactSection initialService={quoteService} />
         </MotionSection>
