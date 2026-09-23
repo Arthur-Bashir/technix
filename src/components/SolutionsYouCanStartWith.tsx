@@ -9,10 +9,7 @@ import {
   ArrowRight, 
   MessageSquare, 
   CheckCircle2,
-  ChevronRight,
-  ExternalLink,
-  Smartphone,
-  Sparkles
+  ChevronRight
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
@@ -33,10 +30,10 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
     {
       id: 'business-email',
       index: '02',
-      tier: 'Identity & Trust',
+      tier: 'Identity & Communication',
       name: 'Professional Business Email',
-      description: 'Replace personal @gmail.com accounts with official company domain inboxes (name@yourcompany.mw) with cryptographic security.',
-      changes: 'Passes corporate procurement audits, prevents email spoofing, and secures enterprise tenders.',
+      description: 'Replace personal webmail with official company domain inboxes (name@yourcompany.mw) synchronized across staff computers and phones.',
+      changes: 'Establishes a verifiable commercial identity for client proposals, contracts, and daily organizational correspondence.',
       pricing: 'From MK 7,500 / month',
       icon: Mail,
       targetSection: 'business-email',
@@ -46,23 +43,23 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
     {
       id: 'it-rescue',
       index: '03',
-      tier: 'Emergency Response',
+      tier: 'Technical Assistance',
       name: 'TechNix IT Rescue',
-      description: 'Rapid physical and remote technical intervention when computer crashes, failing networks, or hardware issues halt office work.',
-      changes: 'Direct senior engineering triage for failing servers, crashing workstations, broken Wi-Fi, and data recovery.',
+      description: 'Rapid physical and remote technical intervention when computer crashes, failing Wi-Fi, or printer issues disrupt office work.',
+      changes: 'Direct technician assistance in Blantyre and Lilongwe to diagnose and resolve computer and network breakdowns.',
       pricing: 'Emergency breakdown triage',
       icon: Wrench,
       targetSection: 'it-rescue',
       action: () => onOpenITRescue(),
-      whatsAppMsg: '🚨 URGENT: I need emergency IT rescue assistance.',
+      whatsAppMsg: 'Hello TechNix, I need IT rescue assistance for our office.',
     },
     {
       id: 'technix-care',
       index: '04',
-      tier: 'Managed Support',
-      name: 'TechNix Care Managed IT',
-      description: 'Proactive monthly IT management, staff computer servicing, antivirus enforcement, automated backups, and priority support.',
-      changes: 'Eliminates unexpected downtime, extends hardware lifespan, and provides a dedicated IT department on retainer.',
+      tier: 'Managed Support Retainer',
+      name: 'TechNix Care Monthly IT',
+      description: 'Proactive monthly IT management, staff computer servicing, antivirus enforcement, and on-call technical assistance.',
+      changes: 'Provides regular preventative maintenance and predictable on-call IT support without hiring a full-time in-house department.',
       pricing: 'From MK 50,000 / month',
       icon: ShieldCheck,
       targetSection: 'technix-care',
@@ -72,10 +69,10 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
     {
       id: 'software-solutions',
       index: '05',
-      tier: 'Custom Systems',
+      tier: 'Custom Digital Systems',
       name: 'Custom Software & Portals',
       description: 'Tailored administrative web systems, school management platforms, and NGO monitoring databases designed for local workflows.',
-      changes: 'Automates manual paperwork, eliminates record loss, and synchronizes field data in real time.',
+      changes: 'Replaces manual paperwork and fragmented spreadsheets with structured digital records accessible online and offline.',
       pricing: 'Milestone quotation',
       icon: Code2,
       targetSection: 'software-solutions',
@@ -87,8 +84,8 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
       index: '06',
       tier: 'Workforce Capability',
       name: 'TechNix Academy',
-      description: 'Hands-on executive and staff masterclasses in Advanced Microsoft Excel, Power BI dashboards, and modern digital business workflows.',
-      changes: 'Equips your team with practical capabilities that immediately eliminate manual spreadsheet headaches.',
+      description: 'Hands-on practical masterclasses in Advanced Microsoft Excel, Power BI dashboards, and modern workplace digital tools.',
+      changes: 'Equips your team with practical capabilities that immediately streamline reporting and daily spreadsheet workflows.',
       pricing: 'From MK 95,000 / seat',
       icon: GraduationCap,
       targetSection: 'technix-academy',
@@ -113,23 +110,23 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
-            Digital Solutions You Can Deploy in Days, Not Months
+            Digital Solutions Built for African Commercial Realities
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
-            These are tested, ready-to-deliver technology solutions that solve real operational bottlenecks. Transparent pricing, clear scope, and local Kwacha billing.
+            Ready-to-deploy technology solutions that address practical operational bottlenecks: clear scope, transparent pricing, and local Malawi Kwacha billing.
           </p>
         </div>
 
-        {/* 1. FEATURED SHOWCASE: Business Websites */}
-        <div className="mb-14 bg-gradient-to-br from-[#0c1424] via-[#09101d] to-[#060b14] border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        {/* 1. DOMINANT FEATURED SHOWCASE: Business Websites */}
+        <div className="mb-14 bg-gradient-to-br from-[#0b1222] via-[#080e1a] to-[#050811] border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Content (Col 1-7) */}
             <div className="lg:col-span-7 space-y-6">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs font-mono font-semibold uppercase text-sky-400 tracking-wider">
-                  Featured Solution · Tier 01
+                  Featured Solution · Commercial Web Presence
                 </span>
                 <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-2.5 py-0.5 rounded-full">
                   Starting from MK 199,000
@@ -141,20 +138,20 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               </h3>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                A high-performance corporate website designed specifically for the African commercial reality. Light, fast-loading on local Airtel and TNM mobile data, registered with your official domain, and wired directly to capture customer sales inquiries on WhatsApp.
+                A modern corporate website designed specifically for local mobile connectivity. Fast-loading on local cellular networks, configured with your official domain, and set up to capture direct customer inquiries on WhatsApp and phone.
               </p>
 
-              {/* What This Changes Box */}
-              <div className="bg-[#050811]/90 border border-slate-800 rounded-2xl p-5 space-y-2">
+              {/* What This Changes */}
+              <div className="bg-[#050811] border border-slate-800 rounded-2xl p-5 space-y-1.5">
                 <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
                   What this changes for your organisation
                 </div>
-                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
-                  Replaces outdated contact info and missed sales with a verified digital storefront that ranks on Google, gives corporate buyers confidence, and delivers warm inbound customer inquiries directly to your team.
+                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+                  Replaces outdated contact info and missed opportunities with an official digital presence that gives clients confidence and routes inquiries directly to your team.
                 </p>
               </div>
 
-              {/* Action Triggers */}
+              {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={() => onOpenQuote('Business Website')}
@@ -176,13 +173,13 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
                   onClick={() => onSelectNeed('business-website', 'Business Website')}
                   className="text-xs text-slate-400 hover:text-sky-300 font-medium transition-colors flex items-center space-x-1 cursor-pointer ml-auto sm:ml-0"
                 >
-                  <span>See How It Works</span>
+                  <span>Explore Details</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
 
-            {/* Right Architectural Preview Card (Col 8-12) */}
+            {/* Right Visual Preview (Col 8-12) */}
             <div className="lg:col-span-5 bg-[#050811] border border-slate-800/90 rounded-2xl p-6 space-y-4 shadow-inner">
               <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
                 <div className="flex items-center space-x-1.5">
@@ -210,7 +207,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
                   </div>
                   <div className="flex items-start space-x-2.5">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Tested on 3G/4G Airtel & TNM mobile networks</span>
+                    <span>Tested on mobile networks across Malawi</span>
                   </div>
                   <div className="flex items-start space-x-2.5">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
@@ -222,13 +219,13 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
                   </div>
                   <div className="flex items-start space-x-2.5">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Professional domain email account included</span>
+                    <span>Professional domain email account configured</span>
                   </div>
                 </div>
 
                 <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>Fast Launch: 5–10 days</span>
-                  <span className="text-sky-400">Starter · Pro · Premium</span>
+                  <span>Fast Delivery: 5–10 days</span>
+                  <span className="text-sky-400">Fixed Kwacha Pricing</span>
                 </div>
               </div>
             </div>
@@ -236,10 +233,10 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
           </div>
         </div>
 
-        {/* 2. SUBORDINATE SHOWROOM GRID (Supporting Solutions) */}
+        {/* 2. SUBORDINATE SHOWROOM (Supporting Solutions Visually Receding) */}
         <div className="space-y-4">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 mb-6">
-            Supporting Solutions & Infrastructure Services
+            Supporting Solutions & Operational Services
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -248,22 +245,20 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               return (
                 <div
                   key={sol.id}
-                  className="bg-[#090e1a]/90 hover:bg-[#0c1322] border border-slate-800/80 hover:border-slate-700 rounded-2xl p-7 transition-all duration-200 flex flex-col justify-between group shadow-sm"
+                  className="bg-[#080d1b] border border-slate-800/80 hover:border-slate-700 rounded-2xl p-6 transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 text-sky-400 flex items-center justify-center group-hover:text-white group-hover:bg-sky-600 transition-colors">
-                        <Icon className="w-5 h-5" />
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-sky-400 flex items-center justify-center">
+                        <Icon className="w-4 h-4" />
                       </div>
 
                       <div className="text-xs font-mono text-slate-400">
-                        <span>{sol.index}</span>
-                        <span aria-hidden="true" className="mx-1.5">·</span>
                         <span>{sol.tier}</span>
                       </div>
                     </div>
 
-                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-sky-300 transition-colors">
+                    <h4 className="text-base font-bold text-white mb-1.5">
                       {sol.name}
                     </h4>
 
@@ -275,43 +270,33 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
                       {sol.description}
                     </p>
 
-                    <div className="bg-[#050811] border border-slate-850 rounded-xl p-3 mb-6">
-                      <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1 font-semibold">
+                    <div className="bg-[#050811] border border-slate-850 rounded-xl p-3 mb-5">
+                      <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1 font-semibold">
                         What this changes
                       </div>
-                      <p className="text-xs text-slate-200 leading-relaxed">
+                      <p className="text-xs text-slate-300 leading-relaxed">
                         {sol.changes}
                       </p>
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-800/80 space-y-2">
+                  <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
                     <button
                       onClick={sol.action}
-                      className="w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-sm transition-all cursor-pointer flex items-center justify-center space-x-1.5 border border-sky-400/30"
+                      className="px-3.5 py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center space-x-1.5 border border-sky-400/30"
                     >
-                      <span>Engage TechNix</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>Engage</span>
+                      <ArrowRight className="w-3 h-3" />
                     </button>
 
-                    <div className="flex items-center justify-between gap-2 pt-1">
-                      <button
-                        onClick={() => onSelectNeed(sol.targetSection, sol.name)}
-                        className="text-xs text-slate-400 hover:text-sky-300 transition-colors flex items-center space-x-1 cursor-pointer"
-                      >
-                        <span>See How It Works</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-
-                      <button
-                        onClick={() => handleWhatsApp(sol.whatsAppMsg)}
-                        className="p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 transition-colors flex items-center space-x-1.5 text-xs cursor-pointer"
-                        title="Quick WhatsApp inquiry"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5" />
-                        <span className="text-[11px] font-medium">WhatsApp</span>
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => handleWhatsApp(sol.whatsAppMsg)}
+                      className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 transition-colors flex items-center space-x-1 text-xs cursor-pointer"
+                      title="Quick WhatsApp inquiry"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span className="text-[11px] font-medium">WhatsApp</span>
+                    </button>
                   </div>
                 </div>
               );

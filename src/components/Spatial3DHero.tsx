@@ -55,7 +55,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     startingPrice: 'Starting from MK 199,000',
     businessOutcome: 'Turns anonymous internet searches on Google into verified customer inquiries and immediate WhatsApp sales leads.',
     highlights: [
-      'Mobile-optimized for Airtel & TNM network speeds',
+      'Mobile-optimized for local cellular connectivity',
       'Direct WhatsApp click-to-chat & automated lead routing',
       'Google Maps & local business profile integration',
     ],
@@ -115,8 +115,8 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     startingPrice: 'From MK 65,000 / year',
     businessOutcome: 'Keeps corporate emails and client portals running continuously with automated offsite data backups.',
     highlights: [
-      'High-speed NVMe SSD cloud infrastructure',
-      'Automated daily encrypted snapshot backups',
+      'Reliable SSD cloud infrastructure',
+      'Scheduled off-site automated backups',
       'Local payment convenience in Malawi Kwacha (Airtel/Mpamba/Bank)',
     ],
     cameraPos: { x: 3.8, y: 1.6, z: -0.8 },

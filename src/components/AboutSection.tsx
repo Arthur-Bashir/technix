@@ -110,15 +110,15 @@ export const AboutSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Verified Metrics */}
+              {/* Operational Hub Highlights */}
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 text-center">
-                  <div className="text-2xl font-black text-white font-mono">99.8%</div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Network Uptime</div>
+                  <div className="text-sm font-bold text-white font-mono">Blantyre & Lilongwe</div>
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Physical Hubs</div>
                 </div>
                 <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 text-center">
-                  <div className="text-2xl font-black text-emerald-400 font-mono">100%</div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Local Engineering</div>
+                  <div className="text-sm font-bold text-emerald-400 font-mono">Local Kwacha</div>
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Direct Billing</div>
                 </div>
               </div>
             </div>

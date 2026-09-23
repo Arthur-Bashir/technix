@@ -3,27 +3,17 @@ import {
   Globe, 
   Mail, 
   Server, 
-  AlertTriangle, 
   ShieldCheck, 
   Code2, 
   GraduationCap, 
   ArrowRight, 
   MessageSquare, 
   CheckCircle2,
-  HardDrive,
   Smartphone,
   BarChart3,
-  Clock,
-  Lock,
-  Headphones,
-  Check,
-  ChevronRight,
   Database
 } from 'lucide-react';
-import { 
-  COURSES, 
-  COMPANY_INFO 
-} from '../data/technixData';
+import { COURSES, COMPANY_INFO } from '../data/technixData';
 
 interface SelectedCapabilityStoryProps {
   onOpenQuote: (service?: string) => void;
@@ -62,125 +52,125 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
   const capabilities = [
     {
       id: 'website',
-      anchorId: 'business-website',
       label: 'Business Websites',
       icon: Globe,
-      tagline: 'High-Conversion Web Presence',
-      heading: 'Websites That Turn Visitors into Paying Customers',
-      narrative: 'In Malawi and across the region, customers verify your credibility on their phones before doing business. We build lightning-fast, mobile-optimized websites designed to rank on Google and route inquiries straight into your WhatsApp inbox.',
-      pricing: 'From MK 199,000 (One-Time)',
-      benefits: [
-        'Optimized for Airtel & TNM mobile data speeds',
-        'Google Maps & local business profile verification',
-        'Direct WhatsApp ordering & inquiry buttons',
-        'Includes free .mw domain & SSL certificate for 1 year',
+      tagline: 'Public Commercial Presence',
+      heading: 'Websites That Present Your Business Professionally',
+      whoItHelps: 'Growing Malawian enterprises, professional practices, and institutions needing an official online presence.',
+      narrative: 'Prospective clients, donors, and procurement committees evaluate your credibility before making contact. We build fast, mobile-responsive websites that showcase your services clearly and route customer inquiries directly to phone and WhatsApp.',
+      pricing: 'Starting from MK 199,000',
+      keyPoints: [
+        'Mobile-responsive layout designed for local smartphones',
+        'Direct WhatsApp contact and inquiry integration',
+        'Google Maps and local business search presence',
+        'Domain registration and secure HTTPS setup',
       ],
-      ctaText: 'Start Your Website',
+      ctaText: 'Start a Website Project',
       action: () => onOpenQuote('Business Website'),
       whatsAppMsg: 'Hello TechNix, I am interested in building a professional business website.',
     },
     {
       id: 'email',
-      anchorId: 'business-email',
       label: 'Business Email',
       icon: Mail,
-      tagline: 'Official Domain Inboxes',
-      heading: 'Stop Sending Tenders from Personal @gmail.com Accounts',
-      narrative: 'Sending corporate proposals or formal procurement bids from personal free webmail creates suspicion and invites phishing. We configure authenticated domain email (name@yourcompany.mw) with DKIM/SPF security and mobile synchronization.',
-      pricing: 'From MK 7,500 / month',
-      benefits: [
-        'Verified domain trust (@yourcompany.mw)',
-        'Anti-spoofing & anti-phishing SPF/DKIM verification',
-        'Seamless sync on iPhone, Android & Outlook',
-        'Centralized administrative console to add/remove staff',
+      tagline: 'Organisational Identity',
+      heading: 'Professional Email Accounts on Your Own Domain',
+      whoItHelps: 'Companies and organisations still using personal @gmail.com or @yahoo.com addresses for formal correspondence.',
+      narrative: 'Conducting official business from personal webmail creates confusion and undermines institutional confidence during tenders. We configure authenticated domain email (name@yourcompany.mw) with synchronized access across staff laptops and phones.',
+      pricing: 'Starting from MK 7,500 / month',
+      keyPoints: [
+        'Custom domain email addresses (@yourcompany.mw)',
+        'Synchronized access on smartphones, tablets, and computers',
+        'Spam filtering and standard email authentication',
+        'Centralized administration for adding and removing staff',
       ],
-      ctaText: 'Setup Business Email',
+      ctaText: 'Configure Business Email',
       action: () => onOpenQuote('Business Email Setup'),
       whatsAppMsg: 'Hello TechNix, I want to set up professional business email accounts.',
     },
     {
       id: 'hosting',
-      anchorId: 'hosting-domains',
-      label: 'Cloud & Hosting',
+      label: 'Hosting & Domains',
       icon: Server,
-      tagline: 'Sovereign Regional Cloud',
-      heading: 'NVMe Cloud Hosting with Local Kwacha Billing',
-      narrative: 'Avoid international credit card declines and sudden dollar exchange rate spikes. Our high-speed cloud infrastructure offers 99.9% uptime, daily automated snapshot backups, and official .mw domain registry connectivity paid in Malawi Kwacha.',
-      pricing: 'From MK 65,000 / year',
-      benefits: [
-        'Local Kwacha payment with zero foreign exchange fees',
-        'Automated daily off-site disaster backups',
-        'Low-latency regional routing for African traffic',
-        'Official .mw, .com, .org domain registration',
+      tagline: 'Reliable Cloud Infrastructure',
+      heading: 'Dependable Web Hosting with Local Currency Billing',
+      whoItHelps: 'Organisations seeking stable hosting without the friction of international credit card payments or foreign exchange fees.',
+      narrative: 'Keep your website and web applications online with reliable cloud hosting, automated backups, and Malawian (.mw) or international domain management, billed transparently in Malawi Kwacha.',
+      pricing: 'Starting from MK 65,000 / year',
+      keyPoints: [
+        'High-speed SSD storage for responsive web loading',
+        'Malawian (.mw) and international domain registration',
+        'Scheduled backup routines for data safety',
+        'Direct local Kwacha payment via bank or mobile money',
       ],
-      ctaText: 'Provision Hosting',
+      ctaText: 'Set Up Hosting',
       action: () => onOpenQuote('Cloud Hosting & Domain'),
       whatsAppMsg: 'Hello TechNix, I need cloud hosting and domain registration.',
     },
     {
       id: 'support',
-      anchorId: 'it-rescue',
-      label: 'IT Rescue & Care',
+      label: 'IT Support & Maintenance',
       icon: ShieldCheck,
-      tagline: 'On-Call IT Department',
-      heading: '15-Minute Emergency Rescue & Dedicated Monthly IT Care',
-      narrative: 'When staff computers crash, Wi-Fi drops, or virus infections threaten payroll, our field technicians dispatch immediately across Blantyre and Lilongwe. With TechNix Care, you get an entire IT department on retainer for less than the cost of one salary.',
-      pricing: 'From MK 50,000 / month',
-      benefits: [
-        '15-minute emergency response protocol in Blantyre & Lilongwe',
-        'Scheduled on-site preventative maintenance visits',
-        'Encrypted automated database & file backups',
-        'Guaranteed SLA response times and remote helpdesk',
+      tagline: 'Operational IT Assistance',
+      heading: 'Rapid IT Support and Ongoing Office Maintenance',
+      whoItHelps: 'Offices facing computer disruptions, Wi-Fi drops, or needing structured monthly technology care.',
+      narrative: 'When computers fail or network issues interrupt daily operations, TechNix provides rapid technical support in Blantyre and Lilongwe. Through TechNix Care retainers, we provide ongoing preventative servicing and assistance without the expense of a full-time in-house salary.',
+      pricing: 'Retainers from MK 50,000 / month',
+      keyPoints: [
+        'Rapid technical response in Blantyre and Lilongwe',
+        'Scheduled preventative maintenance visits for office workstations',
+        'Office Wi-Fi, router, and printer network troubleshooting',
+        'Automated local and cloud backup configuration',
       ],
       ctaText: 'Request IT Support',
       action: () => onOpenITRescue(),
-      whatsAppMsg: '🚨 URGENT: I need emergency IT rescue or support for my office.',
+      whatsAppMsg: 'Hello TechNix, I need IT support assistance for our office.',
     },
     {
       id: 'software',
-      anchorId: 'software-solutions',
       label: 'Custom Software',
       icon: Code2,
-      tagline: 'Tailored Business Engines',
-      heading: 'Software Built Around How Your Business Actually Operates',
-      narrative: 'Foreign off-the-shelf software charges exorbitant US dollar subscriptions and fails to accommodate local workflows. We engineer tailored administrative portals, multi-branch inventory databases, and offline mobile data collection tools designed for your exact operations.',
-      pricing: 'Milestone-Based Project Scope',
-      benefits: [
-        'Offline-capable mobile apps with automatic cloud sync',
-        'Multi-branch inventory, POS & financial auditing',
-        'Executive Power BI dashboards for board & donor reporting',
-        'Airtel Money & TNM Mpamba digital billing integration',
+      tagline: 'Tailored Digital Systems',
+      heading: 'Software Engineered Around Your Actual Workflows',
+      whoItHelps: 'Businesses, schools, and NGOs outgrowing manual paperwork and disconnected spreadsheets.',
+      narrative: 'We build administrative web systems, multi-branch tracking tools, and mobile data applications tailored to how your organisation operates in Malawi, supporting offline field collection and local payment channels.',
+      pricing: 'Milestone project quotation',
+      keyPoints: [
+        'Offline-capable mobile and web data entry tools',
+        'Inventory tracking, student records, or administrative portals',
+        'Management dashboards for operational oversight',
+        'Integration with local mobile money payment channels',
       ],
-      ctaText: 'Scope Custom Software',
+      ctaText: 'Discuss Software Project',
       action: () => onOpenQuote('Custom Software Solution'),
       whatsAppMsg: 'Hello TechNix, I would like to discuss a custom software project.',
     },
     {
       id: 'academy',
-      anchorId: 'technix-academy',
       label: 'TechNix Academy',
       icon: GraduationCap,
-      tagline: 'Workforce Capability',
-      heading: 'Practical Tech Masterclasses Taught by Working Engineers',
-      narrative: 'Technology is only as effective as the people operating it. TechNix Academy delivers hands-on, lab-driven masterclasses in Advanced Excel, Power BI dashboards, and modern digital workplace tools using real commercial African datasets.',
-      pricing: 'From MK 95,000 / seat',
-      benefits: [
-        '100% practical computer lab exercises with zero theoretical filler',
-        'Small cohorts (maximum 12 participants) with personal mentorship',
-        'Verified Certificate of Completion & reusable office templates',
-        'Tailored on-site training for corporate & NGO departments',
+      tagline: 'Practical Skills Training',
+      heading: 'Hands-On Digital Skills Training for Working Teams',
+      whoItHelps: 'Administrative staff, finance teams, and professionals looking to improve workplace efficiency.',
+      narrative: 'Our masterclasses focus on practical digital competencies that immediately improve everyday productivity: Advanced Microsoft Excel formulas and reports, Power BI data visualization, and workplace network administration.',
+      pricing: 'Courses from MK 95,000 / seat',
+      keyPoints: [
+        '100% practical lab exercises with real-world scenarios',
+        'Small cohorts with direct instructor support',
+        'Practical course templates and materials to take back to work',
+        'Custom on-site training sessions available for corporate groups',
       ],
-      ctaText: 'Enroll in Masterclass',
+      ctaText: 'View Course Schedule',
       action: () => onOpenQuote('TechNix Academy Enrollment'),
-      whatsAppMsg: 'Hello TechNix Academy, I want to learn more about upcoming courses.',
+      whatsAppMsg: 'Hello TechNix Academy, I would like to inquire about training courses.',
     },
   ];
 
   const currentCap = capabilities.find(c => c.id === activeStory) || capabilities[0];
 
   return (
-    <section id="capabilities" className="py-24 bg-[#040814] text-white relative border-b border-slate-800/80">
-      {/* Invisible anchor landmarks so existing section links smoothly jump here */}
+    <section id="capabilities" className="py-24 bg-[#050811] text-white relative border-b border-slate-800/80">
+      {/* Anchor landmarks for navigation */}
       <div id="products-catalog" className="absolute top-0" />
       <div id="business-website" className="absolute top-0" />
       <div id="business-email" className="absolute top-0" />
@@ -199,11 +189,11 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
-            Engineered Systems Supporting African Organisations
+            Technology Systems Supporting Practical Operations
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
-            Explore our core commercial capabilities — from public digital storefronts and authenticated communication to resilient sovereign cloud and on-call engineering support.
+            Explore our core service disciplines — from public digital storefronts and authenticated communication to reliable cloud infrastructure and responsive on-call support.
           </p>
         </div>
 
@@ -219,7 +209,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0 flex items-center space-x-2 border cursor-pointer ${
                   isSelected
                     ? 'bg-sky-600 text-white border-sky-400 shadow-lg shadow-sky-950/60'
-                    : 'bg-[#090e1a] text-slate-400 border-slate-800 hover:text-white hover:border-slate-700'
+                    : 'bg-[#080d1b] text-slate-400 border-slate-800 hover:text-white hover:border-slate-700'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -229,13 +219,13 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
           })}
         </div>
 
-        {/* Split-Screen Capability Theater (Type B Editorial Showcase) */}
-        <div className="bg-[#080d1b] border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        {/* Editorial Story Canvas */}
+        <div className="bg-[#070c18] border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Narrative Column (6 Cols) */}
-            <div className="lg:col-span-6 space-y-6">
+            {/* Left Narrative Column (7 Cols) */}
+            <div className="lg:col-span-7 space-y-6">
               <div className="space-y-2">
                 <span className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
                   {currentCap.tagline}
@@ -246,32 +236,37 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 </h3>
               </div>
 
+              <div className="text-xs font-mono text-slate-400">
+                <span className="text-slate-500 uppercase">Who this is for: </span>
+                <span>{currentCap.whoItHelps}</span>
+              </div>
+
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 {currentCap.narrative}
               </p>
 
-              {/* Pricing & Outcome Highlight */}
-              <div className="flex items-center justify-between p-4 bg-[#050811] border border-slate-800 rounded-2xl">
+              {/* Pricing & Deliverables */}
+              <div className="p-4 bg-[#040710] border border-slate-800/80 rounded-2xl flex items-center justify-between">
                 <div>
                   <span className="text-[11px] font-mono text-slate-400 uppercase font-semibold block">
                     Starting Investment
                   </span>
-                  <span className="text-base sm:text-lg font-black font-mono text-emerald-400">
+                  <span className="text-base sm:text-lg font-bold font-mono text-emerald-400">
                     {currentCap.pricing}
                   </span>
                 </div>
                 <span className="text-xs text-slate-400 font-mono">
-                  Fixed Kwacha Pricing
+                  Malawi Kwacha Billing
                 </span>
               </div>
 
-              {/* Key Deliverables */}
-              <div className="space-y-2.5 pt-1">
+              {/* Deliverables List */}
+              <div className="space-y-2 pt-1">
                 <div className="text-xs font-mono uppercase text-slate-400 font-semibold tracking-wider">
-                  Key Operational Deliverables:
+                  Key Scope Deliverables:
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {currentCap.benefits.map((b, idx) => (
+                  {currentCap.keyPoints.map((b, idx) => (
                     <div key={idx} className="flex items-start space-x-2 text-xs text-slate-200">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
                       <span>{b}</span>
@@ -280,7 +275,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 </div>
               </div>
 
-              {/* Primary Call to Action */}
+              {/* Action Buttons */}
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <button
                   onClick={currentCap.action}
@@ -300,42 +295,41 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
               </div>
             </div>
 
-            {/* Right Dynamic Visual Column (6 Cols) */}
-            <div className="lg:col-span-6 bg-[#050811] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-inner">
+            {/* Right Visual Demonstration Canvas (5 Cols) */}
+            <div className="lg:col-span-5 bg-[#040710] border border-slate-800/80 rounded-2xl p-6 sm:p-8 space-y-6 shadow-inner">
               
-              {/* Dynamic Content based on activeStory */}
               {activeStory === 'website' && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span className="text-xs font-mono text-sky-400 font-semibold uppercase">
-                      Live Storefront Simulation
+                      Commercial Web Storefront
                     </span>
                     <span className="text-[11px] font-mono text-emerald-400">
-                      3G/4G Optimized
+                      Mobile Ready
                     </span>
                   </div>
 
-                  <div className="bg-[#090e1a] border border-slate-800 rounded-xl p-4 space-y-3">
-                    <div className="h-32 rounded-lg bg-gradient-to-br from-sky-950/60 to-slate-900 border border-slate-800 flex flex-col justify-end p-4">
+                  <div className="bg-[#080d1b] border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div className="h-28 rounded-lg bg-gradient-to-br from-sky-950/60 to-slate-900 border border-slate-800 flex flex-col justify-end p-4">
                       <span className="text-xs text-sky-400 font-mono">www.yourcompany.mw</span>
-                      <h4 className="text-sm font-bold text-white">Your High-Converting Web Storefront</h4>
+                      <h4 className="text-sm font-bold text-white">Your Professional Web Storefront</h4>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-center text-xs">
-                      <div className="p-2.5 bg-slate-900/90 rounded-lg border border-slate-800">
-                        <span className="text-emerald-400 font-bold block">1.2s Load Time</span>
-                        <span className="text-[10px] text-slate-400">Local Mobile Networks</span>
+                    <div className="space-y-1.5 text-xs text-slate-300">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <span>Tested on mobile devices across local networks</span>
                       </div>
-                      <div className="p-2.5 bg-slate-900/90 rounded-lg border border-slate-800">
-                        <span className="text-sky-400 font-bold block">Direct WhatsApp</span>
-                        <span className="text-[10px] text-slate-400">Instant Customer Leads</span>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <span>Direct inquiry buttons routing to WhatsApp and phone</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="text-xs text-slate-400 leading-relaxed font-normal">
-                    Delivered in 5–10 working days with Google Search indexation and mobile responsiveness tested on low-spec smartphones.
-                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Designed, reviewed, and deployed with full domain configuration and search indexation.
+                  </p>
                 </div>
               )}
 
@@ -343,36 +337,36 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span className="text-xs font-mono text-sky-400 font-semibold uppercase">
-                      Identity & Procurement Trust
+                      Email Credibility
                     </span>
-                    <span className="text-[11px] font-mono text-emerald-400">
-                      DKIM / SPF Verified
+                    <span className="text-[11px] font-mono text-slate-400">
+                      Domain Authentication
                     </span>
                   </div>
 
                   <div className="space-y-3">
-                    <div className="p-4 rounded-xl border border-rose-900/40 bg-rose-950/20 space-y-1">
-                      <div className="text-xs font-mono text-rose-400 font-bold flex items-center space-x-1.5">
-                        <span>⚠️ Personal Webmail (yourcompany@gmail.com)</span>
+                    <div className="p-4 rounded-xl border border-rose-900/30 bg-rose-950/20 space-y-1">
+                      <div className="text-xs font-mono text-rose-400 font-bold">
+                        Personal Webmail (yourbusiness@gmail.com)
                       </div>
                       <p className="text-xs text-slate-400">
-                        Easily impersonated by hackers, automatically penalized by enterprise procurement filters, and unverified in tender reviews.
+                        Often questioned during formal tender evaluations and institutional supplier reviews.
                       </p>
                     </div>
 
-                    <div className="p-4 rounded-xl border border-emerald-900/50 bg-emerald-950/20 space-y-1">
-                      <div className="text-xs font-mono text-emerald-400 font-bold flex items-center space-x-1.5">
-                        <span>✅ Official Domain (director@yourcompany.mw)</span>
+                    <div className="p-4 rounded-xl border border-emerald-900/40 bg-emerald-950/20 space-y-1">
+                      <div className="text-xs font-mono text-emerald-400 font-bold">
+                        Domain Email (info@yourbusiness.mw)
                       </div>
                       <p className="text-xs text-slate-300">
-                        Cryptographically authenticated with your domain. Instantly passes institutional due diligence and government tender criteria.
+                        Presents an established, verifiable commercial identity for contracts, proposals, and client correspondence.
                       </p>
                     </div>
                   </div>
 
-                  <div className="text-xs text-slate-400 leading-relaxed font-normal">
-                    Includes migration support from existing inboxes, Outlook setup, and mobile phone configuration for all staff members.
-                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Includes setup on Outlook, Apple Mail, and Android devices for all staff members.
+                  </p>
                 </div>
               )}
 
@@ -380,21 +374,21 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span className="text-xs font-mono text-sky-400 font-semibold uppercase">
-                      Cloud Stack Architecture
+                      Hosting Infrastructure
                     </span>
-                    <span className="text-[11px] font-mono text-emerald-400">
-                      99.9% Cloud Uptime
+                    <span className="text-[11px] font-mono text-slate-400">
+                      Local Kwacha Billing
                     </span>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     {[
-                      { layer: 'Layer 1: Storage', desc: 'Enterprise NVMe SSD with 10x faster database query speeds' },
-                      { layer: 'Layer 2: Disaster Backup', desc: 'Nightly automated snapshots stored across isolated server zones' },
-                      { layer: 'Layer 3: Security & SSL', desc: 'Free automated SSL certificate renewal & DDoS firewall defense' },
-                      { layer: 'Layer 4: Local Currency', desc: 'Fixed Kwacha billing via Airtel Money, Mpamba, or bank transfer' },
+                      { layer: 'Fast SSD Storage', desc: 'Responsive page delivery for web visitors' },
+                      { layer: 'Scheduled Backups', desc: 'Routine off-site snapshots of site files and database' },
+                      { layer: 'SSL Certificate', desc: 'Encrypted HTTPS security included on your domain' },
+                      { layer: 'Local Invoicing', desc: 'Direct payment via bank transfer or mobile money' },
                     ].map((st, idx) => (
-                      <div key={idx} className="p-3 bg-[#090e1a] border border-slate-800 rounded-xl flex items-start space-x-3 text-xs">
+                      <div key={idx} className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl flex items-start space-x-3 text-xs">
                         <Server className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
                         <div>
                           <span className="font-bold text-white block">{st.layer}</span>
@@ -410,38 +404,32 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span className="text-xs font-mono text-rose-400 font-semibold uppercase">
-                      Rapid Operational Triage
+                      On-Call Technical Help
                     </span>
                     <span className="text-[11px] font-mono text-slate-400">
-                      Blantyre & Lilongwe Hubs
+                      Blantyre & Lilongwe
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="p-4 bg-[#090e1a] border border-slate-800 rounded-xl space-y-1">
+                  <div className="space-y-3">
+                    <div className="p-4 bg-[#080d1b] border border-slate-800 rounded-xl space-y-1">
                       <span className="text-xs font-mono font-bold text-rose-400 block">IT Rescue</span>
                       <p className="text-xs text-slate-300">
-                        Emergency breakdown dispatch when servers, Wi-Fi or finance laptops fail.
+                        Urgent dispatch when office workstations, internet routers, or accounting files experience disruption.
                       </p>
-                      <span className="text-[11px] font-mono text-slate-400 block pt-1">
-                        15-min triage callback
-                      </span>
                     </div>
 
-                    <div className="p-4 bg-[#090e1a] border border-slate-800 rounded-xl space-y-1">
+                    <div className="p-4 bg-[#080d1b] border border-slate-800 rounded-xl space-y-1">
                       <span className="text-xs font-mono font-bold text-emerald-400 block">TechNix Care</span>
                       <p className="text-xs text-slate-300">
-                        Proactive monthly support retainers for continuous maintenance and antivirus.
+                        Monthly support retainers for regular computer maintenance, antivirus updates, and backup verification.
                       </p>
-                      <span className="text-[11px] font-mono text-slate-400 block pt-1">
-                        From MK 50,000 / mo
-                      </span>
                     </div>
                   </div>
 
-                  <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800 text-xs text-slate-300 flex items-center justify-between">
-                    <span>Emergency Hotline: {COMPANY_INFO.phonePrimary}</span>
-                    <span className="text-emerald-400 font-mono text-[11px]">Active Mon–Sat</span>
+                  <div className="p-3 bg-[#080d1b] rounded-xl border border-slate-800 text-xs text-slate-300 flex items-center justify-between">
+                    <span>Direct Call: {COMPANY_INFO.phonePrimary}</span>
+                    <span className="text-slate-400 font-mono text-[11px]">Blantyre & Lilongwe Hubs</span>
                   </div>
                 </div>
               )}
@@ -450,35 +438,35 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span className="text-xs font-mono text-indigo-400 font-semibold uppercase">
-                      Connected Business Flow
+                      Operational Data Flow
                     </span>
-                    <span className="text-[11px] font-mono text-emerald-400">
-                      Offline-First Capable
+                    <span className="text-[11px] font-mono text-slate-400">
+                      Offline Capable
                     </span>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="p-3 bg-[#090e1a] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
+                  <div className="space-y-2.5">
+                    <div className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
                       <Smartphone className="w-4 h-4 text-sky-400 shrink-0" />
                       <div>
-                        <span className="font-bold text-white block">Step 1 · Staff & Field Input</span>
-                        <span className="text-slate-400">Mobile or browser data collection with offline storage</span>
+                        <span className="font-bold text-white block">1. Staff & Field Input</span>
+                        <span className="text-slate-400">Mobile data entry working with or without internet</span>
                       </div>
                     </div>
 
-                    <div className="p-3 bg-[#090e1a] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
+                    <div className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
                       <Database className="w-4 h-4 text-emerald-400 shrink-0" />
                       <div>
-                        <span className="font-bold text-white block">Step 2 · Automated Business Logic</span>
-                        <span className="text-slate-400">Validation, fee auditing, stock reorder triggers & backup</span>
+                        <span className="font-bold text-white block">2. Centralized Database</span>
+                        <span className="text-slate-400">Structured validation, role permissions & automated backups</span>
                       </div>
                     </div>
 
-                    <div className="p-3 bg-[#090e1a] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
+                    <div className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center space-x-3">
                       <BarChart3 className="w-4 h-4 text-indigo-400 shrink-0" />
                       <div>
-                        <span className="font-bold text-white block">Step 3 · Executive Intelligence</span>
-                        <span className="text-slate-400">Real-time director dashboards & one-click PDF reporting</span>
+                        <span className="font-bold text-white block">3. Management Reporting</span>
+                        <span className="text-slate-400">Visual summaries and exportable operational records</span>
                       </div>
                     </div>
                   </div>
@@ -489,16 +477,16 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <span className="text-xs font-mono text-amber-400 font-semibold uppercase">
-                      Practical Masterclasses
+                      Course Offerings
                     </span>
                     <span className="text-[11px] font-mono text-slate-400">
-                      Next Cohort Enrolling
+                      Practical Computer Labs
                     </span>
                   </div>
 
                   <div className="space-y-2">
                     {COURSES.slice(0, 3).map((c) => (
-                      <div key={c.id} className="p-3 bg-[#090e1a] border border-slate-800 rounded-xl text-xs flex items-center justify-between">
+                      <div key={c.id} className="p-3 bg-[#080d1b] border border-slate-800 rounded-xl text-xs flex items-center justify-between">
                         <div>
                           <span className="font-bold text-white block">{c.title}</span>
                           <span className="text-slate-400 text-[11px]">{c.duration} · {c.level}</span>
@@ -510,9 +498,9 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                     ))}
                   </div>
 
-                  <div className="text-xs text-slate-400 leading-relaxed font-normal">
+                  <p className="text-xs text-slate-400 leading-relaxed">
                     Custom on-site workshops available for corporate accounting teams, school faculties, and NGO project officers.
-                  </div>
+                  </p>
                 </div>
               )}
 

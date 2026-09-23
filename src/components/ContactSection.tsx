@@ -167,7 +167,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                   </div>
                   <div className="flex items-start space-x-2">
                     <Clock className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                    <span><strong>Operating Hours:</strong> Mon - Fri 08:00 - 17:00 (Emergency SLAs 24/7)</span>
+                    <span><strong>Operating Hours:</strong> Mon - Fri 08:00 - 17:00 (Emergency support available)</span>
                   </div>
                 </div>
               </div>

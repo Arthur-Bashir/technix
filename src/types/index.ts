@@ -74,7 +74,7 @@ export interface CaseStudy {
   solution: string;
   result: string;
   techHighlight: string;
-  impactMetrics: { label: string; value: string }[];
+  impactMetrics?: { label: string; value: string }[];
 }
 
 export interface CustomerType {
