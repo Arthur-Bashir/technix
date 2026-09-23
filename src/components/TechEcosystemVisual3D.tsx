@@ -3,11 +3,11 @@ import * as THREE from 'three';
 import { Cloud, Database, Globe2, ShieldCheck, Smartphone, Workflow } from 'lucide-react';
 
 const NODE_DATA = [
-  { label: 'BLANTYRE', sub: 'Business', x: -4.4, z: 2.3, color: 0x38bdf8 },
-  { label: 'LILONGWE', sub: 'Operations', x: 4.3, z: 1.8, color: 0x34d399 },
-  { label: 'WEB', sub: 'Digital presence', x: 4.0, z: -3.0, color: 0x60a5fa },
-  { label: 'DATA', sub: 'Protected systems', x: -3.9, z: -3.0, color: 0xa78bfa },
-  { label: 'MOBILE', sub: 'Field connectivity', x: 0, z: 4.7, color: 0xf59e0b },
+  { label: 'BLANTYRE', sub: 'Business', x: -4.4, y: 0.1, z: 2.3, color: 0x38bdf8 },
+  { label: 'LILONGWE', sub: 'Operations', x: 4.3, y: 0.1, z: 1.8, color: 0x34d399 },
+  { label: 'WEB', sub: 'Digital presence', x: 4.0, y: 0.1, z: -3.0, color: 0x60a5fa },
+  { label: 'DATA', sub: 'Protected systems', x: -3.9, y: 0.1, z: -3.0, color: 0xa78bfa },
+  { label: 'MOBILE', sub: 'Field connectivity', x: 0, y: 0.1, z: 4.7, color: 0xf59e0b },
 ];
 
 const disposeScene = (scene: THREE.Scene) => {
