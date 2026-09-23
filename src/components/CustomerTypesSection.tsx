@@ -20,14 +20,15 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
   const industries = [
     {
       id: 'smes',
-      title: 'SMEs',
+      code: 'SEC-01',
+      title: 'SMEs & Growing Businesses',
       badge: 'Commercial',
       icon: Building2,
-      tagline: 'Retailers, wholesalers, service companies & emerging ventures',
+      tagline: 'Retailers, wholesalers, logistics firms & emerging ventures',
       howTechNixHelps: 'We help you present a credible professional face with custom websites, domain email, digital point-of-sale setups, and affordable monthly IT care so your daily trading never stops.',
       keyDeliverables: [
         'Business Starter & Pro websites with WhatsApp inquiries',
-        'Custom corporate domain email (e.g. info@yourcompany.com)',
+        'Custom corporate domain email (e.g. info@yourcompany.mw)',
         'Inventory, invoicing, and sales recording software',
         'On-call IT rescue and PC maintenance',
       ],
@@ -35,11 +36,12 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
     },
     {
       id: 'schools',
+      code: 'SEC-02',
       title: 'Schools & Training Institutions',
       badge: 'Education',
       icon: School,
       tagline: 'Primary, secondary, vocational colleges & academies',
-      howTechNixHelps: 'We digitize school operations to eliminate fee reconciliations headaches, automate student report cards, broadcast urgent alerts to parents, and keep computer labs virus-free.',
+      howTechNixHelps: 'We digitize school operations to eliminate fee reconciliation headaches, automate student report cards, broadcast urgent alerts to parents, and keep computer labs virus-free.',
       keyDeliverables: [
         'Student management and report card generators',
         'SMS and WhatsApp broadcast portals for parents',
@@ -50,187 +52,193 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
     },
     {
       id: 'ngos',
+      code: 'SEC-03',
       title: 'NGOs & Development Organisations',
       badge: 'Development',
       icon: HeartHandshake,
-      tagline: 'Local and international NGOs, trust funds & consortia',
+      tagline: 'Local and international NGOs, trust funds & donor consortia',
       howTechNixHelps: 'We engineer offline-first field data collection tools, automated donor-compliant M&E dashboards, and encrypted cloud backups that protect field findings across remote districts.',
       keyDeliverables: [
         'Offline mobile survey & field reporting applications',
         'Executive Power BI dashboards for board and donor reporting',
-        'Encrypted off-site cloud data protection and disaster recovery',
-        'ICT4D technical consulting and team workshops',
+        'High-security cloud backups & multi-branch IT maintenance',
+        'ICT4D technical consultation & field tech deployment',
       ],
       ctaText: 'Explore NGO Solutions',
     },
     {
       id: 'churches',
-      title: 'Churches & Associations',
+      code: 'SEC-04',
+      title: 'Churches & Community Organisations',
       badge: 'Community',
       icon: Users,
-      tagline: 'Faith institutions, cooperatives, alumni bodies & unions',
-      howTechNixHelps: 'We help member organizations maintain accurate member registers, coordinate bulk announcements, track pledges and contributions, and broadcast notices securely.',
+      tagline: 'Congregations, national synods, youth networks & foundations',
+      howTechNixHelps: 'We empower churches and associations to organize member registries, securely collect digital tithes or dues via mobile money, and broadcast weekly sermons.',
       keyDeliverables: [
-        'Member directory and contribution management portal',
-        'Bulk SMS and WhatsApp group notice broadcasting',
-        'Official informational website with event calendars',
-        'Audio/visual and live streaming technology setup',
+        'Church member database & attendance tracking systems',
+        'Airtel Money & TNM Mpamba digital giving integrations',
+        'Livestreaming hardware setup and audio-visual consulting',
+        'Event registration and digital bulk SMS announcements',
       ],
-      ctaText: 'Explore Association Solutions',
+      ctaText: 'Explore Community Solutions',
     },
     {
-      id: 'professionals',
-      title: 'Professionals',
-      badge: 'Practices',
+      id: 'professional-practices',
+      code: 'SEC-05',
+      title: 'Professional Practices & Consultancies',
+      badge: 'Professional',
       icon: Briefcase,
-      tagline: 'Lawyers, clinics, accountants, architects & consultants',
-      howTechNixHelps: 'We build high-trust corporate profile websites, configure secure confidential client file backups, and streamline digital consultation bookings so you win higher-value clients.',
+      tagline: 'Law firms, clinics, audit partnerships & architectural studios',
+      howTechNixHelps: 'We safeguard privileged client records with encrypted local backups, configure high-trust domain email, and streamline client bookings with confidential intake workflows.',
       keyDeliverables: [
-        'Executive credential and case-study showcase website',
-        'Confidential encrypted cloud backup for client files',
-        'Domain email and calendar synchronization across devices',
-        'Client intake and consultation scheduling workflows',
+        'Authoritative corporate websites designed to win formal bids',
+        'Strictly encrypted business email and document archiving',
+        'Online consultation booking and client intake portals',
+        'Dedicated TechNix Care workstation & printer SLA support',
       ],
-      ctaText: 'Explore Professional Solutions',
+      ctaText: 'Explore Practice Solutions',
     },
     {
-      id: 'larger-orgs',
-      title: 'Larger Organisations',
+      id: 'corporates',
+      code: 'SEC-06',
+      title: 'Larger Corporations & Enterprises',
       badge: 'Enterprise',
       icon: Landmark,
-      tagline: 'Multi-branch enterprises, distributors & statutory bodies',
-      howTechNixHelps: 'We provide dedicated SLA-backed IT infrastructure management, inter-branch VPN networks, cybersecurity auditing, and integration with legacy databases to guarantee business continuity.',
+      tagline: 'Financial institutions, multi-branch conglomerates & parastatals',
+      howTechNixHelps: 'We partner with enterprise IT directors to extend their engineering capacity: building bespoke internal portals, conducting digital security audits, and managing multi-site infrastructure.',
       keyDeliverables: [
-        'TechNix Care Professional with dedicated Senior Systems Engineer',
-        'Inter-office secure VPN and enterprise firewall management',
-        'Cybersecurity risk assessment and disaster recovery planning',
-        'Custom enterprise software and database integration',
+        'Custom enterprise ERP modules and multi-branch database sync',
+        'Cybersecurity health checks, penetration testing & hardening',
+        'Dedicated SLA infrastructure retainers with guaranteed response times',
+        'Workforce technology training (Power BI, Advanced Excel, Cloud)',
       ],
       ctaText: 'Explore Enterprise Solutions',
     },
   ];
 
-  const [activeTab, setActiveTab] = useState<string>(industries[0].id);
+  const [activeTab, setActiveTab] = useState(industries[0].id);
   const activeIndustry = industries.find((i) => i.id === activeTab) || industries[0];
 
-  const handleWhatsApp = (industryTitle: string) => {
+  const handleWhatsApp = (title: string) => {
     const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(
-      `Hello TechNix, I am inquiring on behalf of ${industryTitle} regarding your tailored technology solutions.`
+      `Hello TechNix, I represent a ${title} and would like to learn how you can support our technology needs.`
     )}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="industries" className="py-24 bg-white border-b border-slate-200/90 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="customer-types" className="py-24 bg-[#030712] text-white relative border-b border-slate-800/80">
+      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-1/2 right-10 w-96 h-96 bg-sky-600/5 blur-[150px] pointer-events-none rounded-full" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-            Sector Focus
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Technology for Organisations Like Yours
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-sky-400 shadow-md">
+            <Building2 className="w-3.5 h-3.5" />
+            <span className="font-semibold uppercase tracking-wider">Sector Specific Infrastructure</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            Tailored Engineering for Your <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-sky-400 via-blue-200 to-emerald-400 bg-clip-text text-transparent">
+              Specific Organisational Context
+            </span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600">
-            We adapt technology to your specific operational environment — because a rural school, an emergency NGO, and a city trading business face very different technical realities.
+
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            A school operates differently from an NGO, which operates differently from a law firm or retail enterprise. We design solutions aligned with your exact operational realities.
           </p>
         </div>
 
-        {/* Industry Selection Buttons */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
-          {industries.map((ind) => {
-            const Icon = ind.icon;
-            const isSelected = ind.id === activeTab;
-            return (
-              <button
-                key={ind.id}
-                onClick={() => setActiveTab(ind.id)}
-                className={`p-4 rounded-2xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center space-y-2 ${
-                  isSelected
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-md scale-102'
-                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
-                }`}
-              >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  isSelected ? 'bg-blue-600 text-white' : 'bg-white text-blue-700 border border-slate-200'
-                }`}>
-                  <Icon className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-bold">{ind.title}</span>
-              </button>
-            );
-          })}
+        {/* Industry Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+          {industries.map((ind) => (
+            <button
+              key={ind.id}
+              onClick={() => setActiveTab(ind.id)}
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer border flex items-center space-x-2 ${
+                activeTab === ind.id
+                  ? 'bg-sky-600 text-white border-sky-400 shadow-lg shadow-sky-600/30'
+                  : 'bg-slate-900/80 text-slate-300 border-slate-700/80 hover:bg-slate-800 hover:text-white'
+              }`}
+            >
+              <span>{ind.title.split('&')[0]}</span>
+            </button>
+          ))}
         </div>
 
-        {/* Active Industry Detailed Card */}
-        <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-8 sm:p-10 shadow-xs">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center space-x-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/70 px-2.5 py-1 rounded-md">
-                  {activeIndustry.badge} Sector
+        {/* Selected Industry Card */}
+        <div className="glass-panel-elevated rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center space-x-3">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400 bg-slate-900/90 border border-slate-800 px-2.5 py-1 rounded">
+                  {activeIndustry.code} • {activeIndustry.badge}
                 </span>
-                <span className="text-xs text-slate-500 font-medium">
+                <span className="text-xs text-slate-400 font-mono">
                   {activeIndustry.tagline}
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                How TechNix Helps {activeIndustry.title}
+              <h3 className="text-2xl sm:text-3xl font-black text-white">
+                How TechNix Powers {activeIndustry.title}
               </h3>
 
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 {activeIndustry.howTechNixHelps}
               </p>
 
-              <div className="pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                  Tailored Deliverables
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {activeIndustry.keyDeliverables.map((item, idx) => (
-                    <div key={idx} className="flex items-start space-x-2 bg-white p-3 rounded-xl border border-slate-200/80">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span className="text-xs text-slate-800 font-medium">{item}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="space-y-3 pt-2">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
+                  Tailored Sector Modules:
+                </span>
+                {activeIndustry.keyDeliverables.map((d, dIdx) => (
+                  <div key={dIdx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-200">
+                    <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
+                    <span>{d}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white p-7 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                  Ready to move forward?
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 block mb-1">
+                  SECTOR ONBOARDING
                 </span>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">
-                  Get a tailored proposal for your {activeIndustry.title.toLowerCase()}
+                <h4 className="text-lg font-bold text-white mb-2">
+                  Ready to upgrade your technology systems?
                 </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Speak directly with an engineer who understands your sector requirements and budget expectations.
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Book a confidential 30-minute discovery consultation with our technical team in Blantyre & Lilongwe.
                 </p>
               </div>
 
-              <div className="space-y-2.5">
+              <div className="space-y-3">
                 <button
-                  onClick={() => onOpenQuote(`${activeIndustry.title} Technology Solution`)}
-                  className="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-xs"
+                  onClick={() => onOpenQuote(`${activeIndustry.title} Technology Inquiry`)}
+                  className="w-full py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-sky-600/20 transition-all cursor-pointer flex items-center justify-center space-x-2 border border-sky-400/40"
                 >
-                  <span>Request {activeIndustry.title} Proposal</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>{activeIndustry.ctaText}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
                 <button
                   onClick={() => handleWhatsApp(activeIndustry.title)}
-                  className="w-full py-3.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-semibold text-xs sm:text-sm rounded-xl border border-emerald-200 transition-colors flex items-center justify-center space-x-2 cursor-pointer"
+                  className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 font-semibold text-xs rounded-xl flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                 >
-                  <MessageSquare className="w-4 h-4 text-emerald-600" />
+                  <MessageSquare className="w-4 h-4" />
                   <span>Discuss on WhatsApp</span>
                 </button>
               </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
   );

@@ -4,20 +4,24 @@ import {
   ArrowRight, 
   MessageSquare, 
   PhoneCall, 
-  ShieldCheck, 
   Globe2, 
   Mail, 
   Server, 
   AlertTriangle, 
   Shield, 
   Code2, 
-  Sparkles, 
   RefreshCw, 
   Compass,
   CheckCircle2,
   Cpu,
   Layers,
-  Activity,
+  Database,
+  Smartphone,
+  Network,
+  Users,
+  BarChart3,
+  Lock,
+  Radio,
   Zap
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
@@ -29,11 +33,11 @@ interface Spatial3DHeroProps {
   onSelectSection: (sectionId: string) => void;
 }
 
-interface InfrastructurePillar {
+interface EcosystemNode {
   id: string;
   name: string;
+  category: string;
   badge: string;
-  pillarCategory: string;
   sectionId: string;
   serviceTitle: string;
   priceNote: string;
@@ -41,99 +45,144 @@ interface InfrastructurePillar {
   specs: string[];
   cameraTarget: { x: number; y: number; z: number };
   cameraLook: { x: number; y: number; z: number };
-  color: number;
+  colorHex: number;
   icon: React.ElementType;
 }
 
-const INFRASTRUCTURE_PILLARS: InfrastructurePillar[] = [
+const ECOSYSTEM_NODES: EcosystemNode[] = [
   {
-    id: 'overview',
-    name: 'Digital Backbone',
-    badge: 'Malawi & African Cloud',
-    pillarCategory: 'End-to-End Ecosystem',
+    id: 'core',
+    name: 'TechNix Infrastructure Core',
+    category: 'Ecosystem Core',
+    badge: 'Integrated Digital Backbone',
     sectionId: 'solutions',
     serviceTitle: 'Full Digital Transformation',
-    priceNote: 'Tailored Enterprise & SME Solutions',
-    businessImpact: 'Unifies web, email, cloud hosting, internal systems and rapid on-site IT support into one reliable partner.',
-    specs: ['Blantyre HQ & Lilongwe Hubs', 'Local Kwacha Billing', 'Zero Overseas Hiring Headache'],
-    cameraTarget: { x: 0, y: 5.2, z: 16.5 },
+    priceNote: 'Enterprise & SME Solutions',
+    businessImpact: 'Unifies web, business software, enterprise email, cloud hosting, field sync, and rapid IT rescue into a single dependable engineering partner.',
+    specs: ['Blantyre HQ & Lilongwe Hubs', 'Local Malawi Kwacha (MK) Billing', 'Full Lifecycle Managed IT'],
+    cameraTarget: { x: 0, y: 5.5, z: 18.5 },
     cameraLook: { x: 0, y: 0.5, z: 0 },
-    color: 0x38bdf8,
+    colorHex: 0x38bdf8,
     icon: Cpu,
   },
   {
-    id: 'web',
-    name: 'Business Websites',
-    badge: 'Digital Storefront',
-    pillarCategory: 'Digital Presence',
-    sectionId: 'business-website',
-    serviceTitle: 'Business Starter Website',
-    priceNote: 'Starting from MK 199,000',
-    businessImpact: 'Turns casual visitors into paying customers with high-speed mobile loading, SEO visibility, and WhatsApp ordering.',
-    specs: ['Optimized for Airtel & TNM speeds', 'Mobile-first responsive UX', 'Direct WhatsApp & Call triggers'],
-    cameraTarget: { x: -6.2, y: 3.2, z: 7.2 },
-    cameraLook: { x: -4.2, y: 1.2, z: 1.5 },
-    color: 0x38bdf8,
-    icon: Globe2,
+    id: 'business-systems',
+    name: 'Business Systems',
+    category: 'Process Automation',
+    badge: 'Custom Portals & ERP',
+    sectionId: 'software-solutions',
+    serviceTitle: 'Custom Software Solution',
+    priceNote: 'Transparent milestone scope',
+    businessImpact: 'Replaces error-prone paper logs and manual spreadsheets with custom databases, student management, NGO reporting, and inventory systems.',
+    specs: ['Role-based access permissions', 'Automated approval workflows', 'Local API integrations'],
+    cameraTarget: { x: -6.5, y: 2.2, z: 4.5 },
+    cameraLook: { x: -4.2, y: 0.8, z: 1.0 },
+    colorHex: 0x818cf8,
+    icon: Database,
   },
   {
-    id: 'email',
-    name: 'Enterprise Email',
-    badge: 'Branded Inboxes',
-    pillarCategory: 'Professional Identity',
-    sectionId: 'business-email',
-    serviceTitle: 'Business Domain Email',
-    priceNote: 'From MK 45,000 / inbox / year',
-    businessImpact: 'Eliminates untrusted @gmail.com addresses. Fully secured with SPF, DKIM, and enterprise anti-phishing protection.',
-    specs: ['name@yourbusiness.mw setup', 'Outlook, Apple Mail & Webmail sync', 'Spam & impersonation defense'],
-    cameraTarget: { x: 6.2, y: 3.4, z: 6.8 },
-    cameraLook: { x: 4.4, y: 1.3, z: 1.4 },
-    color: 0x34d399,
-    icon: Mail,
+    id: 'data-analytics',
+    name: 'Data & Telemetry',
+    category: 'Business Intelligence',
+    badge: 'Power BI & KPIs',
+    sectionId: 'software-solutions',
+    serviceTitle: 'Dashboards & Reporting Platforms',
+    priceNote: 'Live executive visibility',
+    businessImpact: 'Transforms raw spreadsheets into interactive executive dashboards and 1-click donor compliance reports.',
+    specs: ['Automated ETL data pipelines', 'Real-time board KPI charts', 'Export-ready audit reports'],
+    cameraTarget: { x: -4.5, y: 4.8, z: -3.5 },
+    cameraLook: { x: -2.8, y: 1.5, z: -2.0 },
+    colorHex: 0x38bdf8,
+    icon: BarChart3,
   },
   {
-    id: 'cloud',
+    id: 'cloud-hosting',
     name: 'Cloud & Hosting',
-    badge: '99.9% Uptime Datacenter',
-    pillarCategory: 'Core Infrastructure',
+    category: 'Core Infrastructure',
+    badge: '99.9% Datacenter Uptime',
     sectionId: 'hosting-domains',
     serviceTitle: 'Cloud Hosting & Domain Setup',
     priceNote: 'From MK 65,000 / year',
-    businessImpact: 'High-availability SSD hosting for .mw and international domains with automated off-site daily backups and SSL certificates.',
-    specs: ['SSD NVMe Storage', '.mw & .com domain registration', 'Automated nightly snapshots'],
-    cameraTarget: { x: 0.2, y: 3.2, z: 10.5 },
+    businessImpact: 'High-availability SSD cloud servers for .mw and international domains with automated daily off-site encrypted backups and SSL.',
+    specs: ['NVMe SSD high speed', 'Automated daily snapshots', 'Local Kwacha payments (Airtel/Mpamba/Bank)'],
+    cameraTarget: { x: 0, y: 3.5, z: 10.8 },
     cameraLook: { x: 0, y: 0.8, z: 0 },
-    color: 0x818cf8,
+    colorHex: 0x0ea5e9,
     icon: Server,
   },
   {
-    id: 'software',
-    name: 'Software Solutions',
-    badge: 'Custom Portals & Field Sync',
-    pillarCategory: 'Business Process Automation',
-    sectionId: 'software-solutions',
-    serviceTitle: 'Custom Software Solution',
-    priceNote: 'Scope-based transparent quote',
-    businessImpact: 'Replaces error-prone manual spreadsheets with custom web portals, field data collection, and local Airtel/TNM mobile money APIs.',
-    specs: ['Field-to-HQ offline sync', 'Role-based access permissions', 'Airtel Money & Mpamba API ready'],
-    cameraTarget: { x: -5.4, y: 1.8, z: -1.2 },
-    cameraLook: { x: -3.8, y: -0.2, z: -3.2 },
-    color: 0xa78bfa,
-    icon: Code2,
+    id: 'web-platforms',
+    name: 'Web Platforms',
+    category: 'Digital Presence',
+    badge: 'High-Conversion Storefronts',
+    sectionId: 'business-website',
+    serviceTitle: 'Business Starter Website',
+    priceNote: 'Starting from MK 199,000',
+    businessImpact: 'Fast, mobile-friendly websites that establish immediate commercial legitimacy, rank on Google, and capture WhatsApp leads.',
+    specs: ['Optimized for Airtel & TNM speeds', 'Direct WhatsApp & Call triggers', 'Google Business & Maps verified'],
+    cameraTarget: { x: -5.8, y: 2.8, z: 8.2 },
+    cameraLook: { x: -3.8, y: 1.0, z: 2.5 },
+    colorHex: 0x38bdf8,
+    icon: Globe2,
   },
   {
-    id: 'rescue',
-    name: 'IT Rescue & Care',
-    badge: 'Emergency Support & SLA',
-    pillarCategory: 'Rapid Response & Retainer',
+    id: 'mobile-field',
+    name: 'Mobile & Field Sync',
+    category: 'Distributed Operations',
+    badge: 'Offline-First Applications',
+    sectionId: 'software-solutions',
+    serviceTitle: 'Field Data Collection System',
+    priceNote: 'Resilient remote sync',
+    businessImpact: 'Enables field officers and logistics drivers to collect data offline in remote districts with automatic cloud sync upon signal restore.',
+    specs: ['Zero-connectivity local caching', 'GPS location & signature capture', 'Airtel Money & Mpamba API ready'],
+    cameraTarget: { x: 4.8, y: 2.4, z: 8.5 },
+    cameraLook: { x: 3.2, y: 0.9, z: 2.8 },
+    colorHex: 0x34d399,
+    icon: Smartphone,
+  },
+  {
+    id: 'security-identity',
+    name: 'Security & Identity',
+    category: 'Enterprise Defense',
+    badge: 'Domain Inboxes & Hardening',
+    sectionId: 'business-email',
+    serviceTitle: 'Business Domain Email',
+    priceNote: 'Professional branded inboxes',
+    businessImpact: 'Replaces vulnerable @gmail.com addresses with secure name@company.mw emails guarded by SPF, DKIM, and anti-phishing filters.',
+    specs: ['Cryptographic email authentication', 'Mobile & Outlook synchronization', 'Anti-ransomware & firewall protection'],
+    cameraTarget: { x: 6.2, y: 3.2, z: 4.2 },
+    cameraLook: { x: 4.2, y: 1.2, z: 1.2 },
+    colorHex: 0x10b981,
+    icon: Lock,
+  },
+  {
+    id: 'networks-regional',
+    name: 'Regional Networks',
+    category: 'Physical Connectivity',
+    badge: 'Blantyre HQ & Lilongwe Hub',
+    sectionId: 'about',
+    serviceTitle: 'Inter-Branch IT Infrastructure',
+    priceNote: 'Nationwide support coverage',
+    businessImpact: 'High-speed inter-office networking, dual-WAN failover routers, and physical on-site engineering dispatch across Malawi.',
+    specs: ['Blantyre Commercial City Centre', 'Lilongwe Capital City Office Park', '2-Hour Physical Dispatch SLA'],
+    cameraTarget: { x: 5.5, y: 4.5, z: -3.8 },
+    cameraLook: { x: 3.5, y: 1.4, z: -2.0 },
+    colorHex: 0x38bdf8,
+    icon: Network,
+  },
+  {
+    id: 'it-rescue-people',
+    name: 'IT Rescue & People',
+    category: 'Rapid Support & SLAs',
+    badge: 'Emergency Triage & Retainers',
     sectionId: 'it-rescue',
     serviceTitle: 'Emergency IT Rescue Support',
-    priceNote: 'Immediate triage in Blantyre & Lilongwe',
-    businessImpact: 'Instant disaster recovery for down servers, hacked sites, broken emails, or computer failure with fast physical and remote dispatch.',
-    specs: ['Blantyre & Lilongwe physical response', 'Secure remote screen intervention', 'Preventative TechNix Care maintenance'],
-    cameraTarget: { x: 5.6, y: 2.2, z: -1.4 },
-    cameraLook: { x: 3.9, y: 0.2, z: -3.0 },
-    color: 0xf87171,
+    priceNote: 'Immediate on-call resolution',
+    businessImpact: '24/7 emergency response for down servers, network crashes, malware, and slow computers, backed by ongoing TechNix Care retainers.',
+    specs: ['Physical & remote rapid intervention', 'TechNix Care managed IT retainers', 'TechNix Academy practical training'],
+    cameraTarget: { x: 0, y: 1.8, z: -6.5 },
+    cameraLook: { x: 0, y: 0.2, z: -3.0 },
+    colorHex: 0xf87171,
     icon: AlertTriangle,
   },
 ];
@@ -145,14 +194,12 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
   onSelectSection,
 }) => {
   const mountRef = useRef<HTMLDivElement>(null);
-  const [selectedPillarId, setSelectedPillarId] = useState<string>('overview');
-  const [isRotatingManually, setIsRotatingManually] = useState(false);
+  const [selectedNodeId, setSelectedNodeId] = useState<string>('core');
+  const [isOrbiting, setIsOrbiting] = useState(false);
 
-  // Active selected pillar
-  const activePillar = INFRASTRUCTURE_PILLARS.find((p) => p.id === selectedPillarId) || INFRASTRUCTURE_PILLARS[0];
+  const activeNode = ECOSYSTEM_NODES.find((n) => n.id === selectedNodeId) || ECOSYSTEM_NODES[0];
 
-  // Camera lerp targets
-  const targetCameraPos = useRef(new THREE.Vector3(0, 5.2, 16.5));
+  const targetCameraPos = useRef(new THREE.Vector3(0, 5.5, 18.5));
   const targetCameraLook = useRef(new THREE.Vector3(0, 0.5, 0));
 
   const handleWhatsApp = (msg: string) => {
@@ -160,20 +207,20 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const handlePillarSelect = (pillarId: string) => {
-    setSelectedPillarId(pillarId);
-    const pillar = INFRASTRUCTURE_PILLARS.find((p) => p.id === pillarId);
-    if (!pillar) {
-      targetCameraPos.current.set(0, 5.2, 16.5);
+  const handleNodeSelect = (nodeId: string) => {
+    setSelectedNodeId(nodeId);
+    const node = ECOSYSTEM_NODES.find((n) => n.id === nodeId);
+    if (!node) {
+      targetCameraPos.current.set(0, 5.5, 18.5);
       targetCameraLook.current.set(0, 0.5, 0);
       return;
     }
-    targetCameraPos.current.set(pillar.cameraTarget.x, pillar.cameraTarget.y, pillar.cameraTarget.z);
-    targetCameraLook.current.set(pillar.cameraLook.x, pillar.cameraLook.y, pillar.cameraLook.z);
+    targetCameraPos.current.set(node.cameraTarget.x, node.cameraTarget.y, node.cameraTarget.z);
+    targetCameraLook.current.set(node.cameraLook.x, node.cameraLook.y, node.cameraLook.z);
   };
 
   const handleResetCamera = () => {
-    handlePillarSelect('overview');
+    handleNodeSelect('core');
   };
 
   useEffect(() => {
@@ -182,10 +229,12 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // 1. Scene & Camera
+    // 1. Scene & Camera Setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
-    camera.position.set(0, 5.2, 16.5);
+    scene.fog = new THREE.FogExp2(0x030712, 0.025);
+
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 120);
+    camera.position.set(0, 5.5, 18.5);
     camera.lookAt(0, 0.5, 0);
 
     let renderer: THREE.WebGLRenderer;
@@ -200,378 +249,307 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
     }
 
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     mount.appendChild(renderer.domElement);
 
     // 2. Cinematic Lighting
-    scene.add(new THREE.AmbientLight(0xcfd8dc, 1.1));
+    scene.add(new THREE.AmbientLight(0x94a3b8, 1.2));
 
-    const keySun = new THREE.DirectionalLight(0x38bdf8, 3.2);
-    keySun.position.set(10, 16, 12);
+    const keySun = new THREE.DirectionalLight(0x38bdf8, 3.5);
+    keySun.position.set(12, 18, 14);
     scene.add(keySun);
 
-    const rimLight = new THREE.DirectionalLight(0x34d399, 2.0);
-    rimLight.position.set(-12, -4, -10);
+    const rimLight = new THREE.DirectionalLight(0x10b981, 2.2);
+    rimLight.position.set(-14, -5, -12);
     scene.add(rimLight);
 
-    const blanGlow = new THREE.PointLight(0x38bdf8, 2.5, 14);
-    blanGlow.position.set(-3.5, 0.5, 2.2);
-    scene.add(blanGlow);
+    const corePointLight = new THREE.PointLight(0x38bdf8, 3.5, 18);
+    corePointLight.position.set(0, 1.5, 0);
+    scene.add(corePointLight);
 
-    const lilGlow = new THREE.PointLight(0x34d399, 2.5, 14);
-    lilGlow.position.set(3.5, 0.5, 2.2);
-    scene.add(lilGlow);
-
-    // 3. World Group
+    // 3. Central World Group
     const world = new THREE.Group();
     scene.add(world);
 
     // -------------------------------------------------------------
-    // BASE INFRASTRUCTURE FOUNDATION (Hexagonal Backbone Grid)
+    // INFRASTRUCTURE FOUNDATION: HEXAGONAL DIGITAL TERRAIN GRID
     // -------------------------------------------------------------
-    const gridHelper = new THREE.GridHelper(24, 28, 0x0284c7, 0x1e293b);
-    gridHelper.position.y = -2.8;
+    const gridHelper = new THREE.GridHelper(28, 32, 0x0284c7, 0x0f172a);
+    gridHelper.position.y = -3.2;
     (gridHelper.material as THREE.Material).transparent = true;
-    (gridHelper.material as THREE.Material).opacity = 0.3;
+    (gridHelper.material as THREE.Material).opacity = 0.35;
     world.add(gridHelper);
 
-    // Outer Glow Ring (Fiber Optic Ring of Southern Africa)
-    const fiberRing = new THREE.Mesh(
-      new THREE.TorusGeometry(9.2, 0.035, 8, 120),
-      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.45 })
-    );
-    fiberRing.rotation.x = Math.PI / 2;
-    fiberRing.position.y = -2.75;
-    world.add(fiberRing);
-
-    // Secondary Emerald Security Perimeter Ring
-    const perimeterRing = new THREE.Mesh(
-      new THREE.TorusGeometry(10.5, 0.02, 8, 120),
-      new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.25 })
-    );
-    perimeterRing.rotation.x = Math.PI / 2;
-    perimeterRing.position.y = -2.78;
-    world.add(perimeterRing);
-
-    // -------------------------------------------------------------
-    // REGIONAL HUBS: BLANTYRE HQ & LILONGWE OPERATIONS
-    // -------------------------------------------------------------
-    const createLocalHub = (x: number, z: number, colorHex: number, name: string) => {
-      const hubGroup = new THREE.Group();
-      hubGroup.position.set(x, -2.6, z);
-
-      // Base Pillar Platform
-      const basePlatform = new THREE.Mesh(
-        new THREE.CylinderGeometry(1.2, 1.4, 0.35, 32),
-        new THREE.MeshStandardMaterial({
-          color: 0x0a192f,
-          metalness: 0.85,
-          roughness: 0.2,
-        })
+    // Outer Concentric Fiber Optic Backbone Rings
+    const createFiberRing = (radius: number, colorHex: number, opacity: number, y: number) => {
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(radius, 0.025, 8, 140),
+        new THREE.MeshBasicMaterial({ color: colorHex, transparent: true, opacity })
       );
-      hubGroup.add(basePlatform);
-
-      // Glowing Ground Target Ring
-      const targetRing = new THREE.Mesh(
-        new THREE.RingGeometry(1.3, 1.45, 32),
-        new THREE.MeshBasicMaterial({ color: colorHex, side: THREE.DoubleSide, transparent: true, opacity: 0.7 })
-      );
-      targetRing.rotation.x = -Math.PI / 2;
-      targetRing.position.y = 0.2;
-      hubGroup.add(targetRing);
-
-      // Vertical Telemetry Transmission Pillar
-      const antenna = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.12, 0.2, 1.8, 16),
-        new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.9, roughness: 0.1 })
-      );
-      antenna.position.y = 1.1;
-      hubGroup.add(antenna);
-
-      // Transmitter Beacon
-      const transmitter = new THREE.Mesh(
-        new THREE.SphereGeometry(0.3, 16, 16),
-        new THREE.MeshStandardMaterial({
-          color: colorHex,
-          emissive: colorHex,
-          emissiveIntensity: 1.8,
-        })
-      );
-      transmitter.position.y = 2.1;
-      hubGroup.add(transmitter);
-
-      // Pulsing Radar Rings
-      const radarRing = new THREE.Mesh(
-        new THREE.TorusGeometry(0.65, 0.02, 6, 32),
-        new THREE.MeshBasicMaterial({ color: colorHex, transparent: true, opacity: 0.7 })
-      );
-      radarRing.rotation.x = Math.PI / 2;
-      radarRing.position.y = 2.1;
-      hubGroup.add(radarRing);
-
-      world.add(hubGroup);
-      return { hubGroup, radarRing, transmitter };
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = y;
+      world.add(ring);
+      return ring;
     };
 
-    const blantyreHub = createLocalHub(-4.5, 3.2, 0x38bdf8, 'Blantyre');
-    const lilongweHub = createLocalHub(4.5, 3.2, 0x34d399, 'Lilongwe');
+    const ringInner = createFiberRing(7.5, 0x38bdf8, 0.4, -3.15);
+    const ringOuter = createFiberRing(11.2, 0x10b981, 0.3, -3.18);
+    const ringPerimeter = createFiberRing(14.5, 0x818cf8, 0.2, -3.2);
 
-    // High-Speed Fiber Optic Backbone Connecting Blantyre <-> Lilongwe
-    const localBackboneCurve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-4.5, -0.5, 3.2),
-      new THREE.Vector3(0, 0.6, 4.0),
-      new THREE.Vector3(4.5, -0.5, 3.2),
+    // -------------------------------------------------------------
+    // REGIONAL NODES: BLANTYRE HQ & LILONGWE OPERATIONS
+    // -------------------------------------------------------------
+    const createRegionalNode = (x: number, z: number, colorHex: number, label: string) => {
+      const group = new THREE.Group();
+      group.position.set(x, -3.0, z);
+
+      // Base Pedestal
+      const base = new THREE.Mesh(
+        new THREE.CylinderGeometry(1.4, 1.6, 0.4, 32),
+        new THREE.MeshStandardMaterial({ color: 0x07111e, metalness: 0.9, roughness: 0.15 })
+      );
+      group.add(base);
+
+      // Ground Target Halo
+      const targetHalo = new THREE.Mesh(
+        new THREE.RingGeometry(1.5, 1.7, 32),
+        new THREE.MeshBasicMaterial({ color: colorHex, side: THREE.DoubleSide, transparent: true, opacity: 0.7 })
+      );
+      targetHalo.rotation.x = -Math.PI / 2;
+      targetHalo.position.y = 0.22;
+      group.add(targetHalo);
+
+      // Telemetry Mast
+      const mast = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.1, 0.18, 2.2, 16),
+        new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.95, roughness: 0.1 })
+      );
+      mast.position.y = 1.3;
+      group.add(mast);
+
+      // Beacon Orb
+      const beacon = new THREE.Mesh(
+        new THREE.SphereGeometry(0.32, 16, 16),
+        new THREE.MeshStandardMaterial({ color: colorHex, emissive: colorHex, emissiveIntensity: 2.2 })
+      );
+      beacon.position.y = 2.4;
+      group.add(beacon);
+
+      // Pulse Wave
+      const pulseRing = new THREE.Mesh(
+        new THREE.TorusGeometry(0.75, 0.02, 6, 32),
+        new THREE.MeshBasicMaterial({ color: colorHex, transparent: true, opacity: 0.75 })
+      );
+      pulseRing.rotation.x = Math.PI / 2;
+      pulseRing.position.y = 2.4;
+      group.add(pulseRing);
+
+      world.add(group);
+      return { group, pulseRing, beacon };
+    };
+
+    const blantyreStation = createRegionalNode(-5.2, 4.2, 0x38bdf8, 'Blantyre HQ');
+    const lilongweStation = createRegionalNode(5.2, 4.2, 0x34d399, 'Lilongwe Hub');
+
+    // Inter-City High-Bandwidth Fiber Backbone (Blantyre <-> Lilongwe)
+    const regionalFiberCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-5.2, -0.6, 4.2),
+      new THREE.Vector3(0, 0.8, 5.0),
+      new THREE.Vector3(5.2, -0.6, 4.2),
     ]);
-    const localBackboneTube = new THREE.Mesh(
-      new THREE.TubeGeometry(localBackboneCurve, 40, 0.035, 8, false),
-      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.5 })
+    const regionalFiberTube = new THREE.Mesh(
+      new THREE.TubeGeometry(regionalFiberCurve, 48, 0.04, 8, false),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.6 })
     );
-    world.add(localBackboneTube);
+    world.add(regionalFiberTube);
 
     // -------------------------------------------------------------
-    // 1. CENTRAL ENTERPRISE DATACENTER / CLOUD BLADE TOWER
+    // 1. TECHNIX CORE: CENTRAL INFRASTRUCTURE MONOLITH & ENERGY HALO
     // -------------------------------------------------------------
-    const datacenterGroup = new THREE.Group();
-    datacenterGroup.position.set(0, 0.3, 0);
-    world.add(datacenterGroup);
+    const coreGroup = new THREE.Group();
+    coreGroup.position.set(0, 0.8, 0);
+    world.add(coreGroup);
 
-    // Black High-Precision Server Rack Cabinet
-    const rackCabinet = new THREE.Mesh(
-      new THREE.BoxGeometry(2.4, 4.2, 1.8),
+    // Outer Gyro Energy Rings
+    const gyroRing1 = new THREE.Mesh(
+      new THREE.TorusGeometry(2.4, 0.035, 12, 80),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.7 })
+    );
+    coreGroup.add(gyroRing1);
+
+    const gyroRing2 = new THREE.Mesh(
+      new THREE.TorusGeometry(2.1, 0.025, 12, 80),
+      new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.6 })
+    );
+    gyroRing2.rotation.x = Math.PI / 3;
+    coreGroup.add(gyroRing2);
+
+    const gyroRing3 = new THREE.Mesh(
+      new THREE.TorusGeometry(1.8, 0.02, 12, 80),
+      new THREE.MeshBasicMaterial({ color: 0x818cf8, transparent: true, opacity: 0.5 })
+    );
+    gyroRing3.rotation.y = Math.PI / 3;
+    coreGroup.add(gyroRing3);
+
+    // Central Core Hexagonal Blade Obelisk
+    const coreMesh = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.8, 1.1, 3.4, 6),
       new THREE.MeshStandardMaterial({
-        color: 0x050c17,
+        color: 0x050c18,
         metalness: 0.95,
         roughness: 0.1,
       })
     );
-    datacenterGroup.add(rackCabinet);
+    coreGroup.add(coreMesh);
 
-    // Server Blade Slots with Glowing LED Activity Lights
+    // Core Wireframe Holographic Casing
+    const coreWireframe = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.85, 1.15, 3.45, 6),
+      new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35,
+      })
+    );
+    coreGroup.add(coreWireframe);
+
+    // Floating Core Crystal
+    const coreCrystal = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.65, 0),
+      new THREE.MeshStandardMaterial({
+        color: 0x38bdf8,
+        emissive: 0x0284c7,
+        emissiveIntensity: 2.0,
+        metalness: 0.2,
+        roughness: 0.1,
+      })
+    );
+    coreCrystal.position.y = 2.4;
+    coreGroup.add(coreCrystal);
+
+    // -------------------------------------------------------------
+    // 2. SURROUNDING SPATIAL TECHNOLOGY NODES
+    // -------------------------------------------------------------
+    // Node A: Cloud Rack & Server Blades (0, 0, 0 area / upper)
+    const serverRackGroup = new THREE.Group();
+    serverRackGroup.position.set(0, 0.2, -1.8);
+    world.add(serverRackGroup);
+
+    const rackCabinet = new THREE.Mesh(
+      new THREE.BoxGeometry(2.0, 3.6, 1.4),
+      new THREE.MeshStandardMaterial({ color: 0x07111e, metalness: 0.9, roughness: 0.15 })
+    );
+    serverRackGroup.add(rackCabinet);
+
     const bladeLEDs: THREE.Mesh[] = [];
-    for (let i = 0; i < 5; i++) {
-      const yPos = -1.5 + i * 0.75;
-
-      // Blade Front Face Plate
-      const bladeFace = new THREE.Mesh(
-        new THREE.BoxGeometry(2.2, 0.55, 0.05),
-        new THREE.MeshStandardMaterial({
-          color: 0x0f1f38,
-          metalness: 0.8,
-          roughness: 0.25,
-        })
+    for (let i = 0; i < 4; i++) {
+      const y = -1.2 + i * 0.8;
+      const blade = new THREE.Mesh(
+        new THREE.BoxGeometry(1.8, 0.55, 0.05),
+        new THREE.MeshStandardMaterial({ color: 0x0f2038, metalness: 0.8, roughness: 0.2 })
       );
-      bladeFace.position.set(0, yPos, 0.93);
-      datacenterGroup.add(bladeFace);
+      blade.position.set(0, y, 0.72);
+      serverRackGroup.add(blade);
 
-      // Status Bar
-      const statusMesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1.6, 0.06, 0.06),
-        new THREE.MeshBasicMaterial({
-          color: i === 4 ? 0x38bdf8 : 0x34d399,
-        })
-      );
-      statusMesh.position.set(0, yPos, 0.96);
-      datacenterGroup.add(statusMesh);
-
-      // Multi-color blinking Activity LEDs
-      for (let j = 0; j < 4; j++) {
+      for (let j = 0; j < 3; j++) {
         const led = new THREE.Mesh(
-          new THREE.SphereGeometry(0.04, 8, 8),
-          new THREE.MeshBasicMaterial({
-            color: j % 2 === 0 ? 0x38bdf8 : 0x34d399,
-          })
+          new THREE.SphereGeometry(0.045, 8, 8),
+          new THREE.MeshBasicMaterial({ color: j === 0 ? 0x34d399 : 0x38bdf8 })
         );
-        led.position.set(-0.8 + j * 0.18, yPos - 0.15, 0.97);
-        datacenterGroup.add(led);
+        led.position.set(-0.6 + j * 0.25, y, 0.76);
+        serverRackGroup.add(led);
         bladeLEDs.push(led);
       }
     }
 
-    // Cloud Holographic Halo above Datacenter (Uptime & Backup SLA)
-    const cloudRing = new THREE.Mesh(
-      new THREE.TorusGeometry(2.0, 0.03, 8, 80),
-      new THREE.MeshBasicMaterial({ color: 0x818cf8, transparent: true, opacity: 0.7 })
-    );
-    cloudRing.rotation.x = Math.PI / 2.2;
-    cloudRing.position.set(0, 2.7, 0);
-    datacenterGroup.add(cloudRing);
+    // Node B: Web Platform Display (-4.2, 1.2, 3.2)
+    const webDisplayGroup = new THREE.Group();
+    webDisplayGroup.position.set(-4.2, 1.2, 3.2);
+    world.add(webDisplayGroup);
 
-    const cloudOrb = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.65, 2),
-      new THREE.MeshStandardMaterial({
-        color: 0x38bdf8,
-        emissive: 0x0284c7,
-        emissiveIntensity: 1.4,
-        roughness: 0.1,
-        metalness: 0.3,
-        wireframe: true,
-      })
-    );
-    cloudOrb.position.set(0, 2.7, 0);
-    datacenterGroup.add(cloudOrb);
-
-    // -------------------------------------------------------------
-    // 2. MODERN WEB PLATFORM / STOREFRONT (Business Websites)
-    // -------------------------------------------------------------
-    const webPlatformGroup = new THREE.Group();
-    webPlatformGroup.position.set(-4.5, 1.2, 1.5);
-    world.add(webPlatformGroup);
-
-    // 3D Glass Device / Floating Display Frame
     const monitorFrame = new THREE.Mesh(
-      new THREE.BoxGeometry(2.6, 1.7, 0.1),
-      new THREE.MeshStandardMaterial({
-        color: 0x0a1628,
-        metalness: 0.8,
-        roughness: 0.2,
-      })
+      new THREE.BoxGeometry(2.4, 1.6, 0.1),
+      new THREE.MeshStandardMaterial({ color: 0x0a1628, metalness: 0.9, roughness: 0.15 })
     );
-    webPlatformGroup.add(monitorFrame);
+    webDisplayGroup.add(monitorFrame);
 
-    // Glowing Web Screen
     const monitorScreen = new THREE.Mesh(
-      new THREE.PlaneGeometry(2.4, 1.5),
-      new THREE.MeshStandardMaterial({
-        color: 0x0284c7,
-        emissive: 0x0369a1,
-        emissiveIntensity: 0.8,
-      })
+      new THREE.PlaneGeometry(2.2, 1.4),
+      new THREE.MeshStandardMaterial({ color: 0x0284c7, emissive: 0x0369a1, emissiveIntensity: 0.85 })
     );
     monitorScreen.position.z = 0.06;
-    webPlatformGroup.add(monitorScreen);
+    webDisplayGroup.add(monitorScreen);
 
-    // Web Layout Wireframe Elements (Header bar, Hero block, Action button)
-    const webHeaderBar = new THREE.Mesh(
-      new THREE.BoxGeometry(2.2, 0.16, 0.02),
-      new THREE.MeshBasicMaterial({ color: 0x38bdf8 })
+    // Node C: Security Shield & Cryptographic Halo (4.2, 1.3, 3.2)
+    const securityGroup = new THREE.Group();
+    securityGroup.position.set(4.2, 1.3, 3.2);
+    world.add(securityGroup);
+
+    const mailBox = new THREE.Mesh(
+      new THREE.BoxGeometry(2.0, 1.3, 0.12),
+      new THREE.MeshStandardMaterial({ color: 0x0b253a, metalness: 0.85, roughness: 0.2 })
     );
-    webHeaderBar.position.set(0, 0.55, 0.08);
-    webPlatformGroup.add(webHeaderBar);
+    securityGroup.add(mailBox);
 
-    const webHeroBlock = new THREE.Mesh(
-      new THREE.BoxGeometry(1.3, 0.6, 0.02),
-      new THREE.MeshBasicMaterial({ color: 0x7dd3fc, transparent: true, opacity: 0.7 })
+    const securityRing = new THREE.Mesh(
+      new THREE.TorusGeometry(1.3, 0.025, 8, 48),
+      new THREE.MeshBasicMaterial({ color: 0x10b981, transparent: true, opacity: 0.8 })
     );
-    webHeroBlock.position.set(-0.4, 0.05, 0.08);
-    webPlatformGroup.add(webHeroBlock);
+    securityRing.position.z = 0.07;
+    securityGroup.add(securityRing);
 
-    const webCTAButton = new THREE.Mesh(
-      new THREE.BoxGeometry(0.65, 0.22, 0.03),
-      new THREE.MeshBasicMaterial({ color: 0x34d399 })
-    );
-    webCTAButton.position.set(0.65, -0.4, 0.08);
-    webPlatformGroup.add(webCTAButton);
-
-    // -------------------------------------------------------------
-    // 3. ENTERPRISE EMAIL & CRYPTO SECURITY SHIELD (Business Email)
-    // -------------------------------------------------------------
-    const emailShieldGroup = new THREE.Group();
-    emailShieldGroup.position.set(4.5, 1.3, 1.5);
-    world.add(emailShieldGroup);
-
-    // 3D Dimensional Mail Envelope
-    const mailBody = new THREE.Mesh(
-      new THREE.BoxGeometry(2.2, 1.4, 0.15),
-      new THREE.MeshStandardMaterial({
-        color: 0x0f2942,
-        metalness: 0.85,
-        roughness: 0.15,
-      })
-    );
-    emailShieldGroup.add(mailBody);
-
-    // Envelope Flap Triangles
-    const flapGeo = new THREE.ConeGeometry(1.0, 0.6, 3);
-    const flapMesh = new THREE.Mesh(
-      flapGeo,
-      new THREE.MeshStandardMaterial({
-        color: 0x34d399,
-        emissive: 0x059669,
-        emissiveIntensity: 0.9,
-      })
-    );
-    flapMesh.rotation.z = Math.PI;
-    flapMesh.rotation.y = Math.PI / 6;
-    flapMesh.position.set(0, 0.25, 0.1);
-    emailShieldGroup.add(flapMesh);
-
-    // Security Verification Shield Ring (DKIM / SPF)
-    const emailSecurityRing = new THREE.Mesh(
-      new THREE.TorusGeometry(1.5, 0.03, 8, 48),
-      new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.75 })
-    );
-    emailSecurityRing.position.set(0, 0, 0.05);
-    emailShieldGroup.add(emailSecurityRing);
-
-    // -------------------------------------------------------------
-    // 4. CUSTOM SOFTWARE & FIELD MOBILE TERMINAL (Software Solutions)
-    // -------------------------------------------------------------
+    // Node D: Custom Software & Database Cubes (-3.8, 0.2, -2.8)
     const softwareGroup = new THREE.Group();
-    softwareGroup.position.set(-4.0, -0.2, -3.2);
+    softwareGroup.position.set(-3.8, 0.2, -2.8);
     world.add(softwareGroup);
 
-    // 3D Mobile / Field Workstation Tablet
-    const tabletBody = new THREE.Mesh(
-      new THREE.BoxGeometry(1.4, 2.3, 0.08),
-      new THREE.MeshStandardMaterial({ color: 0x111827, metalness: 0.9, roughness: 0.15 })
-    );
-    softwareGroup.add(tabletBody);
-
-    const tabletScreen = new THREE.Mesh(
-      new THREE.PlaneGeometry(1.25, 2.05),
-      new THREE.MeshStandardMaterial({
-        color: 0x581c87,
-        emissive: 0x7c3aed,
-        emissiveIntensity: 0.9,
-      })
-    );
-    tabletScreen.position.z = 0.05;
-    softwareGroup.add(tabletScreen);
-
-    // Software Data Pipelines Bars
-    for (let k = 0; k < 3; k++) {
-      const codeBar = new THREE.Mesh(
-        new THREE.BoxGeometry(0.95, 0.15, 0.02),
-        new THREE.MeshBasicMaterial({ color: 0xc084fc })
+    for (let c = 0; c < 3; c++) {
+      const dbLayer = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.85, 0.85, 0.35, 24),
+        new THREE.MeshStandardMaterial({ color: 0x1e1b4b, metalness: 0.8, roughness: 0.2 })
       );
-      codeBar.position.set(0, 0.6 - k * 0.45, 0.07);
-      softwareGroup.add(codeBar);
+      dbLayer.position.y = -0.5 + c * 0.45;
+      softwareGroup.add(dbLayer);
+
+      const dbRing = new THREE.Mesh(
+        new THREE.TorusGeometry(0.9, 0.02, 6, 32),
+        new THREE.MeshBasicMaterial({ color: 0x818cf8, transparent: true, opacity: 0.7 })
+      );
+      dbRing.rotation.x = Math.PI / 2;
+      dbRing.position.y = -0.5 + c * 0.45;
+      softwareGroup.add(dbRing);
     }
 
-    // -------------------------------------------------------------
-    // 5. IT RESCUE EMERGENCY RADAR BEACON (Rapid Response & Care)
-    // -------------------------------------------------------------
-    const rescueBeaconGroup = new THREE.Group();
-    rescueBeaconGroup.position.set(4.0, 0.1, -3.0);
-    world.add(rescueBeaconGroup);
+    // Node E: IT Rescue Emergency Radar Beacon (3.8, 0.3, -2.8)
+    const rescueGroup = new THREE.Group();
+    rescueGroup.position.set(3.8, 0.3, -2.8);
+    world.add(rescueGroup);
 
-    // Emergency Lifeline Radar Dome
-    const rescueDome = new THREE.Mesh(
-      new THREE.SphereGeometry(0.8, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2),
+    const rescueRadarDome = new THREE.Mesh(
+      new THREE.SphereGeometry(0.85, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2),
       new THREE.MeshStandardMaterial({
         color: 0xef4444,
         emissive: 0xdc2626,
-        emissiveIntensity: 1.2,
+        emissiveIntensity: 1.3,
         transparent: true,
         opacity: 0.75,
       })
     );
-    rescueDome.position.y = -0.3;
-    rescueBeaconGroup.add(rescueDome);
+    rescueRadarDome.position.y = -0.3;
+    rescueGroup.add(rescueRadarDome);
 
-    // Rotating Emergency Sweep Ring
-    const rescueSweepRing = new THREE.Mesh(
+    const rescueSweep = new THREE.Mesh(
       new THREE.TorusGeometry(1.3, 0.025, 6, 36),
       new THREE.MeshBasicMaterial({ color: 0xf87171, transparent: true, opacity: 0.85 })
     );
-    rescueSweepRing.rotation.x = Math.PI / 2;
-    rescueSweepRing.position.y = 0.4;
-    rescueBeaconGroup.add(rescueSweepRing);
+    rescueSweep.rotation.x = Math.PI / 2;
+    rescueSweep.position.y = 0.35;
+    rescueGroup.add(rescueSweep);
 
     // -------------------------------------------------------------
-    // REAL-TIME DATA HIGHWAYS & PACKET STREAMS
+    // FLOWING DATA HIGHWAYS: LIGHT PACKETS ALONG CONNECTING CURVES
     // -------------------------------------------------------------
-    // Connecting Central Datacenter to Web Platform, Email, Software, and Rescue
     interface DataHighway {
       tube: THREE.Mesh;
       packet: THREE.Mesh;
@@ -580,7 +558,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
       speed: number;
     }
 
-    const highways: DataHighway[] = [];
+    const dataHighways: DataHighway[] = [];
 
     const createHighway = (
       start: THREE.Vector3,
@@ -591,91 +569,44 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
     ) => {
       const curve = new THREE.CatmullRomCurve3([start, mid, end]);
       const tube = new THREE.Mesh(
-        new THREE.TubeGeometry(curve, 36, 0.02, 6, false),
+        new THREE.TubeGeometry(curve, 32, 0.02, 6, false),
         new THREE.MeshBasicMaterial({ color: colorHex, transparent: true, opacity: 0.35 })
       );
       world.add(tube);
 
       const packet = new THREE.Mesh(
-        new THREE.SphereGeometry(0.09, 10, 10),
+        new THREE.SphereGeometry(0.09, 8, 8),
         new THREE.MeshBasicMaterial({ color: colorHex })
       );
       world.add(packet);
 
-      highways.push({ tube, packet, curve, t: Math.random(), speed });
+      dataHighways.push({ tube, packet, curve, t: Math.random(), speed });
     };
 
-    // 1. Cloud -> Web Platform
-    createHighway(
-      new THREE.Vector3(0, 1.2, 0),
-      new THREE.Vector3(-2.2, 2.2, 0.8),
-      new THREE.Vector3(-4.5, 1.2, 1.5),
-      0x38bdf8,
-      0.0018
-    );
-
-    // 2. Cloud -> Enterprise Email
-    createHighway(
-      new THREE.Vector3(0, 1.2, 0),
-      new THREE.Vector3(2.2, 2.2, 0.8),
-      new THREE.Vector3(4.5, 1.3, 1.5),
-      0x34d399,
-      0.0019
-    );
-
-    // 3. Cloud -> Custom Software Terminal
-    createHighway(
-      new THREE.Vector3(0, 0.5, 0),
-      new THREE.Vector3(-2.0, 0.8, -1.8),
-      new THREE.Vector3(-4.0, -0.2, -3.2),
-      0xa78bfa,
-      0.0015
-    );
-
-    // 4. Cloud -> IT Rescue Hub
-    createHighway(
-      new THREE.Vector3(0, 0.5, 0),
-      new THREE.Vector3(2.0, 0.8, -1.6),
-      new THREE.Vector3(4.0, 0.1, -3.0),
-      0xf87171,
-      0.0022
-    );
-
-    // 5. Blantyre Hub -> Cloud Datacenter
-    createHighway(
-      new THREE.Vector3(-4.5, -0.6, 3.2),
-      new THREE.Vector3(-2.4, -0.5, 1.6),
-      new THREE.Vector3(0, 0.3, 0),
-      0x38bdf8,
-      0.0021
-    );
-
-    // 6. Lilongwe Hub -> Cloud Datacenter
-    createHighway(
-      new THREE.Vector3(4.5, -0.6, 3.2),
-      new THREE.Vector3(2.4, -0.5, 1.6),
-      new THREE.Vector3(0, 0.3, 0),
-      0x34d399,
-      0.0021
-    );
+    createHighway(new THREE.Vector3(0, 1.2, 0), new THREE.Vector3(-2.0, 2.0, 1.6), new THREE.Vector3(-4.2, 1.2, 3.2), 0x38bdf8, 0.0022);
+    createHighway(new THREE.Vector3(0, 1.2, 0), new THREE.Vector3(2.0, 2.0, 1.6), new THREE.Vector3(4.2, 1.3, 3.2), 0x10b981, 0.0024);
+    createHighway(new THREE.Vector3(0, 0.8, 0), new THREE.Vector3(-1.8, 0.9, -1.5), new THREE.Vector3(-3.8, 0.2, -2.8), 0x818cf8, 0.0019);
+    createHighway(new THREE.Vector3(0, 0.8, 0), new THREE.Vector3(1.8, 0.9, -1.5), new THREE.Vector3(3.8, 0.3, -2.8), 0xf87171, 0.0025);
+    createHighway(new THREE.Vector3(-5.2, -0.6, 4.2), new THREE.Vector3(-2.6, -0.3, 2.0), new THREE.Vector3(0, 0.8, 0), 0x38bdf8, 0.0021);
+    createHighway(new THREE.Vector3(5.2, -0.6, 4.2), new THREE.Vector3(2.6, -0.3, 2.0), new THREE.Vector3(0, 0.8, 0), 0x34d399, 0.0021);
 
     // Constellation Ambient Tech Particles
-    const starCount = 140;
+    const starCount = 180;
     const starPos = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount; i++) {
-      const radius = 7 + Math.random() * 15;
+      const radius = 8 + Math.random() * 16;
       const angle = Math.random() * Math.PI * 2;
       starPos[i * 3] = Math.cos(angle) * radius;
-      starPos[i * 3 + 1] = -3 + Math.random() * 12;
+      starPos[i * 3 + 1] = -3 + Math.random() * 14;
       starPos[i * 3 + 2] = Math.sin(angle) * radius - 2;
     }
     const starGeo = new THREE.BufferGeometry();
     starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
     const starMat = new THREE.PointsMaterial({
       color: 0x93c5fd,
-      size: 0.04,
+      size: 0.045,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.45,
     });
     world.add(new THREE.Points(starGeo, starMat));
 
@@ -690,21 +621,21 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
 
     const onPointerDown = (e: PointerEvent) => {
       isDragging = true;
-      setIsRotatingManually(true);
+      setIsOrbiting(true);
       previousMouseX = e.clientX;
       previousMouseY = e.clientY;
     };
 
     const onPointerMove = (e: PointerEvent) => {
       const rect = mount.getBoundingClientRect();
-      pointerX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.4;
-      pointerY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.25;
+      pointerX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.35;
+      pointerY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.2;
 
       if (isDragging) {
         const deltaX = e.clientX - previousMouseX;
         const deltaY = e.clientY - previousMouseY;
-        manualRotY += deltaX * 0.004;
-        manualRotX += deltaY * 0.0025;
+        manualRotY += deltaX * 0.0035;
+        manualRotX += deltaY * 0.002;
         previousMouseX = e.clientX;
         previousMouseY = e.clientY;
       }
@@ -712,7 +643,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
 
     const onPointerUp = () => {
       isDragging = false;
-      setTimeout(() => setIsRotatingManually(false), 600);
+      setTimeout(() => setIsOrbiting(false), 500);
     };
 
     mount.addEventListener('pointerdown', onPointerDown);
@@ -743,42 +674,36 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
       const elapsed = clock.getElapsedTime();
 
       if (!reducedMotion) {
-        // Blinking blade LEDs
+        // Gyro core rotations
+        gyroRing1.rotation.z += 0.007;
+        gyroRing2.rotation.y += 0.006;
+        gyroRing3.rotation.x += 0.008;
+        coreCrystal.rotation.y += 0.012;
+        coreCrystal.rotation.x += 0.006;
+
+        // LEDs blinking
         bladeLEDs.forEach((led, idx) => {
-          const visible = Math.sin(elapsed * 6 + idx) > -0.2;
-          led.visible = visible;
+          led.visible = Math.sin(elapsed * 7 + idx) > -0.3;
         });
 
-        // Cloud halo rotation
-        cloudRing.rotation.z += 0.005;
-        cloudOrb.rotation.y += 0.008;
+        // Object hovers
+        webDisplayGroup.position.y = 1.2 + Math.sin(elapsed * 1.6) * 0.06;
+        securityGroup.position.y = 1.3 + Math.sin(elapsed * 1.4 + 1) * 0.06;
+        securityRing.rotation.z += 0.01;
+        rescueSweep.rotation.z += 0.028;
 
-        // Web platform gentle hover
-        webPlatformGroup.position.y = 1.2 + Math.sin(elapsed * 1.8) * 0.06;
-        webPlatformGroup.rotation.y = 0.2 + Math.sin(elapsed * 0.8) * 0.03;
+        // Blantyre & Lilongwe radar rings
+        blantyreStation.pulseRing.scale.setScalar(1 + (Math.sin(elapsed * 3) + 1) * 0.25);
+        lilongweStation.pulseRing.scale.setScalar(1 + (Math.cos(elapsed * 3) + 1) * 0.25);
 
-        // Email shield hover
-        emailShieldGroup.position.y = 1.3 + Math.sin(elapsed * 1.6 + 1) * 0.06;
-        emailSecurityRing.rotation.z += 0.01;
-
-        // Software terminal hover
-        softwareGroup.position.y = -0.2 + Math.sin(elapsed * 1.5 + 2) * 0.05;
-
-        // Rescue beacon sweep
-        rescueSweepRing.rotation.z += 0.025;
-
-        // Blantyre & Lilongwe radar pulses
-        blantyreHub.radarRing.scale.setScalar(1 + (Math.sin(elapsed * 3) + 1) * 0.2);
-        lilongweHub.radarRing.scale.setScalar(1 + (Math.cos(elapsed * 3) + 1) * 0.2);
-
-        // Data highway packet flow
-        highways.forEach((hw) => {
+        // Data highways packet animation
+        dataHighways.forEach((hw) => {
           hw.t = (hw.t + hw.speed) % 1;
           hw.packet.position.copy(hw.curve.getPointAt(hw.t));
         });
 
-        // World continuous gentle drift and user rotation
-        world.rotation.y += (manualRotY + pointerX - world.rotation.y) * 0.05 + 0.0008;
+        // World drift
+        world.rotation.y += (manualRotY + pointerX - world.rotation.y) * 0.05 + 0.0006;
         world.rotation.x += (manualRotX + pointerY - world.rotation.x) * 0.05;
       }
 
@@ -818,58 +743,73 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
     };
   }, []);
 
-  const ActiveIcon = activePillar.icon;
+  const ActiveIcon = activeNode.icon;
 
   return (
     <section 
       id="hero-spatial-3d" 
-      className="relative overflow-hidden bg-slate-950 text-white min-h-[760px] lg:min-h-[860px] flex flex-col justify-between border-b border-slate-800"
+      className="relative overflow-hidden bg-[#030712] text-white min-h-[820px] lg:min-h-[920px] flex flex-col justify-between border-b border-slate-800/80"
     >
-      {/* Dynamic Deep Space Gradients & Tech Glows */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_-10%,rgba(14,165,233,0.22),transparent_75%)] pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-blue-600/12 blur-[160px] rounded-full pointer-events-none" />
+      {/* Deep Space Background & Dynamic Digital Ambient Glows */}
+      <div className="absolute inset-0 bg-tech-grid opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_-10%,rgba(14,165,233,0.2),transparent_75%)] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-blue-600/10 blur-[170px] rounded-full pointer-events-none" />
 
       {/* 3D WebGL African Digital Infrastructure Canvas */}
       <div 
         ref={mountRef} 
         className="absolute inset-0 z-0 cursor-grab active:cursor-grabbing"
-        title="Interactive African Digital Infrastructure (Drag to orbit, click pillars below to inspect)"
+        title="Interactive African Digital Infrastructure Command Canvas (Drag to orbit, click ecosystem nodes to inspect)"
       />
 
-      {/* Foreground Content Overlay */}
+      {/* Foreground Content Layer */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full flex-1 flex flex-col justify-between pointer-events-none">
         
         {/* Top Header & Main Narrative Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
           
           {/* Main Narrative Column */}
-          <div className="lg:col-span-7 space-y-5 text-left pointer-events-auto">
+          <div className="lg:col-span-7 space-y-6 text-left pointer-events-auto">
             
             {/* Identity & Location Badge */}
-            <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/90 rounded-full px-4 py-1.5 text-xs sm:text-sm text-slate-200 backdrop-blur-md shadow-lg">
+            <div className="inline-flex items-center space-x-2.5 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1.5 text-xs text-slate-200 backdrop-blur-md shadow-xl">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="font-bold tracking-wide">TechNix Africa • Digital Infrastructure Partner</span>
-              <span className="text-slate-500 font-mono text-[11px] hidden sm:inline">| BLANTYRE & LILONGWE</span>
+              <span className="text-slate-500 font-mono text-[10px] hidden sm:inline">| BLANTYRE & LILONGWE</span>
             </div>
 
-            {/* Primary Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.07] text-balance">
+            {/* Primary Headline per Directive */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.06] text-balance">
               Technology That Moves <br />
-              <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-sky-400 via-blue-300 to-emerald-400 bg-clip-text text-transparent">
                 Your Business Forward.
               </span>
             </h1>
 
-            {/* Subtitle */}
+            {/* Supporting Message per Directive */}
             <p className="text-base sm:text-lg text-slate-300 max-w-xl font-normal leading-relaxed">
-              We engineer, deploy and support the digital systems African businesses and organisations rely on every single day — from high-speed websites and professional email to custom software and emergency IT rescue.
+              Websites, software, IT support and digital solutions for businesses and organisations across Africa.
             </p>
 
-            {/* Action Buttons */}
+            {/* Connected Ecosystem Badges */}
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono text-slate-300">
+              <span className="text-slate-400">CONNECTING:</span>
+              {['Business', 'Software', 'Data', 'Cloud', 'People', 'Devices', 'Infrastructure'].map((item) => (
+                <span 
+                  key={item}
+                  className="px-2.5 py-1 rounded-md bg-slate-900/80 border border-slate-700/70 text-sky-300 font-semibold"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            {/* Primary CTAs per Directive */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={() => onOpenQuote()}
-                className="flex items-center space-x-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 transition-all cursor-pointer"
+                id="hero-primary-cta"
+                className="flex items-center space-x-2 px-6 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm rounded-xl shadow-xl shadow-sky-600/30 hover:shadow-sky-500/40 transition-all cursor-pointer border border-sky-400/40"
               >
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4" />
@@ -877,19 +817,19 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
 
               <button
                 onClick={() => handleWhatsApp('Hello TechNix, I would like to consult on digital systems for our business.')}
-                className="flex items-center space-x-2 px-5 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-100 font-semibold text-sm rounded-xl border border-slate-700 backdrop-blur-md transition-all cursor-pointer"
+                className="flex items-center space-x-2 px-5 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-100 font-semibold text-sm rounded-xl border border-slate-700/90 backdrop-blur-md transition-all cursor-pointer"
               >
-                <PhoneCall className="w-4 h-4 text-blue-400" />
+                <PhoneCall className="w-4 h-4 text-sky-400" />
                 <span>Talk to TechNix</span>
               </button>
 
               <button
                 onClick={() => handleWhatsApp('Hello TechNix, reaching out directly on WhatsApp.')}
-                className="flex items-center space-x-2 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-md transition-all cursor-pointer"
+                className="flex items-center space-x-2 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl shadow-lg shadow-emerald-600/20 transition-all cursor-pointer"
                 title="Direct WhatsApp chat"
               >
                 <MessageSquare className="w-4 h-4 text-white" />
-                <span>WhatsApp</span>
+                <span>Talk to TechNix on WhatsApp</span>
               </button>
             </div>
 
@@ -914,13 +854,13 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
           <div className="lg:col-span-5 pointer-events-auto space-y-3">
             
             {/* Live Interactive Telemetry Card */}
-            <div className="rounded-2xl bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 p-5 shadow-2xl space-y-4">
+            <div className="rounded-2xl glass-panel-elevated p-5 shadow-2xl space-y-4">
               
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center justify-between border-b border-slate-800/90 pb-3">
                 <div className="flex items-center space-x-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
-                    3D Infrastructure Inspector
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
+                    INFRASTRUCTURE TOPOLOGY INSPECTOR
                   </span>
                 </div>
                 
@@ -937,26 +877,26 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
               {/* Node Metadata Display */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <div className="w-11 h-11 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center shrink-0 shadow-inner">
+                  <div className="w-11 h-11 rounded-xl bg-sky-950/80 border border-sky-800/40 text-sky-400 flex items-center justify-center shrink-0 shadow-inner">
                     <ActiveIcon className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block font-semibold">
-                      {activePillar.pillarCategory} • {activePillar.badge}
+                      {activeNode.category} • {activeNode.badge}
                     </span>
-                    <h3 className="text-lg font-bold text-white leading-snug">
-                      {activePillar.name}
+                    <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
+                      {activeNode.name}
                     </h3>
                   </div>
                 </div>
 
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  {activePillar.businessImpact}
+                  {activeNode.businessImpact}
                 </p>
 
                 {/* Key Technical Specs */}
                 <div className="space-y-1.5 pt-1">
-                  {activePillar.specs.map((spec, i) => (
+                  {activeNode.specs.map((spec, i) => (
                     <div key={i} className="flex items-center space-x-2 text-[11px] text-slate-300">
                       <Zap className="w-3 h-3 text-sky-400 shrink-0" />
                       <span>{spec}</span>
@@ -965,15 +905,15 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
                 </div>
 
                 {/* Pricing & Deep Dive Link */}
-                <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between">
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
                   <span className="text-xs font-bold text-emerald-400">
-                    {activePillar.priceNote}
+                    {activeNode.priceNote}
                   </span>
                   <button
-                    onClick={() => onSelectSection(activePillar.sectionId)}
-                    className="text-xs font-bold text-blue-400 hover:text-blue-300 flex items-center space-x-1 cursor-pointer"
+                    onClick={() => onSelectSection(activeNode.sectionId)}
+                    className="text-xs font-bold text-sky-400 hover:text-sky-300 flex items-center space-x-1 cursor-pointer"
                   >
-                    <span>View Service</span>
+                    <span>Inspect Layer</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -982,51 +922,51 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
               {/* Direct Action */}
               <div className="pt-1 flex gap-2">
                 <button
-                  onClick={() => onOpenQuote(activePillar.serviceTitle)}
-                  className="flex-1 py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all cursor-pointer text-center shadow-md shadow-blue-600/20"
+                  onClick={() => onOpenQuote(activeNode.serviceTitle)}
+                  className="flex-1 py-2.5 px-4 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl transition-all cursor-pointer text-center shadow-lg shadow-sky-600/20 border border-sky-400/30"
                 >
-                  Request Quote for {activePillar.name}
+                  Request Quote for {activeNode.name}
                 </button>
               </div>
             </div>
 
             {/* 3D Orbit Control Hint */}
-            <div className="px-3.5 py-2 rounded-xl bg-slate-900/70 backdrop-blur-md border border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+            <div className="px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
               <span className="flex items-center space-x-1.5">
-                <Compass className="w-3.5 h-3.5 text-blue-400" />
-                <span>Drag to inspect 3D infrastructure • Click pillars to focus camera</span>
+                <Compass className="w-3.5 h-3.5 text-sky-400" />
+                <span>Drag canvas to orbit 3D space • Click nodes below to target camera</span>
               </span>
               <span className="text-emerald-400 font-mono text-[10px]">
-                {isRotatingManually ? 'ORBITING' : 'READY'}
+                {isOrbiting ? 'ORBITING' : 'READY'}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Bottom Interactive Pillar Selectors & Verified Institutional Proof */}
+        {/* Bottom Interactive Node Switcher & Verified Institutional Proof */}
         <div className="pt-8 space-y-4 pointer-events-auto">
           
-          {/* Pillar Switcher Bar */}
+          {/* Node Switcher Bar */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2 shrink-0 flex items-center space-x-1">
-              <Layers className="w-3.5 h-3.5 text-blue-400 mr-1" />
+            <span className="text-xs font-mono uppercase tracking-wider text-slate-400 mr-2 shrink-0 flex items-center space-x-1">
+              <Layers className="w-3.5 h-3.5 text-sky-400 mr-1" />
               <span>Infrastructure Stack:</span>
             </span>
-            {INFRASTRUCTURE_PILLARS.map((pillar) => {
-              const Icon = pillar.icon;
-              const isSelected = pillar.id === selectedPillarId;
+            {ECOSYSTEM_NODES.map((node) => {
+              const Icon = node.icon;
+              const isSelected = node.id === selectedNodeId;
               return (
                 <button
-                  key={pillar.id}
-                  onClick={() => handlePillarSelect(pillar.id)}
+                  key={node.id}
+                  onClick={() => handleNodeSelect(node.id)}
                   className={`inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 border ${
                     isSelected
-                      ? 'bg-blue-600 text-white border-blue-400 shadow-md shadow-blue-600/30'
+                      ? 'bg-sky-600 text-white border-sky-400 shadow-lg shadow-sky-600/30'
                       : 'bg-slate-900/80 text-slate-300 border-slate-700/80 hover:bg-slate-800 hover:text-white'
                   }`}
                 >
                   <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-slate-400'}`} />
-                  <span>{pillar.name}</span>
+                  <span>{node.name}</span>
                 </button>
               );
             })}
@@ -1036,16 +976,15 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
           <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400">
             <div className="flex items-center space-x-2 font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span>Trusted Technical Partner for: PACT Malawi • Malawi Red Cross Society • Save the Children Initiatives</span>
+              <span>Proven Technical Partner for: PACT Malawi • Malawi Red Cross Society • Save the Children Initiatives</span>
             </div>
 
             <div className="flex items-center space-x-4">
               <button
                 onClick={onOpenHealthCheck}
-                className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-2 cursor-pointer flex items-center space-x-1"
+                className="text-sky-400 hover:text-sky-300 font-semibold underline underline-offset-2 cursor-pointer flex items-center space-x-1"
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-400 mr-1" />
-                <span>Free 2-Minute Digital Health Check</span>
+                <span>Free 2-Minute Digital Health Check →</span>
               </button>
             </div>
           </div>

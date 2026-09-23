@@ -7,9 +7,10 @@ import {
   Code2, 
   GraduationCap, 
   Sparkles, 
-  ArrowRight,
-  CheckCircle2,
-  MessageSquare
+  ArrowRight, 
+  CheckCircle2, 
+  MessageSquare,
+  Zap
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
@@ -29,12 +30,13 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
   const products = [
     {
       id: 'business-website',
+      code: 'MOD-01',
       name: 'Business Websites',
-      description: 'Get a professional website that helps customers find, trust and contact your business.',
-      mainBenefit: 'Immediate online credibility, Google visibility, and direct WhatsApp customer inquiries.',
+      description: 'Deploy a high-converting corporate website that helps clients find, trust, and contact your business directly.',
+      mainBenefit: 'Immediate commercial credibility, Google visibility, and direct WhatsApp customer inquiries.',
       icon: Globe,
-      iconBg: 'bg-blue-50 text-blue-600',
-      badge: 'High Conversion',
+      accent: 'text-sky-400 bg-sky-950/80 border-sky-800/40',
+      badge: 'From MK 199k',
       ctaText: 'Build My Website',
       targetSection: 'business-website',
       action: () => onOpenQuote('Business Website'),
@@ -42,12 +44,13 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
     },
     {
       id: 'business-email',
+      code: 'MOD-02',
       name: 'Business Email',
       description: 'Replace @gmail.com with secure, professional email on your company domain for your entire team.',
-      mainBenefit: 'Win corporate tenders and client trust with branded inboxes synced on all devices.',
+      mainBenefit: 'Pass corporate procurement audits and win tenders with verified company domain inboxes.',
       icon: Mail,
-      iconBg: 'bg-emerald-50 text-emerald-600',
-      badge: 'Brand Credibility',
+      accent: 'text-emerald-400 bg-emerald-950/80 border-emerald-800/40',
+      badge: 'From MK 7,500/mo',
       ctaText: 'Get Business Email',
       targetSection: 'business-email',
       action: () => onOpenQuote('Professional Business Email'),
@@ -55,155 +58,162 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
     },
     {
       id: 'it-rescue',
+      code: 'MOD-04',
       name: 'TechNix IT Rescue',
-      description: 'Fast on-site and remote technical emergency response when computer problems stop your workday.',
+      description: 'Rapid physical and remote technical emergency response when computer problems stop your workday.',
       mainBenefit: 'Rapid diagnostics for crashing PCs, down networks, failing printers, and data recovery.',
       icon: Wrench,
-      iconBg: 'bg-red-50 text-red-600',
-      badge: 'Same-Day Response',
-      ctaText: 'Get IT Rescue',
+      accent: 'text-red-400 bg-red-950/80 border-red-800/40',
+      badge: 'Emergency Response',
+      ctaText: 'Request IT Rescue',
       targetSection: 'it-rescue',
       action: () => onOpenITRescue(),
-      whatsAppMsg: 'Hello TechNix, I need urgent IT rescue support for an office breakdown.',
+      whatsAppMsg: '🚨 URGENT: I need emergency IT rescue assistance.',
     },
     {
       id: 'technix-care',
-      name: 'TechNix Care',
-      description: 'Proactive monthly IT support and maintenance that prevents breakdowns and protects your data.',
-      mainBenefit: 'Your dedicated outsourced IT department without the cost of full-time payroll.',
+      code: 'MOD-05',
+      name: 'TechNix Care Managed IT',
+      description: 'Proactive monthly IT support, computer health servicing, antivirus, backups, and priority support.',
+      mainBenefit: 'Eliminate unplanned downtime, preserve hardware life, and have a dedicated IT department on retainer.',
       icon: ShieldCheck,
-      iconBg: 'bg-indigo-50 text-indigo-600',
-      badge: 'Monthly Retainer',
-      ctaText: 'Get TechNix Care',
+      accent: 'text-indigo-400 bg-indigo-950/80 border-indigo-800/40',
+      badge: 'From MK 50k/mo',
+      ctaText: 'Explore Care Plans',
       targetSection: 'technix-care',
-      action: () => onOpenQuote('TechNix Care Support'),
-      whatsAppMsg: 'Hello TechNix, I am interested in signing up for TechNix Care ongoing IT support.',
+      action: () => onOpenQuote('TechNix Care Monthly IT'),
+      whatsAppMsg: 'Hello TechNix, I am interested in TechNix Care monthly IT support plans.',
     },
     {
       id: 'software-solutions',
+      code: 'MOD-06',
       name: 'Software Solutions',
-      description: 'Custom management systems, databases, and portals built to streamline your daily operations.',
-      mainBenefit: 'Eliminate repetitive manual paperwork and get real-time operational reports.',
+      description: 'Custom web software, school management portals, and NGO data collection systems tailored to your workflows.',
+      mainBenefit: 'Automate manual paper processes, eliminate human error, and gain real-time visibility.',
       icon: Code2,
-      iconBg: 'bg-purple-50 text-purple-600',
-      badge: 'Custom Built',
-      ctaText: 'Discuss Software',
+      accent: 'text-purple-400 bg-purple-950/80 border-purple-800/40',
+      badge: 'Custom Architecture',
+      ctaText: 'Discuss My Software',
       targetSection: 'software-solutions',
       action: () => onOpenQuote('Custom Software Solution'),
-      whatsAppMsg: 'Hello TechNix, I would like to discuss building custom business software.',
+      whatsAppMsg: 'Hello TechNix, I would like to discuss a custom software project.',
     },
     {
-      id: 'academy',
+      id: 'technix-academy',
+      code: 'MOD-07',
       name: 'TechNix Academy',
-      description: 'Practical, hands-on technology training that empowers your staff to do more in less time.',
-      mainBenefit: 'Job-ready skills in Advanced Excel, Power BI dashboards, AI tools, and network administration.',
+      description: 'Practical, in-demand technical courses in Advanced Excel, Power BI, and digital skills taught by practicing engineers.',
+      mainBenefit: 'Upskill your workforce with hands-on capabilities that immediately improve productivity.',
       icon: GraduationCap,
-      iconBg: 'bg-amber-50 text-amber-600',
-      badge: 'Capacity Building',
-      ctaText: 'Browse Courses',
-      targetSection: 'academy',
-      action: () => onSelectNeed('academy', 'TechNix Academy'),
-      whatsAppMsg: 'Hello TechNix, I want to inquire about upcoming training courses at TechNix Academy.',
-    },
-    {
-      id: 'health-check',
-      name: 'Digital Business Health Check',
-      description: 'A structured review of your website, email, backups, and security to identify immediate improvements.',
-      mainBenefit: 'Know your exact digital vulnerabilities and get a clear, practical improvement plan.',
-      icon: Sparkles,
-      iconBg: 'bg-sky-50 text-sky-600',
-      badge: 'Free Diagnostic',
-      ctaText: 'Take Free Health Check',
-      targetSection: 'health-check-section',
-      action: () => onOpenHealthCheck(),
-      whatsAppMsg: 'Hello TechNix, I would like to request a free Digital Business Health Check.',
+      accent: 'text-amber-400 bg-amber-950/80 border-amber-800/40',
+      badge: 'Practical Cohorts',
+      ctaText: 'View Academy Courses',
+      targetSection: 'technix-academy',
+      action: () => onOpenQuote('TechNix Academy Course Registration'),
+      whatsAppMsg: 'Hello TechNix, I want to learn more about TechNix Academy courses.',
     },
   ];
 
-  const handleWhatsApp = (e: React.MouseEvent, msg: string) => {
-    e.stopPropagation();
+  const handleWhatsApp = (msg: string) => {
     const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="solutions" className="py-24 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="py-24 bg-[#040814] text-white relative border-b border-slate-800/80">
+      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-sky-600/5 blur-[160px] pointer-events-none rounded-full" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-            Commercial Offerings
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Solutions You Can Start With
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-sky-400 shadow-md">
+            <Zap className="w-3.5 h-3.5 text-sky-400" />
+            <span className="font-semibold uppercase tracking-wider">Fast-Deployment Capabilities</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            Digital Solutions You Can <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-sky-400 via-blue-200 to-emerald-400 bg-clip-text text-transparent">
+              Deploy in Days, Not Months
+            </span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600">
-            Clear, dependable products built to solve real operational challenges for growing African organisations.
+
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            No endless scoping meetings or theoretical presentations. These are concrete, tested technology modules that solve immediate operational bottlenecks.
           </p>
         </div>
 
-        {/* 7 Core Product Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, idx) => {
-            const Icon = product.icon;
-            const isFullWidthSpan = idx === 6; // Center the 7th item nicely
+        {/* 6 Core Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {products.map((prod) => {
+            const Icon = prod.icon;
             return (
               <div
-                key={product.id}
-                className={`bg-slate-50/70 border border-slate-200/90 rounded-2xl p-7 flex flex-col justify-between hover:bg-white hover:shadow-xl hover:border-blue-300 transition-all duration-200 ${
-                  isFullWidthSpan ? 'md:col-span-2 lg:col-span-1' : ''
-                }`}
+                key={prod.id}
+                className="glass-panel rounded-2xl p-7 border border-slate-800/90 hover:border-sky-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${product.iconBg}`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center border shadow-inner transition-transform group-hover:scale-105 ${prod.accent}`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[11px] font-bold text-slate-600 bg-white border border-slate-200 px-2.5 py-1 rounded-md">
-                      {product.badge}
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400 bg-slate-950/80 border border-slate-800 px-2.5 py-1 rounded">
+                      {prod.code} • {prod.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    {product.name}
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-sky-300 transition-colors">
+                    {prod.name}
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                    {product.description}
+                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                    {prod.description}
                   </p>
 
-                  <div className="p-3 bg-white rounded-xl border border-slate-200/80 mb-6">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
-                      Main Customer Benefit
+                  <div className="bg-slate-950/80 border border-slate-800/90 rounded-xl p-3 mb-6">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                      Business Outcome:
                     </span>
-                    <p className="text-xs text-slate-800 font-medium leading-normal flex items-start space-x-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{product.mainBenefit}</span>
+                    <p className="text-xs text-slate-200 leading-relaxed font-medium">
+                      {prod.mainBenefit}
                     </p>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between gap-3">
+                <div className="pt-4 border-t border-slate-800/80 space-y-2">
                   <button
-                    onClick={product.action}
-                    className="flex-1 py-3 px-4 bg-slate-900 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl transition-colors flex items-center justify-center space-x-1.5 cursor-pointer shadow-xs"
+                    onClick={prod.action}
+                    className="w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-sky-600/20 transition-all cursor-pointer flex items-center justify-center space-x-1.5 border border-sky-400/30"
                   >
-                    <span>{product.ctaText}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>{prod.ctaText}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
-                  <button
-                    onClick={(e) => handleWhatsApp(e, product.whatsAppMsg)}
-                    className="p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 transition-colors cursor-pointer shrink-0"
-                    title={`Chat on WhatsApp about ${product.name}`}
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center justify-between gap-2 pt-1">
+                    <button
+                      onClick={() => onSelectNeed(prod.targetSection, prod.name)}
+                      className="text-xs font-mono text-slate-400 hover:text-sky-300 transition-colors"
+                    >
+                      View full specs &rarr;
+                    </button>
+
+                    <button
+                      onClick={() => handleWhatsApp(prod.whatsAppMsg)}
+                      className="p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700/80 transition-colors flex items-center space-x-1 text-xs"
+                      title="Quick WhatsApp inquiry"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span className="font-mono text-[11px]">Chat</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

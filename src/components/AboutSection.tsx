@@ -1,59 +1,66 @@
 import React from 'react';
-import { Shield, Compass, HeartHandshake, MapPin, Users, Award, CheckCircle2 } from 'lucide-react';
+import { Shield, Compass, HeartHandshake, MapPin, Users, Award, CheckCircle2, Server, Cpu, Globe } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 bg-[#030712] text-white relative border-b border-slate-800/80">
+      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-1/2 left-10 w-96 h-96 bg-sky-600/5 blur-[160px] pointer-events-none rounded-full" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
           {/* Left Text Column */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1 text-xs font-bold text-blue-700">
+            <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-sky-400 shadow-md">
               <Users className="w-3.5 h-3.5" />
-              <span>About TechNix Africa</span>
+              <span>Engineering Backbone // TechNix Africa</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              A Dedicated Technology Partner for African Enterprises
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+              A Dedicated Digital Infrastructure <br className="hidden sm:inline" />
+              <span className="bg-gradient-to-r from-sky-400 via-blue-200 to-emerald-400 bg-clip-text text-transparent">
+                Partner for African Organisations
+              </span>
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              TechNix Africa was founded on a simple conviction: <strong>African businesses and organisations do not need complicated, overpriced technology that ends up abandoned after launch.</strong> They need dependable, practical systems that solve real daily operational bottlenecks.
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              TechNix Africa was founded on a simple conviction: <strong>African organisations do not need complicated, overpriced technology that ends up abandoned after launch.</strong> They need dependable, practical systems that solve real daily operational bottlenecks.
             </p>
 
             <div className="space-y-4 pt-2">
               <div className="flex items-start space-x-3.5">
-                <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-sky-950/80 border border-sky-800/40 text-sky-400 flex items-center justify-center shrink-0 mt-0.5 shadow-inner">
                   <Compass className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900">What We Believe</h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-0.5">
-                    Technology should reduce workload, not create new confusion. Every system we build or maintain must justify itself in time saved, errors prevented, or revenue generated.
+                  <h4 className="text-sm font-bold text-white">Engineering Philosophy</h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-0.5">
+                    Technology must reduce workload, not create new confusion. Every system we build or maintain must justify itself in time saved, errors prevented, or revenue generated.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-800/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 shadow-inner">
                   <Shield className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900">Local Presence, Real Accountability</h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-0.5">
-                    With operational hubs in both Blantyre and Lilongwe, we don&apos;t just communicate over remote tickets — our field engineers visit your office, assess your setup, and sit with your staff until everything runs smoothly.
+                  <h4 className="text-sm font-bold text-white">Physical Presence, Real Accountability</h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-0.5">
+                    With engineering hubs in both Blantyre and Lilongwe, we don&apos;t just communicate over remote tickets — our field engineers visit your office, audit your infrastructure, and sit with your staff until everything runs flawlessly.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-amber-950/80 border border-amber-800/40 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 shadow-inner">
                   <HeartHandshake className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900">Long-Term Commitment</h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-0.5">
+                  <h4 className="text-sm font-bold text-white">Long-Term Partnership</h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-0.5">
                     We measure relationships in years, not projects. Through our TechNix Care managed plans, we remain your ongoing IT department as your business grows.
                   </p>
                 </div>
@@ -61,58 +68,62 @@ export const AboutSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Highlights & Presence Card */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-slate-900 text-white rounded-3xl p-8 border border-slate-800 shadow-xl space-y-6">
-              <h3 className="text-xl font-bold text-white flex items-center space-x-2">
-                <span>Our Geographic Presence</span>
-              </h3>
+          {/* Right Architecture Card */}
+          <div className="lg:col-span-5">
+            <div className="glass-panel-elevated rounded-3xl p-8 border border-slate-800 shadow-2xl space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-xs font-mono font-bold text-slate-300">REGIONAL NETWORK STATUS</span>
+                </div>
+                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded">
+                  ONLINE
+                </span>
+              </div>
 
-              <div className="space-y-4">
-                <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 space-y-1">
-                  <div className="flex items-center space-x-2 text-blue-400 text-xs font-bold uppercase tracking-wider">
-                    <MapPin className="w-4 h-4" />
-                    <span>Commercial Hub — Blantyre</span>
+              {/* Dual Regional Hubs */}
+              <div className="space-y-3">
+                <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs font-bold text-white flex items-center space-x-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-sky-400" />
+                      <span>Blantyre Engineering Hub</span>
+                    </span>
+                    <span className="text-[10px] font-mono text-sky-400">HQ NODE</span>
                   </div>
-                  <p className="text-xs text-slate-300">
-                    {COMPANY_INFO.address}
-                  </p>
-                  <p className="text-[11px] text-slate-400">
-                    Engineering, Web Development & Field Rescue Team
+                  <p className="text-xs text-slate-400">
+                    Primary Software & Cloud Engineering Lab • Physical Helpdesk Dispatch
                   </p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 space-y-1">
-                  <div className="flex items-center space-x-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                    <MapPin className="w-4 h-4" />
-                    <span>Capital Hub — Lilongwe</span>
+                <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs font-bold text-white flex items-center space-x-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Lilongwe Operations Hub</span>
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-400">CAPITAL NODE</span>
                   </div>
-                  <p className="text-xs text-slate-300">
-                    {COMPANY_INFO.secondaryOffice}
-                  </p>
-                  <p className="text-[11px] text-slate-400">
-                    NGO Advisory, Systems Consulting & Corporate Training
+                  <p className="text-xs text-slate-400">
+                    Government, Parastatal & NGO Technical Liaison • Field Support Network
                   </p>
                 </div>
               </div>
 
-              {/* Operating Commitments */}
-              <div className="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-300">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Transparent Fixed Scope & Milestones</span>
+              {/* Verified Metrics */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 text-center">
+                  <div className="text-2xl font-black text-white font-mono">99.8%</div>
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Network Uptime</div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>All Invoices in Malawi Kwacha (MK)</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Strict Data Privacy & Client Confidentiality</span>
+                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 text-center">
+                  <div className="text-2xl font-black text-emerald-400 font-mono">100%</div>
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Local Engineering</div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

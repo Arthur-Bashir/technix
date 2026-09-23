@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase, ArrowRight, MessageSquare, CheckCircle, ChevronRight, Layers, ExternalLink } from 'lucide-react';
+import { Briefcase, ArrowRight, MessageSquare, CheckCircle, ChevronRight, Layers, ExternalLink, Activity, CheckCircle2 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
 interface CaseStudiesSectionProps {
@@ -22,6 +22,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
   const projects = [
     {
       id: 'pact-data-system',
+      code: 'DEP-01',
       client: 'PACT / Civil Society Partner Initiative',
       category: 'Dashboards & Data Systems',
       title: 'Field Reporting & Grant Performance Monitoring System',
@@ -32,6 +33,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
     },
     {
       id: 'red-cross-infrastructure',
+      code: 'DEP-02',
       client: 'Malawi Red Cross Society Collaboration',
       category: 'Infrastructure',
       title: 'Emergency Communication & High-Availability IT Backbone',
@@ -42,6 +44,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
     },
     {
       id: 'commercial-logistics',
+      code: 'DEP-03',
       client: 'Trans-Central Commercial Logistics & Distribution',
       category: 'Business Software',
       title: 'Fleet Dispatch & Digital Invoicing Management System',
@@ -52,6 +55,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
     },
     {
       id: 'save-children-partner',
+      code: 'DEP-04',
       client: 'Education & Child Protection Partner Programs',
       category: 'Mobile Applications',
       title: 'Interactive Learning Resource Portal & School Asset Tracker',
@@ -62,6 +66,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
     },
     {
       id: 'apex-corporate-web',
+      code: 'DEP-05',
       client: 'Apex Commercial Services & Engineering',
       category: 'Websites',
       title: 'Corporate Web Presence & Lead Generation Engine',
@@ -72,6 +77,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
     },
     {
       id: 'digital-transform-sme',
+      code: 'DEP-06',
       client: 'Multi-Branch Retail & Agro-Supply Consortium',
       category: 'Digital Transformation',
       title: 'Paperless Multi-Branch Inventory & Centralized Accounting Sync',
@@ -96,18 +102,28 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
   };
 
   return (
-    <section id="case-studies" className="py-24 bg-slate-50 border-b border-slate-200/90 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="case-studies" className="py-24 bg-[#040814] text-white relative border-b border-slate-800/80">
+      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-sky-600/5 blur-[160px] pointer-events-none rounded-full" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-            Demonstrated Capability
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            What We&apos;ve Built
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+          <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-sky-400 shadow-md">
+            <Briefcase className="w-3.5 h-3.5" />
+            <span className="font-semibold uppercase tracking-wider">Demonstrated Engineering Track Record</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            Field-Tested Deployments Across <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-sky-400 via-blue-200 to-emerald-400 bg-clip-text text-transparent">
+              Enterprises, NGOs & Institutions
+            </span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600">
-            Real problems solved with practical, dependable technology. Every project is designed for measurable operational impact.
+
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            Real institutional problems solved with practical, dependable technology. Every system is engineered for measurable operational outcomes in the African operating context.
           </p>
         </div>
 
@@ -117,10 +133,10 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer border ${
                 selectedCategory === cat
-                  ? 'bg-slate-900 text-white shadow-sm'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300 hover:bg-slate-100'
+                  ? 'bg-sky-600 text-white border-sky-400 shadow-lg shadow-sky-600/30'
+                  : 'bg-slate-900/80 text-slate-300 border-slate-700/80 hover:bg-slate-800 hover:text-white'
               }`}
             >
               {cat}
@@ -128,92 +144,120 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
           ))}
         </div>
 
-        {/* Projects Grid: Problem -> Solution -> Result */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200/70 px-2.5 py-1 rounded-md">
-                    {project.category}
-                  </span>
-                  <span className="text-xs font-semibold text-slate-500">
-                    {project.client}
-                  </span>
+        {/* 2-Column Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+          
+          {/* Left Column: Project Selector List */}
+          <div className="lg:col-span-5 space-y-3">
+            {filteredProjects.map((p) => {
+              const isSelected = activeProject.id === p.id;
+              return (
+                <div
+                  key={p.id}
+                  onClick={() => setActiveProject(p)}
+                  className={`p-5 rounded-2xl cursor-pointer transition-all duration-200 border ${
+                    isSelected
+                      ? 'glass-panel-elevated border-sky-500/80 shadow-lg shadow-sky-500/10'
+                      : 'glass-panel border-slate-800/80 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400 bg-slate-900/90 border border-slate-800 px-2 py-0.5 rounded">
+                      {p.code} • {p.category}
+                    </span>
+                    <span className="text-[11px] font-mono text-slate-400 font-semibold">
+                      {p.client.split('/')[0]}
+                    </span>
+                  </div>
+                  <h4 className="text-base font-bold text-white mb-1.5 leading-snug">
+                    {p.title}
+                  </h4>
+                  <p className="text-xs text-slate-300 line-clamp-2">
+                    {p.problem}
+                  </p>
                 </div>
+              );
+            })}
+          </div>
 
-                <h3 className="text-xl font-bold text-slate-900 mb-6">
-                  {project.title}
-                </h3>
-
-                {/* Problem -> Solution -> Result Flow */}
-                <div className="space-y-4 mb-6 text-xs sm:text-sm">
-                  <div className="p-3.5 rounded-xl bg-red-50/60 border border-red-100">
-                    <span className="font-bold text-red-900 block mb-1 uppercase text-[10px] tracking-wider">
-                      Problem:
-                    </span>
-                    <p className="text-slate-700 leading-relaxed">{project.problem}</p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-blue-50/60 border border-blue-100">
-                    <span className="font-bold text-blue-900 block mb-1 uppercase text-[10px] tracking-wider">
-                      Solution:
-                    </span>
-                    <p className="text-slate-700 leading-relaxed">{project.solution}</p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-100">
-                    <span className="font-bold text-emerald-900 block mb-1 uppercase text-[10px] tracking-wider">
-                      Result:
-                    </span>
-                    <p className="text-slate-800 font-medium leading-relaxed">{project.result}</p>
-                  </div>
-                </div>
-
-                {/* Impact highlights */}
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 mb-6">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider block mb-1">
-                    Key Impact
+          {/* Right Column: Detailed Case Study Deep Dive */}
+          <div className="lg:col-span-7">
+            <div className="glass-panel-elevated rounded-3xl p-8 sm:p-10 border border-slate-800 space-y-6">
+              
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+                <div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-sky-400 block mb-1">
+                    PROJECT ARCHITECTURE DEEP DIVE // {activeProject.code}
                   </span>
-                  <p className="text-xs font-bold text-slate-900">{project.impact}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    {activeProject.title}
+                  </h3>
+                  <div className="text-xs font-semibold text-slate-300 mt-1">
+                    Client: <span className="text-sky-300 font-mono">{activeProject.client}</span>
+                  </div>
                 </div>
               </div>
 
-              {/* CTAs */}
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+              {/* The Challenge */}
+              <div className="space-y-2">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-red-400 flex items-center space-x-1.5">
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span>The Operational Bottleneck</span>
+                </span>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-slate-950/80 p-4 rounded-2xl border border-slate-800">
+                  {activeProject.problem}
+                </p>
+              </div>
+
+              {/* The TechNix Solution */}
+              <div className="space-y-2">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400 flex items-center space-x-1.5">
+                  <span className="w-2 h-2 rounded-full bg-sky-400" />
+                  <span>The TechNix Engineering Solution</span>
+                </span>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-slate-950/80 p-4 rounded-2xl border border-slate-800">
+                  {activeProject.solution}
+                </p>
+              </div>
+
+              {/* Measurable Impact */}
+              <div className="p-5 rounded-2xl bg-emerald-950/30 border border-emerald-800/50 space-y-2">
+                <div className="flex items-center space-x-2 text-emerald-400 text-xs font-bold font-mono">
+                  <Activity className="w-4 h-4 shrink-0" />
+                  <span>VERIFIED MEASURABLE OUTCOME:</span>
+                </div>
+                <div className="text-sm sm:text-base font-bold text-white">
+                  {activeProject.impact}
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  {activeProject.result}
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row gap-3">
                 <button
-                  onClick={() => onOpenQuote(project.title)}
-                  className="flex-1 py-2.5 px-4 bg-slate-900 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center space-x-1.5 cursor-pointer"
+                  onClick={() => onOpenQuote(`${activeProject.title} (Case Study Inquiry)`)}
+                  className="flex-1 py-3 px-5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-sky-600/20 transition-all cursor-pointer flex items-center justify-center space-x-2 border border-sky-400/40"
                 >
-                  <span>Build Similar Solution</span>
+                  <span>Build a Similar System for Us</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
                 <button
-                  onClick={() => handleWhatsApp(project.title)}
-                  className="p-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 transition-colors cursor-pointer shrink-0"
-                  title="Discuss on WhatsApp"
+                  onClick={() => handleWhatsApp(activeProject.title)}
+                  className="py-3 px-4 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 font-semibold text-xs rounded-xl flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4" />
+                  <span>Discuss Case Study</span>
                 </button>
               </div>
+
             </div>
-          ))}
+          </div>
+
         </div>
 
-        {/* Section Bottom CTA */}
-        <div className="mt-14 text-center">
-          <button
-            onClick={() => onOpenQuote()}
-            className="inline-flex items-center space-x-2 px-8 py-4 bg-white hover:bg-slate-100 text-slate-900 font-bold rounded-xl border border-slate-300 shadow-sm transition-all cursor-pointer"
-          >
-            <span>View Our Projects &amp; Get a Proposal</span>
-            <ArrowRight className="w-4 h-4 text-blue-600" />
-          </button>
-        </div>
       </div>
     </section>
   );

@@ -7,7 +7,9 @@ import {
   ShieldCheck, 
   Sparkles, 
   Workflow,
-  ChevronRight
+  ChevronRight,
+  GitCommit,
+  Terminal
 } from 'lucide-react';
 import { HOW_WE_WORK_STEPS, CUSTOMER_JOURNEY_FLOW, COMPANY_INFO } from '../data/technixData';
 
@@ -24,123 +26,95 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
   };
 
   return (
-    <section id="how-we-work" className="py-24 bg-white border-t border-slate-200/80 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-we-work" className="py-24 bg-[#040814] text-white relative border-b border-slate-800/80">
+      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-sky-600/5 blur-[160px] pointer-events-none rounded-full" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1 text-xs font-bold text-blue-700">
+          <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-sky-400 shadow-md">
             <Workflow className="w-3.5 h-3.5" />
-            <span>Clear, Predictable Process</span>
+            <span className="font-semibold uppercase tracking-wider">Predictable Execution Architecture</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            How We Work
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            The 6-Stage Engineering <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-sky-400 via-blue-200 to-emerald-400 bg-clip-text text-transparent">
+              Deployment Protocol
+            </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            From your first conversation through to launch and ongoing local support, here is exactly how working with TechNix Africa progresses.
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            From initial requirements capture to live production deployment, staff onboarding, and ongoing SLA maintenance, here is how TechNix guarantees commercial confidence.
           </p>
         </div>
 
         {/* The 6 Clean Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {HOW_WE_WORK_STEPS.map((step) => (
             <div
               key={step.step}
-              className="bg-slate-50 border border-slate-200/80 rounded-2xl p-7 hover:border-blue-400 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="glass-panel rounded-2xl p-7 border border-slate-800/90 hover:border-sky-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-3xl font-black text-blue-600 font-mono tracking-tight">
+                  <span className="text-3xl font-black text-sky-400 font-mono tracking-tight group-hover:text-sky-300 transition-colors">
                     {step.step}
                   </span>
-                  <span className="w-8 h-8 rounded-full bg-blue-100/70 text-blue-700 flex items-center justify-center text-xs font-bold">
-                    ✓
+                  <span className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-800/40 text-sky-400 flex items-center justify-center text-xs font-bold font-mono">
+                    PH-{step.step}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-300 transition-colors">
                   {step.title}
                 </h3>
-
-                <p className="text-sm font-semibold text-blue-900/80 mb-3">
+                <p className="text-xs text-slate-300 leading-relaxed mb-3">
                   {step.desc}
                 </p>
-
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-[11px] text-slate-400 leading-relaxed mb-4 font-mono">
                   {step.detail}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center text-xs font-bold text-slate-400">
-                <span>Phase {step.step} of 06</span>
+              <div className="pt-4 border-t border-slate-800/80 flex items-center space-x-2 text-xs text-emerald-400">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
+                <span className="font-mono text-[11px]">Milestone Guaranteed</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Customer Journey Progression Map (Instruction 14) */}
-        <div className="bg-slate-950 text-white rounded-3xl p-6 sm:p-10 mb-12 shadow-xl">
-          <div className="max-w-2xl mb-6">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-400 block mb-1">
-              Complete Customer Journey
+        {/* Customer Journey Flow Bar */}
+        <div className="glass-panel-elevated rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400">
+              COMMERCIAL TIMELINE
             </span>
-            <h4 className="text-xl sm:text-2xl font-extrabold text-white">
-              Every Step Built Around Clarity, Transparency & Growth
+            <h4 className="text-base sm:text-lg font-bold text-white">
+              Direct Contact to First Operational Milestone in as Little as 5 Days
             </h4>
-            <p className="text-xs sm:text-sm text-slate-400 mt-2">
-              You never have to guess what comes next or worry about hidden costs.
+            <p className="text-xs text-slate-300">
+              Clear itemized scope, zero hidden costs, fixed Malawi Kwacha invoicing.
             </p>
           </div>
 
-          {/* Horizontal Scroller / Step Sequence */}
-          <div className="overflow-x-auto pb-4 pt-2">
-            <div className="flex items-center space-x-2 sm:space-x-3 min-w-[760px]">
-              {CUSTOMER_JOURNEY_FLOW.map((item, idx) => {
-                const isLast = idx === CUSTOMER_JOURNEY_FLOW.length - 1;
-                return (
-                  <React.Fragment key={item.step}>
-                    <div className="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 shrink-0 hover:border-blue-500/50 transition-colors">
-                      <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-black flex items-center justify-center shrink-0">
-                        {item.step}
-                      </span>
-                      <span className="text-xs font-bold text-slate-200 whitespace-nowrap">
-                        {item.label}
-                      </span>
-                    </div>
-
-                    {!isLast && (
-                      <ChevronRight className="w-4 h-4 text-slate-600 shrink-0" />
-                    )}
-                  </React.Fragment>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Direct CTA Strip */}
-          <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-xs text-slate-300 text-center sm:text-left">
-              Ready to begin? Share what your business is trying to accomplish.
-            </span>
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <button
-                onClick={() => onOpenQuote()}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2 transition-all cursor-pointer"
-              >
-                <span>Talk to TechNix</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={handleWhatsApp}
-                className="px-5 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-md flex items-center justify-center space-x-2 transition-colors cursor-pointer"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp Us</span>
-              </button>
-            </div>
+          <div className="flex items-center space-x-3 shrink-0 w-full md:w-auto">
+            <button
+              onClick={() => onOpenQuote()}
+              className="flex-1 md:flex-none py-3 px-6 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-sky-600/20 transition-all cursor-pointer border border-sky-400/40 text-center"
+            >
+              Start: Request a Quote
+            </button>
+            <button
+              onClick={handleWhatsApp}
+              className="py-3 px-4 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 font-semibold text-xs rounded-xl flex items-center justify-center space-x-1.5 transition-colors cursor-pointer"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>WhatsApp</span>
+            </button>
           </div>
         </div>
 

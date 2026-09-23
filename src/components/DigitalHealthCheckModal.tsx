@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Sparkles, CheckCircle2, ArrowRight, ArrowLeft, AlertCircle, RefreshCw, Send, MessageSquare } from 'lucide-react';
+import { X, Sparkles, CheckCircle2, ArrowRight, ArrowLeft, AlertCircle, RefreshCw, Send, MessageSquare, Terminal, Activity } from 'lucide-react';
 import { HEALTH_CHECK_QUESTIONS, COMPANY_INFO } from '../data/technixData';
 
 interface DigitalHealthCheckModalProps {
@@ -35,281 +35,221 @@ export const DigitalHealthCheckModal: React.FC<DigitalHealthCheckModalProps> = (
 
   const calculateTotalScore = (): number => {
     const rawSum = (Object.values(answers) as number[]).reduce((acc: number, curr: number) => acc + curr, 0);
-    // 6 questions, max 10 points each = 60 max raw points. Rescale to 0 - 100%
     return Math.round((rawSum / (totalQuestions * 10)) * 100);
   };
 
   const getScoreVerdict = (score: number) => {
     if (score < 40) {
       return {
-        level: 'High Operational Risk (Critical Gaps)',
-        badgeColor: 'bg-red-100 text-red-800 border-red-200',
-        summary: 'Your business is relying heavily on manual paper processes, unprotected personal emails, and fragile unbacked systems. A single laptop theft, crash, or phishing scam could cause devastating operational and financial losses.',
+        level: 'High Operational Risk (Critical Vulnerabilities)',
+        badgeColor: 'bg-red-950/80 text-red-400 border-red-800/60',
+        summary: 'Your organisation relies heavily on manual paper processes, unprotected personal emails, and unbacked systems. A single laptop crash, theft, or phishing attempt could halt operations.',
         topRecommendations: [
-          'Immediate migration to professional business email on your own domain',
-          'Deploy automated off-site cloud backups to protect critical spreadsheets and accounting data',
-          'Launch a professional Business Starter website to establish client trust and capture inbound leads',
+          'Immediate migration to professional business email on your own domain (.mw/.com)',
+          'Deploy automated off-site cloud backups to protect critical financial files',
+          'Deploy a professional Business Starter website to establish client trust and capture inbound leads',
         ],
       };
     } else if (score < 75) {
       return {
-        level: 'Moderate Digital Foundation (Growth Bottlenecks)',
-        badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
-        summary: 'You have some digital tools running, but they are fragmented. Staff are spending too much time on repetitive manual work, and lack of proactive maintenance leaves your network vulnerable to downtime.',
+        level: 'Moderate Digital Posture (Productivity Bottlenecks)',
+        badgeColor: 'bg-amber-950/80 text-amber-400 border-amber-800/60',
+        summary: 'You have basic digital tools in place, but they remain fragmented. Staff lose time on manual reconciliation, and lack of proactive maintenance leaves your systems vulnerable.',
         topRecommendations: [
-          'Sign up for TechNix Care monthly support for proactive IT maintenance and antivirus updates',
-          'Automate sales, inventory, or student records with a custom software database',
-          'Upgrade your web presence with WhatsApp click-to-inquire and Google Search SEO',
+          'Enroll in TechNix Care monthly support for proactive IT maintenance and patch hygiene',
+          'Automate sales, inventory, or member records with a tailored web database portal',
+          'Upgrade your web presence with WhatsApp click-to-inquire and mobile speed tuning',
         ],
       };
     } else {
       return {
-        level: 'Strong Digital Agility (Ready to Scale)',
-        badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-        summary: 'You have established good technology habits. Your next frontier is deep workflow automation, executive Power BI dashboards, and staff upskilling in AI productivity tools.',
+        level: 'Strong Digital Infrastructure (Ready for Scale)',
+        badgeColor: 'bg-emerald-950/80 text-emerald-400 border-emerald-800/60',
+        summary: 'You have solid core technology foundations. Your next phase is workflow automation, executive Power BI dashboards, and staff upskilling in AI productivity tools.',
         topRecommendations: [
-          'Enroll management and key staff in TechNix Academy Power BI and AI for Business courses',
-          'Implement inter-branch VPN and advanced endpoint network defense',
-          'Build customer self-service portals to reduce administrative workload',
+          'Deploy Power BI executive dashboards for instant quarterly financial & donor reporting',
+          'Upskill department managers via TechNix Academy hands-on cohorts',
+          'Explore custom mobile applications to empower your remote field personnel',
         ],
       };
     }
   };
 
-  const handleFinish = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
+  const isCompleted = Object.keys(answers).length === totalQuestions;
   const score = calculateTotalScore();
   const verdict = getScoreVerdict(score);
 
   const handleWhatsAppResults = () => {
-    const msg = `Hello TechNix, I completed the Digital Business Health Check for ${contactOrg || 'my business'}. My score was ${score}/100 (${verdict.level}). I would like to schedule my free 15-minute consultation review.`;
-    const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(msg)}`;
+    const text = `📊 DIGITAL HEALTH CHECK AUDIT RESULTS:
+Organisation: ${contactOrg || 'My Organisation'}
+Contact: ${contactName || 'Director'} (${contactPhone || 'Phone'})
+Overall Score: ${score}/100
+Status: ${verdict.level}
+
+I would like to discuss TechNix's recommendations to improve our digital operations.`;
+
+    const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const handleReset = () => {
-    setAnswers({});
-    setCurrentStep(0);
-    setSubmitted(false);
-  };
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden relative animate-in fade-in zoom-in-95 duration-200">
-        {/* Modal Header */}
-        <div className="p-6 bg-slate-900 text-white flex items-center justify-between">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="glass-panel-elevated rounded-3xl max-w-xl w-full shadow-2xl border border-slate-700/80 overflow-hidden relative animate-in fade-in zoom-in-95 duration-200 text-white">
+        
+        {/* Header */}
+        <div className="p-6 bg-slate-900/90 border-b border-slate-800 text-white flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-              <Sparkles className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-sky-950/80 border border-sky-800/40 text-sky-400 flex items-center justify-center shadow-inner">
+              <Activity className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-lg text-white">Digital Business Health Check</h3>
-              <p className="text-xs text-slate-300">Free 2-minute diagnostic audit for African businesses & NGOs</p>
+              <div className="flex items-center space-x-2 text-[10px] font-mono text-sky-400 uppercase tracking-widest mb-0.5">
+                <Terminal className="w-3 h-3" />
+                <span>DIAGNOSTIC ENGINE</span>
+              </div>
+              <h3 className="text-xl font-black text-white tracking-tight">Digital Business Health Check</h3>
+              <p className="text-xs text-slate-300">Evaluate your technology maturity & discover hidden bottlenecks</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            aria-label="Close dialog"
-            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            aria-label="Close health check modal"
+            className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Content Area */}
+        {/* Modal Body */}
         <div className="p-6 sm:p-8">
-          {!submitted && Object.keys(answers).length < totalQuestions ? (
+          {!isCompleted ? (
             <div>
-              {/* Progress Bar */}
+              {/* Progress bar */}
               <div className="mb-6">
-                <div className="flex justify-between items-center text-xs font-semibold text-slate-500 mb-2">
-                  <span>Question {currentStep + 1} of {totalQuestions}</span>
-                  <span className="text-blue-700 font-bold">{currentQ.category}</span>
+                <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
+                  <span>Audit Question {currentStep + 1} of {totalQuestions}</span>
+                  <span className="font-bold text-sky-400">
+                    {Math.round(((currentStep + 1) / totalQuestions) * 100)}% Complete
+                  </span>
                 </div>
-                <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
                   <div
-                    className="bg-blue-600 h-full transition-all duration-300 rounded-full"
+                    className="h-full bg-sky-500 transition-all duration-300 shadow-md shadow-sky-500/50"
                     style={{ width: `${((currentStep + 1) / totalQuestions) * 100}%` }}
                   />
                 </div>
               </div>
 
               {/* Question */}
-              <h4 className="text-xl font-bold text-slate-900 mb-6 leading-snug">
-                {currentQ.question}
-              </h4>
+              <div className="mb-6">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400 bg-sky-950/80 border border-sky-800/40 px-2.5 py-1 rounded-md inline-block mb-3">
+                  {currentQ.category}
+                </span>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug">
+                  {currentQ.question}
+                </h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Select the option that most accurately represents your office&apos;s daily operations:
+                </p>
+              </div>
 
-              {/* Options */}
-              <div className="space-y-3 mb-6">
+              {/* Answer Options */}
+              <div className="space-y-2.5 mb-6">
                 {currentQ.options.map((opt, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSelectOption(opt.score)}
-                    className="w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 transition-all text-sm font-medium text-slate-800 flex items-center justify-between group cursor-pointer"
+                    className="w-full p-4 text-left rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/60 hover:bg-slate-900 transition-all cursor-pointer flex items-center justify-between group"
                   >
-                    <span>{opt.text}</span>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all shrink-0 ml-3" />
+                    <span className="text-xs sm:text-sm text-slate-200 group-hover:text-white font-medium">
+                      {opt.text}
+                    </span>
+                    <span className="text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity ml-2 shrink-0">
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
                   </button>
                 ))}
               </div>
 
-              {/* Navigation Back */}
-              {currentStep > 0 && (
+              {/* Navigation */}
+              <div className="flex items-center justify-between pt-4 border-t border-slate-800 text-xs">
                 <button
+                  disabled={currentStep === 0}
                   onClick={() => setCurrentStep(currentStep - 1)}
-                  className="text-xs text-slate-500 hover:text-slate-800 flex items-center space-x-1 font-semibold"
+                  className={`flex items-center space-x-1.5 font-mono ${
+                    currentStep === 0 ? 'text-slate-600 cursor-not-allowed' : 'text-slate-400 hover:text-white cursor-pointer'
+                  }`}
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
-                  <span>Previous question</span>
+                  <span>Previous Question</span>
                 </button>
-              )}
-            </div>
-          ) : !submitted ? (
-            /* Lead Capture Step before unveiling results */
-            <div>
-              <div className="text-center mb-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
-                  Audit Completed!
-                </span>
-                <h4 className="text-2xl font-extrabold text-slate-900 mt-3">
-                  Where should we email your personalized Health Check Report?
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                  Enter your details to reveal your digital score and claim your free 15-minute consultation review with a TechNix Systems Engineer.
-                </p>
+                <span className="text-[11px] font-mono text-slate-400">Takes under 2 minutes</span>
               </div>
-
-              <form onSubmit={handleFinish} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={contactName}
-                    onChange={(e) => setContactName(e.target.value)}
-                    placeholder="e.g. Kondwani Chirwa"
-                    className="w-full p-3 text-sm rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Business / Organisation</label>
-                    <input
-                      type="text"
-                      required
-                      value={contactOrg}
-                      onChange={(e) => setContactOrg(e.target.value)}
-                      placeholder="e.g. Apex Agro Logistics"
-                      className="w-full p-3 text-sm rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Phone / WhatsApp</label>
-                    <input
-                      type="tel"
-                      required
-                      value={contactPhone}
-                      onChange={(e) => setContactPhone(e.target.value)}
-                      placeholder="+265 999 000 000"
-                      className="w-full p-3 text-sm rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
-                  <input
-                    type="email"
-                    required
-                    value={contactEmail}
-                    onChange={(e) => setContactEmail(e.target.value)}
-                    placeholder="you@company.com"
-                    className="w-full p-3 text-sm rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center space-x-2"
-                >
-                  <span>Reveal My Digital Score & Recommendations</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
             </div>
           ) : (
-            /* Results Screen */
+            /* Completed Results View */
             <div className="space-y-6">
-              <div className="text-center p-6 rounded-3xl bg-slate-50 border border-slate-200">
-                <span className="text-xs uppercase font-bold tracking-wider text-slate-500">
-                  Digital Readiness Score for {contactOrg || 'Your Business'}
-                </span>
-
-                <div className="flex items-center justify-center space-x-3 my-3">
-                  <div className="text-5xl font-black text-slate-900 tracking-tight">
-                    {score}
-                    <span className="text-2xl text-slate-500 font-semibold">/100</span>
-                  </div>
-                </div>
-
-                <div className="inline-block">
-                  <span className={`text-xs font-bold px-3 py-1.5 rounded-full border ${verdict.badgeColor}`}>
+              <div className="text-center space-y-3">
+                <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full text-xs font-mono font-bold border shadow-md">
+                  <span className={`px-2 py-0.5 rounded-full ${verdict.badgeColor}`}>
                     {verdict.level}
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 mt-4 leading-relaxed max-w-lg mx-auto">
+                <div className="flex items-baseline justify-center space-x-2">
+                  <span className="text-4xl sm:text-5xl font-black text-white font-mono">
+                    {score}
+                  </span>
+                  <span className="text-sm font-mono text-slate-400">/ 100</span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md mx-auto">
                   {verdict.summary}
                 </p>
               </div>
 
-              {/* Priority Action Checklist */}
-              <div>
-                <h5 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
-                  Recommended Immediate Next Steps:
-                </h5>
-                <div className="space-y-2">
-                  {verdict.topRecommendations.map((rec, idx) => (
-                    <div key={idx} className="flex items-start space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{rec}</span>
-                    </div>
-                  ))}
-                </div>
+              {/* Top Recommendations */}
+              <div className="bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-3">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
+                  Top Recommended Infrastructure Upgrades:
+                </span>
+                {verdict.topRecommendations.map((rec, rIdx) => (
+                  <div key={rIdx} className="flex items-start space-x-2.5 text-xs text-slate-200">
+                    <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                    <span>{rec}</span>
+                  </div>
+                ))}
               </div>
 
-              {/* Actions */}
-              <div className="pt-4 border-t border-slate-200 space-y-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <button
-                    onClick={handleWhatsAppResults}
-                    className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center space-x-2 transition-colors cursor-pointer"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>WhatsApp Results to TechNix</span>
-                  </button>
+              {/* Direct Next Step */}
+              <div className="space-y-3 pt-2">
+                <button
+                  onClick={handleWhatsAppResults}
+                  className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg shadow-emerald-900/30"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Send Results to TechNix on WhatsApp</span>
+                </button>
 
+                <div className="flex items-center justify-between text-xs pt-1">
                   <button
                     onClick={() => {
-                      onClose();
-                      onOpenQuote(`Digital Assessment Follow-up (Score: ${score}/100)`);
+                      setAnswers({});
+                      setCurrentStep(0);
                     }}
-                    className="py-3 px-4 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs flex items-center justify-center space-x-2 transition-colors cursor-pointer"
+                    className="text-slate-400 hover:text-white flex items-center space-x-1 cursor-pointer font-mono"
                   >
-                    <span>Request Free 15-Min Consultation</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <RefreshCw className="w-3.5 h-3.5" />
+                    <span>Retake Assessment</span>
+                  </button>
+
+                  <button
+                    onClick={onClose}
+                    className="text-slate-400 hover:text-white cursor-pointer font-mono"
+                  >
+                    Close Window
                   </button>
                 </div>
-
-                <button
-                  onClick={handleReset}
-                  className="w-full text-center text-xs text-slate-500 hover:text-slate-800 font-semibold py-1 flex items-center justify-center space-x-1"
-                >
-                  <RefreshCw className="w-3 h-3" />
-                  <span>Retake the assessment</span>
-                </button>
               </div>
             </div>
           )}

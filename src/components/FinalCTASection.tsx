@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, PhoneCall, MessageSquare, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { ArrowRight, PhoneCall, MessageSquare, CheckCircle2, ShieldCheck, Terminal, Radio } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
 interface FinalCTASectionProps {
@@ -13,25 +13,28 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
   };
 
   return (
-    <section className="py-20 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800">
-      {/* Subtle architectural background accents */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b12_1px,transparent_1px),linear-gradient(to_bottom,#1e293b12_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none" />
+    <section className="py-24 bg-[#040814] text-white relative overflow-hidden border-b border-slate-800/80">
+      <div className="absolute inset-0 bg-tech-grid opacity-25 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-sky-600/10 blur-[180px] rounded-full pointer-events-none" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-        <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-400/30 rounded-full px-4 py-1.5 text-xs font-bold text-blue-300">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>TechNix Africa Commercial Partnership</span>
+        
+        <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1.5 text-xs font-mono text-sky-400 shadow-md">
+          <Radio className="w-3.5 h-3.5 text-sky-400 animate-pulse" />
+          <span className="font-semibold uppercase tracking-wider">Enterprise Engagement Pipeline Active</span>
         </div>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-          Ready to Move Your Business Forward?
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
+          Ready to Move Your Business Forward with <br className="hidden sm:inline" />
+          <span className="bg-gradient-to-r from-sky-400 via-blue-200 to-emerald-400 bg-clip-text text-transparent">
+            Dependable African Digital Infrastructure?
+          </span>
         </h2>
 
         {/* Supporting Text */}
-        <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-          Tell us what you need. We&apos;ll help you find the right technology solution.
+        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+          Tell us what your organisation needs. We will architect, deploy, and support the right technology infrastructure for your team.
         </p>
 
         {/* CTAs */}
@@ -39,7 +42,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
           <button
             onClick={() => onOpenQuote()}
             id="final-cta-start-project"
-            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-base rounded-xl shadow-xl shadow-blue-600/30 transition-all cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xl shadow-sky-600/30 transition-all cursor-pointer border border-sky-400/40"
           >
             <span>Start a Project</span>
             <ArrowRight className="w-4 h-4" />
@@ -48,37 +51,38 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
           <button
             onClick={() => handleWhatsApp('Hello TechNix, I would like to talk to TechNix about our organisation technology needs.')}
             id="final-cta-talk-technix"
-            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-7 py-4 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-base rounded-xl border border-slate-700 transition-all cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-7 py-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm rounded-xl border border-slate-700 transition-all cursor-pointer"
           >
-            <PhoneCall className="w-4 h-4 text-blue-400" />
+            <PhoneCall className="w-4 h-4 text-sky-400" />
             <span>Talk to TechNix</span>
           </button>
 
           <button
             onClick={() => handleWhatsApp('Hello TechNix Africa, I am reaching out to discuss a project on WhatsApp.')}
             id="final-cta-whatsapp"
-            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-4 bg-emerald-600/90 hover:bg-emerald-600 text-white font-semibold text-base rounded-xl border border-emerald-500/40 shadow-md transition-all cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm rounded-xl border border-emerald-400/40 shadow-lg shadow-emerald-950/40 transition-all cursor-pointer"
           >
-            <MessageSquare className="w-4 h-4 text-white" />
-            <span>Chat on WhatsApp</span>
+            <MessageSquare className="w-4 h-4" />
+            <span>Talk to TechNix on WhatsApp</span>
           </button>
         </div>
 
-        {/* Trust Badges */}
-        <div className="pt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-400">
-          <div className="flex items-center space-x-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>Clear Upfront Pricing in MK</span>
+        {/* 3 Confidence Badges */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 max-w-3xl mx-auto text-xs font-mono text-slate-300">
+          <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center justify-center space-x-2">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <span>Fixed Itemized Pricing</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>Local Engineering Teams in Blantyre & Lilongwe</span>
+          <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center justify-center space-x-2">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <span>Malawi Engineering Hubs</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>Rapid Response Times</span>
+          <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center justify-center space-x-2">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <span>Guaranteed Uptime SLAs</span>
           </div>
         </div>
+
       </div>
     </section>
   );
