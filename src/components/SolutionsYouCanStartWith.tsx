@@ -175,120 +175,83 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               </div>
             </div>
 
-            {/* Right Visual Preview: Art-Directed Commercial Showroom Visual */}
-            <div className="lg:col-span-5 bg-[#040813] border border-white/10 rounded-2xl p-6 sm:p-7 space-y-5 shadow-2xl relative overflow-hidden">
-              <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
-                <div className="flex items-center space-x-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
-                </div>
-                <div className="bg-slate-900 px-3 py-1 rounded text-[11px] text-slate-300 font-mono border border-white/5 flex items-center space-x-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span>yourcompany.mw</span>
-                </div>
-                <span className="text-emerald-400 font-medium text-[11px]">
-                  Live
+            {/* Right Visual Composition: Art-Directed Design Object (No fake browser bar) */}
+            <div className="lg:col-span-5 bg-[#040813] border border-white/10 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl relative overflow-hidden">
+              <div className="space-y-3">
+                <span className="text-xs font-mono text-sky-400 uppercase tracking-widest">
+                  Commercial Standard
                 </span>
-              </div>
 
-              {/* Showroom Viewport Visual */}
-              <div className="p-5 bg-[#080d1a] border border-white/5 rounded-xl space-y-4">
-                <div className="space-y-1.5">
-                  <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider">
-                    Official Corporate Web Platform
-                  </span>
-                  <div className="text-base font-black text-white">
-                    Built for Growth in Malawi
-                  </div>
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                    Delivered with custom domain email, mobile optimization for local network connections, and direct WhatsApp routing.
-                  </p>
+                <div className="text-2xl sm:text-3xl font-black text-white leading-tight">
+                  An Official Presence for Your Organisation
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-slate-300 pt-1">
-                  <div className="p-2 rounded bg-white/[0.02] border border-white/5">
-                    <span className="text-sky-400 block font-bold">5–10 Days</span>
-                    <span>Turnaround</span>
-                  </div>
-                  <div className="p-2 rounded bg-white/[0.02] border border-white/5">
-                    <span className="text-emerald-400 block font-bold">Fixed Quote</span>
-                    <span>Malawi Kwacha</span>
-                  </div>
-                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Designed for local cellular loading speeds, integrated with your official domain and WhatsApp enquiry channels, and configured with Google business profiles.
+                </p>
               </div>
 
-              <div className="flex items-center justify-between text-xs font-mono text-slate-400 pt-1">
-                <span>Google Maps Profile Setup</span>
-                <span className="text-sky-400">Mobile Ready</span>
+              {/* Editorial Feature Anchors */}
+              <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-4 text-xs font-mono">
+                <div>
+                  <span className="text-slate-400 block text-[11px]">TIMELINE</span>
+                  <span className="text-white font-bold text-sm">5–10 Days</span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[11px]">PRICING</span>
+                  <span className="text-emerald-400 font-bold text-sm">Fixed Kwacha</span>
+                </div>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* 2. SUBORDINATE SHOWROOM: Typographic Ecosystem Navigation */}
+        {/* 2. SUBORDINATE SHOWROOM: Typographic Service Index */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-400">
-            <span>TechNix Ecosystem Navigation</span>
-            <span className="text-slate-500 hidden sm:inline">Select a service to navigate</span>
+          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 pb-2 border-b border-white/5">
+            Operational Services &amp; Digital Infrastructure Index
           </div>
 
-          <div className="divide-y divide-white/5 border-y border-white/5">
-            {supportingSolutions.map((sol) => {
-              const Icon = sol.icon;
-              return (
-                <div
-                  key={sol.id}
-                  className="py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-slate-900/30 px-3 rounded-lg transition-colors"
-                >
-                  <div className="flex items-start space-x-4 md:max-w-2xl">
-                    <div className="w-8 h-8 rounded-lg bg-slate-900 text-sky-400 flex items-center justify-center shrink-0 border border-slate-800 mt-0.5">
-                      <Icon className="w-4 h-4" />
-                    </div>
-
-                    <div className="space-y-1">
-                      <div className="flex items-center space-x-3">
-                        <h4 className="text-base font-bold text-white group-hover:text-sky-300 transition-colors">
-                          {sol.name}
-                        </h4>
-                        <span className="text-[11px] font-mono uppercase text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
-                          {sol.tier}
-                        </span>
-                      </div>
-
-                      <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                        {sol.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between md:justify-end gap-6 shrink-0 pt-2 md:pt-0">
-                    <span className="text-xs font-mono font-bold text-emerald-400">
-                      {sol.pricing}
+          <div className="divide-y divide-white/5 border-b border-white/5">
+            {supportingSolutions.map((sol) => (
+              <div
+                key={sol.id}
+                className="py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-white/[0.02] px-2 transition-colors cursor-pointer"
+                onClick={sol.action}
+              >
+                <div className="space-y-1 md:max-w-2xl">
+                  <div className="flex items-baseline space-x-4">
+                    <span className="text-xs font-mono text-slate-500">
+                      {sol.index}
                     </span>
-
-                    <div className="flex items-center space-x-2">
-                      <button
-                        onClick={sol.action}
-                        className="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs rounded-lg transition-colors flex items-center space-x-1 cursor-pointer"
-                      >
-                        <span>Engage</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </button>
-
-                      <button
-                        onClick={() => handleWhatsApp(sol.whatsAppMsg)}
-                        className="p-1.5 rounded-lg bg-transparent hover:bg-slate-800 text-slate-400 hover:text-emerald-400 transition-colors cursor-pointer"
-                        title="Inquire via WhatsApp"
-                      >
-                        <MessageSquare className="w-4 h-4" />
-                      </button>
-                    </div>
+                    <h4 className="text-lg sm:text-xl font-black text-white group-hover:text-sky-300 transition-colors">
+                      {sol.name.toUpperCase()}
+                    </h4>
                   </div>
+                  <p className="text-xs sm:text-sm text-slate-300 pl-8 font-normal leading-relaxed">
+                    {sol.description}
+                  </p>
                 </div>
-              );
-            })}
+
+                <div className="flex items-center justify-between md:justify-end gap-6 shrink-0 pl-8 md:pl-0">
+                  <span className="text-xs font-mono font-bold text-emerald-400">
+                    {sol.pricing}
+                  </span>
+
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      sol.action();
+                    }}
+                    className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm"
+                  >
+                    <span>Start</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

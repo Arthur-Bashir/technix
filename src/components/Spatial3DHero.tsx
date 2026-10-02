@@ -96,7 +96,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     businessOutcome: 'Gives managing directors and funding donors immediate clarity on performance, revenue, and field indicators.',
     highlights: [
       'Interactive executive dashboards with automated data pipelines',
-      'One-click audit reports ready for board reviews & donor compliance',
+      'Structured operational reports for leadership and funding partners',
       'Automated scheduled report distribution via email',
     ],
     cameraPos: { x: -3.2, y: 4.5, z: -0.8 },
@@ -827,37 +827,37 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         aria-hidden="true"
       />
 
-      {/* Primary Hero Typography & Intent Zone (Moved up, reduced headroom, first viewport clarity) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 sm:pt-2 lg:pt-3 pb-1 flex-1 flex flex-col justify-center">
-        <div className="max-w-2xl space-y-2.5 sm:space-y-3">
+      {/* Primary Hero Typography & Intent Zone (Reduced headroom, high viewport priority) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3 pb-2 flex-1 flex flex-col justify-center">
+        <div className="max-w-2xl space-y-2 sm:space-y-2.5">
           
           {/* Digital Infrastructure Partner Pill */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/40 text-sky-200 text-xs font-mono font-medium tracking-wider uppercase backdrop-blur-md shadow-sm shadow-sky-950/40">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-sky-400/60 text-sky-100 text-xs font-mono font-medium tracking-wider uppercase backdrop-blur-md shadow-md shadow-sky-950/50">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-80" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400" />
               </span>
-              <span>Digital Infrastructure Partner</span>
+              <span className="font-semibold text-white/90">Digital Infrastructure Partner</span>
             </div>
           </div>
 
-          {/* HUGE Headline (Tight measure, balanced wrap) */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.08] text-balance">
+          {/* Headline (Crisp, authoritative, perfectly balanced) */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
             Technology That Moves Your Business Forward
           </h1>
 
-          {/* MEDIUM Subtitle */}
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed font-normal text-balance max-w-xl">
+          {/* Subtitle */}
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed font-normal text-balance max-w-xl">
             Websites, software, IT support and digital solutions for businesses and organisations across Africa.
           </p>
 
           {/* Primary Action Row */}
-          <div className="flex flex-wrap items-center gap-3 pt-0.5">
+          <div className="flex flex-wrap items-center gap-2.5 pt-1">
             <button
               onClick={() => onOpenQuote()}
               id="hero-primary-cta"
-              className="px-5 sm:px-6 py-2.5 sm:py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-500/40 flex items-center space-x-2 cursor-pointer border border-sky-400/40"
+              className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-500/40 flex items-center space-x-2 cursor-pointer border border-sky-400/40"
             >
               <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
@@ -866,7 +866,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             <button
               onClick={() => handleWhatsApp()}
               id="hero-secondary-cta"
-              className="px-4 sm:px-5 py-2.5 sm:py-3 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center space-x-2 cursor-pointer"
+              className="px-4 py-2.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center space-x-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-emerald-400" />
               <span>Talk to TechNix</span>
@@ -875,7 +875,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             {!isOverview && (
               <button
                 onClick={handleResetToOverview}
-                className="px-3 py-2 text-xs font-mono text-slate-400 hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer ml-auto sm:ml-0"
+                className="px-3 py-2 text-xs font-mono text-slate-400 hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset View</span>
@@ -884,116 +884,126 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
           </div>
 
           {/* Regional Trust Markers */}
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs text-slate-400 pt-0.5">
-            <span>Blantyre &amp; Lilongwe Hubs</span>
-            <span aria-hidden="true">·</span>
+          <div className="flex flex-wrap items-center gap-2.5 text-xs text-slate-400 pt-0.5">
+            <span className="text-slate-300 font-medium">Blantyre &amp; Lilongwe Hubs</span>
+            <span aria-hidden="true" className="text-slate-600">·</span>
             <span>Local MWK Billing</span>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true" className="text-slate-600">·</span>
             <span>Active Engineering Support</span>
           </div>
 
         </div>
       </div>
 
-      {/* Interactive Infrastructure Explorer (Permanently in Viewport in Main Viewpoint) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-2 sm:pb-3 w-full shrink-0">
+      {/* Explore Digital Infrastructure Architecture Tier Bar (Directly inside main viewpoint) */}
+      <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 w-full shrink-0">
         
-        {/* Floating Active Zone Detail Inspection Panel (Overlaid HUD, does not push bar out of screen) */}
+        {/* Floating Zone Inspection Card (Shown when a tier is selected) */}
         {activeZone && (
-          <div className="absolute bottom-full mb-2.5 left-4 sm:left-6 lg:left-8 right-4 sm:right-auto max-w-2xl bg-[#090e1a]/95 border border-slate-700/90 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-2 duration-150 z-30">
+          <div className="absolute bottom-full mb-3 left-4 sm:left-6 lg:left-8 right-4 sm:right-auto max-w-md bg-[#080d19]/95 border border-sky-500/30 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-2 duration-150 z-40">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="flex items-center space-x-2 text-xs font-mono text-sky-400 mb-1">
-                  <span>LAYER {activeZone.index}</span>
-                  <span aria-hidden="true">·</span>
-                  <span className="text-slate-300 font-sans">{activeZone.stage}</span>
+                <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-medium">
+                  <span>Tier {activeZone.index}</span>
+                  <span>·</span>
+                  <span>{activeZone.stage}</span>
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-white mb-1">
+                <h3 className="text-base sm:text-lg font-bold text-white mt-1">
                   {activeZone.name}
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-xl mb-2">
+                <p className="text-xs text-slate-300 leading-relaxed mt-1 mb-2">
                   {activeZone.role}
                 </p>
-                <div className="text-xs font-mono font-semibold text-emerald-400 mb-2.5">
+                <div className="text-xs font-mono text-emerald-400 font-semibold">
                   {activeZone.startingPrice}
                 </div>
               </div>
 
               <button
                 onClick={handleResetToOverview}
-                className="text-slate-400 hover:text-white p-1 text-xs font-mono transition-colors shrink-0"
+                className="text-slate-400 hover:text-white p-1 text-xs transition-colors shrink-0 cursor-pointer"
                 aria-label="Close details"
               >
-                Close ✕
+                ✕
               </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-800/80">
+            <div className="flex flex-wrap items-center gap-2.5 pt-3 mt-2 border-t border-white/10">
               <button
                 onClick={() => onOpenQuote(activeZone.serviceTitle)}
-                className="px-3.5 py-1.5 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer"
+                className="px-3.5 py-1.5 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer shadow-sm"
               >
-                <span>Deploy This Module</span>
+                <span>Start Project</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
               <button
                 onClick={() => handleWhatsApp(`Hello TechNix, I would like to inquire about ${activeZone.name}.`)}
-                className="px-3 py-1.5 bg-slate-800/90 hover:bg-slate-700 text-emerald-400 border border-slate-700/80 text-xs font-semibold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer"
+                className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-700 text-xs font-semibold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
-                <span>Inquire on WhatsApp</span>
+                <span>WhatsApp</span>
               </button>
 
               <button
                 onClick={() => onSelectSection(activeZone.sectionId)}
                 className="text-xs text-slate-400 hover:text-sky-300 font-medium ml-auto flex items-center space-x-1 cursor-pointer"
               >
-                <span>View Full Specifications</span>
+                <span>Learn More</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
         )}
 
-        {/* Segmented Infrastructure Explorer Bar */}
-        <div className="bg-[#090e1a]/95 border border-white/10 rounded-2xl p-2 sm:p-2.5 backdrop-blur-xl shadow-2xl">
-          <div className="flex items-center justify-between px-3 py-1 border-b border-white/5 mb-1.5">
-            <span className="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">
-              Explore Digital Infrastructure Architecture
-            </span>
-            <span className="text-[10px] font-mono text-slate-400 hidden sm:inline">
-              Select a tier to inspect camera target
+        {/* Explore Digital Infrastructure Architecture Container */}
+        <div className="bg-[#070b16]/85 border border-white/10 rounded-xl p-2.5 sm:p-3 backdrop-blur-md">
+          {/* Header row: Explore Digital Infrastructure Architecture & Subtitle */}
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-2 pb-1.5 border-b border-white/5">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-semibold text-white tracking-wide">
+                Explore Digital Infrastructure Architecture
+              </span>
+              <span className="text-[11px] text-slate-400 hidden md:inline">
+                · Select a tier to inspect camera target
+              </span>
+            </div>
+            <span className="text-[11px] font-mono text-sky-400/90 hidden sm:inline">
+              Interactive 3D Engine
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 scrollbar-none">
+          {/* Tiers Navigation: Master Overview + 01 to 06 */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5 scrollbar-none text-xs">
+            {/* Master Overview */}
             <button
               onClick={() => handleSelectZone(null)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
                 isOverview
-                  ? 'bg-sky-600 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                  ? 'bg-sky-500/25 text-sky-200 border border-sky-400/60 shadow-sm shadow-sky-950'
+                  : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-transparent'
               }`}
             >
-              Master Overview
+              <RotateCcw className="w-3 h-3 text-sky-400" />
+              <span>Master Overview</span>
             </button>
 
+            {/* 01 to 06 Tiers */}
             {INFRASTRUCTURE_ZONES.map((zone) => {
-              const Icon = zone.icon;
               const isSelected = activeZoneId === zone.id;
               return (
                 <button
                   key={zone.id}
                   onClick={() => handleSelectZone(zone.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors flex items-center space-x-1.5 cursor-pointer shrink-0 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
                     isSelected
-                      ? 'bg-slate-800 text-sky-400 border border-sky-500/40 shadow-sm'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/40 border border-transparent'
+                      ? 'bg-sky-500/25 text-white border border-sky-400/60 shadow-sm shadow-sky-950 font-semibold'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-transparent'
                   }`}
                 >
-                  <span className="text-[10px] font-mono text-slate-400">{zone.index}</span>
-                  <Icon className="w-3.5 h-3.5" />
+                  <span className={`font-mono text-[10px] ${isSelected ? 'text-sky-300 font-bold' : 'text-slate-400'}`}>
+                    {zone.index}
+                  </span>
                   <span>{zone.name}</span>
                 </button>
               );

@@ -37,7 +37,7 @@ export const QUICK_NEEDS = [
     id: 'it-rescue',
     title: 'I Need IT Support (Urgent)',
     desc: 'Rapid assistance for network breakdowns, crashing PCs, printer and email failures.',
-    badge: 'Same-Day Response',
+    badge: 'Rapid Response',
     icon: 'Wrench',
     targetSection: 'it-rescue',
     whatsAppMsg: 'Hello TechNix, I need IT support. I have a problem with our office technology.',
@@ -663,8 +663,8 @@ export const SOFTWARE_SYSTEM_TYPES = [
   {
     id: 'reporting-platforms',
     name: 'Reporting Platforms',
-    desc: 'Automate weekly, monthly, and donor compliance reports directly from your primary operational data.',
-    highlight: 'Converts hours of manual aggregation into 1-click PDFs',
+    desc: 'Automate weekly, monthly, and programme status reports directly from your primary operational data.',
+    highlight: 'Converts hours of manual aggregation into clear reports',
     icon: 'FileSpreadsheet',
   },
   {
