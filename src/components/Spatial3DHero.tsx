@@ -808,7 +808,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
   return (
     <section 
       id="hero-spatial-3d" 
-      className="relative min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] w-full bg-[#050811] text-white flex flex-col justify-between overflow-hidden"
+      className="relative h-[calc(100dvh-4rem)] min-h-[580px] max-h-[1050px] w-full bg-[#050811] text-white flex flex-col justify-between overflow-hidden"
     >
       {/* 3D WebGL Canvas Layer */}
       <div 
@@ -823,18 +823,21 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         aria-hidden="true"
       />
       <div 
-        className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050811] to-transparent pointer-events-none z-10" 
+        className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#050811] to-transparent pointer-events-none z-10" 
         aria-hidden="true"
       />
 
-      {/* Primary Hero Typography & Intent Zone (First Viewport Clarity) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-8 pb-2 flex-1 flex flex-col justify-center">
-        <div className="max-w-2xl space-y-3.5 sm:space-y-4">
+      {/* Primary Hero Typography & Intent Zone (Moved up, reduced headroom, first viewport clarity) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 sm:pt-2 lg:pt-3 pb-1 flex-1 flex flex-col justify-center">
+        <div className="max-w-2xl space-y-2.5 sm:space-y-3">
           
           {/* Digital Infrastructure Partner Pill */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-950/80 border border-sky-400/40 text-sky-300 text-xs font-mono font-semibold tracking-wider uppercase shadow-md shadow-sky-950/60 backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/40 text-sky-200 text-xs font-mono font-medium tracking-wider uppercase backdrop-blur-md shadow-sm shadow-sky-950/40">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400" />
+              </span>
               <span>Digital Infrastructure Partner</span>
             </div>
           </div>
@@ -845,16 +848,16 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
           </h1>
 
           {/* MEDIUM Subtitle */}
-          <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed font-normal text-balance max-w-xl">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed font-normal text-balance max-w-xl">
             Websites, software, IT support and digital solutions for businesses and organisations across Africa.
           </p>
 
           {/* Primary Action Row */}
-          <div className="flex flex-wrap items-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center gap-3 pt-0.5">
             <button
               onClick={() => onOpenQuote()}
               id="hero-primary-cta"
-              className="px-5 sm:px-6 py-3 sm:py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-500/40 flex items-center space-x-2 cursor-pointer border border-sky-400/40"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-500/40 flex items-center space-x-2 cursor-pointer border border-sky-400/40"
             >
               <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
@@ -863,7 +866,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             <button
               onClick={() => handleWhatsApp()}
               id="hero-secondary-cta"
-              className="px-4 sm:px-5 py-3 sm:py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-sm rounded-xl transition-colors flex items-center space-x-2 cursor-pointer"
+              className="px-4 sm:px-5 py-2.5 sm:py-3 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-xs sm:text-sm rounded-xl transition-colors flex items-center space-x-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-emerald-400" />
               <span>Talk to TechNix</span>
@@ -872,7 +875,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             {!isOverview && (
               <button
                 onClick={handleResetToOverview}
-                className="px-3.5 py-2.5 text-xs font-mono text-slate-400 hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer ml-auto sm:ml-0"
+                className="px-3 py-2 text-xs font-mono text-slate-400 hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer ml-auto sm:ml-0"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset View</span>
@@ -881,8 +884,8 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
           </div>
 
           {/* Regional Trust Markers */}
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs text-slate-400 pt-1">
-            <span>Blantyre & Lilongwe Hubs</span>
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs text-slate-400 pt-0.5">
+            <span>Blantyre &amp; Lilongwe Hubs</span>
             <span aria-hidden="true">·</span>
             <span>Local MWK Billing</span>
             <span aria-hidden="true">·</span>
@@ -892,12 +895,12 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         </div>
       </div>
 
-      {/* Interactive Infrastructure Explorer (In Viewport by Default) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 sm:pb-4 w-full">
+      {/* Interactive Infrastructure Explorer (Permanently in Viewport in Main Viewpoint) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-2 sm:pb-3 w-full shrink-0">
         
-        {/* Floating Active Zone Detail Inspection Panel (Only appears when exploring a specific layer) */}
+        {/* Floating Active Zone Detail Inspection Panel (Overlaid HUD, does not push bar out of screen) */}
         {activeZone && (
-          <div className="mb-3 max-w-2xl bg-[#090e1a]/95 border border-slate-800/90 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-3 duration-200">
+          <div className="absolute bottom-full mb-2.5 left-4 sm:left-6 lg:left-8 right-4 sm:right-auto max-w-2xl bg-[#090e1a]/95 border border-slate-700/90 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-2 duration-150 z-30">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="flex items-center space-x-2 text-xs font-mono text-sky-400 mb-1">
@@ -905,13 +908,13 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
                   <span aria-hidden="true">·</span>
                   <span className="text-slate-300 font-sans">{activeZone.stage}</span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
+                <h3 className="text-base sm:text-lg font-bold text-white mb-1">
                   {activeZone.name}
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-xl mb-2.5">
+                <p className="text-xs text-slate-300 leading-relaxed max-w-xl mb-2">
                   {activeZone.role}
                 </p>
-                <div className="text-xs font-mono font-semibold text-emerald-400 mb-3">
+                <div className="text-xs font-mono font-semibold text-emerald-400 mb-2.5">
                   {activeZone.startingPrice}
                 </div>
               </div>
@@ -964,7 +967,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+          <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 scrollbar-none">
             <button
               onClick={() => handleSelectZone(null)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0 ${

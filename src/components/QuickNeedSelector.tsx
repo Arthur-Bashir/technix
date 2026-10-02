@@ -130,6 +130,8 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
+  const [showTechnicalScope, setShowTechnicalScope] = useState<boolean>(false);
+
   return (
     <section id="customer-needs" className="py-24 bg-[#040813] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,7 +139,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
         {/* Prominent Question & Editorial Introduction */}
         <div className="max-w-3xl mb-16 space-y-4">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-sky-400">
-            Customer Need / Orientation
+            Orientation
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
@@ -145,98 +147,111 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
-            Match your immediate operational challenge with the appropriate engineering response. Each pathway is designed around a clear problem, direct execution, and predictable Malawi Kwacha pricing.
+            Identify the operational challenge you face today. Every pathway connects directly to an engineering response, agreed scope, and transparent Kwacha pricing.
           </p>
         </div>
 
         {/* Problem → Solution Asymmetric Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column (5 Cols): List of Organisational Challenges */}
-          <div className="lg:col-span-5 divide-y divide-white/5 border-y border-white/5">
-            {pathways.map((item) => {
-              const isSelected = item.id === activePathwayId;
-              const Icon = item.icon;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setActivePathwayId(item.id)}
-                  className={`w-full text-left py-4 px-3 transition-colors cursor-pointer flex items-center justify-between ${
-                    isSelected
-                      ? 'bg-sky-500/10 text-white'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/30'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3 pr-2">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border ${
-                      isSelected 
-                        ? 'bg-sky-500 text-white border-sky-400' 
-                        : 'bg-slate-900 border-white/10 text-slate-400'
-                    }`}>
-                      <Icon className="w-4 h-4" />
+          {/* Left Column (5 Cols): Editorial List of Human Situations */}
+          <div className="lg:col-span-5 space-y-1">
+            <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-3 px-1">
+              Select Your Current Challenge
+            </div>
+
+            <div className="divide-y divide-white/5 border-y border-white/5">
+              {pathways.map((item, idx) => {
+                const isSelected = item.id === activePathwayId;
+                const indexNum = String(idx + 1).padStart(2, '0');
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setActivePathwayId(item.id);
+                      setShowTechnicalScope(false);
+                    }}
+                    className={`w-full text-left py-4 px-3.5 transition-all cursor-pointer flex items-start justify-between gap-4 group ${
+                      isSelected
+                        ? 'border-l-2 border-sky-400 bg-sky-950/20 text-white pl-4'
+                        : 'border-l-2 border-transparent text-slate-400 hover:text-slate-200 hover:bg-white/[0.02]'
+                    }`}
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center space-x-2 text-xs font-mono">
+                        <span className={isSelected ? 'text-sky-400 font-bold' : 'text-slate-400'}>
+                          {indexNum}
+                        </span>
+                        <span className={isSelected ? 'text-sky-300 font-semibold' : 'text-slate-400'}>
+                          {item.needStatement}
+                        </span>
+                      </div>
+                      <p className={`text-sm leading-snug transition-colors ${
+                        isSelected ? 'text-white font-medium' : 'text-slate-300 group-hover:text-slate-100'
+                      }`}>
+                        “{item.problem}”
+                      </p>
                     </div>
 
-                    <div>
-                      <div className="text-xs font-mono uppercase tracking-wider text-sky-400">
-                        {item.needStatement}
-                      </div>
-                      <div className="text-xs sm:text-sm font-medium text-slate-300 leading-snug line-clamp-1">
-                        {item.problem}
-                      </div>
-                    </div>
-                  </div>
-
-                  <ChevronRight className={`w-4 h-4 shrink-0 transition-transform ${
-                    isSelected ? 'text-sky-400 translate-x-1' : 'text-slate-600'
-                  }`} />
-                </button>
-              );
-            })}
+                    <ChevronRight className={`w-4 h-4 shrink-0 mt-1 transition-transform ${
+                      isSelected ? 'text-sky-400 translate-x-1' : 'text-slate-400 opacity-40 group-hover:opacity-100'
+                    }`} />
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Right Column (7 Cols): The Solution Formulation: If X → TechNix does Y */}
-          <div className="lg:col-span-7 bg-gradient-to-b from-[#081020] to-[#050b16] border border-white/10 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-white/5 pb-3 text-xs font-mono">
-                <span className="text-sky-400 font-medium uppercase tracking-wider">
-                  Recommended Solution Pathway
-                </span>
-                <span className="text-emerald-400 font-bold">
-                  {activePathway.startingFrom}
-                </span>
-              </div>
+          {/* Right Column (7 Cols): Editorial Response Stage (Unboxed, High Typographic Impact) */}
+          <div className="lg:col-span-7 pt-1 lg:pl-4 space-y-8">
+            
+            {/* Header: Stage Kicker & Pricing Anchor */}
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
+              <span className="text-xs font-mono font-medium text-sky-400 uppercase tracking-wider">
+                TechNix Solution Pathway
+              </span>
+              <span className="text-xs font-mono font-bold text-emerald-400">
+                {activePathway.startingFrom}
+              </span>
+            </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+            {/* Core Human Narrative: Problem to Engineering Pathway */}
+            <div className="space-y-6">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
                 {activePathway.needStatement}
               </h3>
 
-              {/* Problem / Solution Formula */}
-              <div className="space-y-4 pt-2">
-                <div className="space-y-1">
-                  <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-medium">
-                    The Challenge
-                  </span>
-                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                    {activePathway.problem}
-                  </p>
+              <div className="space-y-2">
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                  The Operational Challenge
                 </div>
-
-                <div className="space-y-1">
-                  <span className="text-xs font-mono uppercase tracking-wider text-sky-400 font-medium">
-                    How TechNix Solves It
-                  </span>
-                  <p className="text-base text-slate-200 leading-relaxed font-normal">
-                    {activePathway.solution}
-                  </p>
-                </div>
+                <p className="text-base text-slate-300 leading-relaxed font-normal">
+                  {activePathway.problem}. Without a dedicated system, team time is lost to repetitive manual coordination, confusion, or uncaptured opportunities.
+                </p>
               </div>
 
-              {/* What TechNix Delivers */}
-              <div className="pt-4 border-t border-white/5">
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-medium mb-3">
-                  Scope Summary:
+              <div className="space-y-2 border-l-2 border-sky-400 pl-4 py-1">
+                <div className="text-xs font-mono uppercase tracking-wider text-sky-400">
+                  How TechNix Solves It
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                <p className="text-base sm:text-lg text-white font-medium leading-relaxed">
+                  {activePathway.solution}
+                </p>
+              </div>
+            </div>
+
+            {/* Progressive Disclosure: Technical Scope Toggle */}
+            <div className="pt-2">
+              <button
+                onClick={() => setShowTechnicalScope(!showTechnicalScope)}
+                className="text-xs font-mono text-sky-400 hover:text-sky-300 transition-colors flex items-center space-x-1.5 cursor-pointer py-1"
+              >
+                <span>{showTechnicalScope ? 'Hide Scope Deliverables' : 'View Scope Deliverables'}</span>
+                <ChevronRight className={`w-3.5 h-3.5 transition-transform ${showTechnicalScope ? 'rotate-90' : ''}`} />
+              </button>
+
+              {showTechnicalScope && (
+                <div className="mt-4 pt-4 border-t border-white/5 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-300 animate-in fade-in duration-200">
                   {activePathway.deliverables.map((del, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <Check className="w-3.5 h-3.5 text-sky-400 shrink-0" />
@@ -244,30 +259,30 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
                     </div>
                   ))}
                 </div>
-              </div>
+              )}
             </div>
 
-            {/* Actions */}
-            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
+            {/* Commercial Action Bar */}
+            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
               <span className="text-xs font-mono text-slate-400">
-                Local Kwacha billing &amp; direct technical support
+                Transparent Kwacha quotation · Agreed milestones
               </span>
 
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => handlePathwayAction(activePathway)}
-                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl transition-all flex items-center space-x-1.5 cursor-pointer border border-sky-400/30"
+                  className="px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30 shadow-md shadow-sky-600/20"
                 >
                   <span>Explore Solution</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={() => handleWhatsApp(activePathway)}
-                  className="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-800 transition-colors flex items-center space-x-1.5 text-xs font-medium cursor-pointer"
+                  className="px-4 py-3 rounded-xl bg-transparent hover:bg-slate-900 text-slate-300 hover:text-emerald-400 border border-slate-800 transition-colors flex items-center space-x-1.5 text-xs font-medium cursor-pointer"
                   title="Discuss on WhatsApp"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
+                  <MessageSquare className="w-4 h-4" />
                   <span>WhatsApp</span>
                 </button>
               </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, PhoneCall, MessageSquare, CheckCircle2, ShieldCheck, MapPin } from 'lucide-react';
+import { ArrowRight, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
 interface FinalCTASectionProps {
@@ -13,63 +13,66 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
   };
 
   return (
-    <section className="py-28 bg-[#050811] text-white relative overflow-hidden">
-      {/* Visual ties back to 3D hero spatial infrastructure */}
-      <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-sky-500/10 blur-[180px] rounded-full pointer-events-none" />
+    <section className="py-32 sm:py-36 lg:py-44 bg-[#050811] text-white relative overflow-hidden">
+      {/* Subtle Spatial Horizon Gradients Connecting to 3D Hero World */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_40%,rgba(14,165,233,0.1),transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10">
         
         {/* Unboxed Kicker */}
-        <div className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
-          Begin Your Engagement
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-mono font-medium tracking-widest uppercase">
+          Technology Infrastructure Partner
         </div>
 
-        {/* Display Statement */}
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] text-balance">
-          Your technology should help your business move forward.
+        {/* Display Statement - Large Typographic Conversion Moment */}
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white tracking-tight leading-[1.06] text-balance">
+          Technology that moves your business forward.
         </h2>
 
         {/* Supporting Narrative */}
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed text-balance">
-          Whether you need an institutional website, a custom operational database, emergency IT rescue, or proactive monthly support, our engineering team is ready to deliver.
+        <p className="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed text-balance">
+          Websites, custom software, IT support and digital infrastructure for organisations across Malawi and Africa. Ready to deploy with clear scope and fixed Kwacha pricing.
         </p>
 
-        {/* Action Triggers */}
+        {/* Action Triggers: One Dominant Action + Clear Secondary */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          {/* DOMINANT ACTION: START A PROJECT */}
           <button
             onClick={() => onOpenQuote()}
             id="final-cta-start-project"
-            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm rounded-xl shadow-xl shadow-sky-600/30 transition-all cursor-pointer border border-sky-400/40"
+            className="w-full sm:w-auto px-10 py-5 bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-base rounded-2xl shadow-2xl shadow-sky-600/40 hover:shadow-sky-500/50 transition-all cursor-pointer flex items-center justify-center space-x-3 border border-sky-400/50"
           >
             <span>Start a Project</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-5 h-5" />
           </button>
 
+          {/* SECONDARY ACTION: Talk to TechNix */}
           <button
             onClick={() => handleWhatsApp('Hello TechNix, I want to talk to TechNix about our organisation technology needs.')}
-            id="final-cta-whatsapp"
-            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-7 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl border border-emerald-400/40 shadow-lg shadow-emerald-950/40 transition-all cursor-pointer"
+            id="final-cta-talk-technix"
+            className="w-full sm:w-auto px-8 py-5 bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-bold text-base rounded-2xl transition-colors cursor-pointer flex items-center justify-center space-x-2"
           >
-            <MessageSquare className="w-4 h-4" />
-            <span>Chat on WhatsApp</span>
+            <span>Talk to TechNix</span>
           </button>
-
-          <a
-            href={`tel:${COMPANY_INFO.phonePrimary}`}
-            id="final-cta-call"
-            className="w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm rounded-xl border border-slate-700 transition-all cursor-pointer"
-          >
-            <PhoneCall className="w-4 h-4 text-sky-400" />
-            <span>Call Our Team</span>
-          </a>
         </div>
 
-        {/* Three Quiet Commercial Confidence Pillars - Clean Containerless Dividers */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-8 max-w-3xl mx-auto text-xs font-mono text-slate-400 border-t border-white/5">
+        {/* Discreet WhatsApp Link - Available but Does Not Visually Compete */}
+        <div className="pt-2">
+          <button
+            onClick={() => handleWhatsApp('Hello TechNix, I would like to chat about a project.')}
+            className="text-xs font-mono text-slate-400 hover:text-emerald-400 transition-colors inline-flex items-center space-x-1.5 cursor-pointer"
+          >
+            <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Prefer WhatsApp? Chat directly with an engineer</span>
+          </button>
+        </div>
+
+        {/* Three Quiet Commercial Confidence Pillars */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 pt-12 max-w-3xl mx-auto text-xs font-mono text-slate-400 border-t border-white/5">
           <div className="flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
-            <span>Transparent Kwacha Pricing</span>
+            <span>Transparent MWK Pricing</span>
           </div>
           <div className="flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
@@ -77,7 +80,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
           </div>
           <div className="flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
-            <span>Direct Technical Engineers</span>
+            <span>Long-Term Post-Deployment Support</span>
           </div>
         </div>
 

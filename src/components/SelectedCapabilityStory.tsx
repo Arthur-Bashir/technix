@@ -274,230 +274,333 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
             </div>
           </div>
 
-          {/* RIGHT: Large Visual Representation (Browser, Inbox, Infrastructure, Console, Dataflow, Labs) */}
-          <div className="lg:col-span-7 bg-[#040813] border border-slate-800/80 rounded-2xl p-6 sm:p-8 min-h-[380px] flex flex-col justify-center">
+          {/* RIGHT: ONE Dominant Visual Composition (Art-directed representation) */}
+          <div className="lg:col-span-7 bg-[#040813] border border-white/10 rounded-2xl p-6 sm:p-8 min-h-[420px] flex flex-col justify-center relative overflow-hidden shadow-2xl">
             
-            {/* Website: Browser / Window Composition */}
+            {/* 1. BUSINESS WEBSITE: A large browser/site composition floating in space */}
             {activeStory === 'website' && (
               <div className="w-full space-y-4">
                 {/* Browser Titlebar */}
-                <div className="flex items-center space-x-2 border-b border-slate-800 pb-3">
+                <div className="flex items-center space-x-3 border-b border-white/10 pb-3">
                   <div className="flex space-x-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
                   </div>
-                  <div className="flex-1 max-w-sm mx-auto bg-slate-900 rounded px-3 py-1 text-[11px] font-mono text-slate-300 flex items-center space-x-2 border border-slate-800">
+                  <div className="flex-1 max-w-sm mx-auto bg-slate-900/90 rounded-lg px-3 py-1.5 text-[11px] font-mono text-slate-300 flex items-center space-x-2 border border-white/5">
                     <Lock className="w-3 h-3 text-emerald-400" />
                     <span>https://yourcompany.mw</span>
                   </div>
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider hidden sm:inline">Active</span>
                 </div>
 
-                {/* Web Viewport Content */}
-                <div className="bg-[#080d1a] border border-slate-800/70 rounded-xl p-6 space-y-5">
-                  <div className="space-y-2">
-                    <span className="text-[11px] font-mono text-sky-400 uppercase tracking-wider">
-                      Commercial Web Platform
+                {/* Floating Site Composition */}
+                <div className="relative bg-[#080d1a] border border-white/10 rounded-xl p-6 sm:p-8 space-y-6">
+                  {/* Mini Site Navigation Header */}
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-6 h-6 rounded bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-400 font-bold text-xs">
+                        T
+                      </div>
+                      <span className="font-bold text-xs text-white tracking-wide">YOUR BRAND</span>
+                    </div>
+                    <div className="hidden sm:flex items-center space-x-4 text-[11px] text-slate-400 font-mono">
+                      <span>Services</span>
+                      <span>About</span>
+                      <span>Contact</span>
+                    </div>
+                    <span className="text-[11px] text-sky-400 font-medium">Blantyre · Lilongwe</span>
+                  </div>
+
+                  {/* Site Hero Layout */}
+                  <div className="space-y-3 max-w-md">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-sky-400 bg-sky-950/60 border border-sky-400/30 px-2 py-0.5 rounded">
+                      Commercial Front-Door
                     </span>
-                    <h4 className="text-xl font-bold text-white">
-                      Your Business Name · Official Website
+                    <h4 className="text-xl sm:text-2xl font-black text-white leading-tight">
+                      Modern Commercial Operations Across Malawi
                     </h4>
-                    <p className="text-xs text-slate-300 leading-relaxed max-w-md">
-                      Clean presentation of your products, customer service channels, and location details in Blantyre, Lilongwe, or across Malawi.
+                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                      Connecting clients directly to your services with clear enquiry paths, verified location maps, and WhatsApp integration.
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
-                    <span className="px-3 py-1.5 rounded-lg bg-sky-500/10 text-sky-300 border border-sky-500/20 font-mono">
-                      Mobile Responsive
-                    </span>
-                    <span className="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">
-                      WhatsApp Connected
-                    </span>
-                    <span className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 font-mono">
-                      Google Business Profile &amp; Map Setup
-                    </span>
+                  {/* Actions & WhatsApp conversion */}
+                  <div className="flex flex-wrap items-center gap-3 pt-1">
+                    <div className="px-4 py-2 bg-sky-600 text-white rounded-lg text-xs font-bold flex items-center space-x-1.5 shadow-sm">
+                      <span>Contact Sales</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </div>
+                    <div className="px-3 py-2 bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 rounded-lg text-xs font-mono flex items-center space-x-1.5">
+                      <MessageSquare className="w-3 h-3 text-emerald-400" />
+                      <span>WhatsApp Direct</span>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Email: Communication / Inbox Composition */}
+            {/* 2. BUSINESS EMAIL: A clean communication identity with inbox/domain visualisation */}
             {activeStory === 'email' && (
               <div className="w-full space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
-                  <span className="text-sky-400 font-medium">Domain Mailbox Suite</span>
-                  <span className="text-slate-400">@yourcompany.mw</span>
+                {/* Communication Identity Header */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
+                  <div className="flex items-center space-x-2">
+                    <Mail className="w-4 h-4 text-sky-400" />
+                    <span className="text-white font-bold">@yourcompany.mw</span>
+                  </div>
+                  <span className="text-emerald-400 text-[11px]">DKIM &amp; SPF Authenticated</span>
                 </div>
 
-                <div className="space-y-3">
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center justify-between text-xs">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center font-mono font-bold">
-                        info
+                {/* Unified Executive Inbox Composition */}
+                <div className="bg-[#080d1a] border border-white/10 rounded-xl p-6 space-y-5">
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                    <div className="space-y-0.5">
+                      <div className="text-xs font-bold text-white">
+                        managing.director@yourcompany.mw
                       </div>
-                      <div>
-                        <div className="font-bold text-white">info@yourcompany.mw</div>
-                        <div className="text-slate-400 text-[11px]">Primary business enquiries &amp; client communication</div>
+                      <div className="text-[11px] text-slate-400 font-mono">
+                        To: procurement@tender-board.gov.mw
                       </div>
                     </div>
-                    <span className="text-[11px] font-mono text-emerald-400">Authenticated</span>
+                    <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded">
+                      Tender Ready
+                    </span>
                   </div>
 
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center justify-between text-xs">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-mono font-bold">
-                        dir
-                      </div>
-                      <div>
-                        <div className="font-bold text-white">director@yourcompany.mw</div>
-                        <div className="text-slate-400 text-[11px]">Executive correspondence for formal contracts &amp; tenders</div>
-                      </div>
+                  <div className="space-y-2 text-xs text-slate-300">
+                    <div className="font-semibold text-white">
+                      Subject: Commercial Proposal &amp; Technical Schedule
                     </div>
-                    <span className="text-[11px] font-mono text-emerald-400">Authenticated</span>
+                    <p className="text-slate-300 leading-relaxed font-normal text-[11px]">
+                      Dear Procurement Committee, please find attached our finalized commercial proposal and schedule of works for your review...
+                    </p>
+                  </div>
+
+                  {/* Corporate Identity Signature Block */}
+                  <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                    <div>
+                      <div className="text-white font-semibold">Official Corporate Domain Mailbox</div>
+                      <div>Outlook, iPhone &amp; Android sync enabled</div>
+                    </div>
+                    <span className="text-sky-400">Zero @gmail risk</span>
                   </div>
                 </div>
-
-                <p className="text-xs text-slate-400 pt-1">
-                  Synchronized across Outlook, iPhone, and Android devices for all staff.
-                </p>
               </div>
             )}
 
-            {/* Hosting: Infrastructure / Domain Composition */}
+            {/* 3. HOSTING: A calm infrastructure / cloud representation */}
             {activeStory === 'hosting' && (
               <div className="w-full space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
-                  <span className="text-sky-400 font-medium">Cloud Infrastructure &amp; DNS</span>
+                {/* Infrastructure Header */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
+                  <div className="flex items-center space-x-2">
+                    <Server className="w-4 h-4 text-sky-400" />
+                    <span className="text-white font-bold">Cloud Infrastructure &amp; DNS</span>
+                  </div>
                   <span className="text-slate-400">Billed in Malawi Kwacha</span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
-                    <Server className="w-5 h-5 text-sky-400" />
-                    <div className="font-bold text-white">Solid-State Cloud Storage</div>
-                    <div className="text-slate-400 text-[11px]">Fast server response for website visitors</div>
+                {/* Calm Layered Topology Visual */}
+                <div className="bg-[#080d1a] border border-white/10 rounded-xl p-6 space-y-4">
+                  {/* Layer 1: DNS & Anycast Edge */}
+                  <div className="flex items-center justify-between p-3 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+                      <div>
+                        <div className="font-bold text-white">Malawian (.mw) &amp; Global DNS Routing</div>
+                        <div className="text-[11px] text-slate-400">Instant registrar propagation and Anycast edge</div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono text-sky-400">Layer 01</span>
                   </div>
 
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
-                    <Lock className="w-5 h-5 text-emerald-400" />
-                    <div className="font-bold text-white">SSL Security Certificates</div>
-                    <div className="text-slate-400 text-[11px]">Automated HTTPS encryption for domains</div>
+                  {/* Layer 2: Solid-State Compute Node */}
+                  <div className="flex items-center justify-between p-3 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <div>
+                        <div className="font-bold text-white">Modern Solid-State Storage Array</div>
+                        <div className="text-[11px] text-slate-400">Engineered for fast database transactions and local cellular loading</div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono text-emerald-400">Layer 02</span>
                   </div>
 
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
-                    <Database className="w-5 h-5 text-indigo-400" />
-                    <div className="font-bold text-white">Scheduled Cloud Backups</div>
-                    <div className="text-slate-400 text-[11px]">Routine file &amp; database preservation</div>
+                  {/* Layer 3: Disaster Recovery Vault */}
+                  <div className="flex items-center justify-between p-3 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 rounded-full bg-indigo-400" />
+                      <div>
+                        <div className="font-bold text-white">Scheduled Cloud Snapshot Vault</div>
+                        <div className="text-[11px] text-slate-400">Encrypted routine preservation against hardware loss</div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono text-indigo-400">Layer 03</span>
                   </div>
 
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl space-y-2">
-                    <Cpu className="w-5 h-5 text-amber-400" />
-                    <div className="font-bold text-white">Malawian (.mw) DNS</div>
-                    <div className="text-slate-400 text-[11px]">National registrar setup &amp; maintenance</div>
+                  <div className="pt-2 flex justify-between items-center text-[11px] font-mono text-slate-400 border-t border-white/5">
+                    <span>99.9% Uptime SLA Target</span>
+                    <span className="text-emerald-400">Local Currency Protected</span>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* IT Support: Office / Network Support Composition */}
+            {/* 4. IT SUPPORT: A connected workplace environment */}
             {activeStory === 'support' && (
               <div className="w-full space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
-                  <span className="text-sky-400 font-medium">Operational Technical Hub</span>
-                  <span className="text-slate-400">Blantyre &amp; Lilongwe</span>
+                {/* Workplace Topology Header */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
+                  <div className="flex items-center space-x-2">
+                    <ShieldCheck className="w-4 h-4 text-sky-400" />
+                    <span className="text-white font-bold">Connected Workplace Operations</span>
+                  </div>
+                  <span className="text-sky-400 font-bold">Blantyre &amp; Lilongwe</span>
                 </div>
 
-                <div className="space-y-3 text-xs">
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-start space-x-3">
-                    <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                    <div className="space-y-1">
-                      <div className="font-bold text-white">TechNix Care Monthly Retainer</div>
-                      <p className="text-slate-300 text-[11px]">
-                        Structured monthly maintenance visits, workstation antivirus updates, and remote helpdesk assistance.
-                      </p>
+                {/* Workplace Environment Diagram */}
+                <div className="bg-[#080d1a] border border-white/10 rounded-xl p-6 space-y-5">
+                  <div className="text-xs space-y-1">
+                    <div className="font-bold text-white text-sm">TechNix Care Retainer &amp; Rescue Triage</div>
+                    <p className="text-slate-300 text-xs leading-relaxed">
+                      Physical engineer visits to your office plus secure remote helpdesk for all staff workstations, printers, and network equipment.
+                    </p>
+                  </div>
+
+                  {/* Visual Node Structure */}
+                  <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg space-y-1">
+                      <span className="text-[10px] font-mono uppercase text-sky-400">Physical Presence</span>
+                      <div className="font-bold text-white">Same-Day Dispatch</div>
+                      <p className="text-[11px] text-slate-400">Blantyre &amp; Lilongwe technicians</p>
+                    </div>
+
+                    <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg space-y-1">
+                      <span className="text-[10px] font-mono uppercase text-emerald-400">Security &amp; Backup</span>
+                      <div className="font-bold text-white">Proactive Health</div>
+                      <p className="text-[11px] text-slate-400">Antivirus &amp; scheduled routines</p>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-[#080d1a] border border-slate-800 rounded-xl flex items-start space-x-3">
-                    <Wifi className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
-                    <div className="space-y-1">
-                      <div className="font-bold text-white">On-Call IT Rescue Triage</div>
-                      <p className="text-slate-300 text-[11px]">
-                        Rapid dispatch for office Wi-Fi outages, printer failures, slow machines, and network restoration.
-                      </p>
-                    </div>
+                  <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                    <span>Helpdesk Direct: {COMPANY_INFO.phonePrimary}</span>
+                    <span className="text-emerald-400">Retainer Protection</span>
                   </div>
-                </div>
-
-                <div className="text-xs font-mono text-slate-400 pt-1 flex justify-between">
-                  <span>Support line: {COMPANY_INFO.phonePrimary}</span>
-                  <span>Physical presence in BT &amp; LL</span>
                 </div>
               </div>
             )}
 
-            {/* Software: Workflow / Data / System Composition */}
+            {/* 5. SOFTWARE: A large workflow / data visualisation */}
             {activeStory === 'software' && (
               <div className="w-full space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
-                  <span className="text-sky-400 font-medium">Purpose-Built Architecture</span>
-                  <span className="text-slate-400">Structured Data Pipelines</span>
+                {/* Software Pipeline Header */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
+                  <div className="flex items-center space-x-2">
+                    <Code2 className="w-4 h-4 text-sky-400" />
+                    <span className="text-white font-bold">Operational Workflow &amp; Systems Pipeline</span>
+                  </div>
+                  <span className="text-sky-400">Multi-Role Architecture</span>
                 </div>
 
-                <div className="space-y-2.5 text-xs">
-                  <div className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center space-x-3">
-                    <Smartphone className="w-4 h-4 text-sky-400 shrink-0" />
-                    <div className="flex-1">
-                      <span className="font-bold text-white block">1. Field &amp; Office Data Capture</span>
-                      <span className="text-slate-400 text-[11px]">Mobile forms and desktop input working with or without connectivity</span>
+                {/* Workflow Progression Visual */}
+                <div className="bg-[#080d1a] border border-white/10 rounded-xl p-6 space-y-4">
+                  {/* Step 1: Input */}
+                  <div className="flex items-center justify-between p-3 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-sky-400 font-mono font-bold">01</span>
+                      <div>
+                        <div className="font-bold text-white">Field &amp; Office Data Capture</div>
+                        <div className="text-[11px] text-slate-400">Offline-first mobile forms and desktop intake workflows</div>
+                      </div>
                     </div>
+                    <span className="text-[10px] font-mono text-slate-500">CAPTURE</span>
                   </div>
 
-                  <div className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center space-x-3">
-                    <Database className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <div className="flex-1">
-                      <span className="font-bold text-white block">2. Centralized Database Engine</span>
-                      <span className="text-slate-400 text-[11px]">Validation logic, role permissions, and structured record storage</span>
+                  {/* Step 2: Processing */}
+                  <div className="flex items-center justify-between p-3 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-indigo-400 font-mono font-bold">02</span>
+                      <div>
+                        <div className="font-bold text-white">TechNix Business Engine &amp; Permissions</div>
+                        <div className="text-[11px] text-slate-400">Automated invoices, stock reconciliation, and role permissions</div>
+                      </div>
                     </div>
+                    <span className="text-[10px] font-mono text-indigo-400">ENGINE</span>
                   </div>
 
-                  <div className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl flex items-center space-x-3">
-                    <BarChart3 className="w-4 h-4 text-indigo-400 shrink-0" />
-                    <div className="flex-1">
-                      <span className="font-bold text-white block">3. Management &amp; Donor Reporting</span>
-                      <span className="text-slate-400 text-[11px]">Visual dashboard summaries and clean exportable spreadsheets</span>
+                  {/* Step 3: Telemetry */}
+                  <div className="flex items-center justify-between p-3 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-emerald-400 font-mono font-bold">03</span>
+                      <div>
+                        <div className="font-bold text-white">Executive Power BI &amp; Audit Dashboards</div>
+                        <div className="text-[11px] text-slate-400">Live operational visibility for leadership and funding donors</div>
+                      </div>
                     </div>
+                    <span className="text-[10px] font-mono text-emerald-400">TELEMETRY</span>
+                  </div>
+
+                  <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                    <span>Zero Paper Records</span>
+                    <span className="text-sky-400">Custom Milestone Delivery</span>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Academy: Learning / Data / Skills Composition */}
+            {/* 6. ACADEMY: A learning environment / capability progression */}
             {activeStory === 'academy' && (
               <div className="w-full space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
-                  <span className="text-sky-400 font-medium">Practical Digital Masterclasses</span>
-                  <span className="text-slate-400">Blantyre &amp; Lilongwe</span>
+                {/* Academy Progression Header */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
+                  <div className="flex items-center space-x-2">
+                    <GraduationCap className="w-4 h-4 text-sky-400" />
+                    <span className="text-white font-bold">Workforce Capability Progression</span>
+                  </div>
+                  <span className="text-slate-400">Hands-on Labs</span>
                 </div>
 
-                <div className="space-y-2.5">
-                  {COURSES.slice(0, 3).map((c) => (
-                    <div key={c.id} className="p-3 bg-[#080d1a] border border-slate-800 rounded-xl text-xs flex items-center justify-between">
+                {/* Progression Theater */}
+                <div className="bg-[#080d1a] border border-white/10 rounded-xl p-6 space-y-4">
+                  <div className="space-y-1 text-xs">
+                    <div className="font-bold text-white text-sm">Practical Technical Masterclasses</div>
+                    <p className="text-slate-300 text-xs">
+                      Taught using commercial datasets, practical labs, and real workplace scenarios in Blantyre &amp; Lilongwe.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between p-2.5 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
                       <div>
-                        <span className="font-bold text-white block">{c.title}</span>
-                        <span className="text-slate-400 text-[11px]">{c.duration} · {c.level}</span>
+                        <span className="font-bold text-white">1. Advanced Excel &amp; Financial Models</span>
+                        <div className="text-[11px] text-slate-400">Automated lookups, macros, and financial statements</div>
                       </div>
-                      <span className="font-mono text-xs font-bold text-sky-400 shrink-0">
-                        {c.fee}
-                      </span>
+                      <span className="text-xs font-mono font-bold text-sky-400">MK 95,000</span>
                     </div>
-                  ))}
-                </div>
 
-                <p className="text-xs text-slate-400 pt-1">
-                  Hands-on computer exercises using real commercial datasets. Group corporate sessions available.
-                </p>
+                    <div className="flex items-center justify-between p-2.5 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                      <div>
+                        <span className="font-bold text-white">2. Power BI &amp; Executive Telemetry</span>
+                        <div className="text-[11px] text-slate-400">Interactive donor and board dashboards</div>
+                      </div>
+                      <span className="text-xs font-mono font-bold text-sky-400">MK 145,000</span>
+                    </div>
+
+                    <div className="flex items-center justify-between p-2.5 bg-white/[0.02] border border-white/5 rounded-lg text-xs">
+                      <div>
+                        <span className="font-bold text-white">3. Tailored Corporate Workforce Workshops</span>
+                        <div className="text-[11px] text-slate-400">Dedicated on-site sessions for institutional teams</div>
+                      </div>
+                      <span className="text-xs font-mono font-bold text-emerald-400">Custom Scope</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                    <span>Certificate of Completion</span>
+                    <span className="text-sky-400">Small Cohorts</span>
+                  </div>
+                </div>
               </div>
             )}
 

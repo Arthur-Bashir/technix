@@ -36,21 +36,21 @@ export const WhyTechNix: React.FC = () => {
   ];
 
   return (
-    <section id="why-technix" className="py-24 bg-[#060b17] text-white relative border-b border-slate-800/80">
+    <section id="why-technix" className="py-20 bg-[#050811] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 space-y-4">
-          <div className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
-            Why TechNix Africa
+        <div className="max-w-3xl mb-14 space-y-3">
+          <div className="text-xs font-mono font-medium uppercase tracking-wider text-sky-400">
+            Core Principles
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] text-balance">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight text-balance">
             Dependable Technology Built for Practical African Operations
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
-            We don&apos;t make unsupported promises. Here is why international development initiatives, regional commercial operators, and growing Malawian enterprises choose TechNix as their digital infrastructure partner.
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
+            Here is why international development initiatives, regional commercial operators, and growing Malawian enterprises partner with TechNix.
           </p>
         </div>
 

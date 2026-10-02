@@ -13,20 +13,16 @@ export const AboutSection: React.FC = () => {
           
           {/* Left Text Column */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-sky-400 shadow-md">
-              <Users className="w-3.5 h-3.5" />
-              <span>Engineering Backbone // TechNix Africa</span>
+            <div className="text-xs font-mono font-medium text-sky-400 uppercase tracking-wider">
+              About TechNix Africa
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-              A Dedicated Digital Infrastructure <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-sky-400 via-blue-200 to-emerald-400 bg-clip-text text-transparent">
-                Partner for African Organisations
-              </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+              A Dedicated Digital Infrastructure Partner for African Organisations
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
-              TechNix Africa was founded on a simple conviction: <strong>African organisations do not need complicated, overpriced technology that ends up abandoned after launch.</strong> They need dependable, practical systems that solve real daily operational bottlenecks.
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              TechNix Africa was founded on a simple conviction: African organisations do not need complicated, overpriced technology that ends up abandoned after launch. They need dependable, practical systems that solve real daily operational bottlenecks.
             </p>
 
             <div className="space-y-4 pt-2">

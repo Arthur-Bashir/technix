@@ -102,11 +102,11 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
         {/* Section Header */}
         <div className="max-w-3xl mb-16 space-y-4">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-sky-400">
-            Solutions You Can Start With
+            Commercial Showroom
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
-            Practical Technology Engagements
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.12]">
+            Technology for the Next Stage of Your Organisation
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
@@ -114,9 +114,9 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
           </p>
         </div>
 
-        {/* 1. DOMINANT FEATURED SHOWCASE: Business Websites */}
+        {/* 1. DOMINANT FEATURED SHOWCASE: Product Showroom Piece */}
         <div className="mb-16 border-b border-white/10 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
             {/* Left Content (Dominant Typography & Commercial Clarity) */}
             <div className="lg:col-span-7 space-y-6">
@@ -151,7 +151,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={() => onOpenQuote('Business Website')}
-                  className="px-6 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30"
+                  className="px-6 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30 shadow-md shadow-sky-600/20"
                 >
                   <span>Build My Website</span>
                   <ArrowRight className="w-4 h-4" />
@@ -175,64 +175,63 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               </div>
             </div>
 
-            {/* Right Visual Preview: Clean Window Surface */}
-            <div className="lg:col-span-5 bg-[#040813] border border-white/10 rounded-2xl p-6 sm:p-7 space-y-5 shadow-2xl">
-              <div className="flex items-center justify-between border-b border-white/5 pb-3 text-xs font-mono">
+            {/* Right Visual Preview: Art-Directed Commercial Showroom Visual */}
+            <div className="lg:col-span-5 bg-[#040813] border border-white/10 rounded-2xl p-6 sm:p-7 space-y-5 shadow-2xl relative overflow-hidden">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
                 <div className="flex items-center space-x-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
                 </div>
-                <span className="text-slate-400 truncate">
-                  yourcompany.mw
-                </span>
-                <span className="text-emerald-400 font-medium">
-                  Active
+                <div className="bg-slate-900 px-3 py-1 rounded text-[11px] text-slate-300 font-mono border border-white/5 flex items-center space-x-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span>yourcompany.mw</span>
+                </div>
+                <span className="text-emerald-400 font-medium text-[11px]">
+                  Live
                 </span>
               </div>
 
-              <div className="space-y-3 pt-1">
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-medium">
-                  Standard Scope
+              {/* Showroom Viewport Visual */}
+              <div className="p-5 bg-[#080d1a] border border-white/5 rounded-xl space-y-4">
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-mono text-sky-400 uppercase tracking-wider">
+                    Official Corporate Web Platform
+                  </span>
+                  <div className="text-base font-black text-white">
+                    Built for Growth in Malawi
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    Delivered with custom domain email, mobile optimization for local network connections, and direct WhatsApp routing.
+                  </p>
                 </div>
 
-                <div className="space-y-2.5 text-xs text-slate-300">
-                  <div className="flex items-start space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Clean modern design reflecting your brand identity</span>
+                <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-slate-300 pt-1">
+                  <div className="p-2 rounded bg-white/[0.02] border border-white/5">
+                    <span className="text-sky-400 block font-bold">5–10 Days</span>
+                    <span>Turnaround</span>
                   </div>
-                  <div className="flex items-start space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Optimized for fast mobile loading on local network connections</span>
-                  </div>
-                  <div className="flex items-start space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Direct inquiry integration for WhatsApp and phone</span>
-                  </div>
-                  <div className="flex items-start space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Google Business Profile &amp; local search visibility</span>
-                  </div>
-                  <div className="flex items-start space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Professional domain email account configured</span>
+                  <div className="p-2 rounded bg-white/[0.02] border border-white/5">
+                    <span className="text-emerald-400 block font-bold">Fixed Quote</span>
+                    <span>Malawi Kwacha</span>
                   </div>
                 </div>
+              </div>
 
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
-                  <span>Delivery: 5–10 business days</span>
-                  <span className="text-sky-400 font-medium">Fixed Kwacha Quote</span>
-                </div>
+              <div className="flex items-center justify-between text-xs font-mono text-slate-400 pt-1">
+                <span>Google Maps Profile Setup</span>
+                <span className="text-sky-400">Mobile Ready</span>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* 2. SUBORDINATE SHOWROOM: Editorial List with Divider Rows (Visibly Secondary) */}
+        {/* 2. SUBORDINATE SHOWROOM: Typographic Ecosystem Navigation */}
         <div className="space-y-6">
-          <div className="text-xs font-mono font-medium uppercase tracking-wider text-slate-400">
-            Supporting Solutions &amp; Operational Services
+          <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-400">
+            <span>TechNix Ecosystem Navigation</span>
+            <span className="text-slate-500 hidden sm:inline">Select a service to navigate</span>
           </div>
 
           <div className="divide-y divide-white/5 border-y border-white/5">
