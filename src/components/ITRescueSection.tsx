@@ -57,7 +57,7 @@ export const ITRescueSection: React.FC<ITRescueSectionProps> = ({ onOpenITRescue
             </h2>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl text-balance">
-              Crashing accounting computers, dropped Wi-Fi networks, corrupted databases, and malware lockouts cost real money every hour. TechNix deploys rapid remote diagnostics and same-day physical engineer dispatch across Blantyre and Lilongwe.
+              Crashing accounting computers, dropped Wi-Fi networks, corrupted databases, and malware lockouts cost real money every hour. TechNix deploys rapid remote diagnostics and priority physical engineer dispatch across Blantyre and Lilongwe.
             </p>
           </div>
 
@@ -88,7 +88,7 @@ export const ITRescueSection: React.FC<ITRescueSectionProps> = ({ onOpenITRescue
             <div className="pt-2 text-[11px] font-mono text-slate-400 flex items-center justify-between border-t border-rose-900/40">
               <span className="flex items-center gap-1">
                 <Clock className="w-3 h-3 text-rose-400" />
-                Same-Day Physical Triage
+                Priority Physical Triage
               </span>
               <span className="text-white font-bold">Blantyre & Lilongwe</span>
             </div>

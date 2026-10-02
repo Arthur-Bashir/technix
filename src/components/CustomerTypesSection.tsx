@@ -44,7 +44,7 @@ const SECTORS: SectorGroup[] = [
     id: 'ngos',
     name: 'NGOs & DEVELOPMENT ORGANISATIONS',
     subtitle: 'International development partners, civil society, trusts & donor programmes',
-    shortSummary: 'Secure, offline-capable field systems and executive reporting for donor compliance.',
+    shortSummary: 'Secure, offline-capable field systems and structured reporting for funding partners.',
     howTechNixWorks: 'We build offline-first mobile survey tools, queryable project databases, executive Power BI dashboards, and scheduled cloud backups that keep mission data safe across field locations.',
     deliverables: [
       'Offline-capable field survey and beneficiary data platforms',

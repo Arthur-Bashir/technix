@@ -84,7 +84,7 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
   {
     id: 'starter',
     name: 'Business Website Starter',
-    tagline: 'A clean, credible digital storefront giving your enterprise instant legitimacy and contact channels.',
+    tagline: 'A clean, credible digital storefront establishing clear professional legitimacy and direct contact channels.',
     price: 'MK 199,000',
     recommendedFor: 'Emerging enterprises, consultants, boutique firms, and small traders.',
     features: [
@@ -530,7 +530,7 @@ export const HEALTH_CHECK_QUESTIONS = [
       { text: 'Almost entirely on paper notebooks, physical receipts, and manual filing cabinets', score: 1 },
       { text: 'A mix of basic Excel spreadsheets and Word documents stored on individual laptops', score: 4 },
       { text: 'Some digital tools, but data has to be re-entered manually into multiple places', score: 7 },
-      { text: 'Centralized digital systems or databases that automate workflows and generate instant reports', score: 10 },
+      { text: 'Centralized digital systems or databases that automate workflows and generate structured reports on demand', score: 10 },
     ],
   },
   {
@@ -564,7 +564,7 @@ export const HOSTING_DOMAIN_PACKAGES = [
     price: 'MK 25,000',
     period: 'per year',
     description: 'Universal global top-level domain recognized worldwide for commercial enterprises and international operations.',
-    features: ['Instant registration & DNS propagation', 'WHOIS privacy protection available', 'Seamless connection to any hosting server', 'Timely renewal reminders'],
+    features: ['Prompt registration & rapid DNS propagation', 'WHOIS privacy protection available', 'Seamless connection to any hosting server', 'Timely renewal reminders'],
     badge: 'Global Standard',
   },
   {
@@ -622,7 +622,7 @@ export const SOFTWARE_SYSTEM_TYPES = [
     id: 'registration-systems',
     name: 'Registration Systems',
     desc: 'Secure portals for conference attendee intake, workshop credentials, and applicant verifications.',
-    highlight: 'Instant QR-code passes & verification scanners',
+    highlight: 'Direct QR-code passes & verification scanners',
     icon: 'ClipboardCheck',
   },
   {
@@ -649,7 +649,7 @@ export const SOFTWARE_SYSTEM_TYPES = [
   {
     id: 'data-collection-systems',
     name: 'Data Collection Systems',
-    desc: 'Offline-capable mobile data gathering tools for field enumerators, enumerator GPS tracking, and instant sync.',
+    desc: 'Offline-capable mobile data gathering tools for field enumerators, enumerator GPS tracking, and automated cloud sync.',
     highlight: 'Works reliably in remote areas without cellular data',
     icon: 'Smartphone',
   },
@@ -773,7 +773,7 @@ export const COMMERCIAL_PRODUCTS: CommercialProduct[] = [
     whatsIncluded: [
       'Official .mw, .co.mw, .com, or .org domain registration and DNS management',
       'High-speed SSD cloud storage with standard bandwidth',
-      'SSL security certificates automatically renewed',
+      'SSL security certificates with scheduled routine renewals',
       'cPanel control panel with 1-click application installers',
       'Local technical assistance and site migration support',
     ],

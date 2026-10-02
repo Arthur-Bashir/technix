@@ -67,7 +67,7 @@ export const DigitalHealthCheckModal: React.FC<DigitalHealthCheckModalProps> = (
         badgeColor: 'bg-emerald-950/80 text-emerald-400 border-emerald-800/60',
         summary: 'You have solid core technology foundations. Your next phase is workflow automation, executive Power BI dashboards, and staff upskilling in AI productivity tools.',
         topRecommendations: [
-          'Deploy Power BI executive dashboards for instant quarterly financial & donor reporting',
+          'Deploy Power BI executive dashboards for structured quarterly financial & funding reports',
           'Upskill department managers via TechNix Academy hands-on cohorts',
           'Explore custom mobile applications to empower your remote field personnel',
         ],

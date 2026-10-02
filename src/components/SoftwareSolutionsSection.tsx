@@ -35,7 +35,7 @@ export const SoftwareSolutionsSection: React.FC<SoftwareSolutionsSectionProps> =
       title: 'School & Academic Management Portals',
       sector: 'Education & Institutions',
       problem: 'Tuition fee reconciliations tracked in paper notebooks and exam marks lost across teacher laptops.',
-      solution: 'Centralized web portal for student records, automated fee tracking with SMS parent alerts, and instant report card generation.',
+      solution: 'Centralized web portal for student records, automated fee tracking with SMS parent alerts, and automated report card generation.',
       capabilities: ['Student enrollment & grading', 'Tuition payment tracking', 'Automated SMS alerts to parents', 'Teacher gradebook access'],
       icon: GraduationCap,
     },
@@ -60,7 +60,7 @@ export const SoftwareSolutionsSection: React.FC<SoftwareSolutionsSectionProps> =
       sector: 'Logistics & Haulage',
       problem: 'Transit trucks losing signed delivery notes on haulage routes, delaying client invoicing by weeks.',
       solution: 'Driver mobile app capturing photo proof of delivery and digital client signatures, immediately releasing automated commercial invoices.',
-      capabilities: ['Same-day billing trigger', 'Driver photo & signature capture', 'Route & delivery verification', 'Accounting software export'],
+      capabilities: ['Automated delivery-triggered billing', 'Driver photo & signature capture', 'Route & delivery verification', 'Accounting software export'],
       icon: Truck,
     },
   ];

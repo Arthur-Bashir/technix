@@ -56,7 +56,7 @@ export const SoftwareSolutions: React.FC<SoftwareSolutionsProps> = ({ onOpenQuot
       category: 'business',
       features: [
         'Real-time multi-branch stock levels & theft prevention',
-        'Barcode scanning & instant thermal receipt generation',
+        'Barcode scanning & fast thermal receipt generation',
         'Driver dispatch tracking & digital signature on delivery',
         'Daily gross profit & cashier reconciliation reports',
       ],

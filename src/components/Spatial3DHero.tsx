@@ -15,7 +15,8 @@ import {
   Compass,
   CheckCircle2,
   ChevronRight,
-  RotateCcw
+  RotateCcw,
+  ChevronDown
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/technixData';
 
@@ -175,6 +176,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
   const mountRef = useRef<HTMLDivElement>(null);
   const [activeZoneId, setActiveZoneId] = useState<string | null>(null);
   const [isOverview, setIsOverview] = useState<boolean>(true);
+  const [showExplorer, setShowExplorer] = useState<boolean>(false);
 
   // Overview camera parameters
   const masterCameraPos = useMemo(() => new THREE.Vector3(0, 4.6, 17.5), []);
@@ -198,6 +200,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
     if (zone) {
       setActiveZoneId(zoneId);
       setIsOverview(false);
+      setShowExplorer(true);
       targetCameraPos.current.set(zone.cameraPos.x, zone.cameraPos.y, zone.cameraPos.z);
       targetCameraLook.current.set(zone.cameraLook.x, zone.cameraLook.y, zone.cameraLook.z);
     }
@@ -895,11 +898,11 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         </div>
       </div>
 
-      {/* Explore Digital Infrastructure Architecture Tier Bar (Directly inside main viewpoint) */}
+      {/* Progressive Infrastructure Exploration Trigger or Expanded Tier Bar */}
       <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 w-full shrink-0">
         
         {/* Floating Zone Inspection Card (Shown when a tier is selected) */}
-        {activeZone && (
+        {showExplorer && activeZone && (
           <div className="absolute bottom-full mb-3 left-4 sm:left-6 lg:left-8 right-4 sm:right-auto max-w-md bg-[#080d19]/95 border border-sky-500/30 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-2 duration-150 z-40">
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -956,60 +959,91 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
           </div>
         )}
 
-        {/* Explore Digital Infrastructure Architecture Container */}
-        <div className="bg-[#070b16]/85 border border-white/10 rounded-xl p-2.5 sm:p-3 backdrop-blur-md">
-          {/* Header row: Explore Digital Infrastructure Architecture & Subtitle */}
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-2 pb-1.5 border-b border-white/5">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold text-white tracking-wide">
-                Explore Digital Infrastructure Architecture
-              </span>
-              <span className="text-[11px] text-slate-400 hidden md:inline">
-                · Select a tier to inspect camera target
-              </span>
+        {/* Quiet Default Exploration Trigger OR Expanded Tier Container */}
+        {showExplorer ? (
+          <div className="bg-[#070b16]/90 border border-white/10 rounded-xl p-2.5 sm:p-3 backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-150">
+            {/* Header row: Explore Digital Infrastructure Architecture & Subtitle + Collapse button */}
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-2 pb-1.5 border-b border-white/5">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold text-white tracking-wide">
+                  Explore Digital Infrastructure Architecture
+                </span>
+                <span className="text-[11px] text-slate-400 hidden md:inline">
+                  · Select a tier to inspect camera target
+                </span>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <span className="text-[11px] font-mono text-sky-400/90 hidden sm:inline">
+                  Interactive 3D Corridor
+                </span>
+                <button
+                  onClick={() => {
+                    setShowExplorer(false);
+                    handleResetToOverview();
+                  }}
+                  className="text-xs font-mono text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+                >
+                  <span>Close</span>
+                  <span>✕</span>
+                </button>
+              </div>
             </div>
-            <span className="text-[11px] font-mono text-sky-400/90 hidden sm:inline">
-              Interactive 3D Engine
-            </span>
-          </div>
 
-          {/* Tiers Navigation: Master Overview + 01 to 06 */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5 scrollbar-none text-xs">
-            {/* Master Overview */}
+            {/* Tiers Navigation: Master Overview + 01 to 06 */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5 scrollbar-none text-xs">
+              {/* Master Overview */}
+              <button
+                onClick={() => handleSelectZone(null)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
+                  isOverview
+                    ? 'bg-sky-500/25 text-sky-200 border border-sky-400/60 shadow-sm shadow-sky-950'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-transparent'
+                }`}
+              >
+                <RotateCcw className="w-3 h-3 text-sky-400" />
+                <span>Master Overview</span>
+              </button>
+
+              {/* 01 to 06 Tiers */}
+              {INFRASTRUCTURE_ZONES.map((zone) => {
+                const isSelected = activeZoneId === zone.id;
+                return (
+                  <button
+                    key={zone.id}
+                    onClick={() => handleSelectZone(zone.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
+                      isSelected
+                        ? 'bg-sky-500/25 text-white border border-sky-400/60 shadow-sm shadow-sky-950 font-semibold'
+                        : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-transparent'
+                    }`}
+                  >
+                    <span className={`font-mono text-[10px] ${isSelected ? 'text-sky-300 font-bold' : 'text-slate-400'}`}>
+                      {zone.index}
+                    </span>
+                    <span>{zone.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          /* Subtle, quiet interaction: lets the 3D world breathe */
+          <div className="flex items-center justify-between gap-4 text-xs">
             <button
-              onClick={() => handleSelectZone(null)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
-                isOverview
-                  ? 'bg-sky-500/25 text-sky-200 border border-sky-400/60 shadow-sm shadow-sky-950'
-                  : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-transparent'
-              }`}
+              onClick={() => setShowExplorer(true)}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#070b16]/75 hover:bg-[#070b16] border border-white/10 hover:border-sky-400/50 text-slate-300 hover:text-white transition-all text-xs font-mono backdrop-blur-md cursor-pointer group shadow-lg"
             >
-              <RotateCcw className="w-3 h-3 text-sky-400" />
-              <span>Master Overview</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 group-hover:scale-125 transition-transform" />
+              <span>Explore Infrastructure Architecture</span>
+              <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform" />
             </button>
 
-            {/* 01 to 06 Tiers */}
-            {INFRASTRUCTURE_ZONES.map((zone) => {
-              const isSelected = activeZoneId === zone.id;
-              return (
-                <button
-                  key={zone.id}
-                  onClick={() => handleSelectZone(zone.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
-                    isSelected
-                      ? 'bg-sky-500/25 text-white border border-sky-400/60 shadow-sm shadow-sky-950 font-semibold'
-                      : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-transparent'
-                  }`}
-                >
-                  <span className={`font-mono text-[10px] ${isSelected ? 'text-sky-300 font-bold' : 'text-slate-400'}`}>
-                    {zone.index}
-                  </span>
-                  <span>{zone.name}</span>
-                </button>
-              );
-            })}
+            <span className="text-[11px] font-mono text-slate-500/80 hidden sm:inline">
+              Interactive 3D Corridor · Click nodes or drag to orbit
+            </span>
           </div>
-        </div>
+        )}
 
       </div>
     </section>
