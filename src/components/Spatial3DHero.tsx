@@ -109,7 +109,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     id: 'infrastructure',
     index: '04',
     name: 'Cloud & Infrastructure',
-    stage: 'High-Availability Foundation',
+    stage: 'Dependable Cloud Foundation',
     role: 'Solid-state cloud servers, dependable hosting architecture, and stable system resilience.',
     sectionId: 'hosting-domains',
     serviceTitle: 'SSD Cloud Hosting & .mw Domains',

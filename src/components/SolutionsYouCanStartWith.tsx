@@ -114,7 +114,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
           </p>
         </div>
 
-        {/* 1. DOMINANT FEATURED SHOWCASE: Product Showroom Piece */}
+        {/* 1. FEATURED SOLUTION: Commercial Web Presence */}
         <div className="mb-16 border-b border-white/10 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
@@ -175,47 +175,28 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               </div>
             </div>
 
-            {/* Right Visual Composition: Art-Directed Showroom Object */}
-            <div className="lg:col-span-5 relative p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#070e24]/90 via-[#040814] to-[#02050e] border border-white/10 shadow-2xl overflow-hidden [perspective:1000px]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.15),transparent_60%)] pointer-events-none" />
+            {/* Right Visual Composition: Hero Architectural Composition (Not a Specification Panel) */}
+            <div className="lg:col-span-5 relative p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#081129]/80 via-[#040814] to-[#02040c] border border-white/10 shadow-2xl overflow-hidden flex flex-col justify-between min-h-[380px]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.12),transparent_70%)] pointer-events-none" />
               
-              <div className="relative space-y-5">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-sky-400 uppercase tracking-widest font-semibold">
-                    Showroom Piece
-                  </span>
-                  <span className="text-slate-400">
-                    PRODUCTION STANDARD
-                  </span>
+              <div className="relative space-y-4">
+                <div className="text-[11px] font-mono text-sky-400/80 uppercase tracking-widest">
+                  Digital Presence
                 </div>
 
-                <div className="text-2xl sm:text-3xl font-black text-white leading-tight">
-                  An Official Presence for Your Organisation
+                <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-[1.08]">
+                  The Front Door of Your Business
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Engineered for local cellular connectivity and smartphone viewports. Configured with verified .mw domain authority, Google local profiles, and direct WhatsApp customer enquiry routing.
+                <p className="text-sm text-slate-300 leading-relaxed font-normal pt-2 max-w-sm">
+                  A credible, fast-loading digital identity designed to present your services clearly and route inquiries directly to your team.
                 </p>
+              </div>
 
-                {/* Showroom Specs Plate */}
-                <div className="pt-5 border-t border-white/10 grid grid-cols-2 gap-4 text-xs font-mono">
-                  <div className="space-y-0.5">
-                    <span className="text-slate-400 block text-[10px] uppercase">DEPLOYMENT CADENCE</span>
-                    <span className="text-white font-bold text-sm">5–10 Working Days</span>
-                  </div>
-                  <div className="space-y-0.5">
-                    <span className="text-slate-400 block text-[10px] uppercase">SETTLEMENT CURRENCY</span>
-                    <span className="text-emerald-400 font-bold text-sm">Malawi Kwacha</span>
-                  </div>
-                </div>
-
-                <div className="pt-2 text-[11px] font-mono text-slate-400/90 flex items-center justify-between border-t border-white/5 pt-3">
-                  <span>SSL Security Built-In</span>
-                  <span>·</span>
-                  <span>WhatsApp Lead Routing</span>
-                  <span>·</span>
-                  <span>Fast Load Speeds</span>
-                </div>
+              {/* Quiet, elegant architectural base line */}
+              <div className="relative pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span className="text-white font-medium">yourcompany.mw</span>
+                <span className="text-emerald-400">Billed in Malawi Kwacha</span>
               </div>
             </div>
 

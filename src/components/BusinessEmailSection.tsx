@@ -77,8 +77,8 @@ export const BusinessEmailSection: React.FC<BusinessEmailSectionProps> = ({ onOp
                       </div>
                       <div className="text-xs text-slate-400 mt-1">{mb.role}</div>
                     </div>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/40">
-                      AUTHENTICATED
+                    <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/40">
+                      ACTIVE
                     </span>
                   </div>
                 ))}
