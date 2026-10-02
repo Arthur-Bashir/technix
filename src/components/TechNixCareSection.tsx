@@ -33,7 +33,7 @@ export const TechNixCareSection: React.FC<TechNixCareSectionProps> = ({ onOpenQu
 
   const pillars = [
     { title: 'Helpdesk on Call', desc: 'Staff get rapid remote assistance for slow laptops, forgotten passwords, printer jams, and broken software.', icon: Headphones },
-    { title: 'Automated Off-Site Backups', desc: 'Nightly encrypted backups of financial databases and critical documents so hardware theft or failure causes zero panic.', icon: HardDrive },
+    { title: 'Scheduled Cloud Backups', desc: 'Routine encrypted backups of financial databases and critical documents to protect operations from hardware failures.', icon: HardDrive },
     { title: 'Network & Wi-Fi Stability', desc: 'Active monitoring of office routers, firewalls, and inter-branch links to eliminate connection dropouts.', icon: Wifi },
     { title: 'Cybersecurity Hygiene', desc: 'Managed endpoint antivirus, phishing defense, and operating system patch management across all workstations.', icon: Lock },
   ];
@@ -140,7 +140,7 @@ export const TechNixCareSection: React.FC<TechNixCareSectionProps> = ({ onOpenQu
               </div>
 
               <div className="text-xs text-slate-400 font-mono">
-                {selectedPlan.sla}
+                {selectedPlan.supportCoverage}
               </div>
 
               <button

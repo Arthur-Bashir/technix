@@ -96,7 +96,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
   };
 
   return (
-    <section id="solutions" className="py-24 bg-[#050811] text-white relative border-b border-slate-800/80">
+    <section id="solutions" className="py-24 bg-[#050811] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -115,7 +115,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
         </div>
 
         {/* 1. DOMINANT FEATURED SHOWCASE: Business Websites */}
-        <div className="mb-16 border-b border-slate-800/80 pb-16">
+        <div className="mb-16 border-b border-white/10 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Content (Dominant Typography & Commercial Clarity) */}
@@ -176,8 +176,8 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
             </div>
 
             {/* Right Visual Preview: Clean Window Surface */}
-            <div className="lg:col-span-5 bg-[#040813] border border-slate-800 rounded-2xl p-6 sm:p-7 space-y-5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
+            <div className="lg:col-span-5 bg-[#040813] border border-white/10 rounded-2xl p-6 sm:p-7 space-y-5 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-white/5 pb-3 text-xs font-mono">
                 <div className="flex items-center space-x-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-700" />
@@ -187,7 +187,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
                   yourcompany.mw
                 </span>
                 <span className="text-emerald-400 font-medium">
-                  Verified
+                  Active
                 </span>
               </div>
 
@@ -203,7 +203,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
                   </div>
                   <div className="flex items-start space-x-2.5">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>Tested on mobile networks across Malawi</span>
+                    <span>Optimized for fast mobile loading on local network connections</span>
                   </div>
                   <div className="flex items-start space-x-2.5">
                     <CheckCircle2 className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
@@ -235,7 +235,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
             Supporting Solutions &amp; Operational Services
           </div>
 
-          <div className="divide-y divide-slate-800/80 border-y border-slate-800/80">
+          <div className="divide-y divide-white/5 border-y border-white/5">
             {supportingSolutions.map((sol) => {
               const Icon = sol.icon;
               return (

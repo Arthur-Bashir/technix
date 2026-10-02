@@ -53,7 +53,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     sectionId: 'business-website',
     serviceTitle: 'Business Website Starter / Pro',
     startingPrice: 'Starting from MK 199,000',
-    businessOutcome: 'Turns anonymous internet searches on Google into verified customer inquiries and immediate WhatsApp sales leads.',
+    businessOutcome: 'Builds clear enquiry paths through Google and structured WhatsApp sales channels.',
     highlights: [
       'Mobile-optimized for local cellular connectivity',
       'Direct WhatsApp click-to-chat & automated lead routing',
@@ -109,14 +109,14 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     index: '04',
     name: 'Cloud & Infrastructure',
     stage: 'High-Availability Foundation',
-    role: 'Solid-state NVMe cloud servers, high-speed local hosting, and dependable system resilience.',
+    role: 'Solid-state cloud servers, dependable hosting architecture, and stable system resilience.',
     sectionId: 'hosting-domains',
     serviceTitle: 'SSD Cloud Hosting & .mw Domains',
     startingPrice: 'From MK 65,000 / year',
-    businessOutcome: 'Keeps corporate emails and client portals running continuously with automated offsite data backups.',
+    businessOutcome: 'Maintains stable hosting for corporate portals and email with scheduled cloud backup procedures.',
     highlights: [
       'Reliable SSD cloud infrastructure',
-      'Scheduled off-site automated backups',
+      'Scheduled cloud backup routines',
       'Local payment convenience in Malawi Kwacha (Airtel/Mpamba/Bank)',
     ],
     cameraPos: { x: 3.8, y: 1.6, z: -0.8 },
@@ -129,15 +129,15 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     index: '05',
     name: 'Security & Support',
     stage: 'Defensive Continuity',
-    role: 'Branded domain inboxes, cryptographic verification, managed IT care, and emergency breakdown recovery.',
+    role: 'Branded domain inboxes, cryptographic verification, managed IT care, and prompt technical support.',
     sectionId: 'business-email',
     serviceTitle: 'Domain Email, Security & IT Rescue',
     startingPrice: 'On-demand & retainer care',
-    businessOutcome: 'Shields company communications against phishing and provides instant recovery when technical failures strike.',
+    businessOutcome: 'Protects company communications with modern email security and provides rapid technical intervention when issues arise.',
     highlights: [
-      'SPF, DKIM, and DMARC verified cryptographic email security',
+      'SPF, DKIM, and DMARC cryptographic email authentication records',
       'TechNix Care managed IT retainers for workstations & Wi-Fi',
-      'Rapid emergency IT rescue triage for urgent breakdowns',
+      'Direct IT rescue triage for urgent workplace disruptions',
     ],
     cameraPos: { x: 6.4, y: 2.8, z: 2.8 },
     cameraLook: { x: 4.5, y: 1.4, z: -1.6 },
@@ -155,7 +155,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     startingPrice: 'From MK 95,000 per professional',
     businessOutcome: 'Builds lasting internal capability so your team can confidently operate spreadsheets, dashboards, and modern software.',
     highlights: [
-      '100% practical lab exercises with real business datasets',
+      'Hands-on practical lab exercises with real business datasets',
       'Small cohorts (max 12 professionals) with senior mentors',
       'Tailored corporate on-site workshops across Blantyre & Lilongwe',
     ],
@@ -808,7 +808,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
   return (
     <section 
       id="hero-spatial-3d" 
-      className="relative min-h-[92vh] lg:min-h-screen w-full bg-[#050811] text-white flex flex-col justify-between overflow-hidden"
+      className="relative min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] w-full bg-[#050811] text-white flex flex-col justify-between overflow-hidden"
     >
       {/* 3D WebGL Canvas Layer */}
       <div 
@@ -828,30 +828,33 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
       />
 
       {/* Primary Hero Typography & Intent Zone (First Viewport Clarity) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 lg:pt-28 pb-6 flex-1 flex flex-col justify-center">
-        <div className="max-w-2xl space-y-6">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-8 pb-2 flex-1 flex flex-col justify-center">
+        <div className="max-w-2xl space-y-3.5 sm:space-y-4">
           
-          {/* Unboxed Kicker (Zero-Pill discipline) */}
-          <div className="text-xs font-semibold tracking-wider uppercase text-sky-400 font-mono">
-            Digital Infrastructure Partner
+          {/* Digital Infrastructure Partner Pill */}
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-950/80 border border-sky-400/40 text-sky-300 text-xs font-mono font-semibold tracking-wider uppercase shadow-md shadow-sky-950/60 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+              <span>Digital Infrastructure Partner</span>
+            </div>
           </div>
 
           {/* HUGE Headline (Tight measure, balanced wrap) */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] text-balance">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.08] text-balance">
             Technology That Moves Your Business Forward
           </h1>
 
           {/* MEDIUM Subtitle */}
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal text-balance max-w-xl">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed font-normal text-balance max-w-xl">
             Websites, software, IT support and digital solutions for businesses and organisations across Africa.
           </p>
 
           {/* Primary Action Row */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-3 pt-1">
             <button
               onClick={() => onOpenQuote()}
               id="hero-primary-cta"
-              className="px-6 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-500/40 flex items-center space-x-2 cursor-pointer border border-sky-400/40"
+              className="px-5 sm:px-6 py-3 sm:py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-500/40 flex items-center space-x-2 cursor-pointer border border-sky-400/40"
             >
               <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
@@ -860,7 +863,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             <button
               onClick={() => handleWhatsApp()}
               id="hero-secondary-cta"
-              className="px-5 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-sm rounded-xl transition-colors flex items-center space-x-2 cursor-pointer"
+              className="px-4 sm:px-5 py-3 sm:py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-sm rounded-xl transition-colors flex items-center space-x-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-emerald-400" />
               <span>Talk to TechNix</span>
@@ -869,7 +872,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             {!isOverview && (
               <button
                 onClick={handleResetToOverview}
-                className="px-4 py-3 text-xs font-mono text-slate-400 hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer ml-auto sm:ml-0"
+                className="px-3.5 py-2.5 text-xs font-mono text-slate-400 hover:text-white transition-colors flex items-center space-x-1.5 cursor-pointer ml-auto sm:ml-0"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset View</span>
@@ -877,8 +880,8 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
             )}
           </div>
 
-          {/* Unboxed Regional Trust Markers */}
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 pt-3">
+          {/* Regional Trust Markers */}
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs text-slate-400 pt-1">
             <span>Blantyre & Lilongwe Hubs</span>
             <span aria-hidden="true">·</span>
             <span>Local MWK Billing</span>
@@ -889,12 +892,12 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         </div>
       </div>
 
-      {/* Interactive Infrastructure Explorer (Progressive Disclosure) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 w-full">
+      {/* Interactive Infrastructure Explorer (In Viewport by Default) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 sm:pb-4 w-full">
         
         {/* Floating Active Zone Detail Inspection Panel (Only appears when exploring a specific layer) */}
         {activeZone && (
-          <div className="mb-4 max-w-2xl bg-[#090e1a]/95 border border-slate-800/90 rounded-2xl p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-3 duration-200">
+          <div className="mb-3 max-w-2xl bg-[#090e1a]/95 border border-slate-800/90 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-bottom-3 duration-200">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="flex items-center space-x-2 text-xs font-mono text-sky-400 mb-1">
@@ -902,13 +905,13 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
                   <span aria-hidden="true">·</span>
                   <span className="text-slate-300 font-sans">{activeZone.stage}</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-1">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                   {activeZone.name}
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-xl mb-3">
+                <p className="text-xs text-slate-300 leading-relaxed max-w-xl mb-2.5">
                   {activeZone.role}
                 </p>
-                <div className="text-xs font-mono font-semibold text-emerald-400 mb-4">
+                <div className="text-xs font-mono font-semibold text-emerald-400 mb-3">
                   {activeZone.startingPrice}
                 </div>
               </div>
@@ -922,10 +925,10 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
               </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-slate-800/80">
+            <div className="flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-800/80">
               <button
                 onClick={() => onOpenQuote(activeZone.serviceTitle)}
-                className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer"
+                className="px-3.5 py-1.5 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer"
               >
                 <span>Deploy This Module</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -933,7 +936,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
 
               <button
                 onClick={() => handleWhatsApp(`Hello TechNix, I would like to inquire about ${activeZone.name}.`)}
-                className="px-3.5 py-2 bg-slate-800/90 hover:bg-slate-700 text-emerald-400 border border-slate-700/80 text-xs font-semibold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer"
+                className="px-3 py-1.5 bg-slate-800/90 hover:bg-slate-700 text-emerald-400 border border-slate-700/80 text-xs font-semibold rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
                 <span>Inquire on WhatsApp</span>
@@ -951,12 +954,12 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         )}
 
         {/* Segmented Infrastructure Explorer Bar */}
-        <div className="bg-[#090e1a]/85 border border-slate-800/80 rounded-2xl p-2 backdrop-blur-xl shadow-xl">
-          <div className="flex items-center justify-between px-3 py-1.5 border-b border-slate-800/60 mb-1.5">
-            <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider font-semibold">
+        <div className="bg-[#090e1a]/95 border border-white/10 rounded-2xl p-2 sm:p-2.5 backdrop-blur-xl shadow-2xl">
+          <div className="flex items-center justify-between px-3 py-1 border-b border-white/5 mb-1.5">
+            <span className="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">
               Explore Digital Infrastructure Architecture
             </span>
-            <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
+            <span className="text-[10px] font-mono text-slate-400 hidden sm:inline">
               Select a tier to inspect camera target
             </span>
           </div>

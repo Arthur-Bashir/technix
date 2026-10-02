@@ -47,7 +47,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
   };
 
   return (
-    <section id="case-studies" className="py-24 bg-[#050812] text-white relative border-b border-slate-800/80">
+    <section id="case-studies" className="py-24 bg-[#050812] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Editorial Section Header */}
@@ -69,7 +69,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Column: Project Selector List (Containerless / subtle row dividers) */}
-          <div className="lg:col-span-4 divide-y divide-slate-800/60 border-y border-slate-800/60">
+          <div className="lg:col-span-4 divide-y divide-white/5 border-y border-white/5">
             {projects.map((proj) => {
               const isSelected = proj.id === activeProjectId;
               const Icon = proj.icon;
@@ -87,7 +87,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
                     <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 border ${
                       isSelected
                         ? 'bg-sky-500 text-white border-sky-400'
-                        : 'bg-slate-900 border-slate-800 text-slate-400'
+                        : 'bg-slate-900 border-white/10 text-slate-400'
                     }`}>
                       <Icon className="w-4 h-4" />
                     </div>
@@ -111,9 +111,9 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
           </div>
 
           {/* Right Column: Editorial Case Study Dossier */}
-          <div className="lg:col-span-8 bg-[#070d1a] border border-slate-800/80 rounded-2xl p-8 sm:p-12 space-y-8">
+          <div className="lg:col-span-8 bg-gradient-to-b from-[#081020] to-[#050b16] border border-white/10 rounded-3xl p-8 sm:p-12 space-y-8 shadow-2xl">
             
-            <div className="space-y-3 pb-6 border-b border-slate-800/80">
+            <div className="space-y-3 pb-6 border-b border-white/5">
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
                 <span className="text-sky-400 font-medium uppercase tracking-wider">
                   {activeProject.client}
@@ -150,7 +150,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQu
             </div>
 
             {/* Commercial Action */}
-            <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
               <button
                 onClick={() => onOpenQuote(activeProject.title)}
                 className="px-5 py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center space-x-2 cursor-pointer border border-sky-400/30"

@@ -70,10 +70,10 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
               <Laptop className="w-5 h-5" />
             </div>
             <h4 className="text-base font-bold text-white">
-              100% Practical Labs
+              Hands-on Practical Labs
             </h4>
             <p className="text-xs text-slate-300 leading-relaxed font-normal">
-              Zero slideshow filler. Every session is conducted on laptops with real business spreadsheets, databases, and code.
+              Focus on practical application. Every session is conducted on laptops with real business spreadsheets, databases, and code.
             </p>
           </div>
 
@@ -186,7 +186,7 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
 
               <div className="bg-[#080d19] border border-slate-800 rounded-2xl p-4 text-xs text-slate-300 space-y-1">
                 <span className="font-semibold text-white">Includes: </span>
-                Verified Certificate of Practical Completion, exercise files, reusable workplace templates, and 30 days instructor follow-up support.
+                Certificate of Practical Completion, exercise files, reusable workplace templates, and 30 days instructor follow-up support.
               </div>
             </div>
 

@@ -64,7 +64,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#040814] text-white relative border-b border-slate-800/80">
+    <section id="contact" className="py-24 bg-[#040814] text-white relative">
       <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-sky-600/5 blur-[160px] pointer-events-none rounded-full" />
 
@@ -72,9 +72,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-700/80 rounded-full px-4 py-1 text-xs font-mono text-sky-400 shadow-md">
-            <Radio className="w-3.5 h-3.5 text-sky-400 animate-pulse" />
-            <span className="font-semibold uppercase tracking-wider">Direct Engagement Terminal</span>
+          <div className="text-xs font-mono font-medium uppercase tracking-wider text-sky-400">
+            Direct Consultation
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
@@ -93,7 +92,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
           
           {/* Left Column: Direct Regional Contacts */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="glass-panel rounded-3xl p-8 border border-slate-800 space-y-6">
+            <div className="bg-gradient-to-b from-[#081020] to-[#050b16] rounded-3xl p-8 border border-white/10 space-y-6 shadow-2xl">
               <div>
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-1">
                   OFFICIAL CHANNELS
@@ -104,7 +103,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
               <div className="space-y-4">
                 <a
                   href={`tel:${COMPANY_INFO.phonePrimary.replace(/\s/g, '')}`}
-                  className="flex items-center space-x-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/50 transition-colors group"
+                  className="flex items-center space-x-4 p-4 rounded-2xl bg-slate-950/80 border border-white/5 hover:border-sky-500/40 transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-sky-950/80 border border-sky-800/40 text-sky-400 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:text-white transition-colors shadow-inner">
                     <Phone className="w-5 h-5" />
@@ -121,7 +120,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                   href={`https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent('Hello TechNix, I would like to make an inquiry.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-colors group"
+                  className="flex items-center space-x-4 p-4 rounded-2xl bg-slate-950/80 border border-white/5 hover:border-emerald-500/40 transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/40 text-emerald-400 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors shadow-inner">
                     <MessageSquare className="w-5 h-5" />
@@ -136,7 +135,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
 
                 <a
                   href={`mailto:${COMPANY_INFO.emailInfo}`}
-                  className="flex items-center space-x-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/50 transition-colors group"
+                  className="flex items-center space-x-4 p-4 rounded-2xl bg-slate-950/80 border border-white/5 hover:border-sky-500/40 transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-sky-950/80 border border-sky-800/40 text-sky-400 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:text-white transition-colors shadow-inner">
                     <Mail className="w-5 h-5" />
@@ -151,7 +150,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
               </div>
 
               {/* Physical Regional Nodes */}
-              <div className="pt-4 border-t border-slate-800/80 space-y-3">
+              <div className="pt-4 border-t border-white/5 space-y-3">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
                   PHYSICAL OPERATIONS HUBS
                 </span>
@@ -174,17 +173,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
             </div>
           </div>
 
-          {/* Right Column: Transmission Form */}
+          {/* Right Column: Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="glass-panel-elevated rounded-3xl p-8 sm:p-10 border border-slate-800 shadow-2xl">
+            <div className="bg-gradient-to-b from-[#081020] to-[#050b16] rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl">
               {submitted ? (
                 <div className="text-center py-12 space-y-4">
                   <div className="w-16 h-16 rounded-full bg-emerald-950/80 border border-emerald-600/40 text-emerald-400 mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Transmission Received</h3>
+                  <h3 className="text-2xl font-bold text-white">Inquiry Received</h3>
                   <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
-                    Thank you, {formData.name || 'valued client'}. Your inquiry has been routed to our technical team. We will contact you via {formData.preferredContact} within 4 business hours.
+                    Thank you, {formData.name || 'valued client'}. Your inquiry has been routed to our technical team. We will contact you via {formData.preferredContact} promptly during business hours.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -198,7 +197,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-bold text-white">Project Scoping & Quotation</h3>
                     <span className="text-[10px] font-mono text-sky-400 bg-sky-950/60 border border-sky-800/40 px-2.5 py-1 rounded-md">
-                      RAPID RESPONSE
+                      CONFIDENTIAL SCOPING
                     </span>
                   </div>
 
@@ -211,7 +210,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Chisomo Banda"
-                        className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
+                        className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
                       />
                     </div>
                     <div>
@@ -222,7 +221,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                         value={formData.organisation}
                         onChange={(e) => setFormData({ ...formData, organisation: e.target.value })}
                         placeholder="e.g. Apex Malawi"
-                        className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
+                        className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
                       />
                     </div>
                   </div>
@@ -236,7 +235,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+265 888 123 456"
-                        className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
+                        className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
                       />
                     </div>
                     <div>
@@ -247,7 +246,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="chisomo@company.mw"
-                        className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
+                        className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
                       />
                     </div>
                   </div>
@@ -258,7 +257,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition-colors"
+                        className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition-colors"
                       >
                         {servicesList.map((svc, idx) => (
                           <option key={idx} value={svc} className="bg-slate-900 text-white">
@@ -273,7 +272,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                       <select
                         value={formData.preferredContact}
                         onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value })}
-                        className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition-colors"
+                        className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition-colors"
                       >
                         <option value="WhatsApp" className="bg-slate-900 text-white">WhatsApp</option>
                         <option value="Phone Call" className="bg-slate-900 text-white">Phone Call</option>
@@ -289,7 +288,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Briefly describe what you are looking to build, fix, or support..."
-                      className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors resize-none"
+                      className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors resize-none"
                     />
                   </div>
 
@@ -300,7 +299,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService }
                       className="w-full py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-sky-600/20 transition-all cursor-pointer flex items-center justify-center space-x-2 border border-sky-400/40"
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>{submitting ? 'Transmitting Request...' : 'Transmit Scoping Request'}</span>
+                      <span>{submitting ? 'Submitting Request...' : 'Submit Scoping Request'}</span>
                     </button>
 
                     <button

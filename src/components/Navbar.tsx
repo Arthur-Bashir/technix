@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       {/* Top Bar Contract: Exactly 3 Zones in a single row */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           
           {/* Zone 1: Single text element wordmark */}
           <a 

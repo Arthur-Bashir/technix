@@ -59,7 +59,7 @@ export const BusinessEmailSection: React.FC<BusinessEmailSectionProps> = ({ onOp
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
                 <span className="text-xs font-mono font-semibold uppercase text-emerald-400 tracking-wider">
-                  Verified Enterprise Inboxes
+                  Professional Domain Inboxes
                 </span>
                 <span className="text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-800/50 px-2.5 py-0.5 rounded-full">
                   Starting from MK 7,500 / month
@@ -97,7 +97,7 @@ export const BusinessEmailSection: React.FC<BusinessEmailSectionProps> = ({ onOp
                 </div>
                 <div className="flex items-center space-x-2 bg-[#090e1a] p-3 rounded-xl border border-slate-800">
                   <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Passes Audits</span>
+                  <span>Procurement Ready</span>
                 </div>
               </div>
 
@@ -137,10 +137,10 @@ export const BusinessEmailSection: React.FC<BusinessEmailSectionProps> = ({ onOp
                 <div className="bg-[#050811] border border-rose-950/40 rounded-2xl p-4 space-y-1">
                   <div className="text-xs font-bold text-rose-300 flex items-center gap-2">
                     <X className="w-3.5 h-3.5 text-rose-400" />
-                    <span>Failed Corporate Procurement Audits</span>
+                    <span>Disqualification in Vendor Evaluations</span>
                   </div>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    Formal tender boards disqualify vendor proposals that use unverifiable free consumer email addresses.
+                    Procurement committees frequently flag or disqualify proposals originating from free consumer webmail addresses.
                   </p>
                 </div>
 

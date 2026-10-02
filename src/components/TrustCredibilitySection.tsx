@@ -24,7 +24,7 @@ export const TrustCredibilitySection: React.FC = () => {
   ];
 
   return (
-    <section id="trust-credibility" className="py-20 bg-[#040813] text-white border-b border-slate-800/60 relative">
+    <section id="trust-credibility" className="py-20 bg-[#040813] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header: Quiet, Factual & Institutional */}
@@ -43,7 +43,7 @@ export const TrustCredibilitySection: React.FC = () => {
         </div>
 
         {/* 3 Institutional Reference Columns - Editorial, Containerless Divider Rhythm */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-y border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-y border-white/5">
           {organisations.map((org) => {
             const Icon = org.icon;
             return (

@@ -10,17 +10,17 @@ export const DigitalHealthCheckSection: React.FC<DigitalHealthCheckSectionProps>
   onOpenInteractiveCheck,
 }) => {
   const handleWhatsApp = () => {
-    const text = 'Hello TechNix, I would like to schedule a 15-minute Digital Health Check review for our organisation.';
+    const text = 'Hello TechNix, I would like to schedule a Digital Health Check review for our organisation.';
     const url = `https://wa.me/${COMPANY_INFO.whatsAppNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="digital-health-check" className="py-20 bg-[#060a16] text-white relative border-b border-slate-800/80">
+    <section id="digital-health-check" className="py-20 bg-[#060a16] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Strategic Diagnostic Invitation Panel */}
-        <div className="bg-[#090f20] border border-slate-800 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-b from-[#0a1122] to-[#070c18] border border-white/5 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl relative overflow-hidden">
           {/* Subtle background glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/5 blur-[140px] pointer-events-none rounded-full" />
 

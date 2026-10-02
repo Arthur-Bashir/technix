@@ -13,18 +13,10 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
   };
 
   return (
-    <section className="py-28 bg-[#050811] text-white relative overflow-hidden border-b border-slate-800/80">
+    <section className="py-28 bg-[#050811] text-white relative overflow-hidden">
       {/* Visual ties back to 3D hero spatial infrastructure */}
       <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-sky-500/10 blur-[180px] rounded-full pointer-events-none" />
-
-      {/* Subtle regional coordinate markings */}
-      <div className="absolute top-8 left-8 text-[11px] font-mono text-slate-400 hidden md:block">
-        BLANTYRE [15.7861° S, 35.0058° E]
-      </div>
-      <div className="absolute top-8 right-8 text-[11px] font-mono text-slate-400 hidden md:block">
-        LILONGWE [13.9626° S, 33.7741° E]
-      </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
         
@@ -74,7 +66,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenQuote })
         </div>
 
         {/* Three Quiet Commercial Confidence Pillars - Clean Containerless Dividers */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-8 max-w-3xl mx-auto text-xs font-mono text-slate-400 border-t border-slate-800/80">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-8 max-w-3xl mx-auto text-xs font-mono text-slate-400 border-t border-white/5">
           <div className="flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
             <span>Transparent Kwacha Pricing</span>

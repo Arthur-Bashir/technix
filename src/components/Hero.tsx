@@ -113,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenHealthCheck }) =>
           </div>
         </div>
 
-        {/* Credibility & Verified Client Experience Bar */}
+        {/* Credibility & Client Experience Bar */}
         <div className="mt-14 pt-8 border-t border-slate-800/80">
           <p className="text-center text-xs font-semibold uppercase tracking-wider text-slate-400 mb-5">
             Organisations trust TechNix to keep their technology working

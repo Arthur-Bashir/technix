@@ -57,7 +57,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
       problem: 'Office computers, Wi-Fi, or printers break down and disrupt work',
       solution: 'Rapid physical and remote technical support in Blantyre & Lilongwe, plus ongoing preventative maintenance retainers.',
       needStatement: 'IT Rescue & Workplace Maintenance',
-      deliverables: ['Rapid on-site technician dispatch in Blantyre & Lilongwe', 'Office Wi-Fi & network stabilization', 'Automated local & cloud backup setup', 'Predictable monthly support retainers'],
+      deliverables: ['Rapid on-site technician dispatch in Blantyre & Lilongwe', 'Office Wi-Fi & network stabilization', 'Workplace backup routine configuration', 'Predictable monthly support retainers'],
       targetSection: 'it-rescue',
       serviceName: 'IT Rescue & Support',
       startingFrom: 'Emergency triage / Retainers',
@@ -81,7 +81,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
       problem: 'Foreign hosting fees and card payment issues make site hosting difficult',
       solution: 'Dependable cloud hosting and national .mw domain registration billed transparently in Malawi Kwacha.',
       needStatement: 'Cloud Hosting & National (.mw) Domains',
-      deliverables: ['Reliable cloud SSD storage', 'Malawian (.mw) and international domain registration', 'Scheduled cloud backup protection', 'Local Malawi Kwacha payment options'],
+      deliverables: ['Reliable cloud SSD storage', 'Malawian (.mw) and international domain registration', 'Scheduled cloud backup routines', 'Local Malawi Kwacha payment options'],
       targetSection: 'hosting-domains',
       serviceName: 'Cloud Hosting & Domains',
       startingFrom: 'From MK 65,000 / year',
@@ -131,7 +131,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
   };
 
   return (
-    <section id="customer-needs" className="py-24 bg-[#040813] text-white relative border-b border-slate-800/80">
+    <section id="customer-needs" className="py-24 bg-[#040813] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Prominent Question & Editorial Introduction */}
@@ -153,7 +153,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Column (5 Cols): List of Organisational Challenges */}
-          <div className="lg:col-span-5 divide-y divide-slate-800/60 border-y border-slate-800/60">
+          <div className="lg:col-span-5 divide-y divide-white/5 border-y border-white/5">
             {pathways.map((item) => {
               const isSelected = item.id === activePathwayId;
               const Icon = item.icon;
@@ -171,7 +171,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border ${
                       isSelected 
                         ? 'bg-sky-500 text-white border-sky-400' 
-                        : 'bg-slate-900 border-slate-800 text-slate-400'
+                        : 'bg-slate-900 border-white/10 text-slate-400'
                     }`}>
                       <Icon className="w-4 h-4" />
                     </div>
@@ -195,9 +195,9 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
           </div>
 
           {/* Right Column (7 Cols): The Solution Formulation: If X → TechNix does Y */}
-          <div className="lg:col-span-7 bg-[#070d1a] border border-slate-800/80 rounded-2xl p-8 sm:p-10 space-y-6">
+          <div className="lg:col-span-7 bg-gradient-to-b from-[#081020] to-[#050b16] border border-white/10 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl">
             <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs font-mono">
+              <div className="flex items-center justify-between border-b border-white/5 pb-3 text-xs font-mono">
                 <span className="text-sky-400 font-medium uppercase tracking-wider">
                   Recommended Solution Pathway
                 </span>
@@ -232,7 +232,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
               </div>
 
               {/* What TechNix Delivers */}
-              <div className="pt-4 border-t border-slate-800/80">
+              <div className="pt-4 border-t border-white/5">
                 <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-medium mb-3">
                   Scope Summary:
                 </div>
@@ -248,7 +248,7 @@ export const QuickNeedSelector: React.FC<QuickNeedSelectorProps> = ({
             </div>
 
             {/* Actions */}
-            <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
               <span className="text-xs font-mono text-slate-400">
                 Local Kwacha billing &amp; direct technical support
               </span>

@@ -38,7 +38,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
   const currentStep = steps[activeStepIndex] || steps[0];
 
   return (
-    <section id="how-we-work" className="py-24 bg-[#050811] text-white relative border-b border-slate-800/80">
+    <section id="how-we-work" className="py-24 bg-[#050811] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -62,7 +62,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
           {/* Horizontal Sequential Stepper (Desktop & Tablet) */}
           <div className="relative pb-6">
             {/* Base Line */}
-            <div className="hidden md:block absolute top-6 left-6 right-6 h-[1px] bg-slate-800" />
+            <div className="hidden md:block absolute top-6 left-6 right-6 h-[1px] bg-white/10" />
             
             <div className="grid grid-cols-2 md:grid-cols-6 gap-4 relative z-10">
               {steps.map((st, idx) => {
@@ -83,7 +83,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
                           ? 'bg-sky-500 text-white border-sky-400'
                           : isCompleted
                           ? 'bg-slate-900 text-sky-400 border-sky-500/40'
-                          : 'bg-[#080d1a] text-slate-400 border-slate-800 group-hover:border-slate-700'
+                          : 'bg-[#080d1a] text-slate-400 border-white/10 group-hover:border-slate-600'
                       }`}>
                         <Icon className="w-4 h-4" />
                       </div>
@@ -106,8 +106,8 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
           </div>
 
           {/* Active Stage Detailed Breakdown (Editorial, Non-boxed) */}
-          <div className="bg-[#070d1a] border border-slate-800/80 rounded-2xl p-8 sm:p-10 space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div className="bg-gradient-to-b from-[#081020] to-[#050b16] border border-white/10 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 pb-4">
               <div className="flex items-center space-x-3">
                 <span className="text-sm font-mono font-bold text-sky-400">
                   STAGE {currentStep.step} OF 06
@@ -133,7 +133,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
                 </p>
               </div>
 
-              <div className="md:col-span-4 border-l border-slate-800/80 pl-6 space-y-2 text-xs font-mono text-slate-400">
+              <div className="md:col-span-4 border-l border-white/10 pl-6 space-y-2 text-xs font-mono text-slate-400">
                 <div className="text-slate-500 uppercase tracking-wider font-semibold">Stage Objective</div>
                 <div className="text-slate-300 font-normal leading-relaxed">{currentStep.desc}</div>
                 <div className="pt-2 text-sky-400">Fixed deliverables &amp; agreed checkpoints</div>
@@ -144,7 +144,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({ onOpenQuote 
         </div>
 
         {/* Institutional Assurances Bar: Containerless / Subtle Line */}
-        <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full md:w-auto">
             
             <div className="flex items-center space-x-3">

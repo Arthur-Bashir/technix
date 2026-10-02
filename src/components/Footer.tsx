@@ -25,21 +25,20 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#02050e] text-slate-400 border-t border-slate-800/80 text-xs">
+    <footer className="bg-[#02050e] text-slate-400 border-t border-white/5 text-xs">
       
       {/* Pre-footer Call to Action Command Deck */}
-      <div className="bg-gradient-to-r from-slate-950 via-sky-950/40 to-slate-950 py-12 px-4 sm:px-6 lg:px-8 text-white border-b border-slate-800/80">
+      <div className="bg-gradient-to-r from-slate-950 via-sky-950/30 to-slate-950 py-12 px-4 sm:px-6 lg:px-8 text-white border-b border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center md:text-left">
-            <div className="inline-flex items-center space-x-2 text-[10px] font-mono text-sky-400 uppercase tracking-widest mb-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>INFRASTRUCTURE DEPLOYMENT READY</span>
+            <div className="text-[10px] font-mono text-sky-400 uppercase tracking-widest mb-1">
+              TECHNOLOGY PARTNER // MALAWI
             </div>
             <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
               Ready to modernise your organisation?
             </h3>
             <p className="text-sm text-slate-300">
-              Speak with a dedicated African systems engineer today. Clear itemized scope, zero technical confusion.
+              Speak with a dedicated systems engineer today. Clear itemized scope, zero technical confusion.
             </p>
           </div>
 

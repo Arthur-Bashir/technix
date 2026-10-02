@@ -4,7 +4,7 @@ import { COMPANY_INFO } from '../data/technixData';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-[#030712] text-white relative border-b border-slate-800/80">
+    <section id="about" className="py-24 bg-[#030712] text-white relative">
       <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
       <div className="absolute top-1/2 left-10 w-96 h-96 bg-sky-600/5 blur-[160px] pointer-events-none rounded-full" />
 
@@ -70,20 +70,17 @@ export const AboutSection: React.FC = () => {
 
           {/* Right Architecture Card */}
           <div className="lg:col-span-5">
-            <div className="glass-panel-elevated rounded-3xl p-8 border border-slate-800 shadow-2xl space-y-6">
-              <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-xs font-mono font-bold text-slate-300">REGIONAL NETWORK STATUS</span>
-                </div>
-                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded">
-                  ONLINE
+            <div className="bg-gradient-to-b from-[#091122] to-[#060c18] rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+              <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                <span className="text-xs font-mono font-bold text-slate-300">PHYSICAL ENGINEERING HUBS</span>
+                <span className="text-[10px] font-mono text-sky-400 bg-sky-950/60 border border-sky-800/40 px-2.5 py-0.5 rounded">
+                  MALAWI
                 </span>
               </div>
 
               {/* Dual Regional Hubs */}
               <div className="space-y-3">
-                <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+                <div className="p-4 rounded-2xl bg-slate-950/80 border border-white/5">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-xs font-bold text-white flex items-center space-x-1.5">
                       <MapPin className="w-3.5 h-3.5 text-sky-400" />
@@ -96,7 +93,7 @@ export const AboutSection: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+                <div className="p-4 rounded-2xl bg-slate-950/80 border border-white/5">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-xs font-bold text-white flex items-center space-x-1.5">
                       <MapPin className="w-3.5 h-3.5 text-emerald-400" />
@@ -112,11 +109,11 @@ export const AboutSection: React.FC = () => {
 
               {/* Operational Hub Highlights */}
               <div className="grid grid-cols-2 gap-3 pt-2">
-                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 text-center">
+                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-white/5 text-center">
                   <div className="text-sm font-bold text-white font-mono">Blantyre & Lilongwe</div>
                   <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Physical Hubs</div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 text-center">
+                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-white/5 text-center">
                   <div className="text-sm font-bold text-emerald-400 font-mono">Local Kwacha</div>
                   <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Direct Billing</div>
                 </div>

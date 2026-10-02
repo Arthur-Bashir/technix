@@ -102,7 +102,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       tagline: 'Reliable Cloud Infrastructure',
       heading: 'Dependable Web Hosting with Local Currency Billing',
       whoItHelps: 'Organisations seeking stable hosting without the friction of international credit card payments or foreign exchange fees.',
-      narrative: 'Keep your website and web applications online with reliable cloud hosting, automated backups, and Malawian (.mw) or international domain management, billed transparently in Malawi Kwacha.',
+      narrative: 'Keep your website and web applications online with reliable cloud hosting, scheduled backups, and Malawian (.mw) or international domain management, billed transparently in Malawi Kwacha.',
       pricing: 'From MK 65,000 / year',
       scope: 'SSD storage, SSL encryption & scheduled backups',
       keyPoints: [
@@ -124,12 +124,12 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
       whoItHelps: 'Offices facing computer disruptions, Wi-Fi drops, or needing structured monthly technology care.',
       narrative: 'When computers fail or network issues interrupt daily operations, TechNix provides rapid technical support in Blantyre and Lilongwe. Through TechNix Care retainers, we provide ongoing preventative servicing and assistance without the expense of a full-time in-house salary.',
       pricing: 'From MK 50,000 / month',
-      scope: 'Workstation health, networks & backup verification',
+      scope: 'Workstation health, networks & backup routine configuration',
       keyPoints: [
         'Rapid technical response in Blantyre and Lilongwe',
         'Scheduled preventative maintenance visits for office workstations',
         'Office Wi-Fi, router, and printer network troubleshooting',
-        'Automated local and cloud backup configuration',
+        'Backup configuration can be included as part of agreed IT support scope',
       ],
       ctaText: 'Request IT Support',
       action: () => onOpenITRescue(),
@@ -180,7 +180,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
   const currentCap = capabilities.find(c => c.id === activeStory) || capabilities[0];
 
   return (
-    <section id="capabilities" className="py-24 bg-[#050811] text-white relative border-b border-slate-800/80">
+    <section id="capabilities" className="py-24 bg-[#050811] text-white relative">
       {/* Anchor landmarks for navigation */}
       <div id="products-catalog" className="absolute top-0" />
       <div id="business-website" className="absolute top-0" />
@@ -209,7 +209,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
         </div>
 
         {/* Capability Selection: Clean Horizontal Editorial Switcher */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-12 border-b border-slate-800/80 no-scrollbar">
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-12 border-b border-white/10 no-scrollbar">
           {capabilities.map((cap) => {
             const isSelected = cap.id === activeStory;
             const Icon = cap.icon;
@@ -315,7 +315,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                       WhatsApp Connected
                     </span>
                     <span className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 font-mono">
-                      Google Maps Verified
+                      Google Business Profile &amp; Map Setup
                     </span>
                   </div>
                 </div>

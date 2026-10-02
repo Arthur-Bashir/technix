@@ -30,20 +30,20 @@ export const HostingDomainsSection: React.FC<HostingDomainsSectionProps> = ({ on
   const layers = [
     {
       level: 'Layer 01',
-      title: 'High-Speed NVMe Solid-State Storage',
-      desc: 'All website files and databases run on modern NVMe SSD drives for instant page loading and rapid database response times.',
+      title: 'High-Speed Solid-State Storage',
+      desc: 'Website files and databases run on modern solid-state drives engineered for fast page loading and responsive database queries.',
       icon: HardDrive,
     },
     {
       level: 'Layer 02',
-      title: 'Automated Daily Snapshot Backups',
-      desc: 'Nightly encrypted off-site cloud snapshots protect your company files from accidental deletion, ransomware, or server failure.',
+      title: 'Scheduled Cloud Backups',
+      desc: 'Scheduled cloud backup routines can be configured to protect company files from accidental loss or system disruption.',
       icon: Database,
     },
     {
       level: 'Layer 03',
-      title: 'Official .mw & .com Domain Routing',
-      desc: 'Registered directly with official Malawi and international registries, backed by automated DNS routing and free SSL certificates.',
+      title: 'Malawian (.mw) & International Domain Setup',
+      desc: 'Domain setup, DNS configuration, and standard SSL certificates for Malawian (.mw) and international web addresses.',
       icon: Globe,
     },
     {

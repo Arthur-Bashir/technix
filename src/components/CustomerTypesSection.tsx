@@ -54,11 +54,11 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
       sector: 'International Development',
       icon: HeartHandshake,
       tagline: 'Local civil society, international NGOs, trusts & donor-funded programs',
-      howTechNixHelps: 'We build offline-capable field survey apps, executive donor M&E dashboards, and automated off-site cloud backups that safeguard mission data across remote districts.',
+      howTechNixHelps: 'We build offline-capable field survey apps, executive donor M&E dashboards, and scheduled cloud backups that safeguard mission data across remote programme sites.',
       keyDeliverables: [
         'Offline mobile survey and enumerator reporting tools',
         'Executive Power BI dashboards for board and donor reporting',
-        'Encrypted cloud backups & multi-office network links',
+        'Scheduled cloud backups & multi-office network links',
         'Technical ICT4D deployment consulting',
       ],
       ctaText: 'Explore NGO Solutions',
@@ -69,7 +69,7 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
       sector: 'Professional Services',
       icon: Briefcase,
       tagline: 'Law firms, clinics, audit partnerships & architectural studios',
-      howTechNixHelps: 'We protect confidential client case files with encrypted local backups, configure high-trust domain email, and streamline client bookings with structured intake workflows.',
+      howTechNixHelps: 'We protect confidential client case files with scheduled local backup routines, configure high-trust domain email, and streamline client bookings with structured intake workflows.',
       keyDeliverables: [
         'Executive profile websites designed to present an official commercial profile',
         'Authenticated business email with mobile and PC synchronization',
@@ -121,7 +121,7 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
   };
 
   return (
-    <section id="customer-types" className="py-24 bg-[#050811] text-white relative border-b border-slate-800/80">
+    <section id="customer-types" className="py-24 bg-[#050811] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -150,7 +150,7 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer border ${
                   isSelected
                     ? 'bg-sky-600 text-white border-sky-400 shadow-md shadow-sky-950/50'
-                    : 'bg-[#090e1a] text-slate-400 border-slate-800 hover:text-white hover:border-slate-700'
+                    : 'bg-[#090e1a] text-slate-400 border-white/5 hover:text-white hover:border-white/10'
                 }`}
               >
                 <span>{ind.title.split('&')[0]}</span>
@@ -160,7 +160,7 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
         </div>
 
         {/* Selected Sector Showcase */}
-        <div className="bg-[#090e1a] border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+        <div className="bg-gradient-to-b from-[#081020] to-[#050b16] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
             <div className="lg:col-span-7 space-y-6">
@@ -197,7 +197,7 @@ export const CustomerTypesSection: React.FC<CustomerTypesSectionProps> = ({ onOp
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-[#050811] border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 bg-[#040813] border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
               <div>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 block mb-2">
                   Sector Engagement

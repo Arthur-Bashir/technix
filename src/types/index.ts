@@ -32,7 +32,7 @@ export interface CarePackage {
   workstations: string;
   features: string[];
   popular?: boolean;
-  sla: string;
+  supportCoverage: string;
 }
 
 export interface CommercialProduct {

@@ -151,7 +151,7 @@ export const TECHNIX_CARE_PACKAGES: CarePackage[] = [
     tagline: 'Essential IT support and on-call technical assistance for small office teams.',
     price: 'From MK 50,000',
     workstations: 'Up to 5 Workstations',
-    sla: 'Standard Business Hours Support',
+    supportCoverage: 'Standard Business Hours Support',
     features: [
       'Remote helpdesk support for staff workstations',
       'Operating system & antivirus verification',
@@ -167,7 +167,7 @@ export const TECHNIX_CARE_PACKAGES: CarePackage[] = [
     price: 'From MK 100,000',
     workstations: 'Up to 15 Workstations',
     popular: true,
-    sla: 'Priority Business Response',
+    supportCoverage: 'Priority Business Response',
     features: [
       'Remote support & scheduled on-site maintenance visits',
       'Network switch, router & office Wi-Fi optimization',
@@ -184,7 +184,7 @@ export const TECHNIX_CARE_PACKAGES: CarePackage[] = [
     tagline: 'Full-spectrum outsourced IT management and senior technical support.',
     price: 'From MK 250,000',
     workstations: 'Up to 35 Workstations + Multi-Branch',
-    sla: 'Dedicated Technical Support',
+    supportCoverage: 'Dedicated Technical Support',
     features: [
       'Dedicated assigned Systems Engineer',
       'Multi-office network & branch connectivity management',
@@ -564,7 +564,7 @@ export const HOSTING_DOMAIN_PACKAGES = [
     price: 'MK 25,000',
     period: 'per year',
     description: 'Universal global top-level domain recognized worldwide for commercial enterprises and international operations.',
-    features: ['Instant registration & DNS propagation', 'WHOIS privacy protection available', 'Seamless connection to any hosting server', 'Automatic renewal reminders'],
+    features: ['Instant registration & DNS propagation', 'WHOIS privacy protection available', 'Seamless connection to any hosting server', 'Timely renewal reminders'],
     badge: 'Global Standard',
   },
   {
@@ -704,9 +704,9 @@ export const COMMERCIAL_PRODUCTS: CommercialProduct[] = [
     explanation: 'A professional website is your commercial headquarters on the internet. We build fast, mobile-friendly websites that look established, rank on Google, and make it effortless for customers to contact you.',
     whoItIsFor: 'SMEs, professionals and organisations',
     mainBenefits: [
-      'Attract new customers and generate verified enquiries',
+      'Attract new customers and establish clear enquiry paths',
       'Immediate institutional credibility with clients, partners, and banks',
-      'Flawless responsive display on smartphones, tablets, and laptops',
+      'Responsive display across smartphones, tablets, and laptops',
       'Direct WhatsApp and click-to-call integration for rapid conversion',
     ],
     whatsIncluded: [
@@ -970,13 +970,13 @@ export const HOW_WE_WORK_STEPS = [
     step: '05',
     title: 'Launch',
     desc: 'Structured production deployment.',
-    detail: 'We manage DNS configuration, cloud deployment, and system cutover to ensure a smooth transition with minimum disruption.',
+    detail: 'We manage DNS configuration, cloud deployment, and system cutover through planned implementation schedules.',
   },
   {
     step: '06',
     title: 'Support',
     desc: 'Ongoing maintenance and technical assistance.',
-    detail: 'Following launch, our engineers remain available for preventative maintenance, backups, and dependable technical support.',
+    detail: 'Following launch, our engineers remain available for preventative maintenance, scheduled backup routines, and dependable technical support.',
   },
 ];
 
@@ -985,7 +985,7 @@ export const SALES_FUNNEL_STEPS = [
   { step: 2, name: 'Plan', desc: 'Itemized written quotation in Malawi Kwacha with clear scope and milestones.' },
   { step: 3, name: 'Build', desc: 'Direct engineering by experienced developers and network technicians.' },
   { step: 4, name: 'Test', desc: 'Hands-on validation with your team on your actual workplace devices.' },
-  { step: 5, name: 'Launch', desc: 'Production deployment and system cutover with minimum disruption.' },
-  { step: 6, name: 'Support', desc: 'Ongoing preventative maintenance, backups, and technical helpdesk through TechNix Care.' },
+  { step: 5, name: 'Launch', desc: 'Production deployment and system cutover through scheduled rollout procedures.' },
+  { step: 6, name: 'Support', desc: 'Ongoing preventative maintenance, scheduled backup routines, and technical helpdesk through TechNix Care.' },
 ];
 
