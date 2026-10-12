@@ -57,7 +57,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     businessOutcome: 'Builds clear enquiry paths through Google and structured WhatsApp sales channels.',
     highlights: [
       'Mobile-optimized for local cellular connectivity',
-      'Direct WhatsApp click-to-chat & automated lead routing',
+      'Direct WhatsApp click-to-chat for enquiries',
       'Google Maps & local business profile integration',
     ],
     cameraPos: { x: -4.8, y: 2.2, z: 9.8 },
@@ -74,7 +74,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     sectionId: 'software-solutions',
     serviceTitle: 'Custom Software & Operational Systems',
     startingPrice: 'Transparent milestone scope',
-    businessOutcome: 'Eliminates lost records, manual calculation mistakes, and hours of administrative paperwork each week.',
+    businessOutcome: 'Helps reduce manual recordkeeping and errors in day-to-day workflows.',
     highlights: [
       'Role-based permissions for managers, accountants & staff',
       'Automated invoicing, fee collection & stock reconciliation',
@@ -114,7 +114,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     sectionId: 'hosting-domains',
     serviceTitle: 'SSD Cloud Hosting & .mw Domains',
     startingPrice: 'From MK 65,000 / year',
-    businessOutcome: 'Maintains stable hosting for corporate portals and email with scheduled cloud backup procedures.',
+    businessOutcome: 'Maintains stable hosting for corporate portals and email with configured backup routines as agreed.',
     highlights: [
       'Reliable SSD cloud infrastructure',
       'Scheduled cloud backup routines',
@@ -157,7 +157,7 @@ const INFRASTRUCTURE_ZONES: InfrastructureZone[] = [
     businessOutcome: 'Builds lasting internal capability so your team can confidently operate spreadsheets, dashboards, and modern software.',
     highlights: [
       'Hands-on practical lab exercises with real business datasets',
-      'Small cohorts (max 12 professionals) with senior mentors',
+      'Small cohorts with senior mentors',
       'Tailored corporate on-site workshops across Blantyre & Lilongwe',
     ],
     cameraPos: { x: 4.8, y: 3.2, z: 9.8 },
@@ -834,14 +834,14 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3 pb-2 flex-1 flex flex-col justify-center">
         <div className="max-w-2xl space-y-2 sm:space-y-2.5">
           
-          {/* Digital Infrastructure Partner Pill */}
+          {/* Built for Growth Pill */}
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-sky-400/60 text-sky-100 text-xs font-mono font-medium tracking-wider uppercase backdrop-blur-md shadow-md shadow-sky-950/50">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-80" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400" />
               </span>
-              <span className="font-semibold text-white/90">Digital Infrastructure Partner</span>
+              <span className="font-semibold text-white/90">Built for Growth</span>
             </div>
           </div>
 
@@ -898,7 +898,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         </div>
       </div>
 
-      {/* Progressive Infrastructure Exploration Trigger or Expanded Tier Bar */}
+      {/* Progressive Exploration Trigger or Expanded Tier Bar */}
       <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 w-full shrink-0">
         
         {/* Floating Zone Inspection Card (Shown when a tier is selected) */}
@@ -962,11 +962,11 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
         {/* Quiet Default Exploration Trigger OR Expanded Tier Container */}
         {showExplorer ? (
           <div className="bg-[#070b16]/90 border border-white/10 rounded-xl p-2.5 sm:p-3 backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-150">
-            {/* Header row: Explore Digital Infrastructure Architecture & Subtitle + Collapse button */}
+            {/* Header row: Explore the 3D Experience & Subtitle + Collapse button */}
             <div className="flex flex-wrap items-center justify-between gap-2 mb-2 pb-1.5 border-b border-white/5">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-semibold text-white tracking-wide">
-                  Explore Digital Infrastructure Architecture
+                  Explore the 3D Experience
                 </span>
                 <span className="text-[11px] text-slate-400 hidden md:inline">
                   · Select a tier to inspect camera target
@@ -1035,7 +1035,7 @@ export const Spatial3DHero: React.FC<Spatial3DHeroProps> = ({
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#070b16]/75 hover:bg-[#070b16] border border-white/10 hover:border-sky-400/50 text-slate-300 hover:text-white transition-all text-xs font-mono backdrop-blur-md cursor-pointer group shadow-lg"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-sky-400 group-hover:scale-125 transition-transform" />
-              <span>Explore Infrastructure Architecture</span>
+              <span>Explore the 3D Experience</span>
               <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-transform" />
             </button>
 

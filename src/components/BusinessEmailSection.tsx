@@ -68,7 +68,7 @@ export const BusinessEmailSection: React.FC<BusinessEmailSectionProps> = ({ onOp
 
               <div className="space-y-3">
                 {mailboxes.map((mb, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-[#090e1a] border border-slate-800 flex items-center justify-between">
+                  <div key={idx} className="p-4 flex items-center justify-between border-b border-white/5 last:border-0">
                     <div>
                       <div className="font-mono text-sm sm:text-base font-bold text-white flex items-center space-x-1">
                         <span className="text-emerald-400">{mb.prefix}</span>
@@ -77,9 +77,7 @@ export const BusinessEmailSection: React.FC<BusinessEmailSectionProps> = ({ onOp
                       </div>
                       <div className="text-xs text-slate-400 mt-1">{mb.role}</div>
                     </div>
-                    <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/40">
-                      ACTIVE
-                    </span>
+
                   </div>
                 ))}
               </div>

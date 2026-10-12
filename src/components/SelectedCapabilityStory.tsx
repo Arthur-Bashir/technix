@@ -283,7 +283,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
             {activeStory === 'website' && (
               <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8 [perspective:1200px]">
                 {/* Horizon Grid Lines extending into space */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-25">
                   <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
                   <div className="absolute w-[36rem] h-[36rem] border border-sky-400/15 rounded-full [transform:rotateX(75deg)]" />
                   <div className="absolute w-[48rem] h-[48rem] border border-white/5 rounded-full [transform:rotateX(75deg)]" />
@@ -292,24 +292,24 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 {/* Floating Architectural Monolith / Digital Building */}
                 <div className="relative z-10 my-auto transform -rotate-y-6 rotate-x-4 transition-transform duration-1000 hover:rotate-0">
                   {/* Floating horizontal architectural plane */}
-                  <div className="absolute -inset-x-12 top-1/2 h-40 bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent backdrop-blur-sm [transform:rotateX(30deg) translateY(-20%)] pointer-events-none" />
+                  <div className="absolute -inset-x-16 top-1/2 h-48 bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent backdrop-blur-sm [transform:rotateX(35deg) translateY(-15%)] pointer-events-none" />
                   
                   {/* Vertical architectural plane */}
-                  <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-2 bg-gradient-to-b from-transparent via-sky-400/40 to-transparent opacity-60" />
+                  <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-transparent via-sky-400/60 to-transparent opacity-60" />
                   
                   {/* Thin structural lines converging toward contact point */}
-                  <div className="absolute inset-x-0 top-3/4 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
-                  <div className="absolute left-1/2 -translate-x-1/2 h-32 w-px bg-gradient-to-t from-sky-400/30 to-transparent top-3/4" />
+                  <div className="absolute inset-x-0 top-[60%] h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+                  <div className="absolute left-1/2 -translate-x-1/2 h-40 w-px bg-gradient-to-t from-sky-400/30 to-transparent top-[60%]" />
 
                   {/* Oversized Typographic Presence - Floating independently */}
                   <div className="relative space-y-2">
-                    <div className="text-6xl sm:text-7xl lg:text-8xl font-black text-white tracking-tight leading-none text-center [text-shadow:0_10px_120px_rgba(14,165,233,0.25)]">
+                    <div className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tight leading-none text-center [text-shadow:0_10px_120px_rgba(14,165,233,0.25)]">
                       PRESENCE
                     </div>
                   </div>
 
                   {/* Domain floating independently */}
-                  <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-3 text-xs font-mono text-slate-200 whitespace-nowrap">
+                  <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3 text-xs font-mono text-slate-200 whitespace-nowrap">
                     <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
                     <span className="font-semibold text-white tracking-wide">yourcompany.mw</span>
                   </div>
@@ -332,11 +332,11 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
             {activeStory === 'email' && (
               <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8">
                 {/* Subtle Geometric Communication Web Background */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15">
                   <div className="w-[32rem] h-[32rem] border border-sky-400/10 rounded-full animate-[pulse_12s_ease-in-out_infinite]" />
-                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent" />
-                  <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-sky-400/20 to-transparent rotate-45" />
-                  <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-sky-400/15 to-transparent -rotate-45" />
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-sky-400/15 to-transparent" />
+                  <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-sky-400/12 to-transparent rotate-45" />
+                  <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-sky-400/10 to-transparent -rotate-45" />
                 </div>
 
                 {/* Hero Typographic Anchor - Poster-like, floating independently */}
@@ -549,7 +549,7 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
                 {/* Ascending spatial composition - four ascending planes, increasing height/light, summit at top */}
                 <div className="relative z-10 my-auto h-64 [perspective:1000px]">
                   {/* Subtle upward trajectory line */}
-                  <svg className="absolute left-8 top-0 bottom-0 pointer-events-none opacity-30" width="2" height="256" viewBox="0 0 2 256">
+                  <svg className="absolute left-8 top-0 bottom-0 pointer-events-none opacity-25" width="2" height="256" viewBox="0 0 2 256">
                     <line x1="1" y1="256" x2="1" y2="0" stroke="url(#upwardGradient)" strokeWidth="1" />
                     <defs>
                       <linearGradient id="upwardGradient" x1="0%" y1="100%" x2="0%" y2="0%">

@@ -189,7 +189,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               
               <div className="relative space-y-6">
                 <div className="space-y-2">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[0.9] [text-shadow:0_10px_100px_rgba(255,255,255,0.08)]">
+                  <div className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[0.9] [text-shadow:0_10px_100px_rgba(255,255,255,0.08)]">
                     THE FRONT DOOR
                   </div>
                   <div className="text-xl sm:text-2xl font-light text-slate-300 tracking-wide leading-tight">
@@ -215,7 +215,7 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
             Operational Services &amp; Digital Infrastructure Index
           </div>
 
-          <div className="divide-y divide-white/5 border-b border-white/5">
+          <div className="">
             {supportingSolutions.map((sol) => (
               <div
                 key={sol.id}

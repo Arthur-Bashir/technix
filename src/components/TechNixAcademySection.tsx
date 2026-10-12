@@ -65,7 +65,7 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
 
         {/* 3 Workforce Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-[#0e172a] border border-slate-800/80 rounded-2xl p-6 space-y-3">
+          <div className="p-6 space-y-3 border-l border-amber-400/30">
             <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-800/40 text-amber-400 flex items-center justify-center">
               <Laptop className="w-5 h-5" />
             </div>
@@ -77,7 +77,7 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
             </p>
           </div>
 
-          <div className="bg-[#0e172a] border border-slate-800/80 rounded-2xl p-6 space-y-3">
+          <div className="p-6 space-y-3 border-l border-amber-400/30">
             <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-800/40 text-amber-400 flex items-center justify-center">
               <Users className="w-5 h-5" />
             </div>
@@ -89,7 +89,7 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
             </p>
           </div>
 
-          <div className="bg-[#0e172a] border border-slate-800/80 rounded-2xl p-6 space-y-3">
+          <div className="p-6 space-y-3 border-l border-amber-400/30">
             <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-800/40 text-amber-400 flex items-center justify-center">
               <Briefcase className="w-5 h-5" />
             </div>
@@ -150,7 +150,7 @@ export const TechNixAcademySection: React.FC<TechNixAcademySectionProps> = ({ on
           </div>
 
           {/* Selected Course Dossier (Col 6-12) */}
-          <div className="lg:col-span-7 bg-[#0e172a] border border-slate-800 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl">
+          <div className="lg:col-span-7 p-8 sm:p-10 space-y-6 border-t border-b border-white/5">
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
                 <span className="text-xs font-mono font-semibold uppercase text-amber-400 tracking-wider">

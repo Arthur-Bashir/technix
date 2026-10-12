@@ -81,7 +81,7 @@ export const HostingDomainsSection: React.FC<HostingDomainsSectionProps> = ({ on
         </div>
 
         {/* LAYERED INFRASTRUCTURE ARCHITECTURAL VISUAL */}
-        <div className="mb-16 bg-[#090e1a] border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+        <div className="mb-16 p-8 sm:p-12">
           <div className="max-w-2xl mb-8 space-y-2">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400">
               The 4-Layer Cloud Stack
@@ -95,13 +95,13 @@ export const HostingDomainsSection: React.FC<HostingDomainsSectionProps> = ({ on
             {layers.map((l, idx) => {
               const Icon = l.icon;
               return (
-                <div key={idx} className="bg-[#050811] border border-slate-800/80 rounded-2xl p-6 space-y-4 flex flex-col justify-between">
+                <div key={idx} className="p-6 space-y-4 flex flex-col justify-between border-l border-sky-400/20">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-sky-400 flex items-center justify-center">
+                      <div className="w-9 h-9 text-sky-400 flex items-center justify-center">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-[11px] font-mono text-slate-400 font-semibold">
+                      <span className="text-[11px] font-mono text-slate-500">
                         {l.level}
                       </span>
                     </div>
@@ -113,11 +113,6 @@ export const HostingDomainsSection: React.FC<HostingDomainsSectionProps> = ({ on
                     <p className="text-xs text-slate-300 leading-relaxed font-normal">
                       {l.desc}
                     </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-slate-800/80 text-[11px] font-mono text-emerald-400 flex items-center space-x-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                    <span>Active Protection</span>
                   </div>
                 </div>
               );

@@ -50,7 +50,7 @@ export const BusinessWebsiteSection: React.FC<BusinessWebsiteSectionProps> = ({ 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
           
           {/* Left: Interactive Browser Showcase (Col 1-7) */}
-          <div className="lg:col-span-7 bg-[#050811] border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+          <div className="lg:col-span-7 overflow-hidden">
             {/* Browser Top Bar */}
             <div className="bg-[#0b1222] border-b border-slate-800/80 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -64,9 +64,7 @@ export const BusinessWebsiteSection: React.FC<BusinessWebsiteSectionProps> = ({ 
                 <span className="truncate">https://yourbusiness.mw</span>
               </div>
 
-              <span className="text-[11px] font-mono text-emerald-400 font-semibold bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded">
-                SSL SECURED
-              </span>
+
             </div>
 
             {/* Storefront Interior View */}
@@ -88,7 +86,7 @@ export const BusinessWebsiteSection: React.FC<BusinessWebsiteSectionProps> = ({ 
 
               {/* Real World Performance Features */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="bg-[#090e1a] border border-slate-800/80 rounded-2xl p-4 space-y-1">
+                <div className="p-4 space-y-1 border-l border-sky-400/30">
                   <div className="text-xs font-bold text-white flex items-center gap-1.5">
                     <Search className="w-4 h-4 text-sky-400" />
                     <span>Google Search Discovery</span>
@@ -98,7 +96,7 @@ export const BusinessWebsiteSection: React.FC<BusinessWebsiteSectionProps> = ({ 
                   </p>
                 </div>
 
-                <div className="bg-[#090e1a] border border-slate-800/80 rounded-2xl p-4 space-y-1">
+                <div className="p-4 space-y-1 border-l border-sky-400/30">
                   <div className="text-xs font-bold text-white flex items-center gap-1.5">
                     <MessageSquare className="w-4 h-4 text-emerald-400" />
                     <span>WhatsApp Lead Engine</span>

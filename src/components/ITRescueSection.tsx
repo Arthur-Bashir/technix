@@ -61,7 +61,7 @@ export const ITRescueSection: React.FC<ITRescueSectionProps> = ({ onOpenITRescue
             </p>
           </div>
 
-          <div className="lg:col-span-4 bg-[#140b16] border border-rose-900/60 rounded-3xl p-6 space-y-4 shadow-xl">
+          <div className="lg:col-span-4 p-6 space-y-4 border-l-2 border-rose-500/40">
             <div className="text-xs font-mono uppercase text-rose-400 font-bold tracking-wider">
               Emergency Dispatch Hotlines
             </div>
@@ -102,7 +102,7 @@ export const ITRescueSection: React.FC<ITRescueSectionProps> = ({ onOpenITRescue
             return (
               <div
                 key={idx}
-                className="bg-[#120a17]/90 hover:bg-[#180e1f] border border-rose-950/60 hover:border-rose-800/80 rounded-2xl p-6 transition-all duration-200 flex flex-col justify-between group"
+                className="p-6 border-l-2 border-rose-500/30 hover:border-rose-400/50 transition-colors transition-all duration-200 flex flex-col justify-between group"
               >
                 <div className="space-y-3">
                   <div className="w-10 h-10 rounded-xl bg-[#1c0d22] border border-rose-900/50 text-rose-400 flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors">
