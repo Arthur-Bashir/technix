@@ -281,57 +281,49 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
             
             {/* 1. BUSINESS WEBSITE: Spatial Architectural Plane (DOMAIN → PRESENCE → VISIBILITY → CONTACT) */}
             {activeStory === 'website' && (
-              <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8 [perspective:1000px]">
+              <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8 [perspective:1200px]">
                 {/* Horizon Grid Lines extending into space */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
-                  <div className="absolute w-72 h-72 border border-sky-400/30 rounded-full [transform:rotateX(75deg)]" />
-                  <div className="absolute w-96 h-96 border border-white/10 rounded-full [transform:rotateX(75deg)]" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
+                  <div className="absolute w-[36rem] h-[36rem] border border-sky-400/15 rounded-full [transform:rotateX(75deg)]" />
+                  <div className="absolute w-[48rem] h-[48rem] border border-white/5 rounded-full [transform:rotateX(75deg)]" />
                 </div>
 
                 {/* Floating Architectural Monolith / Digital Building */}
-                <div className="relative z-10 my-auto transform -rotate-y-12 rotate-x-6 transition-transform duration-700 hover:rotate-0">
-                  <div className="relative p-8 rounded-2xl bg-gradient-to-br from-[#0c1836]/90 via-[#070e22]/95 to-[#030612] border border-sky-400/20 shadow-[0_30px_90px_rgba(2,132,199,0.18)] backdrop-blur-md space-y-6">
-                    {/* Architectural Coordinate Lines */}
-                    <div className="flex items-center justify-between text-[11px] font-mono text-sky-400/80">
-                      <span>DIGITAL ARCHITECTURE</span>
-                      <span>[ 01 // PRESENCE ]</span>
-                    </div>
+                <div className="relative z-10 my-auto transform -rotate-y-6 rotate-x-4 transition-transform duration-1000 hover:rotate-0">
+                  {/* Floating horizontal architectural plane */}
+                  <div className="absolute -inset-x-12 top-1/2 h-40 bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent backdrop-blur-sm [transform:rotateX(30deg) translateY(-20%)] pointer-events-none" />
+                  
+                  {/* Vertical architectural plane */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-2 bg-gradient-to-b from-transparent via-sky-400/40 to-transparent opacity-60" />
+                  
+                  {/* Thin structural lines converging toward contact point */}
+                  <div className="absolute inset-x-0 top-3/4 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+                  <div className="absolute left-1/2 -translate-x-1/2 h-32 w-px bg-gradient-to-t from-sky-400/30 to-transparent top-3/4" />
 
-                    {/* Oversized Typographic Presence */}
-                    <div className="space-y-1">
-                      <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none">
-                        PRESENCE.
-                      </div>
-                      <div className="text-sm font-mono text-slate-400">
-                        The digital front door of your enterprise.
-                      </div>
+                  {/* Oversized Typographic Presence - Floating independently */}
+                  <div className="relative space-y-2">
+                    <div className="text-6xl sm:text-7xl lg:text-8xl font-black text-white tracking-tight leading-none text-center [text-shadow:0_10px_120px_rgba(14,165,233,0.25)]">
+                      PRESENCE
                     </div>
+                  </div>
 
-                    {/* Architectural Convergence Lines toward Contact Point */}
-                    <div className="relative h-16 border-t border-b border-white/10 flex items-center justify-between px-2">
-                      <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
-                        <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping" />
-                        <span className="font-semibold text-white">yourcompany.mw</span>
-                      </div>
-                      
-                      <div className="flex items-center gap-1.5 text-[10px] font-mono text-sky-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span>FOCAL CONTACT POINT</span>
-                      </div>
-                    </div>
+                  {/* Domain floating independently */}
+                  <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-3 text-xs font-mono text-slate-200 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                    <span className="font-semibold text-white tracking-wide">yourcompany.mw</span>
                   </div>
                 </div>
 
                 {/* Conceptual Journey: DOMAIN → PRESENCE → VISIBILITY → CONTACT */}
-                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-400 pt-4 border-t border-white/5">
+                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-500 pt-4">
                   <span className="text-slate-300">DOMAIN</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-white font-bold">PRESENCE</span>
-                  <span className="text-sky-400">→</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-white font-semibold">PRESENCE</span>
+                  <span className="text-sky-400/80">→</span>
                   <span className="text-slate-300">VISIBILITY</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-emerald-400 font-bold">CONTACT</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-slate-300">CONTACT</span>
                 </div>
               </div>
             )}
@@ -340,51 +332,40 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
             {activeStory === 'email' && (
               <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8">
                 {/* Subtle Geometric Communication Web Background */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-25">
-                  <div className="w-80 h-80 border border-sky-400/20 rounded-full" />
-                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
-                  <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-sky-400/30 to-transparent" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                  <div className="w-[32rem] h-[32rem] border border-sky-400/10 rounded-full animate-[pulse_12s_ease-in-out_infinite]" />
+                  <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent" />
+                  <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-sky-400/20 to-transparent rotate-45" />
+                  <div className="absolute h-full w-px bg-gradient-to-b from-transparent via-sky-400/15 to-transparent -rotate-45" />
                 </div>
 
-                <div className="text-[11px] font-mono text-sky-400/80 uppercase tracking-widest">
-                  Communication Identity
-                </div>
-
-                {/* Hero Typographic Anchor */}
-                <div className="relative z-10 my-auto space-y-4">
-                  <div className="space-y-1">
-                    <span className="text-2xl sm:text-3xl font-light text-sky-400/90 font-mono tracking-tight block">
+                {/* Hero Typographic Anchor - Poster-like, floating independently */}
+                <div className="relative z-10 my-auto space-y-6 text-center">
+                  <div className="space-y-2">
+                    <span className="text-3xl sm:text-4xl lg:text-5xl font-light text-sky-400/90 font-mono tracking-tight block [text-shadow:0_8px_100px_rgba(14,165,233,0.2)]">
                       director<span className="text-sky-300">@</span>
                     </span>
-                    <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight block">
+                    <span className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight block [text-shadow:0_12px_120px_rgba(255,255,255,0.08)]">
                       yourcompany.mw
                     </span>
                   </div>
 
-                  {/* Flowing Structural Paths to Organizational Nodes */}
-                  <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono text-slate-400">
-                    <div className="space-y-1">
-                      <span className="text-white font-bold block">TENDERS</span>
-                      <span className="text-[11px] text-slate-400">Institutional Bids</span>
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-white font-bold block">BANKING</span>
-                      <span className="text-[11px] text-slate-400">Financial Accounts</span>
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-white font-bold block">PARTNERS</span>
-                      <span className="text-[11px] text-slate-400">Executive Dialogue</span>
-                    </div>
+                  {/* Simple typographic anchors positioned in space - visually subordinate */}
+                  <div className="relative flex items-center justify-center gap-8 sm:gap-12 text-xs font-mono text-slate-400 pt-8">
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                    <span className="text-slate-300 tracking-widest">TENDERS</span>
+                    <span className="text-slate-300 tracking-widest">BANKING</span>
+                    <span className="text-slate-300 tracking-widest">PARTNERS</span>
                   </div>
                 </div>
 
                 {/* Conceptual Journey: IDENTITY → COMMUNICATION → TRUST */}
-                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-400 pt-4 border-t border-white/5">
-                  <span className="text-white font-bold">IDENTITY</span>
-                  <span className="text-sky-400">→</span>
+                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-500 pt-4">
+                  <span className="text-white font-semibold">IDENTITY</span>
+                  <span className="text-sky-400/80">→</span>
                   <span className="text-slate-300">COMMUNICATION</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-emerald-400 font-bold">TRUST</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-slate-300">TRUST</span>
                 </div>
               </div>
             )}
@@ -392,54 +373,44 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
             {/* 3. HOSTING & DOMAINS: Spatial Foundation Metaphor (DOMAIN ↓ WEB ↓ DATA ↓ BACKUP) */}
             {activeStory === 'hosting' && (
               <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8">
-                <div className="text-[11px] font-mono text-sky-400/80 uppercase tracking-widest">
-                  Structural Foundation Architecture
-                </div>
-
-                {/* Spatial Architectural Layers Rising Above Base (Not Cards - One Coherent Sculpture) */}
-                <div className="relative z-10 my-auto py-2 space-y-4 [perspective:900px]">
-                  {/* Layer 4: DOMAIN */}
-                  <div className="relative mx-auto w-11/12 py-3 px-6 rounded-lg bg-sky-950/40 border border-sky-400/40 shadow-sm flex items-center justify-between text-xs font-mono transform -rotate-x-6 hover:rotate-0 transition-transform">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-sky-400 font-bold">04</span>
-                      <span className="text-white font-bold tracking-wider">DOMAIN</span>
-                    </div>
-                    <span className="text-slate-400 text-[11px]">.mw National Identity</span>
+                {/* One coherent architectural sculpture - four horizontal planes connected by vertical spine */}
+                <div className="relative z-10 my-auto [perspective:1000px] h-72">
+                  {/* Vertical structural spine */}
+                  <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-sky-400/40 via-sky-400/30 to-transparent" />
+                  
+                  {/* Plane 1: BACKUP - deepest/furthest back, most illuminated at base */}
+                  <div className="absolute w-[92%] right-0 top-[85%] h-6 bg-gradient-to-r from-sky-500/25 via-sky-500/15 to-transparent backdrop-blur-sm transform -rotate-x-12 -translate-y-1/2 opacity-90 [transform-origin:left]" />
+                  <div className="absolute left-6 top-[85%] -translate-y-1/2 pl-3 text-xs font-mono text-white font-semibold tracking-wider">
+                    BACKUP
                   </div>
-
-                  {/* Layer 3: WEB */}
-                  <div className="relative mx-auto w-10/12 py-3 px-6 rounded-lg bg-sky-950/50 border border-sky-500/30 shadow-sm flex items-center justify-between text-xs font-mono transform -rotate-x-6 hover:rotate-0 transition-transform">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-sky-400 font-bold">03</span>
-                      <span className="text-white font-bold tracking-wider">WEB</span>
-                    </div>
-                    <span className="text-slate-400 text-[11px]">Application Runtime</span>
+                  
+                  {/* Plane 2: DATA */}
+                  <div className="absolute w-[88%] right-0 top-[62%] h-6 bg-gradient-to-r from-sky-500/20 via-sky-500/12 to-transparent backdrop-blur-sm transform -rotate-x-12 -translate-y-1/2 opacity-80 [transform-origin:left]" />
+                  <div className="absolute left-6 top-[62%] -translate-y-1/2 pl-3 text-xs font-mono text-white font-semibold tracking-wider">
+                    DATA
                   </div>
-
-                  {/* Layer 2: DATA */}
-                  <div className="relative mx-auto w-9/12 py-3 px-6 rounded-lg bg-sky-950/60 border border-sky-600/30 shadow-sm flex items-center justify-between text-xs font-mono transform -rotate-x-6 hover:rotate-0 transition-transform">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-sky-400 font-bold">02</span>
-                      <span className="text-white font-bold tracking-wider">DATA</span>
-                    </div>
-                    <span className="text-slate-400 text-[11px]">Structured Storage</span>
+                  
+                  {/* Plane 3: WEB */}
+                  <div className="absolute w-[84%] right-0 top-[39%] h-6 bg-gradient-to-r from-sky-500/16 via-sky-500/10 to-transparent backdrop-blur-sm transform -rotate-x-12 -translate-y-1/2 opacity-75 [transform-origin:left]" />
+                  <div className="absolute left-6 top-[39%] -translate-y-1/2 pl-3 text-xs font-mono text-white font-semibold tracking-wider">
+                    WEB
                   </div>
-
-                  {/* Layer 1: BACKUP & BASE PLATFORM */}
-                  <div className="relative mx-auto w-full py-4 px-6 rounded-xl bg-gradient-to-r from-sky-950 via-[#06122a] to-emerald-950 border-2 border-sky-400/60 shadow-xl flex items-center justify-between text-xs font-mono">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-emerald-400 font-black">01</span>
-                      <div>
-                        <span className="text-white font-black tracking-wider block">BACKUP &amp; FOUNDATION</span>
-                        <span className="text-[10px] text-slate-300 font-normal">Solid-State Cloud Servers · Billed in Malawi Kwacha</span>
-                      </div>
-                    </div>
-                    <span className="text-emerald-400 font-bold text-[11px]">BEDROCK</span>
+                  
+                  {/* Plane 4: DOMAIN - highest, most prominent */}
+                  <div className="absolute w-[80%] right-0 top-[16%] h-6 bg-gradient-to-r from-sky-500/14 via-sky-500/8 to-transparent backdrop-blur-sm transform -rotate-x-12 -translate-y-1/2 opacity-70 [transform-origin:left]" />
+                  <div className="absolute left-6 top-[16%] -translate-y-1/2 pl-3 text-xs font-mono text-white font-semibold tracking-wider">
+                    DOMAIN
                   </div>
                 </div>
 
-                <div className="relative z-10 text-center text-xs font-mono text-slate-400 pt-4 border-t border-white/5">
-                  THE FOUNDATION UNDERNEATH THE DIGITAL PRESENCE
+                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-500 pt-4">
+                  <span className="text-slate-300">DOMAIN</span>
+                  <span className="text-sky-400/80">↓</span>
+                  <span className="text-slate-300">WEB</span>
+                  <span className="text-sky-400/80">↓</span>
+                  <span className="text-slate-300">DATA</span>
+                  <span className="text-sky-400/80">↓</span>
+                  <span className="text-white font-semibold">BACKUP</span>
                 </div>
               </div>
             )}
@@ -447,181 +418,182 @@ export const SelectedCapabilityStory: React.FC<SelectedCapabilityStoryProps> = (
             {/* 4. IT SUPPORT & MAINTENANCE: Connected Workplace Constellation (PEOPLE → DEVICES → NETWORK → SUPPORT) */}
             {activeStory === 'support' && (
               <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8">
-                <div className="text-[11px] font-mono text-sky-400/80 uppercase tracking-widest">
-                  Living Connected Workplace
-                </div>
-
                 {/* Spatial Constellation Topology */}
                 <div className="relative z-10 my-auto flex items-center justify-center py-6">
-                  {/* Outer Orbital Orbit Ring */}
-                  <div className="absolute w-72 h-72 border border-sky-500/20 rounded-full animate-pulse" />
+                  {/* Subtle orbital ring */}
+                  <div className="absolute w-72 h-72 border border-sky-500/10 rounded-full" />
+                  
+                  {/* Connecting lines to nodes */}
+                  <svg className="absolute w-72 h-72 pointer-events-none opacity-40" viewBox="0 0 288 288">
+                    <line x1="144" y1="144" x2="72" y2="72" stroke="rgba(56,189,248,0.4)" strokeWidth="0.5" />
+                    <line x1="144" y1="144" x2="216" y2="72" stroke="rgba(56,189,248,0.4)" strokeWidth="0.5" />
+                    <line x1="144" y1="144" x2="72" y2="216" stroke="rgba(56,189,248,0.4)" strokeWidth="0.5" />
+                    <line x1="144" y1="144" x2="216" y2="216" stroke="rgba(56,189,248,0.4)" strokeWidth="0.5" />
+                  </svg>
                   
                   {/* Central Support Node */}
-                  <div className="relative z-20 w-28 h-28 rounded-full bg-gradient-to-br from-sky-600/30 via-slate-900 to-[#030612] border-2 border-sky-400/60 flex flex-col items-center justify-center p-3 text-center shadow-xl">
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping mb-1" />
-                    <span className="text-xs font-mono font-black text-white">SUPPORT</span>
-                    <span className="text-[9px] font-mono text-sky-300">CENTRAL PULSE</span>
+                  <div className="relative z-20 w-24 h-24 rounded-full bg-gradient-to-br from-sky-500/25 via-sky-500/10 to-transparent flex flex-col items-center justify-center text-center">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse mb-1" />
+                    <span className="text-xs font-mono font-semibold text-white">SUPPORT</span>
                   </div>
 
-                  {/* Surrounding Constellation Vertices */}
-                  <div className="absolute top-2 left-6 px-3 py-1.5 rounded-lg bg-sky-950/60 border border-white/10 text-xs font-mono text-slate-200">
-                    <span className="text-sky-400 font-bold mr-1.5">●</span>PEOPLE
+                  {/* Abstract nodes - PEOPLE */}
+                  <div className="absolute top-8 left-12 flex items-center gap-2 text-xs font-mono text-slate-200">
+                    <span className="w-2 h-2 rounded-full bg-sky-400" />
+                    <span>PEOPLE</span>
                   </div>
 
-                  <div className="absolute top-2 right-6 px-3 py-1.5 rounded-lg bg-sky-950/60 border border-white/10 text-xs font-mono text-slate-200">
-                    <span className="text-sky-400 font-bold mr-1.5">◆</span>DEVICES
+                  {/* Abstract nodes - DEVICES */}
+                  <div className="absolute top-8 right-12 flex items-center gap-2 text-xs font-mono text-slate-200">
+                    <span className="w-1.5 h-3 bg-sky-400/80" />
+                    <span>DEVICES</span>
                   </div>
 
-                  <div className="absolute bottom-2 left-10 px-3 py-1.5 rounded-lg bg-sky-950/60 border border-white/10 text-xs font-mono text-slate-200">
-                    <span className="text-sky-400 font-bold mr-1.5">▲</span>NETWORK
+                  {/* Abstract nodes - NETWORK */}
+                  <div className="absolute bottom-8 left-16 flex items-center gap-2 text-xs font-mono text-slate-200">
+                    <span className="w-3 h-1 bg-sky-400/80" />
+                    <span>NETWORK</span>
                   </div>
 
-                  <div className="absolute bottom-2 right-10 px-3 py-1.5 rounded-lg bg-sky-950/60 border border-white/10 text-xs font-mono text-slate-200">
-                    <span className="text-emerald-400 font-bold mr-1.5">★</span>CONTINUITY
+                  {/* Abstract nodes - CONTINUITY */}
+                  <div className="absolute bottom-8 right-14 flex items-center gap-2 text-xs font-mono text-slate-200">
+                    <span className="w-2 h-2 bg-sky-400 rotate-45" />
+                    <span>CONTINUITY</span>
                   </div>
                 </div>
 
                 {/* Conceptual Principle */}
-                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-400 pt-4 border-t border-white/5">
-                  <span className="text-white font-bold">PEOPLE</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-white font-bold">DEVICES</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-white font-bold">NETWORK</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-emerald-400 font-bold">SUPPORT</span>
+                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-500 pt-4">
+                  <span className="text-slate-300">PEOPLE</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-slate-300">DEVICES</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-slate-300">NETWORK</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-white font-semibold">SUPPORT</span>
                 </div>
               </div>
             )}
 
-            {/* 5. CUSTOM SOFTWARE: Transformation Flow (WORK → DATA → SYSTEM → DECISION) */}
+            {/* 5. CUSTOM SOFTWARE: Transformation Flow - Single continuous process sculpture */}
             {activeStory === 'software' && (
               <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8">
-                <div className="text-[11px] font-mono text-sky-400/80 uppercase tracking-widest">
-                  Transformation Architecture
-                </div>
+                {/* Single flowing line system - continuous transformation */}
+                <div className="relative z-10 my-auto py-12">
+                  {/* Main flow line with subtle gradient */}
+                  <div className="absolute inset-x-6 top-1/2 -translate-y-1/2 h-px">
+                    <svg className="w-full h-full" viewBox="0 0 100 1" preserveAspectRatio="none">
+                      <line x1="0" y1="0.5" x2="100" y2="0.5" stroke="url(#flowGradient)" strokeWidth="0.8" opacity="0.6" />
+                      <defs>
+                        <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(56,189,248,0.3)" />
+                          <stop offset="50%" stopColor="rgba(56,189,248,0.8)" />
+                          <stop offset="100%" stopColor="rgba(16,185,129,0.8)" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
 
-                {/* Single Elegant Spatial Flow Pipeline (Not 4 Cards) */}
-                <div className="relative z-10 my-auto py-8">
-                  {/* Connecting Gradient Light Vector */}
-                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-sky-500/20 via-sky-400 to-emerald-400" />
-
-                  {/* Flow Stages */}
-                  <div className="relative z-10 grid grid-cols-4 gap-2 text-center">
-                    {/* Stage 1: WORK */}
-                    <div className="space-y-3">
-                      <div className="w-8 h-8 rounded-full bg-[#050c1e] border-2 border-sky-400/40 text-sky-300 font-mono text-xs font-bold flex items-center justify-center mx-auto shadow-md">
-                        01
-                      </div>
-                      <div>
-                        <div className="text-xs font-black font-mono text-white tracking-wider">WORK</div>
-                        <div className="text-[10px] text-slate-400 font-mono mt-0.5">Everyday Tasks</div>
+                  {/* Flow stages along the line - no circular containers, just points and typography */}
+                  <div className="relative grid grid-cols-4 gap-4">
+                    {/* WORK - scattered inputs */}
+                    <div className="flex flex-col items-center space-y-2">
+                      <div className="w-2 h-2 rounded-full bg-sky-400 mt-6" />
+                      <div className="text-center mt-2">
+                        <div className="text-xs font-mono text-white tracking-widest">WORK</div>
                       </div>
                     </div>
 
-                    {/* Stage 2: DATA */}
-                    <div className="space-y-3">
-                      <div className="w-8 h-8 rounded-full bg-[#050c1e] border-2 border-sky-400/60 text-sky-300 font-mono text-xs font-bold flex items-center justify-center mx-auto shadow-md">
-                        02
-                      </div>
-                      <div>
-                        <div className="text-xs font-black font-mono text-white tracking-wider">DATA</div>
-                        <div className="text-[10px] text-slate-400 font-mono mt-0.5">Structured Input</div>
+                    {/* DATA - becomes organized */}
+                    <div className="flex flex-col items-center space-y-2">
+                      <div className="w-2 h-2 rounded-full bg-sky-400 mt-6" />
+                      <div className="text-center mt-2">
+                        <div className="text-xs font-mono text-white tracking-widest">DATA</div>
                       </div>
                     </div>
 
-                    {/* Stage 3: SYSTEM */}
-                    <div className="space-y-3">
-                      <div className="w-8 h-8 rounded-full bg-[#050c1e] border-2 border-sky-400 text-white font-mono text-xs font-bold flex items-center justify-center mx-auto shadow-md">
-                        03
-                      </div>
-                      <div>
-                        <div className="text-xs font-black font-mono text-white tracking-wider">SYSTEM</div>
-                        <div className="text-[10px] text-slate-400 font-mono mt-0.5">Automated Logic</div>
+                    {/* SYSTEM - becomes structured */}
+                    <div className="flex flex-col items-center space-y-2">
+                      <div className="w-2 h-2 rounded-full bg-sky-400 mt-6" />
+                      <div className="text-center mt-2">
+                        <div className="text-xs font-mono text-white tracking-widest">SYSTEM</div>
                       </div>
                     </div>
 
-                    {/* Stage 4: DECISION */}
-                    <div className="space-y-3">
-                      <div className="w-8 h-8 rounded-full bg-emerald-500/30 border-2 border-emerald-400 text-emerald-300 font-mono text-xs font-bold flex items-center justify-center mx-auto shadow-md">
-                        04
-                      </div>
-                      <div>
-                        <div className="text-xs font-black font-mono text-emerald-400 tracking-wider">DECISION</div>
-                        <div className="text-[10px] text-emerald-300/80 font-mono mt-0.5">Executive Clarity</div>
+                    {/* DECISION - resolves into focal point */}
+                    <div className="flex flex-col items-center space-y-2">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.5)] mt-6" />
+                      <div className="text-center mt-2">
+                        <div className="text-xs font-mono text-emerald-300 tracking-widest">DECISION</div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Conceptual Journey: WORK → DATA → SYSTEM → DECISION */}
-                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-400 pt-4 border-t border-white/5">
-                  <span className="text-white font-bold">WORK</span>
-                  <span className="text-sky-400">→</span>
+                {/* Conceptual Journey */}
+                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-500 pt-4">
+                  <span className="text-slate-300">WORK</span>
+                  <span className="text-sky-400/80">→</span>
                   <span className="text-slate-300">DATA</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-white font-bold">SYSTEM</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-emerald-400 font-bold">DECISION</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-slate-300">SYSTEM</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-white font-semibold">DECISION</span>
                 </div>
               </div>
             )}
 
-            {/* 6. TECHNIX ACADEMY: Rising Spatial Trajectory (FOUNDATION → PRACTICE → CAPABILITY → CONFIDENCE) */}
+            {/* 6. TECHNIX ACADEMY: Rising Spatial Trajectory - ascending planes with increasing height/light */}
             {activeStory === 'academy' && (
               <div className="relative w-full max-w-lg mx-auto h-[420px] flex flex-col justify-between p-6 sm:p-8">
-                <div className="text-[11px] font-mono text-sky-400/80 uppercase tracking-widest">
-                  Capability Elevation Trajectory
-                </div>
+                {/* Ascending spatial composition - four ascending planes, increasing height/light, summit at top */}
+                <div className="relative z-10 my-auto h-64 [perspective:1000px]">
+                  {/* Subtle upward trajectory line */}
+                  <svg className="absolute left-8 top-0 bottom-0 pointer-events-none opacity-30" width="2" height="256" viewBox="0 0 2 256">
+                    <line x1="1" y1="256" x2="1" y2="0" stroke="url(#upwardGradient)" strokeWidth="1" />
+                    <defs>
+                      <linearGradient id="upwardGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                        <stop offset="0%" stopColor="rgba(56,189,248,0.3)" />
+                        <stop offset="60%" stopColor="rgba(56,189,248,0.6)" />
+                        <stop offset="100%" stopColor="rgba(251,191,36,0.8)" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
 
-                {/* Rising Spatial Incline (Ascending Stepped Planes) */}
-                <div className="relative z-10 my-auto py-4 space-y-3">
-                  {/* Step 4: CONFIDENCE (Summit) */}
-                  <div className="ml-auto w-3/4 p-3 rounded-lg bg-gradient-to-r from-amber-950/60 to-emerald-950/60 border border-amber-400/60 flex items-center justify-between text-xs font-mono shadow-md">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-amber-400 font-black">04</span>
-                      <span className="text-white font-black tracking-wider">CONFIDENCE</span>
-                    </div>
-                    <span className="text-amber-400 font-semibold text-[11px]">Independent Mastery</span>
+                  {/* Plane 1: FOUNDATION - base level */}
+                  <div className="absolute left-10 bottom-[10%] w-3/4 h-4 bg-gradient-to-r from-white/10 to-transparent transform -rotate-x-8 opacity-40" />
+                  <div className="absolute left-12 bottom-[10%] -translate-y-1/2 text-xs font-mono text-slate-300 tracking-widest">
+                    FOUNDATION
                   </div>
 
-                  {/* Step 3: CAPABILITY */}
-                  <div className="mx-auto w-4/5 p-3 rounded-lg bg-sky-950/50 border border-sky-400/30 flex items-center justify-between text-xs font-mono shadow-sm">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-sky-400 font-bold">03</span>
-                      <span className="text-white font-bold tracking-wider">CAPABILITY</span>
-                    </div>
-                    <span className="text-slate-400 text-[11px]">Advanced Dashboarding</span>
+                  {/* Plane 2: PRACTICE */}
+                  <div className="absolute left-10 bottom-[30%] w-4/5 h-5 bg-gradient-to-r from-sky-500/15 to-transparent transform -rotate-x-8 opacity-55" />
+                  <div className="absolute left-12 bottom-[30%] -translate-y-1/2 text-xs font-mono text-white tracking-widest">
+                    PRACTICE
                   </div>
 
-                  {/* Step 2: PRACTICE */}
-                  <div className="mr-auto w-4/5 p-3 rounded-lg bg-sky-950/40 border border-sky-500/20 flex items-center justify-between text-xs font-mono shadow-sm">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-sky-400 font-bold">02</span>
-                      <span className="text-white font-bold tracking-wider">PRACTICE</span>
-                    </div>
-                    <span className="text-slate-400 text-[11px]">Real Business Datasets</span>
+                  {/* Plane 3: CAPABILITY */}
+                  <div className="absolute left-10 bottom-[55%] w-5/6 h-6 bg-gradient-to-r from-sky-500/20 to-transparent transform -rotate-x-8 opacity-70" />
+                  <div className="absolute left-12 bottom-[55%] -translate-y-1/2 text-xs font-mono text-white tracking-widest">
+                    CAPABILITY
                   </div>
 
-                  {/* Step 1: FOUNDATION (Base) */}
-                  <div className="mr-auto w-3/4 p-3 rounded-lg bg-[#040916] border border-white/10 flex items-center justify-between text-xs font-mono">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-slate-400 font-bold">01</span>
-                      <span className="text-slate-200 font-bold tracking-wider">FOUNDATION</span>
-                    </div>
-                    <span className="text-slate-400 text-[11px]">Core Spreadsheet Logic</span>
+                  {/* Plane 4: CONFIDENCE - summit, highest light */}
+                  <div className="absolute left-10 bottom-[85%] w-full h-8 bg-gradient-to-r from-amber-500/30 via-amber-500/15 to-transparent transform -rotate-x-8 opacity-90 [box-shadow:0_0_40px_rgba(251,191,36,0.2)]" />
+                  <div className="absolute left-12 bottom-[85%] -translate-y-1/2 text-xs font-mono text-amber-200 font-semibold tracking-widest">
+                    CONFIDENCE
                   </div>
                 </div>
 
-                {/* Conceptual Journey: FOUNDATION → PRACTICE → CAPABILITY → CONFIDENCE */}
-                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-400 pt-4 border-t border-white/5">
+                {/* Conceptual Journey */}
+                <div className="relative z-10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-500 pt-4">
                   <span className="text-slate-300">FOUNDATION</span>
-                  <span className="text-sky-400">→</span>
+                  <span className="text-sky-400/80">→</span>
                   <span className="text-slate-300">PRACTICE</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-white font-bold">CAPABILITY</span>
-                  <span className="text-sky-400">→</span>
-                  <span className="text-amber-400 font-bold">CONFIDENCE</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-slate-300">CAPABILITY</span>
+                  <span className="text-sky-400/80">→</span>
+                  <span className="text-white font-semibold">CONFIDENCE</span>
                 </div>
               </div>
             )}

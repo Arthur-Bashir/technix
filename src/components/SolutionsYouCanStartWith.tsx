@@ -175,28 +175,34 @@ export const SolutionsYouCanStartWith: React.FC<SolutionsYouCanStartWithProps> =
               </div>
             </div>
 
-            {/* Right Visual Composition: Hero Architectural Composition (Not a Specification Panel) */}
-            <div className="lg:col-span-5 relative p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#081129]/80 via-[#040814] to-[#02040c] border border-white/10 shadow-2xl overflow-hidden flex flex-col justify-between min-h-[380px]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.12),transparent_70%)] pointer-events-none" />
+            {/* Right Visual Composition: Typographic Architectural Composition - emotion and visual identity */}
+            <div className="lg:col-span-5 relative min-h-[380px] flex flex-col justify-center p-8 sm:p-12 [perspective:1200px]">
+              {/* Architectural horizon */}
+              <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
+              <div className="absolute inset-x-0 top-1/2 h-[320px] [transform:rotateX(65deg)] border-t border-b border-sky-400/15" />
               
-              <div className="relative space-y-4">
-                <div className="text-[11px] font-mono text-sky-400/80 uppercase tracking-widest">
-                  Digital Presence
+              {/* Thin vertical axis */}
+              <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-sky-400/30 to-transparent" />
+              
+              {/* One illuminated point */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_60px_rgba(56,189,248,0.8)]" />
+              
+              <div className="relative space-y-6">
+                <div className="space-y-2">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[0.9] [text-shadow:0_10px_100px_rgba(255,255,255,0.08)]">
+                    THE FRONT DOOR
+                  </div>
+                  <div className="text-xl sm:text-2xl font-light text-slate-300 tracking-wide leading-tight">
+                    OF YOUR BUSINESS
+                  </div>
                 </div>
-
-                <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-[1.08]">
-                  The Front Door of Your Business
+                
+                <div className="pt-8 text-xs font-mono text-slate-300">
+                  <span className="inline-flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                    yourcompany.mw
+                  </span>
                 </div>
-
-                <p className="text-sm text-slate-300 leading-relaxed font-normal pt-2 max-w-sm">
-                  A credible, fast-loading digital identity designed to present your services clearly and route inquiries directly to your team.
-                </p>
-              </div>
-
-              {/* Quiet, elegant architectural base line */}
-              <div className="relative pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-                <span className="text-white font-medium">yourcompany.mw</span>
-                <span className="text-emerald-400">Billed in Malawi Kwacha</span>
               </div>
             </div>
 
